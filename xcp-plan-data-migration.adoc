@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: xcp-plan-data-migration.html 
+keywords: netapp, xcp, plan, planning, data, migration, migrate, migrating, nfs, smb, file, analytics 
+summary: 规划数据迁移 
+---
+= 规划数据迁移
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用命令行界面或文件分析图形用户界面规划迁移。
+
+使用以下命令规划迁移：
+
+* -show
+* 扫描
+
+
+使用文件分析以可视化方式显示导出和共享的统计信息。

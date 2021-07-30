@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-linux-for-xcp-nfs.html 
+keywords: netapp, xcp, prepare, preparing, preparation, linux, nfs, configure, configuring, catalog, storage, 
+summary: 为 XCP NFS 准备 Linux 
+---
+= 为 XCP NFS 准备 Linux
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS 使用 Linux 客户端主机系统生成并行 I/O 流，并充分利用可用的网络和存储性能。
+
+
+
+=== 配置目录
+
+XCP 会将操作报告和元数据保存在可通过 NFSv3 访问的目录目录中。配置目录是一次性安装前任务，需要满足以下要求：
+
+* NetApp NFSv3 导出，用于确保安全性和可靠性。
+* 聚合中至少有十个磁盘或固态驱动器，用于包含性能导出。
+* 存储配置为允许对用于运行 XCP 的所有 Linux 客户端的 IP 地址的目录导出进行 root 访问（多个 XCP 客户端可以共享一个目录位置）。
+* 大约 1 GB 的空间，用于为每 1000 万个对象（目录加上文件和硬链接）编制索引；可以恢复或同步的每个副本以及每个脱机可搜索的扫描都需要一个索引。
+
+
+
+NOTE: 您应单独存储 XCP 目录。它们不应位于源 NFS 导出目录或目标 NFS 导出目录中。XCP 会维护元数据—报告位于初始设置期间指定的目录位置。在使用 XCP 运行任何操作之前，您必须指定并更新用于存储报告的位置。
+
+
+
+=== 配置存储
+
+XCP NFS 过渡和迁移具有以下源和目标存储要求：
+
+* 源服务器和目标服务器必须启用 NFSv3 协议服务。对于 NFSv4 ACL 迁移，必须在目标服务器上启用 NFSv4 协议服务和 NFSv4 ACL 。
+* 必须通过 `root` 访问 XCP Linux 客户端主机来导出源卷和目标卷。
+
+
+
+NOTE: 将 NFSv3 和 NFSv4 导出的源配置为只读，以便管理员不会意外修改它。

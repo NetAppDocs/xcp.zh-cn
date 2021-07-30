@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: xcp-logging-for-nfs-and-smb.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb, 
+summary: 为 XCP NFS 和 SMB 记录日志 
+---
+= NFS 和 SMB 的日志记录（可选）
+
+
+
+
+== NFS 和 SMB 的日志记录（可选）
+
+[role="lead"]
+为 XCP NFS 和 SMB 记录日志。
+
+XCP 支持使用 `xcpLogConfig.json` JSON 配置文件配置多个可选功能。要仅启用特定功能，请手动创建 `xcpLogConfig.json` 配置文件，您可以使用 `xcpLogConfig.json` 配置文件启用：
+
+* 事件日志消息
+* XCP 的系统日志客户端
+* 自定义 XCP 日志记录
+
+
+在默认配置中，事件日志消息和系统日志客户端处于禁用状态。配置对于 NFS 和 SMB 都是通用的。
+
+|===
+| 配置 JSON 文件位置 | NFS | SMB 
+
+
+| 配置文件默认位置 | /opt/netapp/xFiles/XCP/ | C ： \NetApp\XCP\ConfigFile 
+
+
+| 自定义位置需要 `XCP_config_DIR` 环境变量 | error未找到参考源。 | 不适用 
+|===
+JSON 配置文件选项区分大小写。这些选项对于 XCP NFS 和 XCP SMB 是相同的。
+
+[cols="20,15,15,50"]
+|===
+| 子选项名称 | JSON 数据类型 | Default | Description 
+
+
+| logconfig |  |  | 用于自定义 XCP 日志记录的选项。 
+
+
+| level | string | 信息 | 日志消息严重性筛选级别。XCP 日志消息按严重性降低的顺序支持五个严重性级别：严重，错误，警告，信息，调试（ NetApp 强烈建议使用 info 或 debug ） 
+
+
+| "maxBytes" | 整型 | 52428800 | 每个旋转日志文件的大小。最多支持 10 个轮换文件。 
+
+
+| name | string | xcp.log | 用于设置自定义日志文件名称的选项。 
+
+
+| EventLog |  |  | 用于配置事件日志消息的选项。 
+
+
+| " 已启用 " | 布尔值 | false | 此布尔选项用于启用事件消息传送。如果将其设置为 `false` ，则不会生成任何事件消息，也不会将任何事件日志发布到事件日志文件中。 
+
+
+| level | string | 信息 | 事件消息严重性筛选级别。事件消息支持按严重性降低的顺序排列的五个严重性级别：严重，错误，警告，信息，调试 
+
+
+| 系统日志 |  |  | 用于配置系统日志消息的选项。 
+
+
+| " 已启用 " | 布尔值 | false | 此布尔选项用于在 XCP 中启用系统日志客户端。 
+
+
+| level | string | 信息 | 消息严重性筛选级别。XCP 事件日志消息按严重性降低的顺序支持五个严重性级别：严重，错误，警告，信息，调试 
+
+
+| " 服务器 ip" | string | 无 | 远程系统日志服务器 IP 地址或主机名。 
+
+
+| port | 整型 | 514. | 远程系统日志接收器端口。可以使用端口选项 UDP 端口 514 配置接受其他端口上的系统日志数据报的系统日志接收器，但也可以配置到所需端口。 
+
+
+| " 清理 " | 布尔值 | false  a| 
+XCP 支持的常见选项；将其值设置为 true 将隐藏要支持的消息（日志记录，事件，系统日志等）中的敏感信息（ IP 和用户名） 例如，将 `sanitize` 选项设置为 `false` ： * `2020-07-17 03 ： 10 ： 23 ， 779 - 信息 - 12806 XCP XCP 路径： ['10.234.104.251 ： /cat_vol']` * `2020-07-12817` 03 ： 10 ： 23 ， 778 - 信息 - 12806 XCP XCP 用户名： root` XCP 路径： `s2020-07-1217 ： ``XCP ：` XX.XX.XX.XX./cat_vol']` * `2020-07-17 03 ： 13 ： 51 ， 595 - 信息 - 12859 XCP XCP 用户名 * * *`
+
+|===
+
+
+= 创建 JSON 配置文件
+
+如果要启用事件日志消息，系统日志客户端或客户日志记录，请完成以下步骤。
+
+.步骤
+. 打开任何文本编辑器，例如记事本或 vi 。
+. 使用以下 JSON 模板创建新文件。
++
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+. 对于要启用的任何功能，请将 `isenabled` 值更改为 `true` 。
+. 将文件命名为 `xcpLogConfig.json` ，并将其命名为 * 错误！未找到引用源。 *
+
+
+|===
+| 默认配置 | json 配置文件示例 
+
+
+ a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "sanitize": false
+}
+---- a| 
+[listing]
+----
+{
+  "logConfig": {
+    "level": "INFO",
+    "maxBytes": 52428800,
+    "name": "xcp.log"
+  },
+  "eventlog": {
+    "isEnabled": false,
+    "level": "INFO"
+  },
+  "syslog": {
+    "isEnabled": false,
+    "level": "INFO",
+    "serverIp": "10.234.219.87",
+    "port": 514
+  },
+  "sanitize": false
+}
+----
+|===

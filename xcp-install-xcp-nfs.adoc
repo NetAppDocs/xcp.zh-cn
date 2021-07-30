@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-xcp-nfs.html 
+keywords: netapp, xcp, install, installing, nfs 
+summary: 安装 XCP NFS 
+---
+= 安装 XCP NFS
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+如果要升级 XCP ，请删除当前安装并将其替换为最新版本的新安装。本节详细介绍了在 Linux 客户端上首次设置 XCP 以及安装此 ini 文件配置的系统要求和过程。
+
+* 系统要求 *
+
+[cols="35,65"]
+|===
+| 项目 | 要求 
+
+
+| 系统 | 64 位 Intel 或 AMD 服务器，至少 4 个核心和 32 GB RAM 
+
+
+| 操作系统和软件 | RHEL8.有关支持的操作系统，请参见 IMT 
+
+
+| 特殊要求 | 源 NFSv3 和目标 NFSv3 的网络连接和根级别访问不会导出其他活动应用程序 
+
+
+| 存储 | XCP 二进制文件需要 20 MB 磁盘空间，而 /opt/NetApp/xFiles/XCP/ 目录中存储的日志需要至少 50 MB 磁盘空间 
+
+
+| 支持的协议版本 | NFSv3 和 NFSv4 （仅限 ACL ） 
+
+
+| 支持的浏览器（仅限文件分析） | XCP 文件分析支持 Google Chrome 76 及更高版本。有关所有受支持的浏览器版本，请参见 IMT 列表 
+|===
+
+NOTE: 实时源迁移的建议配置为 8 个核心和 64 GB RAM 。
+
+.步骤
+. 以 root 用户身份登录到 Linux 计算机，然后下载并安装许可证：
++
+[listing]
+----
+[root@scspr1980872003 ~]# ls -l
+total 36188
+-rw-r--r--  1 root root 37043983 Oct  5 09:36 NETAPP_XCP_<version>.tgz
+-rw-------. 1 root root     1994 Sep  4  2019 license
+----
+. 解压缩 XCP 以提取此工具：
++
+[listing]
+----
+[root@scspr1980872003 ~]# tar -xvf NETAPP_XCP_<version>.tgz
+[root@scspr1980872003 ~]# ls
+NETAPP_XCP_<version>.tgz license xcp
+[root@scspr1980872003 ~]# cd xcp/linux/
+[root@scspr1980872003 linux]# ls
+xcp
+----
+. 验证先前版本 XCP 中的系统是否提供了 ` /opt/NetApp/xFiles/XCP` 路径。
++
+如果提供了 ` /opt/NetApp/xFiles/XCP` ，请使用 `XCP activate` 命令激活许可证，然后继续执行数据迁移。
+
++
+如果 ` /opt/netapp/xFiles/XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 ` /opt/netapp/xFiles/XCP` 创建 XCP 主机配置目录和文件。
+
++
+由于未安装许可证， `XCP activate` 命令失败。
+
++
+[listing]
+----
+[root@scspr1980872003 linux]# ./xcp activate
+(c) 2020 NetApp, Inc.
+xcp: Host config file not found. Creating sample at '/opt/NetApp/xFiles/xcp/xcp.ini'
+
+xcp: ERROR: License file /opt/NetApp/xFiles/xcp/license not found.
+Register for a license at https://xcp.netapp.com
+----
+. 将此许可证复制到 ` /opt/netapp/xFiles/XCP/` ：
++
+[listing]
+----
+[root@scspr1980872003 linux]# cp ~/license /opt/NetApp/xFiles/xcp/
+----
+. 验证许可证文件是否已复制到 ` /opt/netapp/xFiles/XCP/` ：
++
+[listing]
+----
+[root@ scspr1980872003 ~]# ls -altr /opt/NetApp/xFiles/xcp/
+total 44
+drwxr-xr-x 3 root root    17 Oct  1 06:07 ..
+-rw-r--r-- 1 root root   304 Oct  1 06:07 license
+drwxr-xr-x 2 root root     6 Oct  1 10:16 xcpfalogs
+drwxr-xr-x 2 root root    21 Oct  1 10:16 xcplogs
+-rw-r--r-- 1 root root   110 Oct  5 00:48 xcp.ini
+drwxr-xr-x 4 root root    83 Oct  5 00:48 .
+[root@scspr1978802001 ~]#
+----
+. 激活 XCP ：
++
+[listing]
+----
+[root@scspr1980872003 linux]# ./xcp activate
+XCP <version>; (c) 2020 NetApp, Inc.;
+XCP already activated
+----
+

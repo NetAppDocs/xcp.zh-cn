@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-file-analytics.adoc.html 
+keywords: netapp, xcp, prepare, preparing, preparation, file analytics, 
+summary: 准备文件分析 
+---
+= 准备文件分析
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用文件分析准备数据迁移。
+
+文件分析包括以下两部分：
+
+* 在 Linux 上运行的文件分析服务器
+* 在 Windows 上运行的 XCP SMB 服务
+
+
+文件分析安装具有以下要求：
+
+* 支持的操作系统和系统要求与为 NFS 和 SMB 安装提供的要求相同。由于数据库将驻留在 Linux 机箱上，因此您必须确保至少有 10 GB 的可用空间。
+* 安装文件分析服务器的 Linux 计算机必须连接到 Internet 或 yum 存储库。安装脚本将与 yum 存储库进行通信，以下载所需的软件包，例如 PostgreSQL ， HTTP 和 SSL 。
+* 文件分析 GUI 只能与在同一机箱上运行的 Linux XCP 服务一起托管在 Linux 计算机上。
+* 要运行 SMB 服务，请完成以下步骤：
++
+** 验证 Windows 框是否可以对运行文件分析服务器的 Linux 计算机执行 ping 操作。
+** 如果您位于防火墙内，请验证端口 5030 和 5432 是否已打开。端口 5030 用于向 Windows 发出 REST 调用。端口 5432 端口用于 PostgreSQL 连接。
+
+
+
+
+
+NOTE: XCP 文件分析服务器始终在 Linux 计算机上运行。SMB 文件分析没有单独安装。如果您是 Windows 用户，并且希望对 SMB 共享运行文件分析，则必须安装适用于 Linux 的文件分析并将 Windows Box 连接到 Linux 数据库。如果您仅使用 XCP 文件分析，则无需为 NFS 配置 XCP 目录。

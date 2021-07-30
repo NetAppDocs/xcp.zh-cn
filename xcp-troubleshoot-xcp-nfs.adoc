@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: xcp-troubleshoot-xcp-nfs.html 
+keywords: netapp, xcp, troubleshoot, troubleshooting, nfs, errors, 
+summary: 对 XCP NFS 错误进行故障排除 
+---
+= 对 XCP NFS 错误进行故障排除
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+查看用于对问题描述进行故障排除的解决方案。
+
+|===
+| XCP 问题描述 | 解决方案 
+
+
+| `XCP ：错误` ：必须以 root 用户身份运行 | 以 root 用户身份执行 XCP 命令 
+
+
+| `XCP ：错误` ：未找到许可证文件 ` /opt/netapp/xFiles/XCP/license` 。 | 从下载许可证 link:https://xcp.netapp.com/["XCP 站点"^] 并复制到 ` /opt/netapp/xFiles/XCP/` 
+
+
+| `XCP ：错误` ：此许可证已过期 | 从续订或获取新的 XCP 许可证 link:https://xcp.netapp.com/["XCP 站点"^]。 
+
+
+| `XCP ：错误` ：许可证不可读 | 许可证文件可能已损坏。从获取新的 XCP 许可证 link:https://xcp.netapp.com/["XCP 站点"^]。 
+
+
+| `XCP ：错误` ： XCP 未激活，请先运行 " 激活 " | 运行 `XCP activate` 命令 
+
+
+| 此副本未获得许可 | 获取相应的 XCP 许可证文件。将 XCP 许可证复制到 XCP 服务器上的 ` /opt/NetApp/xFiles/XCP/` 目录。运行 `XCP activate` 命令以激活许可证。 
+
+
+| `XCP ：错误` ：无法激活许可证：服务器无法访问 | 您正在尝试激活联机许可证，并且主机系统未连接到 Internet 。确保您的系统已连接到 Internet 。 
+
+
+| `XCP ：错误` ：无法激活许可证：服务器 xcp.netapp.com 不可访问 `XCP ：提示` ：在此主机上配置 DNS 或返回许可证页面以请求专用许可证预期错误：无法激活许可证：服务器 xcp.netapp.com 不可访问 | 确保可以从主机访问 xcp.netapp.com 或请求脱机许可证 
+
+
+| `XCP ：错误` ：目录不可访问：无法挂载 `nfs_server ： /export[ ：子目录 ]` | 在 XCP Linux 客户端主机上打开编辑器，然后使用正确的目录位置更新配置文件。XCP 配置文件位于 ` /opt/netapp/xFiles/XCP/xcp.ini` 。配置文件的示例条目： ` 根@scspr1949387001 ~ ]# cat /opt/netapp/xFiles/XCP/xcp.ini # 示例 XCP 配置 "XCP" 目录 = 10.235.128.153 ： /catalog` 
+
+
+| `nfs3 错误 2` ：无此文件或目录 | 操作未在目标 NFS 导出上找到源文件。运行 `XCP sync` 命令将增量更新从源复制到目标 
+
+
+| `XCP ：错误` ：索引为空或无效 | 在为文件编制索引之前，先前的复制操作中断。使用新索引重新运行 `XCP copy` ，并确保系统返回 "indexed " ，然后再中断复制 
+
+
+| `XCP ：错误` ：比较批处理：子进程失败 ` （退出代码 -9 ）： recv <type 'Exceptions.EOFError">` | 按照以下知识库文章中的说明进行操作： link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["同步 NFS 数据时无法分配内存"^] 
+
+
+| `XCP ：错误` ：要使 XCP 处理 ACL ，请` 使用 OS nfs4 客户端挂载 ` | 在 XCP 主机上挂载源和目标 
+
+
+| 在迁移期间， xcp `verify` 命令失败。状态显示为 Failed 。（实时） | 当源处于活动状态时，运行了 XCP `verify` 命令。完成最终转换后，运行 XCP `verify` 命令。 
+
+
+| 在转换后， XCP `verify` 命令失败。（实时） | XCP 转换同步操作可能未复制所有数据。在完成最终转换后，重新运行 XCP `sync` 命令，然后运行 `verify` 命令。如果问题仍然存在，请联系技术支持。 
+
+
+| XCP `sync` 命令失败（此适用场景在迁移期间会发生所有同步失败）。（实时） | XCP 无法读取数据，这可能是由于 XCP 问题描述造成的。命令操作完成后，请检查 XCP 状态消息。重新运行 `sync` 命令。如果同步操作再次失败，请联系技术支持。 
+
+
+| 由于内存不足， XCP `copy` ， `reresume` 和 `sync` 命令失败。XCP 崩溃， XCP 状态显示为 Failed 。（实时） | 主机上的可用内存不足或发生了巨大的增量更改。按照以下知识库文章中的说明进行操作： link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["同步 NFS 数据时无法分配内存"^] 
+|===

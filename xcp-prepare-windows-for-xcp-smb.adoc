@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: xcp-prepare-windows-for-xcp-smb.html 
+keywords: netapp, xcp, prepare, preparing, preparation, windows, 
+summary: 为 XCP SMB 准备 Windows 
+---
+= 为 XCP SMB 准备 Windows
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP SMB 使用 Windows 客户端主机系统生成并行 I/O 流，并充分利用可用的网络和存储性能。
+
+
+
+=== 配置存储
+
+XCP SMB 过渡和迁移具有以下用户登录要求：
+
+* XCP 主机系统： XCP 主机用户必须具有管理员权限（此用户必须属于 XCP SMB 主机系统上的 "BUILTIN\Administrators" 组）。
+* 将迁移或 XCP 主机用户添加到 Active Directory 的审核和安全日志策略中。要在 Windows 10 上查找 " 管理审核和安全日志 " 策略，请执行以下步骤：
+
+
+.步骤
+. 打开 * 组策略编辑器 * 对话框。
+. 转至 * 计算机配置 > Windows 设置 > 安全设置 > 本地策略 > 用户权限分配 * 。
+. 单击 * 更改审核和安全日志 * 。
+. 要添加 XCP 主机用户，请选择 * 添加用户或组 * 。
+
+
+有关详细信息，请参见 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953(v%3Dws.11)["管理审核和安全日志"^]。
+
+* 目标存储系统： XCP 主机用户必须具有读写访问权限。
+* 源存储系统：
++
+** 如果用户属于源存储系统中的 " 备份操作员 " 组，则该组的成员可以在绕过安全规则的情况下读取文件，而不管这些文件是否具有任何保护权限。
+** 如果用户不属于源系统中的 " 备份操作员 " 组，则用户必须具有读取访问权限。
+
+
+
+
+
+NOTE: 要支持 XCP 选项 ` - preserve-atime` ，需要在源存储系统中具有写入权限。

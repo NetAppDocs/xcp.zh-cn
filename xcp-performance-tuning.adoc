@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: xcp-performance-tuning.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
+summary: 性能调整（仅限 NFS ） 
+---
+= 性能调整（仅限 NFS ）
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用 show 和 scan 命令规划迁移后，您可以迁移数据。
+
+为了获得最佳性能和可靠性， NetApp 建议在 XCP Linux 客户端主机上的 ` /etc/sysctl.conf` 中设置以下 Linux 内核 TCP 性能参数。运行 `sysctl -p` 或 reboot 命令以提交更改：
+
+[listing]
+----
+net.core.rmem_default = 1342177
+net.core.rmem_max = 16777216
+net.core.rmem_max = 16777216
+net.core.wmem_default = 1342177
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 1342177 16777216
+net.ipv4.tcp_wmem = 4096 1342177 16777216
+net.core.netdev_max_backlog = 300000
+net.ipv4.tcp_fin_timeout = 10
+----

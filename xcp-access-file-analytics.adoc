@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: xcp-access-file-analytics.html 
+keywords: netapp, xcp, file, servers, access, analytics, learn, about, graphs, hot, cold, count, size, entries in directory, distribution by size, directory depth, file space used by size 
+summary: 文件分析提供扫描结果的图形视图 
+---
+= 访问文件分析
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+文件分析提供扫描结果的图形视图。
+
+XCP 文件分析 GUI 提供了一个信息板，其中包含用于可视化文件分析的图形。在 Linux 计算机上配置 XCP 时， XCP 文件分析图形用户界面将处于启用状态。
+
+
+NOTE: 要检查访问文件分析所支持的浏览器，请参见 link:https://mysupport.netapp.com/matrix/["NetApp IMT"^]。
+
+.步骤
+. 使用链接 ` \https://<IP address of Linux machine>/XCP` 访问文件分析图形用户界面。出现提示时，接受安全证书：
++
+.. 单击隐私声明下方的高级。
+.. 单击 Proceed to ` <IP address of Linux machine>` 链接。
+
+
+. 使用用户名 "admin" 和您在配置期间设置的密码登录到 GUI
++
+image:xcp_image2.png["XCP 文件分析登录屏幕"]
+
+. 登录时，您可以看到 NFS 代理已添加：绿色勾号显示 Linux 系统和 XCP 版本的最低系统配置。
+. 如果您已配置 SMB 代理，则可以看到在同一代理卡中添加了 SMB 代理。
+

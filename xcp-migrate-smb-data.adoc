@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-smb-data.html 
+keywords: netapp, xcp, migrate, data, smb, copy, resume, sync, verify 
+summary: 迁移 SMB 数据 
+---
+= 迁移 SMB 数据
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用 `show` 和 `scan` 命令规划迁移后，您可以迁移数据。
+
+
+
+=== 复制
+
+`copy` 命令可扫描整个源目录结构并将其复制到目标 SMB 共享。`copy` 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度和已用时间详细信息每五秒打印一次到控制台。
+
+* 示例： *
+
+[listing]
+----
+C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
+----
+有关详细信息，请参见 `XCP 帮助副本` 。
+
+
+
+=== 同步
+
+`sync` 命令可并行扫描源共享和目标共享中的更改和修改，并对目标应用相应的操作（删除，修改，重命名等），以确保目标与源相同。
+
+sync 命令可比较数据内容，时间戳，文件属性，所有权和安全信息。
+
+* 示例： *
+
+[listing]
+----
+C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
+----
+有关详细信息，请参见 `XCP 帮助同步` 。
+
+
+
+=== 验证
+
+使用 `verify` 命令可读取源共享和目标共享并对其进行比较，从而提供有关不同之处的信息。无论使用哪种工具执行复制或同步，您都可以在任何源和目标上使用命令。
+
+* 示例： *
+
+[listing]
+----
+C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
+----
+有关详细信息，请参见 `XCP 帮助验证` 。

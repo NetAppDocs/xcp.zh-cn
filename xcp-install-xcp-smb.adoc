@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-xcp-smb.html 
+keywords: netapp, xcp, install, smb 
+summary: 安装 XCP SMB 
+---
+= 安装 XCP SMB
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+本节详细介绍了系统要求，适用于 VC++ 可重新分发的操作步骤安装以及在 Windows 客户端上首次设置 XCP 的信息。
+
+
+NOTE: 没有升级选项；请重新安装 XCP 以替换任何现有版本。
+
+* 系统要求 *
+
+[cols="35,65"]
+|===
+| 项目 | 要求 
+
+
+| 系统 | 64 位 Intel 或 AMD 服务器，至少 4 个核心和 32 GB RAM 
+
+
+| 操作系统和软件 | Windows 2012 R2 或更高版本。有关支持的 Microsoft 操作系统版本，请参见 link:https://mysupport.netapp.com/matrix/#welcome["互操作性表工具"^]。必须在 XCP 主机上安装 Visual C++ 2017 可重新分发软件包。 
+
+
+| 特殊要求 | 源存储系统， XCP 主机和目标 ONTAP 系统必须属于同一 Active Directory 域 
+
+
+| 存储 | XCP 二进制文件需要 20 MB 磁盘空间，而 C ： \NetApp\XCP 目录中存储的日志需要至少 50 MB 磁盘空间 
+
+
+| 支持的协议版本 | 所有 SMB 协议版本 
+
+
+| 支持的浏览器（仅限文件分析） | XCP 文件分析支持 Google Chrome 76 及更高版本。有关所有受支持的浏览器版本，请参见 IMT 列表 
+|===
+
+
+=== XCP SMB Microsoft VC++ 可重新分发安装
+
+按照以下步骤安装 vc++ 可重新分发的软件。
+
+.步骤
+. 单击 link:https://go.microsoft.com/fwlink/?LinkId=746572["vc++ 2017 可重新分配"^] 将可执行文件下载到默认下载文件夹。
+. 要开始安装，请双击安装程序。接受条款和条件，然后单击 * 安装 * 。
+. 安装完成后，单击 * 重新启动 * 。
+
+
+
+
+=== XCP SMB 初始设置操作步骤
+
+按照以下步骤执行 XCP SMB 的初始设置。
+
+.步骤
+. 在 Windows 主机上复制许可证和 XCP SMB 二进制文件 `NetApp_XCP_<version>.tgz` 。
+. 在桌面上创建 `XCP` 目录。验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `XCP activate` 命令激活 XCP ，然后继续执行数据迁移。
++
+如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 `C ： \NetApp\XCP` 创建 XCP 主机配置目录和文件。`activate XCP` 命令失败，并创建一条错误消息，要求提供新许可证。
+
++
+[listing]
+----
+C:\>xcp.exe activate
+(c) 2020 NetApp, Inc.
+
+License file C:\NetApp\XCP\license not found.
+Register for a license at https://xcp.netapp.com
+----
+. 将许可证复制到新创建的文件夹 `C ： \NetApp\XCP ：`
++
+[listing]
+----
+C:\>copy license c:\NetApp\XCP
+        1 file(s) copied.
+----
+. 激活 XCP ：
++
+[listing]
+----
+C:\>xcp.exe activate
+XCP SMB; (c) 2020 NetApp, Inc.;
+
+XCP already activated
+
+C:\>
+----
+

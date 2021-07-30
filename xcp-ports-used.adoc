@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: xcp-ports-used.html 
+keywords: ports, xcp 
+summary: 您可以通过 Muse 检查是否使用正确的端口进行 XCP 迁移。 
+---
+= XCP 使用的端口
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP 使用以下端口。
+
+[cols="50,50"]
+|===
+| 服务 | Port 
+
+
+| CIFS | 445 TCP/UDP 
+
+
+| HTTP （ httpd ） | 80 
+
+
+| HTTPS | 443. 
+
+
+| NFS | 111 TCP/UDP 和 2049 TCP/UDP 
+
+
+| PostgreSQL | 5432 
+
+
+| XCP （作为文件分析服务） | 5030 
+|===

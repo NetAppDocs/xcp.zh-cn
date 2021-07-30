@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-the-ini-file-for-xcp-nfs.html 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
+summary: 配置 ini 文件 XCP 的步骤 
+---
+= 配置 XCP NFS 的 ini 文件
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+配置 ini 文件 XCP 的步骤。
+
+按照以下步骤为 XCP NFS 配置此文件。
+
+.步骤
+. 使用 `vi` 编辑器在主机配置文件中添加 XCP 服务器的目录位置。
++
+
+NOTE: 在修改 `xcp.ini` XCP 配置文件中的详细信息之前，应导出目录位置。目录位置（ NFSv3 ）应可由 XCP Linux 主机挂载，但不一定要挂载。
+
++
+[listing]
+----
+[root@localhost /]# vi /opt/NetApp/xFiles/xcp/xcp.ini
+----
+. 验证目录的 XCP Linux 客户端主机配置文件条目是否已修改。
++
+[listing]
+----
+[root@localhost /]# cat /opt/NetApp/xFiles/xcp/xcp.ini
+# Sample xcp config
+[xcp]
+catalog = 10.61.82.210:/vol/xcpvol/
+----
+

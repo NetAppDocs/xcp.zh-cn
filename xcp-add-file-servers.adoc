@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: xcp-add-file-servers.html 
+keywords: netapp, xcp, file, servers, access, analytics, learn, about, graphs, hot, cold, count, size, entries in directory, distribution by size, directory depth, file space used by size 
+summary: 添加文件服务器 
+---
+= 添加文件服务器
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以在 XCP 文件分析 GUI 中配置 NFS 和 SMB 导出的文件系统。
+
+这样， XCP 文件分析便可扫描和分析文件系统上的数据。按照以下步骤添加 NFS 或 SMB 文件服务器。
+
+.步骤
+. 要添加文件服务器，请单击 * 添加文件服务器 * 。
+
+
+image:xcp_image3.png["添加文件服务器屏幕"]
+
+添加文件服务器 IP 地址，选择 NFS 或 SMB 选项，然后单击 * 添加 * 。
+
+
+NOTE: 如果 SMB 代理在图形用户界面中不可见，您将无法添加 SMB 服务器。
+
+添加文件服务器后， XCP 将显示：
+
+* 可用文件共享总数
+* 包含分析数据的文件共享（初始计数为 "0" ，在您成功运行扫描时会更新）
+* 总空间利用率—所有导出已利用的空间之和
+* 文件共享和空间利用率数据是直接从 NFS/SMB 服务器获取的实时数据。收集和处理数据需要几秒钟的时间。
+
+
+
+NOTE: 文件分析中的可用空间与已用空间是根据通过 NFS 提供的每个导出文件系统计算得出的。例如，如果卷包含 qtree ，并且导出是通过 qtree 创建的，则总空间为卷大小和 qtree 大小的累积空间。

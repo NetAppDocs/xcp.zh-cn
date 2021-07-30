@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: xcp-filters.html 
+keywords: netapp, xcp, filters, 
+summary: XCP 提供了可在 XCP 操作中使用的筛选器选项 
+---
+= 筛选器
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP 提供了可在 XCP 操作中使用的筛选器选项。
+
+XCP 会对 NFS 和 SMB 的 ` 匹配` 和 ` 排除` 选项使用筛选器。
+
+对于 NFS ，请运行 `XCP 帮助信息` 并参阅筛选器部分，了解如何使用 ` 匹配` 和 ` - 排除` 筛选器。
+
+对于 SMB ，请运行 `XCP help -match` 和 `XCP help -exclude` 以获取有关 `match` 和 `exclude` 筛选器的更多详细信息。
+
+如果要在 XCP 命令中使用筛选器，请运行 `XCP help <command>` 以查看它们是否为受支持的选项。

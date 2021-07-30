@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: xcp-using-file-analytics.html 
+keywords: netapp, xcp, plan, planning, data, migration, migrate, migrating, file, analytics 
+summary: 使用文件分析进行规划 
+---
+= 使用文件分析进行规划
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用文件分析规划数据迁移。
+
+
+NOTE: XCP 是一个 CLI ，而文件分析则具有一个图形用户界面。
+
+* 概述 *
+
+XCP 文件分析使用 XCP 扫描 API 从 NFS 或 SMB 主机收集数据。然后，此数据将显示在 XCP 文件分析图形用户界面上。XCP 文件分析涉及三个主要组件：
+
+* XCP 服务
+* 文件分析数据库
+* 文件分析 GUI ，用于管理和查看数据
+
+
+XCP 文件分析组件的部署方法取决于所需的解决方案：
+
+* 为 NFS 文件系统部署 XCP 文件分析解决方案：
++
+** 您可以在同一 Linux 主机中部署文件分析图形用户界面，数据库和 XCP 服务。
+
+
+* 为 SMB 文件系统部署 XCP 文件分析解决方案：您必须在 Linux 主机中部署文件分析 GUI 和数据库，并在 Windows 主机上部署 XCP 服务。
+

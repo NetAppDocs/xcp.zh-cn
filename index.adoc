@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+keywords: netapp, xcp, about, features, unsupported, supported, configuration 
+summary: NetApp XCP 支持可扩展的高性能数据迁移 
+---
+= 开始使用 XCP
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp XCP 支持可扩展的高性能数据迁移。
+
+
+
+== 了解 XCP
+
+NetApp XCP 是一款基于客户端的软件，可用于任意到 NetApp 和 NetApp 到 NetApp 的数据迁移和文件分析。XCP 旨在利用所有可用系统资源来管理大容量数据集和高性能迁移，从而实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。
+
+使用适用于 NFS 或 SMB 系统的 XCP 作为以下解决方案之一：
+
+* 迁移解决方案
+* 文件分析解决方案
+
+
+XCP 是一个可支持 NFS 和 SMB 协议的软件包，提供命令行软件。XCP 可用作 NFS 数据集的 Linux 二进制文件，也可用作 SMB 数据集的 Windows 可执行文件。
+
+XCP 文件分析是一款基于主机的软件，可检测文件共享，对文件系统运行扫描并提供用于文件分析的信息板。XCP 文件分析适用于 NetApp 和第三方系统，并在 Linux 或 Windows 主机上运行，以便为 NFS 和 SMB 导出的文件系统提供分析。文件分析 GUI 的二进制文件包含在支持 NFS 和 SMB 协议的单个软件包中。
+
+XCP 命令行界面功能强大。有关详细信息，请从上下载 _XCP 参考 _ link:https://xcp.netapp.com/["XCP 站点"^]。
+
+* XCP 工作流 *
+
+image:xcp_image1.png["XCP 工作流图"]
+
+
+
+== 不支持的功能
+
+XCP NFS 不支持以下功能：
+
+[cols="40,60"]
+|===
+| 功能名称 | Description 
+
+
+| IPv6 | 不支持 IP 版本 6 （ IPv6 ） 
+
+
+| NFSv4 ACL （第三方） | 不支持第三方到 NetApp NFSv4 ACL 
+|===
+XCP SMB 不支持以下功能：
+
+[cols="40,60"]
+|===
+| 功能名称 | Description 
+
+
+| NFS 符号链接（ symlink ） | XCP SMB 不支持 NFS 符号链接 
+
+
+| 用于扫描的 ACL 选项 | 扫描选项不支持 ACL 
+
+
+| IPv6 | 不支持 IP 版本 6 （ IPv6 ） 
+
+
+| NTFS 备用数据流 | XCP 当前不支持备用数据流 
+
+
+| XCP 筛选器 | XCP SMB 排除选项当前会根据目录在筛选器中的模式排除这些目录，并遍历这些目录的文件系统。 
+
+
+| 活动源支持 | XCP 不支持使用基线或增量 Snapshot 副本，然后使用实时源迁移进行增量同步。 
+|===
+以下常见功能不适用于 XCP NFS 和 SMB ：
+
+* * 同一主机上有多个 XCP 实例 * ：在同一主机上运行多个 XCP 实例时，可能会产生不可预测的结果。
+* * 完成迁移的时间 * ： XCP UpFront 不提供完成迁移的时间或完成任何用于迁移的命令的时间。如果要执行最终转换，请确认源卷上的数据流失率较低。
+* * 在未清理的目标上重新运行副本 * ：如果目标目标上有部分数据， XCP 基线复制将失败。要成功执行 XCP 基线复制和 XCP 验证，目标必须为 Clean 。
+* * 实时目标 * ： XCP 不支持在迁移期间或增量同步期间修改目标卷上的数据。
+
+
+
+
+== 支持的配置
+
+中列出了所有 XCP 支持的配置，例如主机， ONTAP 版本和支持的浏览器 link:https://mysupport.netapp.com/matrix/["互操作性表工具（ IMT ）"^]。

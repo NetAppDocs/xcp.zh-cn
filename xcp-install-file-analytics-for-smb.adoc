@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: xcp-install-file-analytics-for-smb.html 
+keywords: netapp, xcp, install, installing, file, analytics, smb, upgrade, upgrading 
+summary: 安装或升级适用于 SMB 的文件分析 
+---
+= 安装适用于 SMB 的文件分析
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+安装或升级适用于 SMB 的文件分析。
+
+有关 SMB 的系统要求，请参见 link:xcp-install-xcp-smb.html["安装 XCP SMB"]。
+
+* 开始之前 *
+
+* 要使用 XCP SMB 服务，必须在 Linux 计算机上为 NFS 配置 XCP 文件分析。
+* 在 Windows 计算机上开始配置 XCP 文件分析之前，请确保 XCP 服务正在 Linux 计算机上运行。
+
+
+
+
+== 全新安装适用于 SMB 的文件分析
+
+要对 SMB 执行文件分析全新安装，请完成以下步骤。
+
+.步骤
+. 将 `Xcp.exe` 文件复制到 Windows `C ：` 驱动器，解压缩 tgz 后，此二进制文件可在 ` /XCP/windows` 中使用。
+. 从下载 XCP 许可证文件 link:https://xcp.netapp.com/["XCP 站点"^]。
+. 创建文件夹 `C ： \\NetApp\XCP` 并将 XCP 许可证复制到此位置。
+. 在命令提示符处使用以下命令激活 XCP 许可证： `xcp.exe activate`
+. 将 `sserver.key` 和 `sserver.crt` 文件从 ` /opt/netapp/xFiles/XCP/` （在已配置 XCP 文件分析的 Linux 框中）复制到 `C ： \NetApp\XCP` 可选 - 如果您有 CA 证书，请将此证书放置在此位置，并使用相同的名称和扩展名。
+. 在 Windows 命令行界面命令提示符中，运行 `XCP configure` 。
+. 出现提示时，提供配置 XCP 文件分析服务器的 Linux 计算机的 IP 地址。
+. 出现提示时，请提供在 XCP Linux 文件分析配置期间输入的数据库的密码。
+. 转至 Linux 计算机并运行 ` 。 /configure.sh` 。
+. 在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。
+. 转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。
+. 在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://<ip address of Linux>/XCP`
+. 显示对话框时，单击 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
+. 返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。
+
+
+
+
+== 升级 SMB 文件分析
+
+要升级适用于 SMB 的现有文件分析，请完成以下步骤。
+
+. 在运行文件分析之前，请确保运行文件分析的 Linux 服务器也已升级，并且服务正在运行。
+. 在 Windows 中，通过在命令行上输入 `CTRL-C` 来停止现有 XCP 服务。
+. 将 `Xcp.exe` 替换为最新的二进制文件。
+. 转至 Linux 计算机并运行 ` 。 /configure.sh` 。
+. 在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。
+. 转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。
+. 在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://<ip address of Linux>/XCP`
+. 显示对话框时，单击 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
+. 返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。
+

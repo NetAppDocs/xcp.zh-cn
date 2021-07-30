@@ -1,0 +1,14 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-data.html 
+keywords: netapp, xcp, migrate, data, nfs, smb, copy, resume, sync, verify 
+summary: 迁移数据 
+---
+= 迁移数据
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
