@@ -567,7 +567,6 @@
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">迁移数据</block>
   <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">安装 XCP NFS</block>
   <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">如果要升级 XCP ，请删除当前安装并将其替换为最新版本的新安装。本节详细介绍了在 Linux 客户端上首次设置 XCP 以及安装此 ini 文件配置的系统要求和过程。</block>
-  <block id="0254f3e2d1d09b7f4ac96369282a121f" category="cell">RHEL8.有关支持的操作系统，请参见 IMT</block>
   <block id="cfca5f031a4e11845916d10e6d53c91e" category="cell">源 NFSv3 和目标 NFSv3 的网络连接和根级别访问不会导出其他活动应用程序</block>
   <block id="306495a7669e8035296030fc21339366" category="cell">XCP 二进制文件需要 20 MB 磁盘空间，而 /opt/NetApp/xFiles/XCP/ 目录中存储的日志需要至少 50 MB 磁盘空间</block>
   <block id="efe939e252db8afdf4c58bb48c6f22f7" category="cell">NFSv3 和 NFSv4 （仅限 ACL ）</block>
@@ -588,4 +587,6 @@
   <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">主页</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">发行说明</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">故障排除</block>
+  <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8.请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 支持的操作系统</block>
+  <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP 文件分析支持 Google Chrome 76 及更高版本。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 所有受支持浏览器版本的列表</block>
 </blocks>

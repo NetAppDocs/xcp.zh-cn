@@ -24,7 +24,7 @@ summary: 安装 XCP NFS
 | 系统 | 64 位 Intel 或 AMD 服务器，至少 4 个核心和 32 GB RAM 
 
 
-| 操作系统和软件 | RHEL8.有关支持的操作系统，请参见 IMT 
+| 操作系统和软件 | RHEL8.请参见 link:https://mysupport.netapp.com/matrix/["IMT"^] 支持的操作系统 
 
 
 | 特殊要求 | 源 NFSv3 和目标 NFSv3 的网络连接和根级别访问不会导出其他活动应用程序 
@@ -36,7 +36,7 @@ summary: 安装 XCP NFS
 | 支持的协议版本 | NFSv3 和 NFSv4 （仅限 ACL ） 
 
 
-| 支持的浏览器（仅限文件分析） | XCP 文件分析支持 Google Chrome 76 及更高版本。有关所有受支持的浏览器版本，请参见 IMT 列表 
+| 支持的浏览器（仅限文件分析） | XCP 文件分析支持 Google Chrome 76 及更高版本。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^] 所有受支持浏览器版本的列表 
 |===
 
 NOTE: 实时源迁移的建议配置为 8 个核心和 64 GB RAM 。
