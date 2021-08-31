@@ -1,0 +1,16 @@
+---
+sidebar: sidebar 
+permalink: xcp-supported-configurations.html 
+keywords: xcp, configurations, supported, supported, hosts 
+summary: IMT 中列出了 XCP 支持的配置，例如主机， ONTAP 版本和支持的浏览器。 
+---
+= 支持的配置
+:hardbreaks:
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+中列出了所有 XCP 支持的配置，例如主机， ONTAP 版本和支持的浏览器 link:https://mysupport.netapp.com/matrix/["互操作性表工具（ IMT ）"^]。

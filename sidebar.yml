@@ -8,6 +8,10 @@ entries:
   url: "/index.html"
   type: solutions
   entries:
+  - title: 不支持的功能
+    url: "/xcp-unsupported-features.html"
+  - title: 支持的配置
+    url: "/xcp-supported-configurations.html"
   - title: XCP 使用的端口
     url: "/xcp-ports-used.html"
 - title: 安装 XCP
