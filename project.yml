@@ -1,0 +1,78 @@
+---
+sidebar:
+  entries:
+  - title: 主页
+    url: "/home.html"
+  - title: 发行说明
+    url: "/releasenotes.html"
+  - title: 开始使用 XCP
+    url: "/index.html"
+    type: solutions
+    entries:
+    - title: 不支持的功能
+      url: "/xcp-unsupported-features.html"
+    - title: 支持的配置
+      url: "/xcp-supported-configurations.html"
+    - title: XCP 使用的端口
+      url: "/xcp-ports-used.html"
+  - title: 安装 XCP
+    url: "/xcp-install-xcp.html"
+    entries:
+    - title: 为 XCP NFS 准备 Linux
+      url: "/xcp-prepare-linux-for-xcp-nfs.html"
+    - title: 为 XCP SMB 准备 Windows
+      url: "/xcp-prepare-windows-for-xcp-smb.html"
+    - title: 准备文件分析
+      url: xcp-prepare-file-analytics.adoc.html
+    - title: 安装 XCP NFS
+      url: "/xcp-install-xcp-nfs.html"
+    - title: 安装 XCP SMB
+      url: "/xcp-install-xcp-smb.html"
+    - title: 安装 NFS 文件分析
+      url: "/xcp-install-file-analytics-for-nfs.html"
+    - title: 安装适用于 SMB 的文件分析
+      url: "/xcp-install-file-analytics-for-smb.html"
+  - title: 配置 XCP
+    entries:
+    - title: 配置 XCP NFS 的 ini 文件
+      url: "/xcp-configure-the-ini-file-for-xcp-nfs.html"
+    - title: 性能调整（仅限 NFS ）
+      url: "/xcp-performance-tuning.html"
+    - title: 环境变量（仅限 NFS ）
+      url: "/xcp-environment-variable.html"
+    - title: NFS 和 SMB 的日志记录（可选）
+      url: xcp-logging-for-nfs-and-smb.html
+  - title: 规划数据迁移
+    url: "/xcp-plan-data-migration.html"
+    entries:
+    - title: 规划 NFS 数据迁移
+      url: "/xcp-plan-nfs-data-migration.html"
+    - title: 规划 SMB 数据迁移
+      url: "/xcp-plan-smb-data-migration.html"
+    - title: 使用文件分析进行规划
+      url: "/xcp-using-file-analytics.html"
+      entries:
+      - title: 访问文件分析
+        url: "/xcp-access-file-analytics.html"
+      - title: 添加文件服务器
+        url: "/xcp-add-file-servers.html"
+      - title: 运行扫描
+        url: "/xcp-run-a-scan.html"
+    - title: 筛选器
+      url: "/xcp-filters.html"
+  - title: 迁移数据
+    entries:
+    - title: 迁移 NFS 数据
+      url: "/xcp-migrate-nfs-data.html"
+    - title: 迁移 SMB 数据
+      url: "/xcp-migrate-smb-data.html"
+  - title: 故障排除
+    entries:
+    - title: 对 XCP NFS 错误进行故障排除
+      url: "/xcp-troubleshoot-xcp-nfs.html"
+    - title: 对 XCP SMB 错误进行故障排除
+      url: "/xcp-troubleshoot-xcp-smb-errors.html"
+    - title: 对 XCP 文件分析错误进行故障排除
+      url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
+  - title: 获取更多信息
+    url: "/get-more-information.html"
