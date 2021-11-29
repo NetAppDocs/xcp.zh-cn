@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-posix-connector-nfs.html 
+keywords: xcp, configure, nfs, posix, connector 
+summary: 通过 POSIX 连接器， XCP 可以访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。 
+---
+= 配置 POSIX 连接器
+
+
+[role="lead"]
+现在， XCP NFS 支持使用 POSIX 连接器为数据迁移提供源路径和目标路径。
+
+POSIX 连接器支持以下功能：
+
+* 对于支持 nanosecond `atime` ， `mtime` 和 `ctime` 的 POSIX 文件系统， `scan` 命令将获取完整值（秒和纳秒），然后 `copy` 命令将其设置
+* 与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。请参见 link:xcp-configure-security-nfs.html["配置安全性"]
+
+
+POSIX 连接器的路径语法为 ` \file ： //< Linux 上的挂载路径 >` 。
+
+要设置 POSIX 连接器，必须执行以下任务：
+
+* 挂载源卷和目标卷
+* 验证目标路径是否具有写入数据所需的权限
+
+
+在以下示例中挂载目标和目录：
+
+[listing]
+----
+root@scspr2395903001 ~]# findmnt -t nfs4
+TARGET SOURCE FSTYPE OPTIONS
+/t/10.237.170.39_src_vol 10.237.170.39:/source_vol nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+/t/10.237.170.53_dest_vol 10.237.170.53:/dest_vol nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+/t/10.237.170.53_catalog_vol 10.237.170.53:/xcp_catalog nfs4
+rw,relatime,vers=4.0,rsize=65536,wsize=65536,namlen=255,hard,proto=t
+cp,timeo=600,retrans=2,sec=sys,clien
+[root@scspr2395903001 ~]#
+----
+POSIX 连接器使用 POSIX 语法 `file ： //` 访问源卷和目标卷。在以上示例中，源路径为 ` \file ： //t/10.237.170.39_src_vol` ，目标路径为 `file ： // /t/10.237.170.53_dest_vol` 。
+
+您可以通过为 XCP 用户创建 Linux 组来管理非 root 用户共享的 XCP 目录的示例配置。对于非 root 用户， Linux 组用户需要以下权限才能执行迁移。
+
+在以下示例输出中， `demo` 是非 root 用户，而 ` /mnt/xcp-catalog` 是目录卷的挂载路径：
+
+[listing]
+----
+sudo groupadd -g 7711 xcp_users
+sudo usermod -G xcp_users -a demo
+sudo chown -R :xcp_users /mnt/xcp-catalog
+sudo chmod -R g+w /mnt/xcp-catalog
+----
+XCP 目录不会存储数据，但会存储扫描和复制文件名，目录名以及其他元数据。因此，建议您为允许的用户配置目录文件系统权限，使其能够保护存储的元数据。
+
+默认情况下，当您设置为常规用户时，对 POSIX 或 NFS3 目标执行 `copy` 命令时，不会尝试设置所有权（用户 ID （ UID ）和组 ID （ GID ）。所有权设置通常由管理员执行。当用户 A 从用户 B 复制文件时，用户 A 希望拥有目标。但是，如果 root 用户复制文件，则不会出现这种情况。当 root 用户复制这些文件时， ` chown` 选项会更改此行为，以便带有 ` -chown` 的非 root `copy` 命令尝试设置 UID 和 GID 。

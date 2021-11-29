@@ -31,17 +31,17 @@ summary: 对 XCP SMB 错误进行故障排除
 | `XCP ：错误` ：未找到许可证文件 C ： \NetApp\XCP\license | 在上注册 XCP 许可证 link:https://xcp.netapp.com/["XCP 站点"^]。将许可证文件下载并复制到 XCP Windows 客户端主机上的 `C ： \NetApp\XCP\` 。 
 
 
-| `XCP 扫描错误` ：找不到网络名称 | 使用正确的共享名称重新运行命令 
+| XCP 扫描错误：找不到网络名称 | 使用正确的共享名称重新运行命令 
 
 
-| `XCP 副本错误` ：错误无法获取回退安全主体 xcp.log 文件中记录的错误消息： `pywintypes.error ：（ 1722 ， "LookupAccountName" ， "RPC 服务器不可用。 "` ） | 在 hosts 文件（`C ： \Windows\System32\drivers\etc\hosts` ）中添加目标框。NetApp 存储目标框条目必须采用以下格式： ` <data vserver data interface ip>` 1 或更多空格 ` <cifs server name>` 
+| XCP 副本错误：错误无法获取回退安全主体错误消息记录在 xcp.log 文件中： `pywintypes.error ：（ 1722 ， "LookupAccountName" ， "RPC 服务器不可用。 " ）` | 在 hosts 文件（`C ： \Windows\System32\drivers\etc\hosts` ）中添加目标框。NetApp 存储目标框条目必须采用以下格式： ` <data vserver data interface ip>` 1 或更多空格 ` <cifs server name>` 
 
 
 | `XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： ` ' 未在帐户名称和安全 ID 之间进行映射 '` | 回退用户 / 组不在目标系统（目标框）或 Active Directory 中。使用正确的回退用户 / 组选项重新运行命令 
 
 
-| `XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： `pywintypes.error` ： ` （ 87 ， "LookupAccountName" ， " 参数不正确。 " ）` | 回退用户 / 组选项的参数不正确。使用正确的语法重新运行命令以回退用户 / 组选项 
+| `XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： `pywintypes.error ：（ 87 ， "LookupAccountName" ， " 参数不正确。 " ）` | 回退用户 / 组选项的参数不正确。使用正确的语法重新运行命令以回退用户 / 组选项 
 
 
-| `XCP copy` with ACL migration eror message logged in xcp.log file ： `pywintypes.error` ： ` （ 1314 ， GetNamedSecurityInfo ， ' A required privilege is not held by the client.' ）` | 用户面临与安全描述符相关的诉讼，因为借助迁移用户拥有的特权， XCP 只能获取所有者，组和 DACL ，但无法获取 SACL 。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
+| `XCP copy` with ACL migration eror message logged in xcp.log file ： `pywintypes.error` ： ` （ 1314 ， GetNamedSecurityInfo ， ' A required privilege is not held by the client.' ）` | 用户面临与安全描述符相关的问题描述，因为借助迁移用户拥有的权限， XCP 只能获取所有者，组和 DACL ，但无法获取 SACL 。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
 |===

@@ -27,6 +27,18 @@ summary: 迁移 NFS 数据
 ----
 xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
 ----
+* POSIX 路径示例： *
+
+[listing]
+----
+xcp copy -newid <id> file:///mnt/source file:///mnt/dest
+----
+* HDFS 路径示例： *
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user file:///mnt/dest
+----
 有关详细信息，请参见 `XCP 帮助副本` 。
 
 
@@ -68,5 +80,17 @@ xcp sync [options] -id <id used for copy>
 [listing]
 ----
 xcp verify src_server:/src_export dst_server:/dst_export
+----
+* POSIX 路径示例： *
+
+[listing]
+----
+xcp verify file:///mnt/source file:///mnt/dest
+----
+* HDFS 路径示例： *
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data file:///user/demo1/dest
 ----
 有关详细信息，请参见 `XCP 帮助验证` 。

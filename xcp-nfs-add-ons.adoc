@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-add-ons.html 
+keywords: xcp, nfs, hdfs, connector, configure, security 
+summary: XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，并支持使用横向扩展架构来加快数据迁移速度。 
+---
+= XCP NFS 附加功能
+
+
+[role="lead"]
+XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，并支持使用横向扩展架构来加快数据迁移速度。
+
+
+
+== 支持 NFSv4
+
+如果仅在数据中心的源卷，目标卷和目录卷上启用 NFSv4 ，则可以使用 POSIX 路径而不是导出路径来迁移数据。要使用 POSIX 路径，必须先在运行 XCP 的主机系统上挂载源卷，目标卷和目录卷，然后使用 POSIX 文件路径为 XCP 提供源卷和目标卷。请参见 link:xcp-configure-posix-connector-nfs.html["配置 POSIX 连接器"]。
+
+[NOTE]
+====
+* NFSv4 支持仅限于 POSIX 路径和 `copy` 操作，不支持 `sync` 操作。
+* 与 XCP NFSv3 TCP 套接字客户端引擎相比， POSIX 连接器可能速度较慢。
+
+
+====
+
+
+== POSIX 连接器
+
+XCP 1.8 支持使用 POSIX 连接器为数据迁移提供源，目标和目录路径。POSIX 连接器（ file ： // ）使 XCP 能够访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。对于非 root 用户，系统管理员可以挂载文件系统，以使任何非 root 用户能够使用带有 file ： // 前缀的 POSIX 连接器访问文件系统。
+
+如果您没有足够的权限挂载文件，或者数据中心提供的支持仅限于 NFSv4 ，则可以使用 POSIX 连接器。在这种情况下，任何 root 用户都可以挂载源和目标，然后使用 POSIX 连接器访问路径。使用 POSIX 连接器时，只能运行 `XCP copy` 操作。
+
+
+
+== XCP 安全性
+
+通过 XCP 安全功能，您可以在 Linux 主机上以非 root 用户身份执行迁移。在早期的 XCP 版本中，作为 Linux 计算机上的 root 用户，您可以使用源卷，目标卷和目录卷的所有权限执行迁移，此挂载将通过 XCP 操作完成。
+
+在执行数据迁移之前，通常会关闭安全性并让管理员尽快复制所有内容。对于 XCP 已使用多年的生产环境中的持续过渡，以管理员（或 root 用户）身份运行并不安全。因此，如果不要求以 root 用户身份运行 XCP ，则可以在安全环境中使用 XCP 。当常规非 root 用户运行 XCP 操作时，非 root 用户与用户具有相同的访问权限和限制。
+
+在此安全环境中， root 用户可以将源卷，目标卷和目录卷挂载到主机上，并为非 root 用户写入数据的目标卷和目录卷提供必要的权限。这样，非 root 用户就可以使用 XCP POSIX 连接器功能执行迁移。
+
+
+
+== XCP 横向扩展
+
+到目前为止，使用 XCP 的数据迁移仅限于 RAM 和 CPU 较高的单个主机。为了加快迁移速度，增加了单个主机上的内存和核心，但复制数 PB 的数据仍可能需要很长时间。XCP 横向扩展架构使您能够使用多个主机执行数据迁移。通过此功能，您可以使用多个 Linux 主机来分布工作负载并缩短迁移时间。
+
+在单个系统的性能不足的任何环境中，您都可以从多节点横向扩展中受益。要克服单个节点的性能限制，您可以使用单个 `copy` （或 `scan -md5` ）命令在多个 Linux 系统或 Hadoop 集群节点上运行工作人员。目前，只有 `copy` 命令操作才支持 XCP 横向扩展。
+
+
+
+== Hadoop 分布式文件系统连接器
+
+XCP 支持将数据从 Hadoop 分布式文件系统（ Hadoop Distributed File System ， HDFS ）文件系统迁移到 NetApp 文件系统，反之亦然。在启用了安全性的 Hadoop 环境中， Hadoop 集群上的非 root 用户可以迁移到 NetApp NFSv4 导出的文件系统。HDFS 连接器（ HDFS ： // ）使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。非 root 用户可以使用 XCP 通过 HDFS 或 POSIX 连接器执行迁移。
+
+您可以将 HDFS 集群包括在 XCP 横向扩展配置中，因为它们使用多个高端 Linux 计算机。这样可以最大限度地减少对额外 XCP 工作节点的需求。对于数据迁移，您可以选择重复使用 HDFS 集群节点或使用不同的主机。
+
+
+NOTE: HDFS 连接器适用于 MapR 和 Cloudera 集群并受其支持，但只能执行基线 `复制` 操作。

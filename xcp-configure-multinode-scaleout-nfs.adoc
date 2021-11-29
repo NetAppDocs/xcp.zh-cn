@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-multinode-scaleout-nfs.html 
+keywords: xcp, configure, nfs, multinode, scale, out 
+summary: 要克服单个节点的性能限制，您可以使用单个 XCP copy 命令在多个 Linux 系统或集群节点上运行工作人员。 
+---
+= 配置多节点横向扩展
+
+
+[role="lead"]
+对于 XCP NFS ，您可以通过使用一个 `copy` （或 `scan -MD5` ）命令在多个 Linux 系统或集群节点上运行 workre 来克服单个节点的性能限制。
+
+在单个系统的性能不足的任何环境中，多节点横向扩展都很有用，例如在以下情形中：
+
+* 单个节点需要数月才能复制数 PB 的数据
+* 如果与云对象存储的高延迟连接会减慢单个节点的速度
+* 在运行大量 I/O 操作的大型 HDFS 集群场中
+
+
+多节点横向扩展的路径语法为 ` -nodes worker1 ， worker2 ， worker3` 。
+
+请考虑使用四台 Linux 主机进行设置，这些主机具有相似的 CPU 和 RAM 配置。您可以使用所有四个主机进行迁移，因为 XCP 可以在所有主机节点之间协调复制操作。要在横向扩展环境中使用这些节点，您必须将四个节点中的一个节点标识为主节点，而将其他节点标识为辅助节点。例如，对于 Linux 四节点设置，将节点命名为 "master" ， "worker1" ， "worker2" 和 "worker3" ，然后在主节点上设置配置：
+
+. 将 XCP 复制到主目录中。
+. 安装并激活 XCP 许可证。
+. 修改 `xcp.ini` 文件并添加目录路径。
+. 将主节点上的无密码安全 Shell （ SSH ）设置为辅助节点：
++
+.. 在主节点上生成密钥：
++
+`ssh-keygen -b 2048 -t rsa -f / root/.ssh/id_rsa -q -N '`
+
+.. 将密钥复制到所有工作节点：
++
+`ssh-copy-id -i /root/.ssh/ id_rsa.pub root@worker1`
+
+
+
+
+
+XCP 主节点使用 SSH 在其他节点上运行工作人员。您必须对工作节点进行配置，以便为在主节点上运行 XCP 的用户启用无密码 SSH 访问。例如，要使用户能够在主节点上进行演示，以使用节点 "worker1" 作为 XCP 工作节点，您必须将 XCP 二进制文件从主节点复制到主目录中的所有工作节点。
+
+同时启动多个 XCP 工作节点时，为了避免出现错误，您应增加每个工作节点上的 `sshd MaxStartups` 参数，如以下示例所示：
+
+[listing]
+----
+echo "MaxStartups 100" | sudo tee -a /etc/ssh/sshd_config sudo systemctl
+restart sshd
+----
+当 XCP 在集群节点上运行辅助进程时，此辅助进程会从主节点上的主 XCP 进程继承环境变量。要自定义特定节点环境，您必须仅在主节点上的配置目录中的 `nodes.ini` 文件中设置变量（工作节点没有配置目录或目录）。例如，对于其 `libjvm.so` 位于与主节点不同位置的 Ubuntu 服务器 Mars ，例如 Wave （即 CentOS ），它需要一个配置目录，以允许使用这些服务器的工作人员使用 HDFS 连接器。此设置如以下示例所示：
+
+[listing]
+----
+[schay@wave ~]$ cat /opt/NetApp/xFiles/xcp/nodes.ini [mars]
+NHDFS_LIBJVM_PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/
+amd64/server/libjvm.so
+----
+如果使用具有 POSIX 和 HDFS 文件路径的多会话，则必须在主节点和所有工作节点上挂载文件系统以及源和目标导出的文件系统。
+
+当 XCP 在工作节点上运行时，该工作节点没有本地配置（无许可证，日志文件或目录）。系统主目录中仅需要 XCP 二进制文件。例如，要运行 `copy` 命令，主节点和所有工作节点都需要访问源和目标。对于 `XCP 副本 -nodes linux1 ， linux2 hdfs ： //user/demo/test \file ： //mnt/ontap` ， `linux1` 和 `linux2` 主机必须配置 HDFS 客户端软件，并在 /mnt/ontap 上挂载 NFS 导出，如前所述，还必须在主目录中复制 XCP 二进制文件。
+
+您可以结合使用 POSIX 和 HDFS 连接器，多节点横向扩展和安全功能。例如，以下 `copy` 和 `verify` 命令将 POSIX 和 HDFS 连接器与安全性和横向扩展功能结合在一起：
+
+* `copy` 命令示例：
++
+[listing]
+----
+./xcp copy hdfs:///user/demo/d1 file:///mnt/nfs-server0/d3
+./xcp copy -match "'USER1 in name'" file:///mnt/nfs-server0/d3
+hdfs:///user/demo/d1
+./xcp copy —node worker1,worker2,worker3 hdfs:///user/demo/d1
+file:///mnt/nfs-server0/d3
+----
+* `verify` 命令示例：
+
+
+[listing]
+----
+./xcp verify hdfs:///user/demo/d2 file:///mnt/nfs-server0/d3
+----

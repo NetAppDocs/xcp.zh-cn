@@ -20,100 +20,43 @@ summary: 对 XCP 文件分析错误进行故障排除
 | 问题描述 | 解决方案 
 
 
-| PostgreSQL 安装或服务失败  a| 
+| PostgreSQL 服务失败  a| 
 再次运行 configure 并选择安装选项。如果上次安装成功，则可以选择修复选项。如果仍收到此错误，请按如下所示尝试手动步骤：
 
-. 在 Linux 系统上运行 PostgreSQL ：
+. 重新启动 PostgreSQL 服务：
 +
-`sudo yum -y install PostgreSQL 服务器 sudo systemctl start postaggregq`
+`sudo systemctl restart postgresql.service`
 
-. 为 PostgreSQL 数据库创建数据目录：
+. 检查服务状态：
 +
-`sUdo mkdir /var/lib/postgres/data`
-
-. 初始化数据库：
-+
-`sudo -i -u postgres initdb -D '/var/lib/pgsql/data`
-
-. 使用相应的 Linux 文件编辑器打开以下文件：
-+
-` /var/lib/pgsql/data/pg_hBA.conf`
-
-. 删除以下条目：
-+
-` # host all all 127.0.0.1/32 Trust`
-
-. 添加以下条目： ` # host all 0.0.0.0/0 password`
-. 打开文件： ` /var/lib/pgsql/data/PostgreSQL`
-. 添加以下条目：
-+
-` # listing_addresses ="*"`
-
-. 启动 PostgreSQL 服务：
-+
-`sUdo systemctl start postgresql.service`
+`sUdo systemctl status postgresql.service | grep Active`
 
 
 
 
 
-| httpd 安装或服务失败  a| 
+| httpd 服务失败  a| 
 再次运行 configure 并选择安装选项。如果上次安装成功，则可以选择修复选项。如果仍收到此错误，请按如下所示尝试手动步骤：
-
-. 在 Linux 系统上安装 HTTPD ：
-+
-`sudo yum -y install httpd`
-
-. 打开以下配置文件以重新写入规则：
-+
-` /etc/httpd/conf/httpd.conf`
-
-. 将以下条目添加到文件中：
-+
-`重写引擎 on` `riteOptions Inherit` ` <Directory "/var/www/html/">` `AllowOverride None` `Require all grized` `rewriteCond % ｛ request_filename ｝ -f` `rewriteCond % ｛ request_filename ｝ -d` `rewriteRule ^ - [L]` `rewriteRule ^ XCP> index.html` ``
-
-. 启动 HTTPD 服务：
-+
-`sudo systemctl start httpd`
-
-
-
-
-
-| SSL 安装失败  a| 
-再次运行 configure 并选择安装选项。如果上次安装成功，则可以选择修复选项。如果仍收到此错误，请按如下所示尝试手动步骤：
-
-. 安装 `mod_ssl` ：
-+
-`yum install mod_ssl -y`
-
-. 生成安全套接字层（ SSL ）证书：
-+
-`yum openssl req -x509 -nodes -days 365 -newkey` `rsa ： 2048 -keeout /etc/ssl/private/Apache` - `selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt`
-
-. 启用 HTTPS 服务：
-+
-`yum openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
 
 . 重新启动 HTTPD 服务：
 +
 `sudo systemctl restart httpd`
 
-. 将 SSL 证书复制到相应位置：
+. 检查 HTTPD 服务状态：
 +
-`sUdo CP -pr /etc/pki/tls/certs/localhost.crt /opt/netapp/xFiles/XCP/server.crt` `sUdo CP -pr /etc/pki/tls/private/localhost.key /opt/netapp/xFiles/XCP/server.key`
+`sUdo systemctl status httpd | grep Active`
 
 
 
 
 
-| 安装成功后，无法打开登录页面 | 确保您的系统能够对安装了 XCP 文件分析且 HTTPD 正在运行的 Linux 计算机执行 ping 操作。如果服务未运行，请运行 `configure` 并选择修复选项。确保您使用的是受支持的浏览器版本。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。 
+| 安装成功后，无法打开登录页面 | 验证您的系统是否可以对安装了 XCP 文件分析且 HTTPD 正在运行的 Linux 计算机执行 ping 操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。 
 
 
 | 用户登录失败  a| 
-* 确保您使用的是受支持的浏览器版本。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。
-* 检查用户是否为 "admin" 且密码是否正确。
-* 通过发出 "XCP 服务状态 " 确保 XCP 服务正在运行
+* 验证您使用的浏览器版本是否受支持。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。
+* 验证用户是否为 "admin" 且密码是否正确。
+* 发出 `XCP 服务状态` 以验证 XCP 服务是否正在运行。
 * 验证 Linux 上的端口 5030 是否已打开。打开应用程序： * https ： // <Linux IP> ： 5030/API/XCP* ，并确认消息消息消息消息消息消息： `mising Authorization Header` 。
 * 检查 `xcp.ini` 文件是否位于 ` /opt/netapp/xFiles/XCP/` 位置。要重置 `xcp.ini` 文件，请运行配置脚本并选择 * 修复 * 选项。接下来，选择菜单选项以 * 重建 xcp.ini 文件 * 。
 * 在命令行界面上手动运行 `XCP -listen` 命令，然后尝试登录。如果您未在服务器上收到请求，请重新检查安装情况以及用于与服务器通信的端口。`s安装是否正确后，运行` service XCP start 命令重新启动服务。
@@ -127,14 +70,14 @@ summary: 对 XCP 文件分析错误进行故障排除
 | XCP 服务未启动 | 要运行 `XCP` 服务，请使用 `sudo systemctl start XCP` 命令。或者，运行配置脚本并选择 * 修复 * 选项以启动已停止的服务。 
 
 
-| 无法扫描文件共享 | 文件共享 / 卷可能无法读取。运行 `XCP show` 命令，手动检查文件共享是否可访问 / 读取。 
+| 无法扫描文件共享 | 文件共享 / 卷可能无法读取。运行 `XCP show` 命令，手动检查文件共享是否可访问 / 读取。此外，请检查是否已删除 `xcp.ini` 文件。如果删除了此文件，请使用 configure.sh 脚本修复选项重建 `xcp.ini` 文件。 
 
 
-| 无法加载文件服务器 | 尝试刷新页面。如果此问题仍然存在，请在提示符处手动运行 `XCP show` 命令并检查是否可以扫描文件服务器。如果成功，请向 NetApp 客户支持部门提交服务单。如果失败，请手动检查以查看文件服务器是否处于活动状态。检查 `xcp.ini` 文件和许可证文件是否位于正确的位置。要重置 `xcp.ini` 文件，请运行配置脚本并选择 * 修复 * 选项。接下来，选择菜单选项 * 重建 xcp.ini 文件。 * 检查 `xcpfalogs` 日志以查看许可证是否需要续订。 
+| 无法加载文件服务器 | 尝试刷新页面。如果此问题仍然存在，请在提示符处手动运行 `XCP show` 命令并检查是否可以扫描文件服务器。如果成功，请向 NetApp 客户支持部门提交服务单。如果失败，请执行手动检查以检查文件服务器是否处于活动状态。检查 `xcp.ini` 文件和许可证文件是否位于正确的位置。要重置 `xcp.ini` 文件，请运行配置脚本并选择 * 修复 * 选项。接下来，选择菜单选项 * 重建 xcp.ini 文件。 * 检查 `xcpfalogs` 日志以查看许可证是否需要续订。 
 
 
 | 系统重新启动后，不会显示 XCP 文件分析页面 | XCP 服务可能已关闭。运行配置脚本并选择 * 修复 * 选项。此操作将重新启动已停止的所有服务。 
 
 
-| 与分配的物理存储相比，给定文件服务器上导出的文件系统的总空间可能会显示更多空间。 | 如果卷中存在 qtree 级别的导出，则可能会发生这种情况。例如，如果卷大小为 10 GB ，导出为 ` /vol1` ，并且卷 ` /vol1/qtree1` 中有一个 qtree ，则 `XCP show` 命令会将 `vol1` size 显示为 `10 GB` ，并将 `qtree1` size 显示为 `10 GB` 。XCP 文件分析将对两个导出的空间进行求和，并提供总空间，在本例中为 `20 GB` 。它不知道 `qtree1` 是逻辑空间。 
+| 与分配的物理存储相比，给定文件服务器上导出的文件系统的总空间可能会显示更多空间。 | 如果卷中存在 qtree 级别的导出，则可能会发生这种情况。例如，如果导出为 ` /vol1` 的卷大小为 10 GB ，并且卷 ` /vol1/qtree1` 中有一个 qtree ，则 `XCP show` 命令会将 `vol1` size 显示为 `10 GB` ，并将 `qtree1` size 显示为 `10 GB` 。XCP 文件分析将对两个导出的空间进行求和，并提供总空间，在本例中为 `20 GB` 。它不知道 `qtree1` 是逻辑空间。 
 |===

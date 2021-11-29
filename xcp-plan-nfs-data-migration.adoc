@@ -33,8 +33,10 @@ summary: 规划 NFS 数据迁移
 
 `scan` 命令可递归扫描整个源 NFSv3 导出的路径，并在扫描结束时显示文件结构的统计信息。NetApp 建议在扫描操作期间将源 NFS 导出挂载置于只读模式。示例
 
-* `XCP scan nfs server ： /export path`
+* `XCP 扫描 NFS [ 服务器： /export path | \file ： //<NFS 挂载路径 > ： HDFS ： //<HDFS 挂载路径 > ]`
 * `XCP scan nfs_server01.netapp.com:/export1`
+* `XCP 扫描 \file ： //mnt/nfs-source`
+* `XCP 扫描 HDFS ： //demo/user1`
 
 
 有关详细信息，请运行 `XCP 帮助扫描` 。

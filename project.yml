@@ -17,6 +17,8 @@ sidebar:
     url: "/index.html"
     type: solutions
     entries:
+    - title: XCP NFS 附加功能
+      url: "/xcp-nfs-add-ons.html"
     - title: 不支持的功能
       url: "/xcp-unsupported-features.html"
     - title: 支持的配置
@@ -44,12 +46,16 @@ sidebar:
     entries:
     - title: 配置 XCP NFS 的 ini 文件
       url: "/xcp-configure-the-ini-file-for-xcp-nfs.html"
-    - title: 性能调整（仅限 NFS ）
+    - title: 性能调整
       url: "/xcp-performance-tuning.html"
-    - title: 环境变量（仅限 NFS ）
+    - title: 环境变量
       url: "/xcp-environment-variable.html"
-    - title: NFS 和 SMB 的日志记录（可选）
-      url: xcp-logging-for-nfs-and-smb.html
+    - title: 配置 POSIX 连接器
+      url: "/xcp-configure-posix-connector-nfs.html"
+    - title: 配置 HDFS 连接器
+      url: "/xcp-configure-hdfs-connector-nfs.html"
+    - title: 配置多节点横向扩展
+      url: "/xcp-configure-multinode-scaleout-nfs.html"
   - title: 规划数据迁移
     url: "/xcp-plan-data-migration.html"
     entries:
@@ -68,6 +74,8 @@ sidebar:
         url: "/xcp-run-a-scan.html"
     - title: 筛选器
       url: "/xcp-filters.html"
+    - title: NFS 和 SMB 的日志记录（可选）
+      url: "/xcp-logging-for-nfs-and-smb.html"
   - title: 迁移数据
     entries:
     - title: 迁移 NFS 数据

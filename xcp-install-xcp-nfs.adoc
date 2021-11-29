@@ -33,13 +33,19 @@ summary: 安装 XCP NFS
 | 存储 | XCP 二进制文件需要 20 MB 磁盘空间，而 /opt/NetApp/xFiles/XCP/ 目录中存储的日志需要至少 50 MB 磁盘空间 
 
 
-| 支持的协议版本 | NFSv3 和 NFSv4 （仅限 ACL ） 
+| 支持的协议版本 | NFSv3 和 NFSv4 （ POSIX 和 ACL ） 
 
 
 | 支持的浏览器（仅限文件分析） | XCP 文件分析支持 Google Chrome 76 及更高版本。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^] 所有受支持浏览器版本的列表 
 |===
 
 NOTE: 实时源迁移的建议配置为 8 个核心和 64 GB RAM 。
+
+
+
+== 为 root 用户安装 XCP NFS
+
+您可以使用以下操作步骤为 root 用户安装 XCP 。
 
 .步骤
 . 以 root 用户身份登录到 Linux 计算机，然后下载并安装许可证：
@@ -51,7 +57,7 @@ total 36188
 -rw-r--r--  1 root root 37043983 Oct  5 09:36 NETAPP_XCP_<version>.tgz
 -rw-------. 1 root root     1994 Sep  4  2019 license
 ----
-. 解压缩 XCP 以提取此工具：
+. 要提取此工具，请解压缩 XCP ：
 +
 [listing]
 ----
@@ -67,10 +73,10 @@ xcp
 如果提供了 ` /opt/NetApp/xFiles/XCP` ，请使用 `XCP activate` 命令激活许可证，然后继续执行数据迁移。
 
 +
-如果 ` /opt/netapp/xFiles/XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 ` /opt/netapp/xFiles/XCP` 创建 XCP 主机配置目录和文件。
+如果 ` /opt/netapp/xFiles/XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 ` /opt/netapp/xFiles/XCP` 中创建 XCP 主机配置目录。
 
 +
-由于未安装许可证， `XCP activate` 命令失败。
+由于未安装许可证， `XCP activate` 命令失败：
 
 +
 [listing]
@@ -109,5 +115,84 @@ drwxr-xr-x 4 root root    83 Oct  5 00:48 .
 [root@scspr1980872003 linux]# ./xcp activate
 XCP <version>; (c) 2020 NetApp, Inc.;
 XCP already activated
+----
+
+
+
+
+== 为非 root 用户安装 XCP
+
+您可以使用以下操作步骤为非 root 用户安装 XCP 。
+
+.步骤
+. 以非 root 用户身份登录到 Linux 计算机，然后下载并安装许可证：
++
+[listing]
+----
+[user1@scspr2474004001 ~]$ ls -l
+total 36640
+-rwxr-xr-x 1 user1 user1      352 Sep 20 01:56 license
+-rw-r--r-- 1 user1 user1 37512339 Sep 20 01:56 NETAPP_XCP_Nightly_dev.tgz
+[user1@scspr2474004001 ~]$
+----
+. 要提取此工具，请解压缩 XCP ：
++
+[listing]
+----
+[user1@scspr2474004001 ~]$ tar -xvf NETAPP_XCP_Nightly_dev.tar
+[user1@scspr2474004001 ~]$ cd xcp/linux/
+[user1@scspr2474004001 linux]$ ls
+xcp
+[user1@scspr2474004001 linux]$
+----
+. 验证先前版本的 XCP 是否在系统上提供了 ` /home/user1/NetApp/xFiles/XCP` 路径。
++
+如果 ` /home/user1/NetApp/xFiles/XCP` 路径可用，请使用 `XCP activate` 命令激活许可证并继续执行数据迁移。
+
++
+如果 ` /home/user1/NetApp/xFiles/XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 ` /home/user1/NetApp/xFiles/XCP` 中创建 XCP 主机配置目录。
+
++
+由于未安装许可证， `XCP activate` 命令失败：
+
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ /home/user1/xcp/linux/xcp activate
+(c) 2021 NetApp, Inc.
+xcp: Host config file not found. Creating sample at '/home/user1/NetApp/xFiles/xcp/xcp.ini'
+
+xcp: ERROR: License file /home/user1/NetApp/xFiles/xcp/license not found.
+Register for a license at https://xcp.netapp.com
+[user1@scspr2474004001 linux]$
+----
+. 将许可证复制到 ` /home/user1/NetApp/xFiles/XCP/` ：
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ cp ~/license /home/user1/NetApp/xFiles/xcp/
+[user1@scspr2474004001 linux]$
+----
+. 验证许可证文件是否已复制到 ` /home/user1/NetApp/xFiles/XCP/` ：
++
+[listing]
+----
+[user1@scspr2474004001 xcp]$ ls -ltr
+total 8
+drwxrwxr-x 2 user1 user1  21 Sep 20 02:04 xcplogs
+-rw-rw-r-- 1 user1 user1  71 Sep 20 02:04 xcp.ini
+-rwxr-xr-x 1 user1 user1 352 Sep 20 02:10 license
+[user1@scspr2474004001 xcp]$
+----
+. 激活 XCP ：
++
+[listing]
+----
+[user1@scspr2474004001 linux]$ ./xcp activate
+(c) 2021 NetApp, Inc.
+
+XCP already activated
+
+[user1@scspr2474004001 linux]$
 ----
 

@@ -4,7 +4,7 @@ permalink: xcp-environment-variable.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, enviroment, 
 summary: 环境变量（仅限 NFS ） 
 ---
-= 环境变量（仅限 NFS ）
+= 环境变量
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -13,7 +13,10 @@ summary: 环境变量（仅限 NFS ）
 
 
 [role="lead"]
-NFS 系统的可选环境变量配置。
+XCP NFS 系统的可选环境变量配置。
+
+
+NOTE: 非 root 用户也可以使用以下变量。
 
 环境变量 XCP_config_DIR 会覆盖默认位置 ` /opt/netapp/xFiles/XCP` 。如果设置，则值应为操作系统文件系统路径，可能是挂载的 NFS 目录的路径。设置自定义配置目录后，日志文件名为 `Xcp.hostname.log` ，而不是默认值 `Xcp.log` 。
 
@@ -33,3 +36,5 @@ NFS 系统的可选环境变量配置。
 ----
 [root@localhost /]# export XCP_CATALOG_PATH='10.61.82.210:/vol/xcpvol/'
 ----
+
+NOTE: 对于非 root 用户，必须将导出路径中的 `XCP_catalog` 替换为 POSIX 路径。

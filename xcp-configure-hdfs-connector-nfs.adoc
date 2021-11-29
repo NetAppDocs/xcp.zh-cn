@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: xcp-configure-hdfs-connector-nfs.html 
+keywords: xcp, nfs, hdfs, connector, configure 
+summary: HDFS 连接器使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。 
+---
+= 配置 HDFS 连接器
+
+
+[role="lead"]
+对于 XCP NFS ， Hadoop 分布式文件系统（ HDFS ）连接器（ HDFS ： // ）使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。
+
+HDFS 连接器支持从 HDFS 到 NFS 的 `copy` 命令操作。
+
+HDFS 连接器的路径语法为 `HDFS ： //[user@host ： port]/full-path` 。
+
+
+NOTE: 如果未指定用户，主机和端口，则 XCP 将调用 `hdfsConnect` ，并将主机设置为 `default` ，而将端口设置为 `0` 。
+
+要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如，您可以使用 `https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- redhat.html` 为 MapR 集群设置客户端。
+
+完成 HfDS 客户端设置后，必须在客户端上完成配置。要在 XCP 命令中使用 HDFS 路径，必须具有以下环境变量：
+
+* NHDFS_LIBHDFS_path
+* NHDFS_libjvm_path
+
+
+在以下示例中，这些设置适用于 CentOS 上的 MapR 和 java-1.8.0-OpenJDK-devel ：
+
+[listing]
+----
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $
+(which javac)))))
+export NHDFS_LIBJVM_PATH=`find $JAVA_HOME -name "libjvm.so"` export
+NHDFS_LIBHDFS_PATH=/opt/mapr/lib/libMapRClient.so
+----
+[listing]
+----
+[demo@mapr0 ~]$ hadoop fs -ls Found 3 items
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d1
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d2
+drwxr-xr-x - demo mapr 0 2021-01-14 00:02 d3
+----

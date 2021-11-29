@@ -22,7 +22,7 @@ summary: 对 XCP NFS 错误进行故障排除
 | `XCP ：错误` ：必须以 root 用户身份运行 | 以 root 用户身份执行 XCP 命令 
 
 
-| `XCP ：错误` ：未找到许可证文件 ` /opt/netapp/xFiles/XCP/license` 。 | 从下载许可证 link:https://xcp.netapp.com/["XCP 站点"^] 并复制到 ` /opt/netapp/xFiles/XCP/` 
+| `XCP ：错误` ：未找到许可证文件 ` /opt/netapp/xFiles/XCP/license` 。 | 从下载许可证 link:https://xcp.netapp.com/["XCP 站点"^]，将其复制到 ` /opt/netapp/xFiles/XCP/` ，然后运行 `XCP activate` 命令将其激活。 
 
 
 | `XCP ：错误` ：此许可证已过期 | 从续订或获取新的 XCP 许可证 link:https://xcp.netapp.com/["XCP 站点"^]。 
@@ -43,19 +43,19 @@ summary: 对 XCP NFS 错误进行故障排除
 | `XCP ：错误` ：无法激活许可证：服务器 xcp.netapp.com 不可访问 `XCP ：提示` ：在此主机上配置 DNS 或返回许可证页面以请求专用许可证预期错误：无法激活许可证：服务器 xcp.netapp.com 不可访问 | 确保可以从主机访问 xcp.netapp.com 或请求脱机许可证 
 
 
-| `XCP ：错误` ：目录不可访问：无法挂载 `nfs_server ： /export[ ：子目录 ]` | 在 XCP Linux 客户端主机上打开编辑器，然后使用正确的目录位置更新配置文件。XCP 配置文件位于 ` /opt/netapp/xFiles/XCP/xcp.ini` 。配置文件的示例条目： ` 根@scspr1949387001 ~ ]# cat /opt/netapp/xFiles/XCP/xcp.ini # 示例 XCP 配置 "XCP" 目录 = 10.235.128.153 ： /catalog` 
+| `XCP ：错误` ：目录不可访问：无法挂载 `nfs_server ： /export[ ：子目录 ]` | 在 XCP Linux 客户端主机上打开编辑器，然后使用正确的目录位置更新配置文件。XCP 配置文件位于 ` /opt/netapp/xFiles/XCP/xcp.ini` 。配置文件的示例条目： ` 根@scspr1949387001 ~ ]# cat /opt/netapp/xFiles/XCP/xcp.ini` ` XCP]` `catalog = 10.235.128.153 ： /catalog` 
 
 
 | `nfs3 错误 2` ：无此文件或目录 | 操作未在目标 NFS 导出上找到源文件。运行 `XCP sync` 命令将增量更新从源复制到目标 
 
 
-| `XCP ：错误` ：索引为空或无效 | 在为文件编制索引之前，先前的复制操作中断。使用新索引重新运行 `XCP copy` ，并确保系统返回 "indexed " ，然后再中断复制 
+| `XCP ：错误` ：索引为空或无效 | 在创建索引文件之前，先前的复制操作中断。使用新索引重新运行同一命令，在执行此命令时，请验证关键字 " 已编制索引 " 是否显示在统计信息中。 
 
 
 | `XCP ：错误` ：比较批处理：子进程失败 ` （退出代码 -9 ）： recv <type 'Exceptions.EOFError">` | 按照以下知识库文章中的说明进行操作： link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["同步 NFS 数据时无法分配内存"^] 
 
 
-| `XCP ：错误` ：要使 XCP 处理 ACL ，请` 使用 OS nfs4 客户端挂载 ` | 在 XCP 主机上挂载源和目标 
+| `XCP ：错误` ：要使 XCP 处理 ACL ，请` 使用 OS nfs4 客户端挂载 ` | 使用 NFSv4 在 XCP 主机上挂载源和目标，例如， `mount -o vers=4.0 10.10.10.10 ： /source_vol /mnt/source` 
 
 
 | 在迁移期间， xcp `verify` 命令失败。状态显示为 Failed 。（实时） | 当源处于活动状态时，运行了 XCP `verify` 命令。完成最终转换后，运行 XCP `verify` 命令。 
@@ -68,4 +68,34 @@ summary: 对 XCP NFS 错误进行故障排除
 
 
 | 由于内存不足， XCP `copy` ， `reresume` 和 `sync` 命令失败。XCP 崩溃， XCP 状态显示为 Failed 。（实时） | 主机上的可用内存不足或发生了巨大的增量更改。按照以下知识库文章中的说明进行操作： link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/NetApp_XCP/XCP:_ERROR:_Cannot_allocate_memory_-_when_syncing_NFS_data["同步 NFS 数据时无法分配内存"^] 
+
+
+| `mNT3 错误 13 ：权限被拒绝` | 作为非 root 用户，您没有访问文件系统的正确权限。检查您是否可以访问文件系统并执行读写操作。 
+
+
+| `XCP ： batch 1 ： error ： [errno 13] permission denied ：` | 作为非 root 用户，您没有访问文件系统的正确权限。检查您是否可以访问文件系统并执行读写操作。 
+
+
+| `mXCP ：错误： OSMounter 'file:///t/[] 10.234.115.215_src_vol/DIR' ：不存在此类文件或目录` | 路径 ` /t/10.234.115.215_src_vol/ DIR` 未挂载到 Linux 文件系统上。检查路径是否存在。 
+
+
+| `错误： run sync ｛ -id ： 'Xcp_index_1624263869.3734858' ｝ ：同步尚不可用于 HDFS/ POSIX/s3fs 源和目标 - 临时解决策正在使用匹配筛选器复制最近的 MOD` | 对于 POSIX 和 HDFS 连接器， XCP 不支持 `sync` 命令。 
+
+
+| 使用不同的修改时间时， `XCP verify` 命令失败 | 您可以确定文件并手动将文件复制到目标。 
+
+
+| `无法恢复非目录对象复制 / 同步；请重试复制。` `有关详细信息，请参见 XCP 用户指南。` | 由于无法恢复单个文件，因此建议再次对该文件运行 `XCP copy` 命令。如果对文件进行任何更改，则会创建完整的文件副本。因此，性能不会受到影响。 
+
+
+| `无法同步非目录对象；请重试复制。` `有关详细信息，请参见 XCP 用户指南。` | 由于无法同步单个文件，因此建议再次对该文件运行 `XCP copy` 命令。如果对文件进行任何更改，则会创建完整的文件副本。因此，性能不会受到影响。 
+
+
+| `XCP ：错误： batch 4 ：无法连接到节点：` | 验证 ` — nodes` 参数中指定的节点是否可访问。尝试从主节点使用安全 Shell （ SSH ）进行连接 
+
+
+| ` 权限被拒绝` | 检查您是否有权在目标卷上写入数据。 
+
+
+| `XCP ：错误：批处理 2 ：子进程失败（退出代码 -6 ）： recv <type 'Exceptions.EOFError"> ：` | 增加系统内存并重新运行测试。 
 |===

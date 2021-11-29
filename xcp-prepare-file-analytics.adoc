@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
-permalink: xcp-prepare-file-analytics.adoc.html 
-keywords: netapp, xcp, prepare, preparing, preparation, file analytics, 
-summary: 准备文件分析 
+permalink: xcp-prepare-file-analytics.html 
+keywords: netapp, xcp, prepare, preparing, preparation, file analytics 
+summary: 使用文件分析准备数据迁移。 
 ---
 = 准备文件分析
 :hardbreaks:

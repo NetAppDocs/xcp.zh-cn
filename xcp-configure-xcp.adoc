@@ -4,7 +4,7 @@ permalink: xcp-configure-xcp.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
 summary: 配置 XCP 的步骤 
 ---
-= 配置 XCP
+= 配置 XCP NFS
 :hardbreaks:
 :nofooter: 
 :icons: font

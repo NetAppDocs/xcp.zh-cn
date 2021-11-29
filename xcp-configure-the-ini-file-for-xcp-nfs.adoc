@@ -4,7 +4,7 @@ permalink: xcp-configure-the-ini-file-for-xcp-nfs.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
 summary: 配置 ini 文件 XCP 的步骤 
 ---
-= 配置 XCP NFS 的 ini 文件
+= 配置此 INI 文件
 :hardbreaks:
 :nofooter: 
 :icons: font
@@ -13,12 +13,16 @@ summary: 配置 ini 文件 XCP 的步骤
 
 
 [role="lead"]
-配置 ini 文件 XCP 的步骤。
+为 XCP 配置 ini 文件的步骤。
 
-按照以下步骤为 XCP NFS 配置此文件。
+
+
+== 为 root 用户配置此 ini 文件
+
+您可以使用以下操作步骤为 XCP NFS root 用户配置 文件。
 
 .步骤
-. 使用 `vi` 编辑器在主机配置文件中添加 XCP 服务器的目录位置。
+. 使用 `vi` 编辑器在主机配置文件中添加 XCP 服务器的目录位置：
 +
 
 NOTE: 在修改 `xcp.ini` XCP 配置文件中的详细信息之前，应导出目录位置。目录位置（ NFSv3 ）应可由 XCP Linux 主机挂载，但不一定要挂载。
@@ -38,3 +42,24 @@ NOTE: 在修改 `xcp.ini` XCP 配置文件中的详细信息之前，应导出�
 catalog = 10.61.82.210:/vol/xcpvol/
 ----
 
+
+
+
+== 为非 root 用户配置此 ini 文件
+
+作为非 root 用户，您无权挂载 NFS 文件系统。需要 root 用户先挂载目录卷，然后，作为运行 XCP 的非 root 用户，如果您对目录卷具有读 / 写权限，则可以使用 POSIX 连接器访问挂载的目录卷。挂载卷后，您可以将目录添加到路径：
+
+[listing]
+----
+(t/10.237.170.53_catalog_vol – This is the path where catalog volume is mounted)as follows.
+
+[user1@scspr2474004001 xcp]$ ls -ltr
+total 8
+drwxrwxr-x 2 user1 user1  21 Sep 20 02:04 xcplogs
+-rw-rw-r-- 1 user1 user1  71 Sep 20 02:04 xcp.ini
+-rwxr-xr-x 1 user1 user1 352 Sep 20 02:10 license
+[user1@scspr2474004001 xcp]$ cat /home/user1/NetApp/xFiles/xcp/xcp.ini
+
+Sample xcp config [xcp]
+catalog = file:///t/10.237.170.53_catalog_vol
+----

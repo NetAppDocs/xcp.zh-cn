@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: xcp-logging-for-nfs-and-smb.html 
-keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb, 
+keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb 
 summary: 为 XCP NFS 和 SMB 记录日志 
 ---
 = NFS 和 SMB 的日志记录（可选）
@@ -14,7 +14,7 @@ summary: 为 XCP NFS 和 SMB 记录日志
 [role="lead"]
 为 XCP NFS 和 SMB 记录日志。
 
-XCP 支持使用 `xcpLogConfig.json` JSON 配置文件配置多个可选功能。要仅启用特定功能，请手动创建 `xcpLogConfig.json` 配置文件，您可以使用 `xcpLogConfig.json` 配置文件启用：
+XCP 支持使用 `xcpLogConfig.json` JSON 配置文件配置多个可选功能。要仅启用特定功能，请手动创建 `xcpLogConfig.json` 配置文件。您可以使用 `xcpLogConfig.json` 配置文件启用：
 
 * 事件日志消息
 * XCP 的系统日志客户端
@@ -76,7 +76,7 @@ JSON 配置文件选项区分大小写。这些选项对于 XCP NFS 和 XCP SMB 
 
 
 | " 清理 " | 布尔值 | false  a| 
-XCP 支持的常见选项；将其值设置为 true 将隐藏要支持的消息（日志记录，事件，系统日志等）中的敏感信息（ IP 和用户名） 例如，将 `sanitize` 选项设置为 `false` ： * `2020-07-17 03 ： 10 ： 23 ， 779 - 信息 - 12806 XCP XCP 路径： ['10.234.104.251 ： /cat_vol']` * `2020-07-12817` 03 ： 10 ： 23 ， 778 - 信息 - 12806 XCP XCP 用户名： root` XCP 路径： `s2020-07-1217 ： ``XCP ：` XX.XX.XX.XX./cat_vol']` * `2020-07-17 03 ： 13 ： 51 ， 595 - 信息 - 12859 XCP XCP 用户名 * * *`
+XCP 支持的一个常见选项；将其值设置为 true 会在要支持的消息（日志记录，事件，系统日志等）中隐藏敏感信息（ IP 和用户名）。例如，将 `sanitize` 选项设置为 `false` ： * `2020-07-17 03 ： 10 ： 23 ， 779 - 信息 - 12806 XCP XCP 路径： ['10.234.104.251 ： /cat_vol']` * `2020-07-12817` 03 ： 10 ： 23 ， 778 - 信息 - 12806 XCP XCP 用户名： root` XCP 路径： `s2020-07-1217 ： ``XCP ：` XX.XX.XX.XX./cat_vol']` * `2020-07-17 03 ： 13 ： 51 ， 595 - 信息 - 12859 XCP XCP 用户名 * * *`
 
 |===
 
@@ -111,7 +111,7 @@ XCP 支持的常见选项；将其值设置为 true 将隐藏要支持的消息�
 }
 ----
 . 对于要启用的任何功能，请将 `isenabled` 值更改为 `true` 。
-. 将文件命名为 `xcpLogConfig.json` ，并将其命名为 * 错误！未找到引用源。 *
+. 将文件命名为 `xcpLogConfig.json` ，并将其保存到 * 错误！未找到引用源。 *
 
 
 |===
