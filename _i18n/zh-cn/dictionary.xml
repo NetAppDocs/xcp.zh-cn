@@ -36,7 +36,6 @@
   <block id="543905c9e8d793e24798d62739fd285b" category="list-text">将迁移或 XCP 主机用户添加到 Active Directory 的审核和安全日志策略中。要在 Windows 10 上查找 " 管理审核和安全日志 " 策略，请执行以下步骤：</block>
   <block id="efaadd4be852741a24b28d66addf7e17" category="list-text">打开 * 组策略编辑器 * 对话框。</block>
   <block id="58f61041ffa1d14e245af8a57dce1c48" category="list-text">转至 * 计算机配置 &gt; Windows 设置 &gt; 安全设置 &gt; 本地策略 &gt; 用户权限分配 * 。</block>
-  <block id="1c22a26a513b9132241fc7480ad20795" category="list-text">单击 * 更改审核和安全日志 * 。</block>
   <block id="66b0c244cc406f3e1c6f34b6693be565" category="list-text">要添加 XCP 主机用户，请选择 * 添加用户或组 * 。</block>
   <block id="4ba21fa3f242b755c406321b6aa530de" category="inline-link-macro">管理审核和安全日志</block>
   <block id="c96fce632e7aa3e5167dff9fa88131e9" category="paragraph">有关详细信息，请参见 <block ref="d3422bfee6b881948e1c2336b81fe843" category="inline-link-macro-rx"></block>。</block>
@@ -131,7 +130,6 @@
   <block id="d8da99a82dddfba37d491206159ee22d" category="list-text">在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。</block>
   <block id="46be349b53621b4434308c0bbe45ebaf" category="list-text">转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。</block>
   <block id="7ff768d8b3e0e35c252ee2e9baf28bc8" category="list-text">在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://&lt;ip address of Linux&gt;/XCP`</block>
-  <block id="c18e175902196dc40d538bf40ec546e5" category="list-text">显示对话框时，单击 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`</block>
   <block id="d7c434c15db5d12a3bed35613610f824" category="list-text">返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。</block>
   <block id="55b7006f6e8a19f0555a6b82ca85a801" category="section-title">升级 SMB 文件分析</block>
   <block id="1688d86172caf9b3ed1acabe15285a4f" category="paragraph">要升级适用于 SMB 的现有文件分析，请完成以下步骤。</block>
@@ -200,13 +198,8 @@
   <block id="c54e109937f5c638f4600d450eedcd55" category="paragraph">按照以下步骤安装 vc++ 可重新分发的软件。</block>
   <block id="c4af91562832ae25fbae11e89da4b667" category="inline-link-macro">vc++ 2017 可重新分配</block>
   <block id="6cd22d7c4dadeacb23225ecd72fe717c" category="list-text">单击 <block ref="9ff75fd178d1ad0222e586938703dbfb" category="inline-link-macro-rx"></block> 将可执行文件下载到默认下载文件夹。</block>
-  <block id="32560870ed79410de18156e8a7708ccc" category="list-text">要开始安装，请双击安装程序。接受条款和条件，然后单击 * 安装 * 。</block>
-  <block id="679ad173ef4d2a2de08629da697b979e" category="list-text">安装完成后，单击 * 重新启动 * 。</block>
   <block id="3c91f49d55f34d3506f638d309f40168" category="section-title">XCP SMB 初始设置操作步骤</block>
   <block id="4db6b4b2c123aa3cd8ad45d8003538bc" category="paragraph">按照以下步骤执行 XCP SMB 的初始设置。</block>
-  <block id="c0fd2c6f11872e36f75c2d1becf5b1bc" category="list-text">在 Windows 主机上复制许可证和 XCP SMB 二进制文件 `NetApp_XCP_&lt;version&gt;.tgz` 。</block>
-  <block id="e8b023400f6414f32d7707954d99cd66" category="list-text">在桌面上创建 `XCP` 目录。验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `XCP activate` 命令激活 XCP ，然后继续执行数据迁移。</block>
-  <block id="ac2adfeeb1ae3330aaf5e6549138047d" category="paragraph">如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 `C ： \NetApp\XCP` 创建 XCP 主机配置目录和文件。`activate XCP` 命令失败，并创建一条错误消息，要求提供新许可证。</block>
   <block id="a93da960db5c5b4f48c763a05f304371" category="list-text">将许可证复制到新创建的文件夹 `C ： \NetApp\XCP ：`</block>
   <block id="ea6bf0c8de468a8c8d6cf565a16762f0" category="list-text">激活 XCP ：</block>
   <block id="d9a94aeb05c2b97954eebdc3732fc715" category="summary">迁移 NFS 数据</block>
@@ -308,11 +301,8 @@
   <block id="afc140e7771a565b91190eb36ffe4d87" category="summary">运行扫描</block>
   <block id="924efb8414fbca05d721d87cd806d298" category="doc">运行扫描</block>
   <block id="04ec2acd5a3aa521b572bd5eda28b826" category="paragraph">将 NFS/SMB 文件系统添加到 XCP 文件分析图形用户界面后，您可以启动文件系统扫描来分析和表示数据。</block>
-  <block id="73c9b75852e3215a47c68ab6ab2082d5" category="list-text">单击添加的文件服务器卡上的箭头以查看文件服务器上的文件共享。</block>
   <block id="1cecb0486bf5cf6a9a63507c660cd03d" category="inline-image-macro">查看文件共享图像</block>
   <block id="b368c6bc5323e94824365fcd21553663" category="paragraph"><block ref="b368c6bc5323e94824365fcd21553663" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="c70145f3a9d32b413e32aca4332c15d5" category="list-text">从文件共享列表中，单击要扫描的文件共享的名称。</block>
-  <block id="1d9f1e11f009248b7a6a3f85a1a8c928" category="list-text">单击 * 扫描 * 开始扫描。</block>
   <block id="b95cc160a68eb624b2033f60040386e7" category="paragraph">XCP 将显示扫描的进度条。</block>
   <block id="82ba8d2b1fd827ef3a66da623896394d" category="list-text">扫描完成后，系统将启用 * 统计视图 * 和 * 文件分发 * 选项卡，以允许您查看图形。</block>
   <block id="8cb4643cf2374b32d80ce75e3493df62" category="inline-image-macro">扫描完整映像</block>
@@ -361,7 +351,6 @@
   <block id="3e0daed933c6a91aa6201ad2331ba049" category="paragraph">您可以在 XCP 文件分析 GUI 中配置 NFS 和 SMB 导出的文件系统。</block>
   <block id="fe22d3343ef5ef3576fd3a8c614d783c" category="paragraph">这样， XCP 文件分析便可扫描和分析文件系统上的数据。按照以下步骤添加 NFS 或 SMB 文件服务器。</block>
   <block id="48c7c41b72e1d678923ce3571aa65b2d" category="list-title">步骤</block>
-  <block id="11ae279acb67e68eef6e5b29ead68d62" category="list-text">要添加文件服务器，请单击 * 添加文件服务器 * 。</block>
   <block id="78598b64a689474ac10ec7f8c0697abb" category="inline-image-macro">添加文件服务器屏幕</block>
   <block id="503b4be5b956ea211b0169f48e7b4f8b" category="paragraph"><block ref="503b4be5b956ea211b0169f48e7b4f8b" category="inline-image-macro-rx" type="image"></block></block>
   <block id="32db9210762a9969d936f00071f3d4fb" category="paragraph">添加文件服务器 IP 地址，选择 NFS 或 SMB 选项，然后单击 * 添加 * 。</block>
@@ -379,8 +368,6 @@
   <block id="471ff51c89daf6e35e8e2b5111039744" category="inline-link-macro">NetApp IMT</block>
   <block id="ae12aa4d83d4e71d628b8ca5184b9d66" category="admonition">要检查访问文件分析所支持的浏览器，请参见 <block ref="dff6889ed90b9930dbb6c11bc90c8854" category="inline-link-macro-rx"></block>。</block>
   <block id="42f425824cc531c78175d67346f8f124" category="list-text">使用链接 ` \https://&lt;IP address of Linux machine&gt;/XCP` 访问文件分析图形用户界面。出现提示时，接受安全证书：</block>
-  <block id="1db801e56e7633edc485f8e1146d301d" category="list-text">单击隐私声明下方的高级。</block>
-  <block id="97f7f088fd80eda7e2b10459f6c30a7b" category="list-text">单击 Proceed to ` &lt;IP address of Linux machine&gt;` 链接。</block>
   <block id="d92966d58b78d88161004cfe9020ede8" category="list-text">使用用户名 "admin" 和您在配置期间设置的密码登录到 GUI</block>
   <block id="2ffe186b43f4d120ec24b17fcb23452a" category="inline-image-macro">XCP 文件分析登录屏幕</block>
   <block id="289a5bc6b34705c66837c45715417ecd" category="paragraph"><block ref="289a5bc6b34705c66837c45715417ecd" category="inline-image-macro-rx" type="image"></block></block>
@@ -704,4 +691,19 @@
   <block id="fd162698220e1fdc813cf6219f85e6c6" category="list-text">将文件命名为 `xcpLogConfig.json` ，并将其保存到 * 错误！未找到引用源。 *</block>
   <block id="99c35850ff7cf7e436b03acedd4c59b3" category="cell">HDFS</block>
   <block id="3c5be6328b5f6a0a5980341230b8ac05" category="cell">7222</block>
+  <block id="580b128701ff902d4e6230fe6bbdd91f" category="list-text">要添加文件服务器，请选择 * 添加文件服务器 * 。</block>
+  <block id="557826c4c436faf2e30d6af6f7e8debf" category="list-text">要开始安装，请双击安装程序。接受条款和条件并选择 * 安装 * 。</block>
+  <block id="23c9666a12a742df28045c71457392a3" category="list-text">安装完成后，重新启动 Windows 客户端。</block>
+  <block id="5dfa463a08f83c24c2d431cffb177fa8" category="list-text">在 Windows 客户端上下载许可证和 XCP SMB 二进制文件 `NetApp_XCP_&lt;version&gt;.tgz` 。</block>
+  <block id="bdacdc2ce48f16d27d87fef257b0c28f" category="list-text">提取 `NetApp_XCP_&lt;version&gt;.tgz` 文件。</block>
+  <block id="5721c375e95676c97876a49105a2b54c" category="list-text">将 `Xcp.exe` 文件复制到 Windows C ：驱动器，解压缩 `tgz` 文件后，此二进制文件位于 `NetApp_XCP_1.8\NetApp_XCP_1.8\XCP\windows` 中。</block>
+  <block id="17b92bb56c632debb93b565e92dbd987" category="list-text">验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `xcp.exe activate` 命令激活 XCP ，然后继续执行数据迁移。</block>
+  <block id="c9dd31b110e2c919cd80441873e975fc" category="paragraph">如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `xcp.exe activate` 命令时，系统会创建 XCP 主机配置目录并将其记录在 `C ： \NetApp\XCP` 中。`xcp.exe activate` 命令失败，并创建一条错误消息，要求提供新许可证。</block>
+  <block id="fca650b5fb2499a28c4614bbf33b9323" category="list-text">选择添加的文件服务器卡上的箭头以查看文件服务器上的文件共享。</block>
+  <block id="5cee208e7218470f7403f97e33abc3ae" category="list-text">从文件共享列表中，选择要扫描的文件共享的名称。</block>
+  <block id="615850afbe695865bc7ae374479ce461" category="list-text">选择 * 扫描 * 以启动扫描。</block>
+  <block id="f95bfd775a7588394c547c77a2cb75fa" category="list-text">选择 * 更改审核和安全日志 * 。</block>
+  <block id="01f49d7de6d116ea373b4aef4a75b8bb" category="list-text">显示对话框时，选择 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`</block>
+  <block id="d1b673b157daeb18c4d73618946f7ef4" category="list-text">选择隐私声明下方的高级。</block>
+  <block id="d6d3a57c5e8a09cb5cc8bf5e2c0810ce" category="list-text">选择 Proceed to ` &lt;IP address of Linux machine&gt;` 链接。</block>
 </blocks>

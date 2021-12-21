@@ -49,8 +49,8 @@ NOTE: 没有升级选项；请重新安装 XCP 以替换任何现有版本。
 
 .步骤
 . 单击 link:https://go.microsoft.com/fwlink/?LinkId=746572["vc++ 2017 可重新分配"^] 将可执行文件下载到默认下载文件夹。
-. 要开始安装，请双击安装程序。接受条款和条件，然后单击 * 安装 * 。
-. 安装完成后，单击 * 重新启动 * 。
+. 要开始安装，请双击安装程序。接受条款和条件并选择 * 安装 * 。
+. 安装完成后，重新启动 Windows 客户端。
 
 
 
@@ -60,16 +60,18 @@ NOTE: 没有升级选项；请重新安装 XCP 以替换任何现有版本。
 按照以下步骤执行 XCP SMB 的初始设置。
 
 .步骤
-. 在 Windows 主机上复制许可证和 XCP SMB 二进制文件 `NetApp_XCP_<version>.tgz` 。
-. 在桌面上创建 `XCP` 目录。验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `XCP activate` 命令激活 XCP ，然后继续执行数据迁移。
+. 在 Windows 客户端上下载许可证和 XCP SMB 二进制文件 `NetApp_XCP_<version>.tgz` 。
+. 提取 `NetApp_XCP_<version>.tgz` 文件。
+. 将 `Xcp.exe` 文件复制到 Windows C ：驱动器，解压缩 `tgz` 文件后，此二进制文件位于 `NetApp_XCP_1.8\NetApp_XCP_1.8\XCP\windows` 中。
+. 验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `xcp.exe activate` 命令激活 XCP ，然后继续执行数据迁移。
 +
-如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `XCP activate` 命令时，系统会在 `C ： \NetApp\XCP` 创建 XCP 主机配置目录和文件。`activate XCP` 命令失败，并创建一条错误消息，要求提供新许可证。
+如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `xcp.exe activate` 命令时，系统会创建 XCP 主机配置目录并将其记录在 `C ： \NetApp\XCP` 中。`xcp.exe activate` 命令失败，并创建一条错误消息，要求提供新许可证。
 
 +
 [listing]
 ----
 C:\>xcp.exe activate
-(c) 2020 NetApp, Inc.
+(c) yyyy NetApp, Inc.
 
 License file C:\NetApp\XCP\license not found.
 Register for a license at https://xcp.netapp.com

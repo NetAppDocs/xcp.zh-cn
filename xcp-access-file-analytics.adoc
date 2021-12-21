@@ -23,8 +23,8 @@ NOTE: 要检查访问文件分析所支持的浏览器，请参见 link:https://
 .步骤
 . 使用链接 ` \https://<IP address of Linux machine>/XCP` 访问文件分析图形用户界面。出现提示时，接受安全证书：
 +
-.. 单击隐私声明下方的高级。
-.. 单击 Proceed to ` <IP address of Linux machine>` 链接。
+.. 选择隐私声明下方的高级。
+.. 选择 Proceed to ` <IP address of Linux machine>` 链接。
 
 
 . 使用用户名 "admin" 和您在配置期间设置的密码登录到 GUI

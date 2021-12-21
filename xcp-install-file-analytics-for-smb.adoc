@@ -42,7 +42,7 @@ summary: 安装或升级适用于 SMB 的文件分析
 . 在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。
 . 转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。
 . 在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://<ip address of Linux>/XCP`
-. 显示对话框时，单击 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
+. 显示对话框时，选择 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
 . 返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。
 
 
@@ -59,6 +59,6 @@ summary: 安装或升级适用于 SMB 的文件分析
 . 在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。
 . 转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。
 . 在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://<ip address of Linux>/XCP`
-. 显示对话框时，单击 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
+. 显示对话框时，选择 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`
 . 返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。
 
