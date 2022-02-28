@@ -31,7 +31,12 @@ summary: 规划 SMB 数据迁移
 
 === 扫描
 
-`scan` 命令可递归扫描整个 SMB 共享，并在扫描结束时列出所有文件。示例
+`scan` 命令可递归扫描整个 SMB 共享，并在扫描结束时列出所有文件。
+
+
+NOTE: 在扫描操作期间，您可以将 ` -preserve-atime` 标志与 `scan` 命令结合使用，以保留源的访问时间。
+
+* 示例： *
 
 * `XCP 扫描 \\SMB server\share1`
 * `XCP scan smb_server01.netapp.com:/share1`

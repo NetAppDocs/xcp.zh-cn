@@ -73,6 +73,8 @@ entries:
     url: "/xcp-migrate-nfs-data.html"
   - title: 迁移 SMB 数据
     url: "/xcp-migrate-smb-data.html"
+  - title: 其他 NFS 功能
+    url: "/xcp-migrate-nfs-additional-features.html"
 - title: 故障排除
   entries:
   - title: 对 XCP NFS 错误进行故障排除

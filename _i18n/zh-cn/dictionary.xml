@@ -221,7 +221,6 @@
   <block id="f7d1ef377db88189a0084ee7d6f1b738" category="paragraph">`show` 命令可显示服务器上所有可用的 SMB 共享以及可用的权限和空间。示例</block>
   <block id="cf4eff19c5c0fb1733f64f4fcc421b87" category="list-text">`XCP show \\&lt;SMB 文件服务器 IP/FQDN&gt;`</block>
   <block id="8b35e2113ce9ad7e63589964e0f33514" category="list-text">`XCP 显示 smb_server01.netapp.com`</block>
-  <block id="596e26b9d2a2a09fabd119a1c7970617" category="paragraph">`scan` 命令可递归扫描整个 SMB 共享，并在扫描结束时列出所有文件。示例</block>
   <block id="70cc69758e4efa422fa0bec10f65dffb" category="list-text">`XCP 扫描 \\SMB server\share1`</block>
   <block id="a8386d7454f57e945b9af398be1f740a" category="list-text">`XCP scan smb_server01.netapp.com:/share1`</block>
   <block id="95a35d9399a311a860a23c9c5ca666db" category="summary">安装或升级适用于 NFS 的文件分析</block>
@@ -661,8 +660,6 @@
   <block id="c9beec711f96849f59fc8b461a17c844" category="paragraph">作为非 root 用户，您无权挂载 NFS 文件系统。需要 root 用户先挂载目录卷，然后，作为运行 XCP 的非 root 用户，如果您对目录卷具有读 / 写权限，则可以使用 POSIX 连接器访问挂载的目录卷。挂载卷后，您可以将目录添加到路径：</block>
   <block id="c3aaf0d0d35accc2221dcf51014b407d" category="doc">XCP v1.8 文档</block>
   <block id="5cf3f2c5fac08fae3fa80a4e2a9266eb" category="paragraph">欢迎使用 XCP 信息库。您可以在此处找到有关 XCP v1.8 软件的文档，其中包括如何安装，配置和使用 XCP 。</block>
-  <block id="9e7f7d8fcefcabb2bc23ca143a628f7d" category="doc">XCP v1.8 发行说明</block>
-  <block id="07adad35d292c43e7b7a18db9356fa50" category="paragraph">。 <block ref="4f1f55060be6b492e2b23a003806f4ac" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="145d53a32d3487520bd34eee8e20c389" category="summary">XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，并支持使用横向扩展架构来加快数据迁移速度。</block>
   <block id="2113611c6320a48f92fea30c44c76f5a" category="doc">XCP NFS 附加功能</block>
   <block id="5c8249d1b7838ae94a73676b3af9091d" category="section-title">支持 NFSv4</block>
@@ -706,4 +703,43 @@
   <block id="01f49d7de6d116ea373b4aef4a75b8bb" category="list-text">显示对话框时，选择 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`</block>
   <block id="d1b673b157daeb18c4d73618946f7ef4" category="list-text">选择隐私声明下方的高级。</block>
   <block id="d6d3a57c5e8a09cb5cc8bf5e2c0810ce" category="list-text">选择 Proceed to ` &lt;IP address of Linux machine&gt;` 链接。</block>
+  <block id="c64a522ee6418ae33077670975c2798b" category="admonition">在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` 命令结合使用，以保留源的访问时间。</block>
+  <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` 命令结合使用，以保留源上的访问时间。</block>
+  <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。</block>
+  <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">在验证操作期间，您可以将 ` -noatime` 标志与 `verify` 命令结合使用，以排除访问时间差异。</block>
+  <block id="bfd97ee6bc45bf0c46cc517744e9e74f" category="doc">XCP v1.1.1 发行说明</block>
+  <block id="2361f2046255643526d0bc654680e3f7" category="paragraph">。 <block ref="658eea0f41de67e93f9c7baad3cdc904" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
+  <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">配置 Windows 客户端</block>
+  <block id="8723065565846862b1fa4bd925384734" category="list-text">将目标存储箱和源存储箱添加到主机文件：</block>
+  <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">导航到以下位置： ` （ C ： \Windows\System32\drivers\etc\hosts ）`</block>
+  <block id="73510c08d5556b316226c808aaa9eca1" category="list-text">以以下格式将以下主机条目插入到文件中：</block>
+  <block id="476073ef56fe1fff4342c5ca2a5df7b2" category="paragraph">` &lt; 源数据 SVM 数据接口 IP&gt; &lt; 源 CIFS 服务器名称 &gt; &lt; 目标数据 SVM 数据接口 IP&gt; &lt; 目标 CIFS 服务器名称 &gt;`</block>
+  <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">* 示例 *</block>
+  <block id="3b511dbccc3be54ef9ec0eb7891e0660" category="inline-image-macro">主机文件示例</block>
+  <block id="43ab6e97e5a245b30aa42dc31aab3fde" category="paragraph"><block ref="43ab6e97e5a245b30aa42dc31aab3fde" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="f6d7a1a39c7e76b0a2ad7044af130caf" category="section-title">支持的功能</block>
+  <block id="020ec197b81e56345052745b2d507168" category="section-title">路径语法</block>
+  <block id="e46c2c3b78dd65a39b82aaeb11382265" category="section-title">设置 POSIX 连接器</block>
+  <block id="0d800eaa04aaecec3ceb6afe9d979e75" category="section-title">所有权（ UID 和 GID ）</block>
+  <block id="13da1aac842d8173bd42f8e52ae0233a" category="section-title">增加打开文件描述符的最大数量</block>
+  <block id="8fe282d6211426a6fd01df906b39997d" category="paragraph">为了获得最佳性能和可靠性，您可以增加所有节点上 XCP 用户的最大打开文件描述符数。</block>
+  <block id="167c2c4b3e4b8252ac2e7a794d520b60" category="list-text">使用以下命令打开文件： `vi /etc/security/limits.conf`</block>
+  <block id="e86a0c50969f69caaf0846c01183351b" category="list-text">将以下行添加到文件中： ` &lt; 用户名 &gt; - nodfile 999999`</block>
+  <block id="0db61995ae463b2910371fdee152cb88" category="inline-link-macro">Red Hat 解决方案</block>
+  <block id="ccdcaa8e5fef5673db21a65af6bc516b" category="paragraph">请参见 <block ref="86f0b7d75368fee2dcdb28d15e03688c" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
+  <block id="258c43132f7d0ee8dca2932b84e55383" category="summary">XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。</block>
+  <block id="ce0d872fae9d962e1e9e1ff7397f5840" category="doc">其他 NFS 功能</block>
+  <block id="237f1be769ddaca2a6c7f5fb510296bc" category="paragraph">XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。</block>
+  <block id="c353351e2cab6270e61ca76351aa5192" category="paragraph">在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP `chown` 和 `chmod` 命令的工作方式与 Linux `chown` 和 `chmod` 命令类似。</block>
+  <block id="c8f43293a0d371a440cac8bb93307056" category="section-title">chmod</block>
+  <block id="a4d26be6e1a014201192b6f7a5db4c72" category="paragraph">`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod` 命令需要模式或引用以及 NFS 共享或 POSIX 路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。</block>
+  <block id="ed4ffa57a1bdcb56aaf1d22b8d722821" category="paragraph">有关详细信息，请运行 `XCP help chmod` 命令。</block>
+  <block id="845fbaad258ca858251e4c4c0ad53eb0" category="section-title">chown</block>
+  <block id="12ef08f5f383690078c3df9936bfe139" category="paragraph">`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown` 命令需要使用 NFS 共享或 POSIX 路径作为变量。XCP `chown` 递归更改给定路径的所有权。</block>
+  <block id="8fa3ac473e7edac7e52a655e5271e49f" category="paragraph">有关详细信息，请运行 `XCP help chown` 命令。</block>
+  <block id="fe3babe18b970588464b8384c50d8cb3" category="paragraph">`scan` 命令可递归扫描整个 SMB 共享，并在扫描结束时列出所有文件。</block>
+  <block id="e7cd4019e47684c4ac82ed229910b175" category="admonition">在扫描操作期间，您可以将 ` -preserve-atime` 标志与 `scan` 命令结合使用，以保留源的访问时间。</block>
+  <block id="8d79bfe51b141cbe8fb2c30741dbfe14" category="paragraph">* 示例： *</block>
+  <block id="de71db72eafd60fc2c3c26a9416f0909" category="list-text">对于 NFSv4 ACL 迁移， NFSv4 要求对需要迁移 ACL 的卷使用编码语言 UTF-8 。</block>
+  <block id="90e6485e4d08b9e0728e2671dfa4ced2" category="list-text">在 ONTAP 中，您可以使用诊断 ` -atime-update` 选项来保留 atime 。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。</block>
 </blocks>

@@ -1,0 +1,50 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-nfs-additional-features.html 
+keywords: xcp, nfs, chomod, chown, posix, ownership, change, file, path, directory, command, scan 
+summary: XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。 
+---
+= 其他 NFS 功能
+
+
+[role="lead"]
+XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。
+
+在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP `chown` 和 `chmod` 命令的工作方式与 Linux `chown` 和 `chmod` 命令类似。
+
+
+
+== chmod
+
+`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod` 命令需要模式或引用以及 NFS 共享或 POSIX 路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。
+
+* 示例： *
+
+....
+xcp chmod -mode 777 NFS [server:/export path | file://<NFS mounted path>]
+xcp chmod -mode 707 nfs_server01.netapp.com:/export1
+xcp chmod -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com: export1
+xcp chmod -match “fnm(‘file.txt’)” -mode 111 file:///mnt/nfs_mount_point/
+xcp chmod -exclude “fnm(‘file.txt’)” -mode 111 file:///demo/user1/
+....
+有关详细信息，请运行 `XCP help chmod` 命令。
+
+
+
+== chown
+
+`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown` 命令需要使用 NFS 共享或 POSIX 路径作为变量。XCP `chown` 递归更改给定路径的所有权。
+
+* 示例 *
+
+....
+xcp chown -user user1 NFS [server:/export path | file://<NFS mounted path>
+xcp chown -user user1 nfs_server01.netapp.com:/export1
+xcp chown -user user1 -group group1 nfs_server01.netapp.com:/export1/dir1/
+xcp chown  -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com:/export1
+xcp chown -match “fnm(‘file.txt’)” -user user1 file:///mnt/nfs_mount_point/
+xcp chown -exclude “fnm(‘file.txt’)” -user user1 -group group1
+xcp chown -user-from user1 -user user2 file:///mnt/nfs_mount_point/
+xcp chown -group-from group1 -group group2 nfs_server01.netapp.com:/export1/
+....
+有关详细信息，请运行 `XCP help chown` 命令。

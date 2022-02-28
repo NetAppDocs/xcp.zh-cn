@@ -21,6 +21,9 @@ summary: 迁移 SMB 数据
 
 `copy` 命令可扫描整个源目录结构并将其复制到目标 SMB 共享。`copy` 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度和已用时间详细信息每五秒打印一次到控制台。
 
+
+NOTE: 在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` 命令结合使用，以保留源的访问时间。
+
 * 示例： *
 
 [listing]
@@ -37,6 +40,9 @@ C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
 
 sync 命令可比较数据内容，时间戳，文件属性，所有权和安全信息。
 
+
+NOTE: 在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` 命令结合使用，以保留源上的访问时间。
+
 * 示例： *
 
 [listing]
@@ -51,6 +57,13 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 
 使用 `verify` 命令可读取源共享和目标共享并对其进行比较，从而提供有关不同之处的信息。无论使用哪种工具执行复制或同步，您都可以在任何源和目标上使用命令。
 
+[NOTE]
+====
+* 在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。
+* 在验证操作期间，您可以将 ` -noatime` 标志与 `verify` 命令结合使用，以排除访问时间差异。
+
+
+====
 * 示例： *
 
 [listing]

@@ -82,7 +82,7 @@ xcp
 [listing]
 ----
 [root@scspr1980872003 linux]# ./xcp activate
-(c) 2020 NetApp, Inc.
+(c) yyyy NetApp, Inc.
 xcp: Host config file not found. Creating sample at '/opt/NetApp/xFiles/xcp/xcp.ini'
 
 xcp: ERROR: License file /opt/NetApp/xFiles/xcp/license not found.
@@ -113,8 +113,8 @@ drwxr-xr-x 4 root root    83 Oct  5 00:48 .
 [listing]
 ----
 [root@scspr1980872003 linux]# ./xcp activate
-XCP <version>; (c) 2020 NetApp, Inc.;
-XCP already activated
+XCP <version>; (c) yyyy NetApp, Inc.;
+XCP activated
 ----
 
 
@@ -159,7 +159,7 @@ xcp
 [listing]
 ----
 [user1@scspr2474004001 linux]$ /home/user1/xcp/linux/xcp activate
-(c) 2021 NetApp, Inc.
+(c) yyyy NetApp, Inc.
 xcp: Host config file not found. Creating sample at '/home/user1/NetApp/xFiles/xcp/xcp.ini'
 
 xcp: ERROR: License file /home/user1/NetApp/xFiles/xcp/license not found.
@@ -189,9 +189,9 @@ drwxrwxr-x 2 user1 user1  21 Sep 20 02:04 xcplogs
 [listing]
 ----
 [user1@scspr2474004001 linux]$ ./xcp activate
-(c) 2021 NetApp, Inc.
+(c) yyyy NetApp, Inc.
 
-XCP already activated
+XCP activated
 
 [user1@scspr2474004001 linux]$
 ----
