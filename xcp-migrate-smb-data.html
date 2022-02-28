@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         迁移 NFS 数据
       </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-smb-data.html">
         迁移 SMB 数据
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
+        其他 NFS 功能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 故障排除</div>
       </a>
@@ -757,11 +761,19 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:41 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:44:49 +0000">02/28/2022</time>
     
   
 
 <span>提供者
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
   <a target="_blank" href="https://github.com/netapp-barbe">
     <img  class="avatar avatar-small"
           alt="netapp-barbe"
@@ -796,6 +808,18 @@
 <div class="paragraph">
 <p><code>copy</code> 命令可扫描整个源目录结构并将其复制到目标 SMB 共享。<code>copy</code> 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度和已用时间详细信息每五秒打印一次到控制台。</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注">
+</td>
+<td class="content">
+在复制操作期间，您可以将 ` -preserve-atime` 标志与 <code>copy</code> 命令结合使用，以保留源的访问时间。
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -820,6 +844,18 @@
 <div class="paragraph">
 <p>sync 命令可比较数据内容，时间戳，文件属性，所有权和安全信息。</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注">
+</td>
+<td class="content">
+在同步操作期间，您可以将 ` -preserve-atime` 标志与 <code>sync</code> 命令结合使用，以保留源上的访问时间。
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -840,6 +876,27 @@
 <h3 id="验证">验证</h3>
 <div class="paragraph">
 <p>使用 <code>verify</code> 命令可读取源共享和目标共享并对其进行比较，从而提供有关不同之处的信息。无论使用哪种工具执行复制或同步，您都可以在任何源和目标上使用命令。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/xcp/images/note.svg" alt="注">
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>在验证操作期间，您可以将 ` -preserve-atime` 标志与 <code>verify</code> 命令结合使用，以保留源上的访问时间。</p>
+</li>
+<li>
+<p>在验证操作期间，您可以将 ` -noatime` 标志与 <code>verify</code> 命令结合使用，以排除访问时间差异。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>

@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         迁移 NFS 数据
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-smb-data.html">
         迁移 SMB 数据
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
+        其他 NFS 功能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 故障排除</div>
       </a>
@@ -757,7 +761,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:41 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:44:49 +0000">02/28/2022</time>
     
   
 
@@ -770,15 +774,30 @@
           style="border-radius: 50%;"/>
   </a>
   
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
 </span>
 
 
 </p>
 
 
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph lead">
 <p>现在， XCP NFS 支持使用 POSIX 连接器为数据迁移提供源路径和目标路径。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="支持的功能">支持的功能</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>POSIX 连接器支持以下功能：</p>
 </div>
@@ -792,9 +811,19 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="路径语法">路径语法</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>POSIX 连接器的路径语法为 ` \file ： //&lt; Linux 上的挂载路径 &gt;` 。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="设置-posix-连接器">设置 POSIX 连接器</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>要设置 POSIX 连接器，必须执行以下任务：</p>
 </div>
@@ -847,8 +876,49 @@ sudo chmod -R g+w /mnt/xcp-catalog</pre>
 <div class="paragraph">
 <p>XCP 目录不会存储数据，但会存储扫描和复制文件名，目录名以及其他元数据。因此，建议您为允许的用户配置目录文件系统权限，使其能够保护存储的元数据。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="所有权-uid-和-gid">所有权（ UID 和 GID ）</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>默认情况下，当您设置为常规用户时，对 POSIX 或 NFS3 目标执行 <code>copy</code> 命令时，不会尝试设置所有权（用户 ID （ UID ）和组 ID （ GID ）。所有权设置通常由管理员执行。当用户 A 从用户 B 复制文件时，用户 A 希望拥有目标。但是，如果 root 用户复制文件，则不会出现这种情况。当 root 用户复制这些文件时， ` chown` 选项会更改此行为，以便带有 ` -chown` 的非 root <code>copy</code> 命令尝试设置 UID 和 GID 。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="增加打开文件描述符的最大数量">增加打开文件描述符的最大数量</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>为了获得最佳性能和可靠性，您可以增加所有节点上 XCP 用户的最大打开文件描述符数。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
+<li>
+<p>使用以下命令打开文件： <code>vi /etc/security/limits.conf</code></p>
+</li>
+<li>
+<p>将以下行添加到文件中： ` &lt; 用户名 &gt; - nodfile 999999`</p>
+<div class="ulist">
+<ul>
+<li>
+<p>示例 *</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>root - nofile 999999</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>请参见 <a href="https://access.redhat.com/solutions/61334^">"Red Hat 解决方案"</a> 有关详细信息 &#8230;&#8203;</p>
+</div>
+</div>
 </div>
 
     </article>

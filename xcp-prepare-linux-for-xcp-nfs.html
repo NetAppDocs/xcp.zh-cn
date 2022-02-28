@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         迁移 NFS 数据
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-smb-data.html">
         迁移 SMB 数据
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
+        其他 NFS 功能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 故障排除</div>
       </a>
@@ -757,11 +761,19 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:41 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:44:49 +0000">02/28/2022</time>
     
   
 
 <span>提供者
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
   <a target="_blank" href="https://github.com/netapp-pcarriga">
     <img  class="avatar avatar-small"
           alt="netapp-pcarriga"
@@ -864,6 +876,9 @@
 <li>
 <p>必须通过 <code>root</code> 访问 XCP Linux 客户端主机来导出源卷和目标卷。</p>
 </li>
+<li>
+<p>对于 NFSv4 ACL 迁移， NFSv4 要求对需要迁移 ACL 的卷使用编码语言 UTF-8 。</p>
+</li>
 </ul>
 </div>
 <div class="admonitionblock note">
@@ -873,7 +888,16 @@
 <img src="/us-en/xcp/images/note.svg" alt="注">
 </td>
 <td class="content">
-为了防止管理员意外修改源卷，您应将 NFSv3 和 NFSv4 导出目录的源卷配置为只读。
+<div class="ulist">
+<ul>
+<li>
+<p>为了防止管理员意外修改源卷，您应将 NFSv3 和 NFSv4 导出目录的源卷配置为只读。</p>
+</li>
+<li>
+<p>在 ONTAP 中，您可以使用诊断 ` -atime-update` 选项来保留 atime 。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。</p>
+</li>
+</ul>
+</div>
 </td>
 </tr>
 </table>

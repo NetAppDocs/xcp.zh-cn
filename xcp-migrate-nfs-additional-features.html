@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head class="at-element-marker">
-  <title>XCP v1.8 文档</title>
+  <title>其他 NFS 功能</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
   <meta http-equiv="language" content="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:title" content="XCP v1.8 文档" />
+  <meta property="og:title" content="其他 NFS 功能" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://docs.netapp.com/zh-cn/xcp/home.html" />
-	<meta property="og:description" content="欢迎使用 XCP 信息库，其中包含指向早期版本的链接。" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/xcp/xcp-migrate-nfs-additional-features.html" />
+	<meta property="og:description" content="XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。" />
   <meta property="og:image" content="https://docs.netapp.com/zh-cn/xcp/images/logo-tophat-social.png" />
   <meta property="og:image:alt" content="NetApp Logo" />
   <meta name="format-detection" content="telephone=no">
@@ -18,8 +18,8 @@
   <meta http-equiv="nss-type" content="Product Documentation"/>
   <meta http-equiv="nss-subtype" content="User Guide"/>
   
-  <meta name="description" content="欢迎使用 XCP 信息库，其中包含指向早期版本的链接。">
-  <meta name="keywords" content=" information, library, releases, documentation, install, configure, xcp">
+  <meta name="description" content="XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。">
+  <meta name="keywords" content=" xcp, nfs, chomod, chown, posix, ownership, change, file, path, directory, command, scan">
   
   
 
@@ -281,13 +281,13 @@
           <ul class="n-menu__list">
             <li class="n-menu__list-column">
               <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/zh-cn/xcp/home.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                  <a href="https://docs.netapp.com/zh-cn/xcp/xcp-migrate-nfs-additional-features.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/us-en/xcp/home.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                  <a href="https://docs.netapp.com/us-en/xcp/xcp-migrate-nfs-additional-features.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ja-jp/xcp/home.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                  <a href="https://docs.netapp.com/ja-jp/xcp/xcp-migrate-nfs-additional-features.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
                 </li><li class="n-menu__list-item n-menu__list-item--level-1">
-                  <a href="https://docs.netapp.com/ko-kr/xcp/home.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
+                  <a href="https://docs.netapp.com/ko-kr/xcp/xcp-migrate-nfs-additional-features.html" class="n-menu__header-text"><span translate="no" class="notranslate">한국어</span></a>
                 </li></ul>
             </li>
           </ul>
@@ -344,15 +344,6 @@
   <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
         <a target="_blank" href="/zh-cn/xcp/pdfs/fullsite-sidebar/开始使用_XCP.pdf" >
           <img src="/zh-cn/xcp/images/pdf.png" width="16" height="16"/>此文档站点的 PDF</a>
-    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
-  <a target="_blank" href="/zh-cn/xcp/pdfs/pages/home.pdf" >
-    <img src="/zh-cn/xcp/images/pdf.png" width="16" height="16"/>
-    PDF of this page
-  </a>
-</li>
-
-</ul>
-  
 
 
 
@@ -532,6 +523,15 @@
 
 
 
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-cn/xcp/pdfs/pages/xcp-migrate-nfs-additional-features.pdf" >
+    <img src="/zh-cn/xcp/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
 
 
 
@@ -610,7 +610,7 @@
     $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
   });
 </script><div class="sidebar-nav-container">
-  <ul id="mysidebar" class="nav"><li class="  active "><a class="na-navbar-padding" href="/zh-cn/xcp/home.html">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/home.html">
         主页
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/releasenotes.html">
         发行说明
@@ -684,7 +684,7 @@
         迁移 NFS 数据
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-smb-data.html">
         迁移 SMB 数据
-      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
         其他 NFS 功能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 故障排除</div>
@@ -731,7 +731,7 @@
           <a href="/zh-cn/xcp/">XCP</a>
         </li>
         <li class="n-breadcrumb__list-item">
-          XCP v1.8 文档
+          其他 NFS 功能
         </li>
       </ul>
     </div>
@@ -754,7 +754,7 @@
     </div>
   </span>
 </div><div class="n-doc__component-detail-heading-wrap">
-  <h1 class="n-doc__component-detail-heading">XCP v1.8 文档</h1>
+  <h1 class="n-doc__component-detail-heading">其他 NFS 功能</h1>
 </div>
 
 
@@ -766,11 +766,11 @@
   
 
 <span>提供者
-  <a target="_blank" href="https://github.com/netapp-pcarriga">
+  <a target="_blank" href="https://github.com/netapp-aoife">
     <img  class="avatar avatar-small"
-          alt="netapp-pcarriga"
+          alt="netapp-aoife"
           width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/77334475?v=4"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
           style="border-radius: 50%;"/>
   </a>
   
@@ -780,11 +780,72 @@
 </p>
 
 
-<div class="paragraph">
-<p>欢迎使用 XCP 信息库。您可以在此处找到有关 XCP v1.8 软件的文档，其中包括如何安装，配置和使用 XCP 。</p>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。您可以使用 XCP <code>chown</code> 和 <code>chmod</code> 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。</p>
 </div>
 <div class="paragraph">
-<p>上提供了早期版本 XCP 的文档 <a href="https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064" target="_blank" rel="noopener">"NetApp 支持站点"</a>。</p>
+<p>在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP <code>chown</code> 和 <code>chmod</code> 命令的工作方式与 Linux <code>chown</code> 和 <code>chmod</code> 命令类似。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chmod">chmod</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>chmod</code> 命令可扫描并更改选定目录结构中所有文件的文件权限。<code>chmod</code> 命令需要模式或引用以及 NFS 共享或 POSIX 路径作为变量。XCP <code>chmod</code> 递归更改给定路径的权限。您可以使用 <code>chmod</code> 命令显示扫描的总文件数以及输出中已更改的权限。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>示例： *</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>xcp chmod -mode 777 NFS [server:/export path | file://&lt;NFS mounted path&gt;]
+xcp chmod -mode 707 nfs_server01.netapp.com:/export1
+xcp chmod -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com: export1
+xcp chmod -match “fnm(‘file.txt’)” -mode 111 file:///mnt/nfs_mount_point/
+xcp chmod -exclude “fnm(‘file.txt’)” -mode 111 file:///demo/user1/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>有关详细信息，请运行 <code>XCP help chmod</code> 命令。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chown">chown</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>chown</code> 命令可扫描并更改选定目录结构中所有文件的所有权。<code>chown</code> 命令需要使用 NFS 共享或 POSIX 路径作为变量。XCP <code>chown</code> 递归更改给定路径的所有权。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>示例 *</p>
+</li>
+</ul>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>xcp chown -user user1 NFS [server:/export path | file://&lt;NFS mounted path&gt;
+xcp chown -user user1 nfs_server01.netapp.com:/export1
+xcp chown -user user1 -group group1 nfs_server01.netapp.com:/export1/dir1/
+xcp chown  -reference nfs_server01.netapp.com:/export/dir1/file.txt  nfs_server02.netapp.com:/export1
+xcp chown -match “fnm(‘file.txt’)” -user user1 file:///mnt/nfs_mount_point/
+xcp chown -exclude “fnm(‘file.txt’)” -user user1 -group group1
+xcp chown -user-from user1 -user user2 file:///mnt/nfs_mount_point/
+xcp chown -group-from group1 -group group2 nfs_server01.netapp.com:/export1/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>有关详细信息，请运行 <code>XCP help chown</code> 命令。</p>
+</div>
+</div>
 </div>
 
     </article>
@@ -796,8 +857,8 @@
   <div class="page-nav-toolbar">
     <div id="version-dropdown"></div>
     <div class="page-nav-contribute"  >
-      <a target="_blank" href="https://github.com/NetAppDocs/xcp/issues/new?body=Page%3A%20[XCP v1.8 文档](https://docs.netapp.com/zh-cn/xcp/home.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/xcp/images/discuss-sm.svg" class="github-icon" />请求文档变更</a>
-      <a target="_blank" href="https://github.com/NetAppDocs/xcp/blob/main/home.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/xcp/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/xcp/issues/new?body=Page%3A%20[其他 NFS 功能](https://docs.netapp.com/zh-cn/xcp/xcp-migrate-nfs-additional-features.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/xcp/images/discuss-sm.svg" class="github-icon" />请求文档变更</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/xcp/blob/main/xcp-migrate-nfs-additional-features.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/xcp/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a>
       <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/xcp/images/article-sm.svg" class="github-icon" />提供者指南</a>
     </div>
     <div class="page-nav-container">

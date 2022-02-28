@@ -533,6 +533,8 @@
 
 
 
+
+
           
         </li>
       </ul>
@@ -682,6 +684,8 @@
         迁移 NFS 数据
       </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-smb-data.html">
         迁移 SMB 数据
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/xcp/xcp-migrate-nfs-additional-features.html">
+        其他 NFS 功能
       </a></li></ul></li><li class="subfolders "><a href="#">
         <div class="na-navbar-padding"> 故障排除</div>
       </a>
@@ -757,11 +761,19 @@
 <p class="page-details">
   
     
-    <time datetime="2022-01-31 13:25:41 +0000">01/31/2022</time>
+    <time datetime="2022-02-28 14:44:49 +0000">02/28/2022</time>
     
   
 
 <span>提供者
+  <a target="_blank" href="https://github.com/netapp-aoife">
+    <img  class="avatar avatar-small"
+          alt="netapp-aoife"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/92876203?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
   <a target="_blank" href="https://github.com/ciarm">
     <img  class="avatar avatar-small"
           alt="ciarm"
@@ -786,14 +798,6 @@
           style="border-radius: 50%;"/>
   </a>
   
-  <a target="_blank" href="https://github.com/netapp-aoife">
-    <img  class="avatar avatar-small"
-          alt="netapp-aoife"
-          width="20" height="20"
-          src="https://avatars.githubusercontent.com/u/92876203?v=4"
-          style="border-radius: 50%;"/>
-  </a>
-  
   <a target="_blank" href="https://github.com/netapp-aherbin">
     <img  class="avatar avatar-small"
           alt="netapp-aherbin"
@@ -815,8 +819,9 @@
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="配置存储">配置存储</h3>
+<div class="sect1">
+<h2 id="配置存储">配置存储</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>XCP SMB 过渡和迁移具有以下用户登录要求：</p>
 </div>
@@ -827,12 +832,9 @@
 </li>
 <li>
 <p>将迁移或 XCP 主机用户添加到 Active Directory 的审核和安全日志策略中。要在 Windows 10 上查找 " 管理审核和安全日志 " 策略，请执行以下步骤：</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
+<div class="olist loweralpha">
 <div class="title">步骤</div>
-<ol class="arabic">
+<ol class="loweralpha" type="a">
 <li>
 <p>打开 * 组策略编辑器 * 对话框。</p>
 </li>
@@ -844,14 +846,13 @@
 </li>
 <li>
 <p>要添加 XCP 主机用户，请选择 * 添加用户或组 * 。</p>
-</li>
-</ol>
-</div>
 <div class="paragraph">
 <p>有关详细信息，请参见 <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953(v%3Dws.11)" target="_blank" rel="noopener">"管理审核和安全日志"</a>。</p>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>目标存储系统： XCP 主机用户必须具有读写访问权限。</p>
 </li>
@@ -881,6 +882,38 @@
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="配置-windows-客户端">配置 Windows 客户端</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>将目标存储箱和源存储箱添加到主机文件：</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>导航到以下位置： ` （ C ： \Windows\System32\drivers\etc\hosts ）`</p>
+</li>
+<li>
+<p>以以下格式将以下主机条目插入到文件中：</p>
+<div class="paragraph">
+<p>` &lt; 源数据 SVM 数据接口 IP&gt; &lt; 源 CIFS 服务器名称 &gt; &lt; 目标数据 SVM 数据接口 IP&gt; &lt; 目标 CIFS 服务器名称 &gt;`</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>示例 *</p>
+<div class="paragraph">
+<p><span class="image"><img src="./media/xcp_image17.png" alt="主机文件示例"></span></p>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
