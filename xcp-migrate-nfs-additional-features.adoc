@@ -5,6 +5,7 @@ keywords: xcp, nfs, chomod, chown, posix, ownership, change, file, path, directo
 summary: XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。 
 ---
 = 其他 NFS 功能
+:allow-uri-read: 
 
 
 [role="lead"]

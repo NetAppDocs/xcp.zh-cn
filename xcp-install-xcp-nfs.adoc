@@ -6,6 +6,7 @@ summary: 安装 XCP NFS
 ---
 = 安装 XCP NFS
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

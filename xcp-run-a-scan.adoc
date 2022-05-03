@@ -6,6 +6,7 @@ summary: 运行扫描
 ---
 = 运行扫描
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

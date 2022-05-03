@@ -6,6 +6,7 @@ summary: 添加文件服务器
 ---
 = 添加文件服务器
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

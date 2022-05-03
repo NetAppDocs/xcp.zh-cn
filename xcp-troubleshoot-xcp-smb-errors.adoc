@@ -6,6 +6,7 @@ summary: 对 XCP SMB 错误进行故障排除
 ---
 = 对 XCP SMB 错误进行故障排除
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

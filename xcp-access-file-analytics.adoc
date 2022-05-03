@@ -6,6 +6,7 @@ summary: 文件分析提供扫描结果的图形视图
 ---
 = 访问文件分析
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

@@ -5,6 +5,7 @@ keywords: xcp, nfs, hdfs, connector, configure, security
 summary: XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，并支持使用横向扩展架构来加快数据迁移速度。 
 ---
 = XCP NFS 附加功能
+:allow-uri-read: 
 
 
 [role="lead"]

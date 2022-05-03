@@ -6,6 +6,7 @@ summary: 性能调整（仅限 NFS ）
 ---
 = 性能调整
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

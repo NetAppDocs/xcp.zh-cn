@@ -5,6 +5,7 @@ keywords: xcp, nfs, hdfs, connector, configure
 summary: HDFS 连接器使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。 
 ---
 = 配置 HDFS 连接器
+:allow-uri-read: 
 
 
 [role="lead"]

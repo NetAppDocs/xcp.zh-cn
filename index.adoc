@@ -6,6 +6,7 @@ summary: NetApp XCP 支持可扩展的高性能数据迁移
 ---
 = 开始使用 XCP
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

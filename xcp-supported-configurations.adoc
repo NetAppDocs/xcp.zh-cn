@@ -6,6 +6,7 @@ summary: IMT 中列出了 XCP 支持的配置，例如主机， ONTAP 版本和�
 ---
 = 支持的配置
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

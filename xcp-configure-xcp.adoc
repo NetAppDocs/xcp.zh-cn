@@ -6,6 +6,7 @@ summary: 配置 XCP 的步骤
 ---
 = 配置 XCP NFS
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

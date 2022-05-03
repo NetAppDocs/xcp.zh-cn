@@ -6,6 +6,7 @@ summary: 为 XCP SMB 准备 Windows
 ---
 = 为 XCP SMB 准备 Windows
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

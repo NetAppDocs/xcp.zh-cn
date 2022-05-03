@@ -6,6 +6,7 @@ summary: 安装或升级适用于 NFS 的文件分析
 ---
 = 安装 NFS 文件分析
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

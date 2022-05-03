@@ -6,6 +6,7 @@ summary: 安装或升级适用于 SMB 的文件分析
 ---
 = 安装适用于 SMB 的文件分析
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

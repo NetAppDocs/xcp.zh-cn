@@ -6,6 +6,7 @@ summary: 您可以通过 Muse 检查是否使用正确的端口进行 XCP 迁移
 ---
 = XCP 使用的端口
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

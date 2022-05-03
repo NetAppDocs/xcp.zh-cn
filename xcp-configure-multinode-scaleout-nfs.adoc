@@ -5,6 +5,7 @@ keywords: xcp, configure, nfs, multinode, scale, out
 summary: 要克服单个节点的性能限制，您可以使用单个 XCP copy 命令在多个 Linux 系统或集群节点上运行工作人员。 
 ---
 = 配置多节点横向扩展
+:allow-uri-read: 
 
 
 [role="lead"]

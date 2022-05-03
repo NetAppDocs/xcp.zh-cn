@@ -6,6 +6,7 @@ summary: XCP 提供了可在 XCP 操作中使用的筛选器选项
 ---
 = 筛选器
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

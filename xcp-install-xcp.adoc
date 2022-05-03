@@ -6,6 +6,7 @@ summary: 安装 XCP
 ---
 = 安装 XCP
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

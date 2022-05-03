@@ -6,6 +6,7 @@ summary: 为 XCP NFS 准备 Linux
 ---
 = 为 XCP NFS 准备 Linux
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

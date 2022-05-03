@@ -5,6 +5,7 @@ keywords: xcp, configure, nfs, posix, connector
 summary: 通过 POSIX 连接器， XCP 可以访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。 
 ---
 = 配置 POSIX 连接器
+:allow-uri-read: 
 
 
 [role="lead"]

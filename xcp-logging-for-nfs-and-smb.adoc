@@ -5,6 +5,7 @@ keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb
 summary: 为 XCP NFS 和 SMB 记录日志 
 ---
 = NFS 和 SMB 的日志记录（可选）
+:allow-uri-read: 
 
 
 

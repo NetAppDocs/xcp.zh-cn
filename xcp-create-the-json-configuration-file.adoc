@@ -6,6 +6,7 @@ summary: 创建 JSON 配置文件
 ---
 = 创建 JSON 配置文件
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

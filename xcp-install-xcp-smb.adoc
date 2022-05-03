@@ -6,6 +6,7 @@ summary: 安装 XCP SMB
 ---
 = 安装 XCP SMB
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

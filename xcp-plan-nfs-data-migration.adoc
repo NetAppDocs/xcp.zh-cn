@@ -6,6 +6,7 @@ summary: 规划 NFS 数据迁移
 ---
 = 规划 NFS 数据迁移
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 

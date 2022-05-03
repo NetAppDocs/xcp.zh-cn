@@ -6,6 +6,7 @@ summary: 迁移数据
 ---
 = 迁移数据
 :hardbreaks:
+:allow-uri-read: 
 :nofooter: 
 :icons: font
 :linkattrs: 
