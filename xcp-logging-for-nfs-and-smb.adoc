@@ -5,12 +5,13 @@ keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, smb
 summary: 为 XCP NFS 和 SMB 记录日志 
 ---
 = NFS 和 SMB 的日志记录（可选）
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
 
-
-
-
-== NFS 和 SMB 的日志记录（可选）
 
 [role="lead"]
 为 XCP NFS 和 SMB 记录日志。
@@ -82,7 +83,7 @@ XCP 支持的一个常见选项；将其值设置为 true 会在要支持的消�
 |===
 
 
-= 创建 JSON 配置文件
+== 创建 JSON 配置文件
 
 如果要启用事件日志消息，系统日志客户端或客户日志记录，请完成以下步骤。
 
