@@ -795,7 +795,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-03 06:03:56 +0000">05/03/2022</time>
+    <time datetime="2022-05-27 14:28:48 +0000">05/27/2022</time>
     
   
 
@@ -809,8 +809,9 @@
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="复制">复制</h3>
+<div class="sect1">
+<h2 id="复制">复制</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>copy</code> 命令可扫描整个源目录结构并将其复制到目标 NFSv3 导出。<code>copy</code> 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度以及经过的时间详细信息将在复制操作结束时显示</p>
 </div>
@@ -854,8 +855,10 @@
 <p>有关详细信息，请参见 <code>XCP 帮助副本</code> 。</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="恢复">恢复</h3>
+</div>
+<div class="sect1">
+<h2 id="恢复">恢复</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>reume</code> 命令可通过指定目录索引名称或编号来重新启动先前中断的复制操作。先前复制操作的目录索引名称或编号存储在 ` &lt;catalog path&gt; ： /catalog /index` 目录中。</p>
 </div>
@@ -875,8 +878,10 @@
 <p>有关详细信息，请参见 <code>XCP 帮助恢复</code> 。</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="同步">同步</h3>
+</div>
+<div class="sect1">
+<h2 id="同步">同步</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>sync</code> 命令可使用目录索引标记名称或先前复制操作的编号扫描对源 NFS 目录执行的更改和修改。源增量更改会复制并应用于目标目录。在同步操作 # 之后，旧目录索引编号将替换为新的目录索引编号（ .下划线 ） # 。</p>
 </div>
@@ -896,8 +901,10 @@
 <p>有关详细信息，请参见 <code>XCP 帮助同步</code> 。</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="验证">验证</h3>
+</div>
+<div class="sect1">
+<h2 id="验证">验证</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>执行复制操作后， <code>verify</code> 命令会对源目录和目标目录进行完整的逐字节数据比较，而不会使用目录索引编号。命令将检查修改时间以及其他文件或目录属性，包括权限。该命令还会读取两端的文件并比较数据。</p>
 </div>
@@ -939,6 +946,7 @@
 </div>
 <div class="paragraph">
 <p>有关详细信息，请参见 <code>XCP 帮助验证</code> 。</p>
+</div>
 </div>
 </div>
 
