@@ -29,11 +29,11 @@ summary: 要克服单个节点的性能限制，您可以使用单个 XCP copy �
 +
 .. 在主节点上生成密钥：
 +
-`ssh-keygen -b 2048 -t rsa -f / root/.ssh/id_rsa -q -N '`
+`ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N '`
 
 .. 将密钥复制到所有工作节点：
 +
-`ssh-copy-id -i /root/.ssh/ id_rsa.pub root@worker1`
+`ssh-copy-id -i /root/.ssh/id_rsa.pub root@worker1`
 
 
 

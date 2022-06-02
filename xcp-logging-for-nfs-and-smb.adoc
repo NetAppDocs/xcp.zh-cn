@@ -32,7 +32,7 @@ XCP 支持使用 `xcpLogConfig.json` JSON 配置文件配置多个可选功能�
 | 配置文件默认位置 | /opt/netapp/xFiles/XCP/ | C ： \NetApp\XCP\ConfigFile 
 
 
-| 自定义位置需要 `XCP_config_DIR` 环境变量 | error未找到参考源。 | 不适用 
+| 自定义位置需要 `XCP_config_DIR` 环境变量 | 使用针对`XCP_config_DIR`变量设置的位置 | 不适用 
 |===
 JSON 配置文件选项区分大小写。这些选项对于 XCP NFS 和 XCP SMB 是相同的。
 
@@ -113,7 +113,10 @@ XCP 支持的一个常见选项；将其值设置为 true 会在要支持的消�
 }
 ----
 . 对于要启用的任何功能，请将 `isenabled` 值更改为 `true` 。
-. 将文件命名为 `xcpLogConfig.json` ，并将其保存到 * 错误！未找到引用源。 *
+. 将文件命名为`xcpLogConfig.json`并将其保存到默认位置：/opt/netapp/xFiles/XCP/
++
+如果设置了`XCP_config_DIR`环境变量、请将`xcpLogConfig.json`文件保存在与`XCP_config_DIR`变量设置的相同位置。
+
 
 
 |===
