@@ -4,10 +4,10 @@ sidebar: sidebar
 keywords: information, library, releases, documentation, install, configure, xcp 
 summary: 欢迎使用 XCP 信息库，其中包含指向早期版本的链接。 
 ---
-= XCP v1.8 文档
+= XCP v1.9文档
 :allow-uri-read: 
 
 
-欢迎使用 XCP 信息库。您可以在此处找到有关 XCP v1.8 软件的文档，其中包括如何安装，配置和使用 XCP 。
+欢迎使用 XCP 信息库。您可以在此处找到有关XCP v1.9软件的文档、其中包括如何安装、配置和使用XCP。
 
 上提供了早期版本 XCP 的文档 link:https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064["NetApp 支持站点"^]。

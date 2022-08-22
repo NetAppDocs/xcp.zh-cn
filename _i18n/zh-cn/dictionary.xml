@@ -469,7 +469,6 @@
   <block id="71aef63bcbc5d0c5e78ca147512cf71f" category="cell">`XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： ` ' 未在帐户名称和安全 ID 之间进行映射 '`</block>
   <block id="0ab4127ba4947453135e709735a6fc6c" category="cell">回退用户 / 组不在目标系统（目标框）或 Active Directory 中。使用正确的回退用户 / 组选项重新运行命令</block>
   <block id="2e4e559c9f6001c3134b8795d8e47e81" category="cell">回退用户 / 组选项的参数不正确。使用正确的语法重新运行命令以回退用户 / 组选项</block>
-  <block id="ca5b87c22d59ad15700c80cec3677245" category="cell">`XCP copy` with ACL migration eror message logged in xcp.log file ： `pywintypes.error` ： ` （ 1314 ， GetNamedSecurityInfo ， ' A required privilege is not held by the client.' ）`</block>
   <block id="63debe27683f1f8c225ad14c415dffcc" category="summary">迁移数据</block>
   <block id="dfdcc7639b3e014792b21c9f7d5c85c0" category="summary">安装 XCP NFS</block>
   <block id="4e5b1a9c903c0437af920974c6501bd6" category="paragraph">如果要升级 XCP ，请删除当前安装并将其替换为最新版本的新安装。本节详细介绍了在 Linux 客户端上首次设置 XCP 以及安装此 ini 文件配置的系统要求和过程。</block>
@@ -482,9 +481,6 @@
   <block id="cae408e146414f197563c67edf318286" category="list-text">将此许可证复制到 ` /opt/netapp/xFiles/XCP/` ：</block>
   <block id="8ab783e73539b82c1414bd94a3037376" category="list-text">验证许可证文件是否已复制到 ` /opt/netapp/xFiles/XCP/` ：</block>
   <block id="181af529472b0626a27e692b85666546" category="summary">环境变量（仅限 NFS ）</block>
-  <block id="0dd6ca798bb0f2d45b2b59c074793ac6" category="paragraph">环境变量 XCP_config_DIR 会覆盖默认位置 ` /opt/netapp/xFiles/XCP` 。如果设置，则值应为操作系统文件系统路径，可能是挂载的 NFS 目录的路径。设置自定义配置目录后，日志文件名为 `Xcp.hostname.log` ，而不是默认值 `Xcp.log` 。</block>
-  <block id="ded2d02a4fd60f232dc6bbe8614960b6" category="paragraph">环境变量 XCP_LOG_DIR 会覆盖将 XCP 日志存储在配置目录中的默认位置。如果设置，则值应为操作系统文件系统路径，可能是挂载的 NFS 目录的路径。设置自定义日志目录后，日志文件名为 `Xcp.hostname.log` ，而不是默认的 `Xcp.log` 。</block>
-  <block id="b2a82a89c888f120cc61565aed8191c8" category="paragraph">环境变量 Xcp_catalog 路径会覆盖 xcp.in 中的设置如果设置，则此值应采用 XCP 路径格式 `server ： export[ ：子目录 ]` 。</block>
   <block id="8cf04a9734132302f96da8e113e80ce5" category="sidebar">主页</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">发行说明</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">故障排除</block>
@@ -498,7 +494,6 @@
   <block id="e31d321ee0fdaaaf8ac9ef21026a1fd0" category="paragraph">HDFS 连接器支持从 HDFS 到 NFS 的 `copy` 命令操作。</block>
   <block id="2fcca0f204e97a80f73f130b2a96c173" category="paragraph">HDFS 连接器的路径语法为 `HDFS ： //[user@host ： port]/full-path` 。</block>
   <block id="895513c3073c7d8c0c3b54666a487132" category="admonition">如果未指定用户，主机和端口，则 XCP 将调用 `hdfsConnect` ，并将主机设置为 `default` ，而将端口设置为 `0` 。</block>
-  <block id="e47d29cbfac9b28d909784fb18f8d023" category="paragraph">要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如，您可以使用 `https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- redhat.html` 为 MapR 集群设置客户端。</block>
   <block id="c00c4274d8d993e8f4e353057a47bf05" category="paragraph">完成 HfDS 客户端设置后，必须在客户端上完成配置。要在 XCP 命令中使用 HDFS 路径，必须具有以下环境变量：</block>
   <block id="daf45f14fc0d11979b90c046f09e7692" category="list-text">NHDFS_LIBHDFS_path</block>
   <block id="ca3c0ce4cd4cbb196cc438fa98d8e563" category="list-text">NHDFS_libjvm_path</block>
@@ -506,14 +501,11 @@
   <block id="5315f815cd8e347436520e95ce6fe6a5" category="cell">XCP 扫描错误：找不到网络名称</block>
   <block id="3f83f3f6c25db286fb620064231f9217" category="cell">XCP 副本错误：错误无法获取回退安全主体错误消息记录在 xcp.log 文件中： `pywintypes.error ：（ 1722 ， "LookupAccountName" ， "RPC 服务器不可用。 " ）`</block>
   <block id="4be936fd7e612c47d18eaec68c3932c3" category="cell">`XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： `pywintypes.error ：（ 87 ， "LookupAccountName" ， " 参数不正确。 " ）`</block>
-  <block id="19989536bdfa1e7f11ff53bc7877ff66" category="cell">用户面临与安全描述符相关的问题描述，因为借助迁移用户拥有的权限， XCP 只能获取所有者，组和 DACL ，但无法获取 SACL 。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="bf86284529584845670edb0c3a95e5ec" category="summary">通过 POSIX 连接器， XCP 可以访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。</block>
   <block id="4e8be65645e1c09ea65c5bf2fa334289" category="doc">配置 POSIX 连接器</block>
   <block id="159d5dad3025108b6e9c7a70ebc1dcb0" category="paragraph">现在， XCP NFS 支持使用 POSIX 连接器为数据迁移提供源路径和目标路径。</block>
   <block id="95ddd83f06b46164d9007a3fec84bd09" category="paragraph">POSIX 连接器支持以下功能：</block>
   <block id="61d64caacf6145ab9260325232ace1f3" category="list-text">对于支持 nanosecond `atime` ， `mtime` 和 `ctime` 的 POSIX 文件系统， `scan` 命令将获取完整值（秒和纳秒），然后 `copy` 命令将其设置</block>
-  <block id="f17259fd5fd04df8d00de9bae40078cc" category="inline-link-macro">配置安全性</block>
-  <block id="efed384e39c6ae674248adc931cd6fe9" category="list-text">与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。请参见 <block ref="884f9726fabc578536c00929cd2fe7e3" category="inline-link-macro-rx"></block></block>
   <block id="d67f0d6f3689c0b2c96700d038812574" category="paragraph">POSIX 连接器的路径语法为 ` \file ： //&lt; Linux 上的挂载路径 &gt;` 。</block>
   <block id="9cdc4f2bba7e1f74ab797e2bfab30c1a" category="paragraph">要设置 POSIX 连接器，必须执行以下任务：</block>
   <block id="974be5615abf4fe362f269edc57cc8b9" category="list-text">挂载源卷和目标卷</block>
@@ -572,7 +564,6 @@
   <block id="58e0ac0bb18008430f97560108149515" category="cell">httpd 服务失败</block>
   <block id="3be2db89060ab9c2e383a1fbdd7213a2" category="list-text">检查 HTTPD 服务状态：</block>
   <block id="773d6c478422286a9fad650c3ddd09dd" category="paragraph">`sUdo systemctl status httpd | grep Active`</block>
-  <block id="7c6efba1432d256b5f2c9286332f395e" category="cell">验证您的系统是否可以对安装了 XCP 文件分析且 HTTPD 正在运行的 Linux 计算机执行 ping 操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="fca5f9179b264aa12937804595452dfa" category="list-text">验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="3721f4d27bf1373c3dce1560f7ad4013" category="list-text">验证用户是否为 "admin" 且密码是否正确。</block>
   <block id="6211d4f14a03b437fa7d26c363715474" category="list-text">发出 `XCP 服务状态` 以验证 XCP 服务是否正在运行。</block>
@@ -655,8 +646,6 @@
   <block id="15b9d4023566740949c10a9a9533c35c" category="list-text">验证目录的 XCP Linux 客户端主机配置文件条目是否已修改。</block>
   <block id="4c82d2eef29d76c200ed39d04be95fc0" category="section-title">为非 root 用户配置此 ini 文件</block>
   <block id="c9beec711f96849f59fc8b461a17c844" category="paragraph">作为非 root 用户，您无权挂载 NFS 文件系统。需要 root 用户先挂载目录卷，然后，作为运行 XCP 的非 root 用户，如果您对目录卷具有读 / 写权限，则可以使用 POSIX 连接器访问挂载的目录卷。挂载卷后，您可以将目录添加到路径：</block>
-  <block id="c3aaf0d0d35accc2221dcf51014b407d" category="doc">XCP v1.8 文档</block>
-  <block id="5cf3f2c5fac08fae3fa80a4e2a9266eb" category="paragraph">欢迎使用 XCP 信息库。您可以在此处找到有关 XCP v1.8 软件的文档，其中包括如何安装，配置和使用 XCP 。</block>
   <block id="145d53a32d3487520bd34eee8e20c389" category="summary">XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，并支持使用横向扩展架构来加快数据迁移速度。</block>
   <block id="2113611c6320a48f92fea30c44c76f5a" category="doc">XCP NFS 附加功能</block>
   <block id="5c8249d1b7838ae94a73676b3af9091d" category="section-title">支持 NFSv4</block>
@@ -703,8 +692,6 @@
   <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` 命令结合使用，以保留源上的访问时间。</block>
   <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。</block>
   <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">在验证操作期间，您可以将 ` -noatime` 标志与 `verify` 命令结合使用，以排除访问时间差异。</block>
-  <block id="bfd97ee6bc45bf0c46cc517744e9e74f" category="doc">XCP v1.1.1 发行说明</block>
-  <block id="2361f2046255643526d0bc654680e3f7" category="paragraph">。 <block ref="658eea0f41de67e93f9c7baad3cdc904" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">配置 Windows 客户端</block>
   <block id="8723065565846862b1fa4bd925384734" category="list-text">将目标存储箱和源存储箱添加到主机文件：</block>
   <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">导航到以下位置： ` （ C ： \Windows\System32\drivers\etc\hosts ）`</block>
@@ -725,22 +712,44 @@
   <block id="ccdcaa8e5fef5673db21a65af6bc516b" category="paragraph">请参见 <block ref="86f0b7d75368fee2dcdb28d15e03688c" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
   <block id="258c43132f7d0ee8dca2932b84e55383" category="summary">XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。</block>
   <block id="ce0d872fae9d962e1e9e1ff7397f5840" category="doc">其他 NFS 功能</block>
-  <block id="237f1be769ddaca2a6c7f5fb510296bc" category="paragraph">XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。</block>
   <block id="c353351e2cab6270e61ca76351aa5192" category="paragraph">在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP `chown` 和 `chmod` 命令的工作方式与 Linux `chown` 和 `chmod` 命令类似。</block>
   <block id="c8f43293a0d371a440cac8bb93307056" category="section-title">chmod</block>
-  <block id="a4d26be6e1a014201192b6f7a5db4c72" category="paragraph">`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod` 命令需要模式或引用以及 NFS 共享或 POSIX 路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。</block>
   <block id="ed4ffa57a1bdcb56aaf1d22b8d722821" category="paragraph">有关详细信息，请运行 `XCP help chmod` 命令。</block>
   <block id="845fbaad258ca858251e4c4c0ad53eb0" category="section-title">chown</block>
-  <block id="12ef08f5f383690078c3df9936bfe139" category="paragraph">`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown` 命令需要使用 NFS 共享或 POSIX 路径作为变量。XCP `chown` 递归更改给定路径的所有权。</block>
   <block id="8fa3ac473e7edac7e52a655e5271e49f" category="paragraph">有关详细信息，请运行 `XCP help chown` 命令。</block>
   <block id="fe3babe18b970588464b8384c50d8cb3" category="paragraph">`scan` 命令可递归扫描整个 SMB 共享，并在扫描结束时列出所有文件。</block>
   <block id="e7cd4019e47684c4ac82ed229910b175" category="admonition">在扫描操作期间，您可以将 ` -preserve-atime` 标志与 `scan` 命令结合使用，以保留源的访问时间。</block>
-  <block id="8d79bfe51b141cbe8fb2c30741dbfe14" category="paragraph">* 示例： *</block>
   <block id="de71db72eafd60fc2c3c26a9416f0909" category="list-text">对于 NFSv4 ACL 迁移， NFSv4 要求对需要迁移 ACL 的卷使用编码语言 UTF-8 。</block>
-  <block id="90e6485e4d08b9e0728e2671dfa4ced2" category="list-text">在 ONTAP 中，您可以使用诊断 ` -atime-update` 选项来保留 atime 。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。</block>
   <block id="3f2483126bfaf4f145dc2ccaaf50a96d" category="cell">使用针对`XCP_config_DIR`变量设置的位置</block>
   <block id="422b2633c200093920a3504cacd40ac4" category="list-text">将文件命名为`xcpLogConfig.json`并将其保存到默认位置：/opt/netapp/xFiles/XCP/</block>
   <block id="5a80d55457d11b6a6649cb8e31a68ae9" category="paragraph">如果设置了`XCP_config_DIR`环境变量、请将`xcpLogConfig.json`文件保存在与`XCP_config_DIR`变量设置的相同位置。</block>
   <block id="eeb488eb1940aa6eb63fb96f6766209e" category="paragraph">`ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N '`</block>
   <block id="6fa3c056ccd312364628a9d8779047d9" category="paragraph">`ssh-copy-id -i /root/.ssh/id_rsa.pub root@worker1`</block>
+  <block id="e5970308b839bb1af1aefcf9dad2fed2" category="paragraph">环境变量`Xcp_config_DIR`会覆盖默认位置`/opt/netapp/xFiles/XCP`。如果设置，则值应为操作系统文件系统路径，可能是挂载的 NFS 目录的路径。设置`XCP_config_DIR`变量后、将在自定义配置目录路径中创建一个与主机名同名的新目录、并将新日志存储在此位置。</block>
+  <block id="193182b59524f80db2dfb99b91b8e2d2" category="paragraph">环境变量`Xcp_log_DIR`会覆盖将XCP日志存储在配置目录中的默认位置。如果设置，则值应为操作系统文件系统路径，可能是挂载的 NFS 目录的路径。设置`Xcp_log_DIR`变量后、将在自定义日志目录路径中创建一个与主机名同名的新目录、并将新日志存储在此位置。</block>
+  <block id="f9c9daf8c094d7173f6aa05e00e89394" category="paragraph">环境变量`Xcp_catalog _path`会覆盖xcp.in中的设置如果设置，则此值应采用 XCP 路径格式 `server ： export[ ：子目录 ]` 。</block>
+  <block id="0b5b78e477505196ea9cd8e57fe855fd" category="list-text">在ONTAP 中、您可以使用诊断`-atime-update`选项在源对象上保留atime。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。</block>
+  <block id="9d2ab81c393d1ef2f0a8cefba68af9a1" category="list-text">在XCP中、您可以使用`-preserve-atime`选项在源对象上保留atime。此选项可用于访问源对象的所有命令。</block>
+  <block id="fba36a51a969015158fea284508e24b5" category="paragraph">XCP包括一些其他NFS功能。</block>
+  <block id="5b014105285dfb3396658b56a0e6a980" category="section-title">chown和chmod</block>
+  <block id="e502bd5d6fd36f24fe83faf495b01250" category="paragraph">您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。</block>
+  <block id="09d12addf13fc84e75f41dc976e24bd2" category="paragraph">`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod`命令需要模式或引用以及NFS共享或POSIX路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。</block>
+  <block id="d36f032e221f3900149f9473b5c0ce4f" category="paragraph">您可以使用XCP `chown`命令以递归方式更改给定NFS共享或POSIX路径的所有文件和目录。这样可以提高数百万个文件的性能。</block>
+  <block id="a0b553d099f15801f1726ee64318e949" category="paragraph">`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown`命令需要使用NFS共享或POSIX路径作为变量。XCP `chown`递归更改给定路径的所有权。</block>
+  <block id="d9b1d76e05f593fa781c1a1da0c9012b" category="list-text">与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。</block>
+  <block id="539be75a76dadebbca3424b2f7b46bde" category="doc">XCP v1.9发行说明</block>
+  <block id="0bd1668ea08c54bc067675d64e6f83a4" category="paragraph">。 <block ref="08ad1ee2f6369863d444accaa8181f3c" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
+  <block id="18f2ba0369aea7a98cca4c137d4b6372" category="paragraph">要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如、您可以使用`https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`为MapR集群设置客户端。</block>
+  <block id="5477a542a80c11f2da04e8a045970ccc" category="section-title">XCP问题和解决方案</block>
+  <block id="2c21e7858fb5fc86fe2510cb996c6926" category="cell">`XCP：错误`：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载较早的XCP二进制文件。</block>
+  <block id="ee919e739e668a270db61ab6e8e94e16" category="cell">您正在尝试对使用早于XCP 1.9的XCP版本生成的索引执行操作。不支持此操作。建议完成所有正在进行的迁移、然后切换到此版本的XCP。或者、您也可以重新运行`scan`、`copy`或`verify`命令、以使用XCP 1.9生成新索引。</block>
+  <block id="78e3c3d20c30f31e40219bc4fc26d005" category="section-title">日志转储</block>
+  <block id="f2223b790f3262b778f881ea47ce4191" category="paragraph">如果您遇到使用XCP命令或作业的问题描述 、则可以使用`logdump`命令将与问题描述 相关的日志文件转储到一个`.zip`文件中、该文件可发送给NetApp进行调试。`logdump`命令会根据迁移ID或作业ID筛选日志、并将这些日志转储到当前目录中的`.zip`文件中。`.zip`文件的名称与命令中使用的迁移或作业ID相同。</block>
+  <block id="f6e8987d5e2d203c406379ba9e8b8a47" category="admonition">迁移后、如果使用`Xcp_config_DIR`或`Xcp_log_DIR`环境变量覆盖默认配置位置或日志位置、则在使用旧迁移或作业ID时、`logdump`命令将失败。要避免这种情况、请使用相同的日志路径、直到迁移完成。</block>
+  <block id="20f0f3784e710ced2f992c9e868a329f" category="cell">`XCP copy` with ACL migration Error message logged in xcp.log file：`pywintypes.error`：`(1314、GetNamedSecurityInfo、' A required privilege is not held by the client.')`</block>
+  <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">用户面临与安全描述符相关的问题描述 、因为由于迁移用户拥有权限、XCP只能获取所有者、组和DACL、因此无法获取SACL。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
+  <block id="fdbdc0e84f617d7346b90d43e65e3e78" category="doc">XCP v1.9文档</block>
+  <block id="acca97deb653a678580117072b78b763" category="paragraph">欢迎使用 XCP 信息库。您可以在此处找到有关XCP v1.9软件的文档、其中包括如何安装、配置和使用XCP。</block>
+  <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_&lt;version&gt;.tgz`中的自述文件。</block>
+  <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
 </blocks>

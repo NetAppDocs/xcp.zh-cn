@@ -44,5 +44,5 @@ summary: 对 XCP SMB 错误进行故障排除
 | `XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： `pywintypes.error ：（ 87 ， "LookupAccountName" ， " 参数不正确。 " ）` | 回退用户 / 组选项的参数不正确。使用正确的语法重新运行命令以回退用户 / 组选项 
 
 
-| `XCP copy` with ACL migration eror message logged in xcp.log file ： `pywintypes.error` ： ` （ 1314 ， GetNamedSecurityInfo ， ' A required privilege is not held by the client.' ）` | 用户面临与安全描述符相关的问题描述，因为借助迁移用户拥有的权限， XCP 只能获取所有者，组和 DACL ，但无法获取 SACL 。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
+| `XCP copy` with ACL migration Error message logged in xcp.log file：`pywintypes.error`：`(1314、GetNamedSecurityInfo、' A required privilege is not held by the client.')` | 用户面临与安全描述符相关的问题描述 、因为由于迁移用户拥有权限、XCP只能获取所有者、组和DACL、因此无法获取SACL。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
 |===

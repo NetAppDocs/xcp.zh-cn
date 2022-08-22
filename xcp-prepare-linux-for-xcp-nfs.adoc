@@ -50,7 +50,8 @@ XCP NFS 过渡和迁移具有以下源和目标存储要求：
 [NOTE]
 ====
 * 为了防止管理员意外修改源卷，您应将 NFSv3 和 NFSv4 导出目录的源卷配置为只读。
-* 在 ONTAP 中，您可以使用诊断 ` -atime-update` 选项来保留 atime 。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。
+* 在ONTAP 中、您可以使用诊断`-atime-update`选项在源对象上保留atime。此功能仅在 ONTAP 中可用，如果您希望在运行 XCP 时在源对象中保留 atime ，则此功能非常有用。
+* 在XCP中、您可以使用`-preserve-atime`选项在源对象上保留atime。此选项可用于访问源对象的所有命令。
 
 
 ====

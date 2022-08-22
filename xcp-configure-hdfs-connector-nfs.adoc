@@ -18,7 +18,7 @@ HDFS 连接器的路径语法为 `HDFS ： //[user@host ： port]/full-path` 。
 
 NOTE: 如果未指定用户，主机和端口，则 XCP 将调用 `hdfsConnect` ，并将主机设置为 `default` ，而将端口设置为 `0` 。
 
-要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如，您可以使用 `https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient- redhat.html` 为 MapR 集群设置客户端。
+要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如、您可以使用`https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`为MapR集群设置客户端。
 
 完成 HfDS 客户端设置后，必须在客户端上完成配置。要在 XCP 命令中使用 HDFS 路径，必须具有以下环境变量：
 

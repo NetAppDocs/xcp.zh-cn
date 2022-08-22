@@ -32,6 +32,9 @@ XCP 是一个可支持 NFS 和 SMB 协议的软件包，提供命令行软件。
 
 XCP 文件分析是一款基于主机的软件，可检测文件共享，对文件系统运行扫描并提供用于文件分析的信息板。XCP 文件分析适用于 NetApp 和第三方系统，并在 Linux 或 Windows 主机上运行，以便为 NFS 和 SMB 导出的文件系统提供分析。文件分析 GUI 的二进制文件包含在支持 NFS 和 SMB 协议的单个软件包中。
 
+
+NOTE: XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_<version>.tgz`中的自述文件。
+
 XCP 命令行界面功能强大。有关详细信息，请从上下载 _XCP 参考 _ link:https://xcp.netapp.com/["XCP 站点"^]。
 
 * XCP 工作流 *

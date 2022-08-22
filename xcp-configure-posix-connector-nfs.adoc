@@ -18,7 +18,7 @@ summary: 通过 POSIX 连接器， XCP 可以访问任何 Linux 挂载的文件�
 POSIX 连接器支持以下功能：
 
 * 对于支持 nanosecond `atime` ， `mtime` 和 `ctime` 的 POSIX 文件系统， `scan` 命令将获取完整值（秒和纳秒），然后 `copy` 命令将其设置
-* 与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。请参见 link:xcp-configure-security-nfs.html["配置安全性"]
+* 与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。
 
 
 

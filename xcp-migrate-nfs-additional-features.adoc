@@ -9,15 +9,22 @@ summary: XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更�
 
 
 [role="lead"]
-XCP 还提供了一些其他 NFS 功能，这些功能可以轻松更改任何 NFS 共享或 POSIX 路径中文件和目录的所有权和权限。您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。
-
-在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP `chown` 和 `chmod` 命令的工作方式与 Linux `chown` 和 `chmod` 命令类似。
+XCP包括一些其他NFS功能。
 
 
 
-== chmod
+== chown和chmod
 
-`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod` 命令需要模式或引用以及 NFS 共享或 POSIX 路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。
+您可以使用 XCP `chown` 和 `chmod` 命令以递归方式更改给定 NFS 共享或 POSIX 路径的所有文件和目录。这样可以提高数百万个文件的性能。
+
+
+NOTE: 在更改文件的所有权之前，必须配置新所有者。否则，此命令将失败。XCP `chown` 和 `chmod` 命令的工作方式与 Linux `chown` 和 `chmod` 命令类似。
+
+
+
+=== chmod
+
+`chmod` 命令可扫描并更改选定目录结构中所有文件的文件权限。`chmod`命令需要模式或引用以及NFS共享或POSIX路径作为变量。XCP `chmod` 递归更改给定路径的权限。您可以使用 `chmod` 命令显示扫描的总文件数以及输出中已更改的权限。
 
 * 示例： *
 
@@ -32,9 +39,11 @@ xcp chmod -exclude “fnm(‘file.txt’)” -mode 111 file:///demo/user1/
 
 
 
-== chown
+=== chown
 
-`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown` 命令需要使用 NFS 共享或 POSIX 路径作为变量。XCP `chown` 递归更改给定路径的所有权。
+您可以使用XCP `chown`命令以递归方式更改给定NFS共享或POSIX路径的所有文件和目录。这样可以提高数百万个文件的性能。
+
+`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown`命令需要使用NFS共享或POSIX路径作为变量。XCP `chown`递归更改给定路径的所有权。
 
 * 示例 *
 

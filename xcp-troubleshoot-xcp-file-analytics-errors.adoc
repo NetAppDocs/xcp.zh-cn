@@ -51,7 +51,7 @@ summary: 对 XCP 文件分析错误进行故障排除
 
 
 
-| 安装成功后，无法打开登录页面 | 验证您的系统是否可以对安装了 XCP 文件分析且 HTTPD 正在运行的 Linux 计算机执行 ping 操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。 
+| 安装成功后，无法打开登录页面 | 验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。 
 
 
 | 用户登录失败  a| 
