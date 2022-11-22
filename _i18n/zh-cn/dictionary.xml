@@ -5,13 +5,9 @@
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步骤</block>
   <block id="69ab39c4429204099bcace949edc5493" category="admonition">在修改 `xcp.ini` XCP 配置文件中的详细信息之前，应导出目录位置。目录位置（ NFSv3 ）应可由 XCP Linux 主机挂载，但不一定要挂载。</block>
   <block id="9d1854a18d1a1a9b0aad19c89b6a15b0" category="summary">创建 JSON 配置文件</block>
-  <block id="eb498a91409025b6f7459d1487819ac5" category="paragraph">创建 JSON 配置文件。</block>
   <block id="71067d2da44f21581259461be89d2c5b" category="paragraph">如果要启用事件日志消息，系统日志客户端或客户日志记录，请完成以下步骤。</block>
-  <block id="4839d2f25cc35b249d5db15efa1afd75" category="paragraph">* 步骤 *</block>
   <block id="d4f0fd36ab870ee5b451ed975a3b840d" category="list-text">打开任何文本编辑器，例如记事本或 vi 。</block>
   <block id="d4b54477c37b7ad7e878a796746f262b" category="list-text">使用以下 JSON 模板创建新文件。</block>
-  <block id="4c38ab1ef38cac28ef430c2be0673437" category="list-text">对于要启用的任何功能，请将 `isenabled` 值更改为 `true` 。</block>
-  <block id="6bdc741a35e3429fb316e331210901e8" category="list-text">将文件命名为 `xcpLogConfig.json` ，并将其命名为 * 错误！未找到引用源。 *</block>
   <block id="7c584a16cbf4210dc0a344179e274e09" category="cell">默认配置</block>
   <block id="a2f0a9650b74152ef4105d29bb0e92f0" category="cell">json 配置文件示例</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
@@ -366,10 +362,8 @@
   <block id="471ff51c89daf6e35e8e2b5111039744" category="inline-link-macro">NetApp IMT</block>
   <block id="ae12aa4d83d4e71d628b8ca5184b9d66" category="admonition">要检查访问文件分析所支持的浏览器，请参见 <block ref="dff6889ed90b9930dbb6c11bc90c8854" category="inline-link-macro-rx"></block>。</block>
   <block id="42f425824cc531c78175d67346f8f124" category="list-text">使用链接 ` \https://&lt;IP address of Linux machine&gt;/XCP` 访问文件分析图形用户界面。出现提示时，接受安全证书：</block>
-  <block id="d92966d58b78d88161004cfe9020ede8" category="list-text">使用用户名 "admin" 和您在配置期间设置的密码登录到 GUI</block>
   <block id="2ffe186b43f4d120ec24b17fcb23452a" category="inline-image-macro">XCP 文件分析登录屏幕</block>
   <block id="289a5bc6b34705c66837c45715417ecd" category="paragraph"><block ref="289a5bc6b34705c66837c45715417ecd" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="fefbdb3c0131ccf14272f959d23390d5" category="list-text">登录时，您可以看到 NFS 代理已添加：绿色勾号显示 Linux 系统和 XCP 版本的最低系统配置。</block>
   <block id="dcc65cd71fd805adc9f9914a4cf41d78" category="list-text">如果您已配置 SMB 代理，则可以看到在同一代理卡中添加了 SMB 代理。</block>
   <block id="bb77d5af0a3f42f7c393fe3289f4a3a1" category="summary">NetApp XCP 支持可扩展的高性能数据迁移</block>
   <block id="3bacc52d746ebb26cd58025acaa37785" category="doc">开始使用 XCP</block>
@@ -737,11 +731,8 @@
   <block id="d36f032e221f3900149f9473b5c0ce4f" category="paragraph">您可以使用XCP `chown`命令以递归方式更改给定NFS共享或POSIX路径的所有文件和目录。这样可以提高数百万个文件的性能。</block>
   <block id="a0b553d099f15801f1726ee64318e949" category="paragraph">`chown` 命令可扫描并更改选定目录结构中所有文件的所有权。`chown`命令需要使用NFS共享或POSIX路径作为变量。XCP `chown`递归更改给定路径的所有权。</block>
   <block id="d9b1d76e05f593fa781c1a1da0c9012b" category="list-text">与使用 NFSv3 TCP 插槽的 XCP 相比， POSIX 连接器更安全。</block>
-  <block id="539be75a76dadebbca3424b2f7b46bde" category="doc">XCP v1.9发行说明</block>
-  <block id="0bd1668ea08c54bc067675d64e6f83a4" category="paragraph">。 <block ref="08ad1ee2f6369863d444accaa8181f3c" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="18f2ba0369aea7a98cca4c137d4b6372" category="paragraph">要运行 HDFS `copy` 命令，您必须在 Linux 系统上设置 HDFS 客户端，并根据 Hadoop 供应商，按照 Internet 上提供的设置配置进行操作。例如、您可以使用`https://docs.datafabric.hpe.com/60/AdvancedInstallation/SettingUptheClient-redhat.html`为MapR集群设置客户端。</block>
   <block id="5477a542a80c11f2da04e8a045970ccc" category="section-title">XCP问题和解决方案</block>
-  <block id="2c21e7858fb5fc86fe2510cb996c6926" category="cell">`XCP：错误`：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载较早的XCP二进制文件。</block>
   <block id="ee919e739e668a270db61ab6e8e94e16" category="cell">您正在尝试对使用早于XCP 1.9的XCP版本生成的索引执行操作。不支持此操作。建议完成所有正在进行的迁移、然后切换到此版本的XCP。或者、您也可以重新运行`scan`、`copy`或`verify`命令、以使用XCP 1.9生成新索引。</block>
   <block id="78e3c3d20c30f31e40219bc4fc26d005" category="section-title">日志转储</block>
   <block id="f2223b790f3262b778f881ea47ce4191" category="paragraph">如果您遇到使用XCP命令或作业的问题描述 、则可以使用`logdump`命令将与问题描述 相关的日志文件转储到一个`.zip`文件中、该文件可发送给NetApp进行调试。`logdump`命令会根据迁移ID或作业ID筛选日志、并将这些日志转储到当前目录中的`.zip`文件中。`.zip`文件的名称与命令中使用的迁移或作业ID相同。</block>
@@ -752,4 +743,39 @@
   <block id="acca97deb653a678580117072b78b763" category="paragraph">欢迎使用 XCP 信息库。您可以在此处找到有关XCP v1.9软件的文档、其中包括如何安装、配置和使用XCP。</block>
   <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_&lt;version&gt;.tgz`中的自述文件。</block>
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
+  <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>：比较批处理：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载旧版XCP二进制文件。</block>
+  <block id="481da41cf08734ac99d07aca58644781" category="cell"><block ref="6d7d8e19dacf4142870d92b873503ded" prefix="" category="inline-code"></block></block>
+  <block id="2dc9d74fea656209a3e6734b2bd09c40" category="cell">如果文件路径中有冒号(：)、请改用三个冒号(：：：)。</block>
+  <block id="e9bef9a5a04a193f8f77a5867e82c24b" category="doc">XCP v1.0.1发行说明</block>
+  <block id="a76dc4faed369cb6713d049dbc0ca400" category="paragraph">。 <block ref="5a4a1c694a80c57bbface50f0a4d4a69" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
+  <block id="410bc026d79ee8d7b9f82dd6b03feb98" category="list-text">登录到文件分析图形用户界面。</block>
+  <block id="fce3933747223b348680fa7fa109330b" category="paragraph">可以通过两种方式登录到文件分析图形用户界面：</block>
+  <block id="f54b0f1d442f1ec5a7de065a3541d957" category="list-text">使用用户名"admin"和您在配置期间设置的密码。</block>
+  <block id="9232193990a75b1e49392f2b2617103d" category="list-text">配置并启用企业级单点登录(SSO)功能。</block>
+  <block id="2e3c9f20aee1951e2d90c60c3895ab58" category="paragraph">您可以使用此登录功能在特定计算机上设置XCP文件分析、并在企业范围内共享Web UI URL、从而允许用户使用其SSO凭据登录到UI。</block>
+  <block id="69bb9c4e14480c847abc95d5c42499ad" category="admonition">SSO登录是可选的、可以永久配置和启用。要设置基于安全断言标记语言(SAML)的SSO登录、请参见 <block ref="24bd22f7d0a05b19a03434bac975689d" category="inline-xref-macro-rx"></block>。</block>
+  <block id="5011fee80695c860b0a39f97d0dcb95c" category="list-text">登录后、您可以看到NFS代理；绿色的勾号显示Linux系统和XCP版本的最低系统配置。</block>
+  <block id="bb589a1b8201c2239ba76232e361cafc" category="section-title">配置SSO凭据</block>
+  <block id="fffd3dfdf9fa53044cdb134dcc69c528" category="paragraph">SSO登录功能在使用SAML的XCP文件分析中实施、并受Active Directory联合身份验证服务(Active Directory Federation Services、ADFS)身份提供程序支持。SAML会将身份验证任务卸载到企业的第三方身份提供程序(IdP)、该程序可利用任意数量的MFA方法(多因素身份验证)。</block>
+  <block id="f2d88d647c936a165a3e77edcbea1d96" category="list-text">向企业身份提供程序注册XCP文件分析应用程序。</block>
+  <block id="1f93f245c9251dd40bbdd43eacc5372c" category="paragraph">文件分析现在以服务提供商的身份运行、因此必须向企业身份提供商注册。通常、企业中有一个团队负责处理此SSO集成过程。第一步是找到相关团队并联系他们、并与他们共享文件分析应用程序元数据详细信息。</block>
+  <block id="2fa5a2b9e39c8c52b4712c4defadf219" category="paragraph">以下是向身份提供程序注册时必须共享的必填详细信息：</block>
+  <block id="9563382993688c51fdc3a46e81eb172f" category="list-text">*服务提供商实体ID：*<block ref="e1fe6adfd56c8994795ceb238170e3b4" prefix=" " category="inline-code"></block></block>
+  <block id="bf1e51171726684d1ee1b309557acd01" category="list-text">*服务提供商断言使用者服务(ACS) URL：*<block ref="21d0fedea22f326cba161956dc12f67c" prefix=" " category="inline-code"></block></block>
+  <block id="f57c5b8986c37b4a0952ba786b74f802" category="paragraph">您也可以登录到文件分析UI来验证这些详细信息：</block>
+  <block id="80dae1bc5036b7e9bda13b9e72ac846e" category="list-text">使用安装期间设置的用户名"admin"和密码登录到用户界面。</block>
+  <block id="ccd1f9a4a3996dec7dcc1222859ee8f1" category="list-text">选择页面右上角的*用户*图标、然后选择* SAML设置*。</block>
+  <block id="363cae04551b1b1a61f8792a42d5332c" category="paragraph">在显示的下拉菜单中选中*服务提供商设置*。</block>
+  <block id="957c109b84ab3a9745776f942062afea" category="inline-image-macro">SAML设置示例</block>
+  <block id="82d38923543ba21104350ca2e054aed6" category="paragraph"><block ref="82d38923543ba21104350ca2e054aed6" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="231aa7872617b02f47d61c8a448d71d3" category="paragraph">注册后、您将收到企业的IdP端点详细信息。您需要向文件分析UI提供此IdP端点元数据。</block>
+  <block id="0fabd32fee9ac3582435784332323cf0" category="list-text">提供IdP详细信息：</block>
+  <block id="13cdf4657d47700947243dc2788b7179" category="list-text">转至 * 信息板 * 。选择页面右上角的*用户*图标、然后选择* SAML设置*。</block>
+  <block id="d8adeda321a41aaa17a27edc3b9f91af" category="list-text">输入注册后获取的IdP详细信息。</block>
+  <block id="632a19fe4f9dbcb608d0fc15adce1abd" category="inline-image-macro">IdP设置示例</block>
+  <block id="d9f5a9253d4897150b89f01bd1fff5b8" category="paragraph"><block ref="d9f5a9253d4897150b89f01bd1fff5b8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="52a2204afc476b63dc6724a5bd0b634b" category="list-text">选中*启用SAML *复选框以永久启用基于SAML的SSO。</block>
+  <block id="10492389e94efdebbb66f7b0cd8a1324" category="list-text">选择 * 保存 * 。</block>
+  <block id="280adca2af76ab2f6d95dd020df20c76" category="list-text">注销文件分析并重新登录。</block>
+  <block id="26fe07940d9a7bac7605ee7fc243d89a" category="paragraph">系统会将您重定向到企业SSO页面。</block>
 </blocks>
