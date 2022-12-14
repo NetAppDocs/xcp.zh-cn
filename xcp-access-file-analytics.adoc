@@ -43,7 +43,7 @@ image:xcp_image2.png["XCP 文件分析登录屏幕"]
 
 +
 
-NOTE: SSO登录是可选的、可以永久配置和启用。要设置基于安全断言标记语言(SAML)的SSO登录、请参见  SSO credentials。
+NOTE: SSO登录是可选的、可以永久配置和启用。要设置基于安全断言标记语言(SAML)的SSO登录、请参见 <<配置SSO凭据>>。
 
 
 

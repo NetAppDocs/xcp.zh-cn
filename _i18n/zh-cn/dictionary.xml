@@ -778,4 +778,10 @@
   <block id="10492389e94efdebbb66f7b0cd8a1324" category="list-text">选择 * 保存 * 。</block>
   <block id="280adca2af76ab2f6d95dd020df20c76" category="list-text">注销文件分析并重新登录。</block>
   <block id="26fe07940d9a7bac7605ee7fc243d89a" category="paragraph">系统会将您重定向到企业SSO页面。</block>
+  <block id="c1f4df75471b19c987dbe105102a06b3" category="paragraph-title">设置HDFS连接器</block>
+  <block id="e8ecd4ac92f1665c72c96cf750e9a180" category="paragraph-title">路径语法</block>
+  <block id="71b54d34b9a2e562b60a5f348143df04" category="paragraph-title">设置多节点横向扩展</block>
+  <block id="e275d5c35bd98d51f375595425721b8e" category="paragraph-title">最大启动数</block>
+  <block id="4fc18ed56b82e48babebaac5b07abd72" category="paragraph-title">nodes.ini"文件</block>
+  <block id="08ad268a318e49778022d6aa0d84e057" category="paragraph-title">将POSIX和HDFS连接器、多节点横向扩展和安全功能相结合</block>
 </blocks>
