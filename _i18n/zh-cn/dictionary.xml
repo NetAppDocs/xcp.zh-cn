@@ -28,7 +28,6 @@
   <block id="66f9acc1b514e86b97784fe390326ce3" category="paragraph">XCP SMB 使用 Windows 客户端主机系统生成并行 I/O 流，并充分利用可用的网络和存储性能。</block>
   <block id="d25223f4065ca21361aff2e7cdc61203" category="section-title">配置存储</block>
   <block id="c8fe60bf1229083e3bb54f5366226e26" category="paragraph">XCP SMB 过渡和迁移具有以下用户登录要求：</block>
-  <block id="511057ab7032e10b44554037f83be0f0" category="list-text">XCP 主机系统： XCP 主机用户必须具有管理员权限（此用户必须属于 XCP SMB 主机系统上的 "BUILTIN\Administrators" 组）。</block>
   <block id="543905c9e8d793e24798d62739fd285b" category="list-text">将迁移或 XCP 主机用户添加到 Active Directory 的审核和安全日志策略中。要在 Windows 10 上查找 " 管理审核和安全日志 " 策略，请执行以下步骤：</block>
   <block id="efaadd4be852741a24b28d66addf7e17" category="list-text">打开 * 组策略编辑器 * 对话框。</block>
   <block id="58f61041ffa1d14e245af8a57dce1c48" category="list-text">转至 * 计算机配置 &gt; Windows 设置 &gt; 安全设置 &gt; 本地策略 &gt; 用户权限分配 * 。</block>
@@ -602,8 +601,6 @@
   <block id="90637cbab382a9675c5bad0c7aeef15f" category="cell">Hadoop 分布式文件系统（ HDFS ）连接器</block>
   <block id="b03665438ed7a747020c197d671b61c3" category="list-text">`sync` 命令不支持 HDFS 连接器</block>
   <block id="f5f0878108a9a99caae85df13ed2e0ac" category="list-text">HDFS 文件系统不支持符号链接（符号链接），硬链接或特殊文件</block>
-  <block id="3fabfbd2744533c3c888e15445477652" category="cell">ACL</block>
-  <block id="3706b1828c935d3a1a30b30080320b22" category="cell">如果源系统不是 NetApp 系统，则 XCP 不会复制 ACL 。</block>
   <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux</block>
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.0.3 支持的早期版本 Linux 不再支持 XCP 。</block>
   <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* 文件分析的非 root 用户 * ： XCP 不支持由非 root 用户或 sudo 用户执行的安装和配置。</block>
@@ -786,4 +783,5 @@
   <block id="c7d37295c1bdef1e9ae306db70634663" category="cell">XCP不支持将基线或增量Snapshot副本操作与实时源迁移结合使用。</block>
   <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">实时源迁移</block>
   <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCP不支持在迁移期间修改源卷上的数据。</block>
+  <block id="61355ec3f68ee20926a222027dcb3d7b" category="list-text">XCP主机系统：XCP主机用户必须具有管理员权限(该用户必须属于目标SMB服务器上的"BUILTIN\Administrators "组)。</block>
 </blocks>

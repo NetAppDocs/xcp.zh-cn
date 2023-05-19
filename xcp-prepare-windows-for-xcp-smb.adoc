@@ -22,7 +22,7 @@ XCP SMB 使用 Windows 客户端主机系统生成并行 I/O 流，并充分利�
 
 XCP SMB 过渡和迁移具有以下用户登录要求：
 
-* XCP 主机系统： XCP 主机用户必须具有管理员权限（此用户必须属于 XCP SMB 主机系统上的 "BUILTIN\Administrators" 组）。
+* XCP主机系统：XCP主机用户必须具有管理员权限(该用户必须属于目标SMB服务器上的"BUILTIN\Administrators "组)。
 * 将迁移或 XCP 主机用户添加到 Active Directory 的审核和安全日志策略中。要在 Windows 10 上查找 " 管理审核和安全日志 " 策略，请执行以下步骤：
 +
 .步骤
