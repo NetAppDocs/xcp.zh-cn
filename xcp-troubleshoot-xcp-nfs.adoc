@@ -84,7 +84,7 @@ summary: 对 XCP NFS 错误进行故障排除
 | `XCP ： batch 1 ： error ： [errno 13] permission denied ：` | 作为非 root 用户，您没有访问文件系统的正确权限。检查您是否可以访问文件系统并执行读写操作。 
 
 
-| `mXCP ：错误： OSMounter 'file://[] 10.234.115.215_src_vol/DIR' ：不存在此类文件或目录` | 路径 ` /t/10.234.115.215_src_vol/ DIR` 未挂载到 Linux 文件系统上。检查路径是否存在。 
+| `mXCP ：错误： OSMounter 'file:///t/[] 10.234.115.215_src_vol/DIR' ：不存在此类文件或目录` | 路径 ` /t/10.234.115.215_src_vol/ DIR` 未挂载到 Linux 文件系统上。检查路径是否存在。 
 
 
 | `错误： run sync ｛ -id ： 'Xcp_index_1624263869.3734858' ｝ ：同步尚不可用于 HDFS/ POSIX/s3fs 源和目标 - 临时解决策正在使用匹配筛选器复制最近的 MOD` | 对于 POSIX 和 HDFS 连接器， XCP 不支持 `sync` 命令。 
