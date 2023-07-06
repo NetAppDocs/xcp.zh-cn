@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: xcp-migrate-hdfs-data.html 
+keywords: netapp, xcp, migrate, data, nfs, hdfs, smb, copy, resume, verify, posix 
+summary: 迁移HDFS数据 
+---
+= 迁移HDFS数据
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用规划迁移之后 `scan` 命令、您可以迁移数据。
+
+
+
+== 复制
+
+。 `copy` 命令会扫描整个源Hadoop分布式文件系统(Hadoop Distributed File System、HDFS)数据并将其复制到NFS或简单存储服务(Simple Storage Service、S3)分段。。 `copy` 命令要求将源路径和目标路径作为变量。扫描和复制的文件、吞吐量、速度和已用时间详细信息将显示在复制操作结束时。
+
+*NFS路径示例:*
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user dst_server:/dst_export
+----
+* POSIX 路径示例： *
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user file:///mnt/dest
+----
+*S3路径示例:*
+
+[listing]
+----
+xcp copy -newid <id> hdfs:///demo/user s3://my-bucket
+xcp copy -newid <id> -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
+----
+有关详细信息，请参见 `XCP 帮助副本` 。
+
+
+
+== 恢复
+
+。 `resume` 命令通过指定目录索引名称或编号来重新启动先前中断的复制操作。上次复制操作的目录索引名称或编号存储在中 `<catalog path>:/catalog/indexes` 目录。
+
+* 示例： *
+
+[listing]
+----
+xcp resume [options] -id <id used for copy>
+xcp resume [options] -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> -id <id used for copy>
+----
+
+NOTE: 默认情况下、XCP `resume` 命令使用期间使用的副本索引中的S3端点和S3配置文件 `copy` 命令：但是、如果是新的 `-s3.endpoint` 和 `-s3.profile` 值随提供 `resume` 命令中、将使用选项的新值以及副本中使用的值 `command` 被覆盖。
+
+有关详细信息，请参见 `XCP 帮助恢复` 。
+
+
+
+== 验证
+
+。 `verify` 命令会在执行复制操作后对源目录和目标目录进行逐字节完整数据比较、而不使用目录索引编号。命令读取两端的文件并比较数据。
+
+* 示例： *
+
+[listing]
+----
+xcp verify hdfs:///demo/user dst_server:/dst_export
+----
+* POSIX 路径示例： *
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data file:///user/demo1/dest
+----
+*S3路径示例:*
+
+[listing]
+----
+xcp verify hdfs:///user/demo1/data s3://my-bucket
+xcp verify -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
+----
+有关详细信息，请参见 `XCP 帮助验证` 。

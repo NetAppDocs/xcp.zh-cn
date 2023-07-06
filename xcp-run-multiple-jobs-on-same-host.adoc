@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: xcp-run-multiple-jobs-on-same-host.html 
+keywords: xcp, configure, nfs, posix, connector 
+summary: 通过 POSIX 连接器， XCP 可以访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。 
+---
+= 在同一XCP主机上运行多个XCP作业
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+从XCP 1.1.2开始、您可以使用"-minme"功能在一个XCP主机上运行多个XCP作业或命令、前提是该主机具有足够的资源来执行每个作业。当您运行支持"-minmem"功能的命令时、XCP会使用最小主机内存来完成作业、从而为在同一主机配置上运行其他作业创建容量。
+
+
+
+== 最低系统要求
+
+对于每个XCP作业、您应最多允许64 GB主机内存和八个核心用于大中型迁移。
+
+
+NOTE: SMB数据迁移不支持"-minme"功能。
+
+
+
+== 日志记录
+
+默认情况下、每个XCP作业都记录在一个单独的日志文件中、该日志文件对于作业ID是唯一的。如果在同一台主机上运行多个作业、则此日志记录机制可以正常运行。NetApp建议不要更改 `xcpLogConfig.Json` 要使用单个的文件 `xcp.log` 用于记录在同一主机上并行运行的多个XCP作业的文件。
+
+
+
+== 支持的命令
+
+以下XCP命令支持"-minme"功能：
+
+* `scan`
+* `copy`
+* `resume`
+* `verify`
+* `isync`
+* `chmod`
+* `chown`
+* `delete`
+
+
+
+
+== 不支持的命令
+
+不支持"-minme"功能 `sync` 命令：
+
+
+
+== 命令示例
+
+要使用"-minme"功能、必须在XCP命令中包含"-minme"选项、如以下示例所示：
+
+* `xcp copy -newid _new ID_ *-minmem* src_server:/src_export dst_server:/dst_export`
+* `xcp resume [options] -id *-minmem* _copy ID_`
+* `xcp verify *-minmem* src_server:/src_export dst_server:/dst_export`
+
+
+*HDFS路径示例*：
+
+* `xcp copy *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
+* `xcp verify *-minmem* hdfs:///user/demo1/data \file:///user/demo1/dest`
+* `xcp copy -minmem hdfs:///user/demo1/data s3://bucket1`
+
+
+*POSIX路径示例*：
+
+* `xcp copy *-minmem* -newid _new ID_ \file:///mnt/source \file:///mnt/dest`
+* `xcp verify *-minmem* \file:///mnt/source \file:///mnt/dest`
+

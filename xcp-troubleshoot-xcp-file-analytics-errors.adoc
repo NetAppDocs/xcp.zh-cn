@@ -81,4 +81,36 @@ summary: 对 XCP 文件分析错误进行故障排除
 
 
 | 与分配的物理存储相比，给定文件服务器上导出的文件系统的总空间可能会显示更多空间。 | 如果卷中存在 qtree 级别的导出，则可能会发生这种情况。例如，如果导出为 ` /vol1` 的卷大小为 10 GB ，并且卷 ` /vol1/qtree1` 中有一个 qtree ，则 `XCP show` 命令会将 `vol1` size 显示为 `10 GB` ，并将 `qtree1` size 显示为 `10 GB` 。XCP 文件分析将对两个导出的空间进行求和，并提供总空间，在本例中为 `20 GB` 。它不知道 `qtree1` 是逻辑空间。 
+
+
+| 成功安装后、无法访问此站点或用户登录失败。  a| 
+. 检查XCP服务是否正在运行：
+`service xcp status`
+. 启动XCP侦听操作并确认没有错误：
++
+`xcp –listen`
+
+. 如果看到以下错误、请使用yum安装CodeReady软件包、例如 `yum install codeready-builder-for-rhel-8-x86_64-rpms`：
+
+
+[listing]
+----
+Error:
+-------
+Traceback (most recent call last):
+  File "xcp.py", line 1146, in <module>
+  File "xcp.py", line 1074, in main
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "PyInstaller/loader/pyimod03_importers.py", line 495, in exec_module
+  File "rest/routes.py", line 61, in <module>
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "PyInstaller/loader/pyimod03_importers.py", line 495, in exec_module
+  File "onelogin/saml2/auth.py", line 14, in <module>
+xmlsec.Error: (1, 'cannot load crypto library for xmlsec.')
+[23891] Failed to execute script 'xcp' due to unhandled exception!
+----
 |===

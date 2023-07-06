@@ -108,7 +108,23 @@ summary: 对 XCP NFS 错误进行故障排除
 | `XCP ：错误：批处理 2 ：子进程失败（退出代码 -6 ）： recv <type 'Exceptions.EOFError"> ：` | 增加系统内存并重新运行测试。 
 
 
-| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | 如果文件路径中有冒号(：)、请改用三个冒号(：：：)。 
+| `xcp:ERROR: invalid path 'IP:/users009/user1/2022-07-01_04:36:52_1489367` | 如果NFS服务器共享路径名称中包含一个或多个冒号、请使用双冒号(：：)而不是单个冒号(：)分隔NFS服务器IP和NFS服务器共享路径。 
+
+
+| 之后、SnapLock卷不会保留WORM文件 `xcp copy` 操作。  a| 
+XCP会成功将WORM文件复制到卷、但SnapLock卷不会保留这些文件。
+
+. 执行 `xcp copy` 从源卷到目标卷的操作：
+`xcp copy src_server:/src_export dst_server:/dst_export`
+. 使用 `xcp chmod` 命令将目标卷上的文件权限更改为*readonly*：
+`xcp chmod -mode  a-w  dst_server:/dst_export`
+
+
+完成上述步骤后、SnapLock卷将开始保留复制的文件。
+
+
+NOTE: SnapLock卷的保留时间受卷的默认保留策略控制。在开始迁移之前检查卷保留设置： link:https://docs.netapp.com/us-en/ontap/snaplock/set-retention-period-task.html["设置保留时间"^]
+
 |===
 
 

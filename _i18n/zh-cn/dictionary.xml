@@ -43,12 +43,10 @@
   <block id="963344c97166a9491696af9417e60eed" category="doc">规划 NFS 数据迁移</block>
   <block id="2d3f0225db2a5974e9dd3efa2510ede8" category="paragraph">规划 NFS 数据迁移。</block>
   <block id="498f79c4c5bbde77f1bceb6c86fd0f6d" category="section-title">-show</block>
-  <block id="2af7eb2d79f03b1c5451390ff7784e40" category="paragraph">`show` 命令可查询一个或多个存储服务器的 RPC 服务和 NFS 导出。命令将列出可用服务和导出，并列出每个导出的已用容量和可用容量，然后列出每个导出的根属性。示例</block>
   <block id="36b1ac7befb0a4a2aafb2840c1654f80" category="list-text">`XCP show &lt; NFS 文件服务器 IP/FQDN&gt;`</block>
   <block id="4ee7ac9a872eadb3d1f7347270bbfad7" category="list-text">`XCP 显示 nfs_server01.netapp.com`</block>
   <block id="0b38ead8cb81444a18a4c9660907007d" category="paragraph">有关详细信息，请运行 `XCP 帮助显示` 。</block>
   <block id="22efdbe132eabc102306bd7a334fb434" category="section-title">扫描</block>
-  <block id="260f1bdc770baf06a9e28946677d8ade" category="paragraph">`scan` 命令可递归扫描整个源 NFSv3 导出的路径，并在扫描结束时显示文件结构的统计信息。NetApp 建议在扫描操作期间将源 NFS 导出挂载置于只读模式。示例</block>
   <block id="aef9e741ab939722d78e05debc0530f8" category="list-text">`XCP scan nfs_server01.netapp.com:/export1`</block>
   <block id="57e9ab68ece2e80c1dd072f065c05577" category="paragraph">有关详细信息，请运行 `XCP 帮助扫描` 。</block>
   <block id="d966f213346a789643a8dfc71c67068b" category="paragraph">也可以使用文件分析以图形方式查看结果。</block>
@@ -187,7 +185,6 @@
   <block id="d31b586de007038e5023c216e62f86b1" category="cell">支持的协议版本</block>
   <block id="4ada655f00526d6808f8340ab758c575" category="cell">所有 SMB 协议版本</block>
   <block id="817c6a5be8297c117096d41d202aff2e" category="cell">支持的浏览器（仅限文件分析）</block>
-  <block id="21c1caf58e7317ab4fa37a9c0510fcd1" category="cell">XCP 文件分析支持 Google Chrome 76 及更高版本。有关所有受支持的浏览器版本，请参见 IMT 列表</block>
   <block id="8c7843878f3c9b0f5e771772d6db2dea" category="section-title">XCP SMB Microsoft VC++ 可重新分发安装</block>
   <block id="c54e109937f5c638f4600d450eedcd55" category="paragraph">按照以下步骤安装 vc++ 可重新分发的软件。</block>
   <block id="c4af91562832ae25fbae11e89da4b667" category="inline-link-macro">vc++ 2017 可重新分配</block>
@@ -366,9 +363,7 @@
   <block id="dcc65cd71fd805adc9f9914a4cf41d78" category="list-text">如果您已配置 SMB 代理，则可以看到在同一代理卡中添加了 SMB 代理。</block>
   <block id="bb77d5af0a3f42f7c393fe3289f4a3a1" category="summary">NetApp XCP 支持可扩展的高性能数据迁移</block>
   <block id="3bacc52d746ebb26cd58025acaa37785" category="doc">开始使用 XCP</block>
-  <block id="606f36e4b2f3e6b50928c25be780089f" category="paragraph">NetApp XCP 支持可扩展的高性能数据迁移。</block>
   <block id="125d45c840d79c5bfc630e1ff6268152" category="section-title">了解 XCP</block>
-  <block id="98c9ea7de2b6238a9b360c918efd30f4" category="paragraph">NetApp XCP 是一款基于客户端的软件，可用于任意到 NetApp 和 NetApp 到 NetApp 的数据迁移和文件分析。XCP 旨在利用所有可用系统资源来管理大容量数据集和高性能迁移，从而实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。</block>
   <block id="6f1f152483ea52658f15cd3a0974f0a0" category="paragraph">使用适用于 NFS 或 SMB 系统的 XCP 作为以下解决方案之一：</block>
   <block id="3ef32fc3b6780a4fdf91e306a592d1cc" category="list-text">迁移解决方案</block>
   <block id="94249fa72ae331c87efdfcc0d0a58301" category="list-text">文件分析解决方案</block>
@@ -395,7 +390,6 @@
   <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">XCP SMB 排除选项当前会根据目录在筛选器中的模式排除这些目录，并遍历这些目录的文件系统。</block>
   <block id="76e35710ec65c5c13523e53f9290946d" category="cell">活动源支持</block>
   <block id="abef06ad7d7930b60b54d21ecda87d96" category="paragraph">以下常见功能不适用于 XCP NFS 和 SMB ：</block>
-  <block id="67563b580602624cbe59ec4a7939e8fe" category="list-text">* 同一主机上有多个 XCP 实例 * ：在同一主机上运行多个 XCP 实例时，可能会产生不可预测的结果。</block>
   <block id="163e080f44afc4f1a3717f3330b0859b" category="list-text">* 完成迁移的时间 * ： XCP UpFront 不提供完成迁移的时间或完成任何用于迁移的命令的时间。如果要执行最终转换，请确认源卷上的数据流失率较低。</block>
   <block id="da95bf9af8410657106b7dea7919e7af" category="list-text">* 在未清理的目标上重新运行副本 * ：如果目标目标上有部分数据， XCP 基线复制将失败。要成功执行 XCP 基线复制和 XCP 验证，目标必须为 Clean 。</block>
   <block id="b0875a764dddba8272cc3d6199016dd1" category="list-text">* 实时目标 * ： XCP 不支持在迁移期间或增量同步期间修改目标卷上的数据。</block>
@@ -405,7 +399,6 @@
   <block id="00fc0d4b3a5e71116d21a80782c5bdd5" category="summary">配置 XCP 的步骤</block>
   <block id="ef8cdecd9388166741c6ddeb9e648a30" category="doc">配置 XCP</block>
   <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">安装 XCP</block>
-  <block id="14244e05c3dfba3b36a8f2640bf36a3c" category="paragraph">安装 XCP 。</block>
   <block id="5157096b4994925e784b5ccc913a425c" category="section-title">安装和配置工作流</block>
   <block id="dda26d898eec39eecd399e188771288e" category="paragraph">本文档介绍了在 NFS 和 SMB 系统上安装和设置 XCP 的简单工作流。</block>
   <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">错误：缺少图形映像</block>
@@ -477,7 +470,6 @@
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">发行说明</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">故障排除</block>
   <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8.请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 支持的操作系统</block>
-  <block id="ff7e3293a738a8b6a195e9c65ce9974b" category="cell">XCP 文件分析支持 Google Chrome 76 及更高版本。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 所有受支持浏览器版本的列表</block>
   <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">IMT 中列出了 XCP 支持的配置，例如主机， ONTAP 版本和支持的浏览器。</block>
   <block id="57b6232ac0f92803d0544e702c641050" category="summary">某些功能在 XCP NFS 或 XCP SMB 上不受支持。</block>
   <block id="8ecf08ca07c6d4a3f11a8ecd76bdfb54" category="summary">HDFS 连接器使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。</block>
@@ -541,7 +533,6 @@
   <block id="03ab84de1a594e05c7eb116ea062b26c" category="list-text">验证许可证文件是否已复制到 ` /home/user1/NetApp/xFiles/XCP/` ：</block>
   <block id="fc7af6e6e28187c4a6802a620fab64b4" category="paragraph">`copy` 命令可扫描整个源目录结构并将其复制到目标 NFSv3 导出。`copy` 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度以及经过的时间详细信息将在复制操作结束时显示</block>
   <block id="b2afea67c58251abc9cea9e00c6f6195" category="paragraph">* POSIX 路径示例： *</block>
-  <block id="29d2ad021e95ccea21b050eea89967f1" category="paragraph">* HDFS 路径示例： *</block>
   <block id="9db3ca538820d0cfb7b44ef80f16ca98" category="doc">性能调整</block>
   <block id="b0b900f48dcf7f402754cc2d5748fc0d" category="paragraph">对于 XCP NFS ，使用 `show` 和 `scan` 命令规划迁移后，您可以迁移数据。</block>
   <block id="50b19e2d999f8ca8fad7bcf765a85ae1" category="admonition">以非 root 用户身份执行数据迁移时， root 用户可以执行以下步骤。</block>
@@ -564,7 +555,6 @@
   <block id="0794915b73fa5fed8fdbb7381cf8053b" category="cell">文件共享 / 卷可能无法读取。运行 `XCP show` 命令，手动检查文件共享是否可访问 / 读取。此外，请检查是否已删除 `xcp.ini` 文件。如果删除了此文件，请使用 configure.sh 脚本修复选项重建 `xcp.ini` 文件。</block>
   <block id="3851e00cfd9ac3614604e7ee99194ebf" category="cell">尝试刷新页面。如果此问题仍然存在，请在提示符处手动运行 `XCP show` 命令并检查是否可以扫描文件服务器。如果成功，请向 NetApp 客户支持部门提交服务单。如果失败，请执行手动检查以检查文件服务器是否处于活动状态。检查 `xcp.ini` 文件和许可证文件是否位于正确的位置。要重置 `xcp.ini` 文件，请运行配置脚本并选择 * 修复 * 选项。接下来，选择菜单选项 * 重建 xcp.ini 文件。 * 检查 `xcpfalogs` 日志以查看许可证是否需要续订。</block>
   <block id="ec0bc824851831e651eff319ac6be069" category="cell">如果卷中存在 qtree 级别的导出，则可能会发生这种情况。例如，如果导出为 ` /vol1` 的卷大小为 10 GB ，并且卷 ` /vol1/qtree1` 中有一个 qtree ，则 `XCP show` 命令会将 `vol1` size 显示为 `10 GB` ，并将 `qtree1` size 显示为 `10 GB` 。XCP 文件分析将对两个导出的空间进行求和，并提供总空间，在本例中为 `20 GB` 。它不知道 `qtree1` 是逻辑空间。</block>
-  <block id="06e36d0d8916c19245d82112295e2676" category="list-text">`XCP 扫描 NFS [ 服务器： /export path | \file ： //&lt;NFS 挂载路径 &gt; ： HDFS ： //&lt;HDFS 挂载路径 &gt; ]`</block>
   <block id="d0b08bb1d5a232daa12efa61e334bd33" category="list-text">`XCP 扫描 \file ： //mnt/nfs-source`</block>
   <block id="95e9d579b96f02c13ed81480b282135b" category="list-text">`XCP 扫描 HDFS ： //demo/user1`</block>
   <block id="4467bdfaff09862977dbfe2f4fb9dca5" category="doc">环境变量</block>
@@ -681,7 +671,6 @@
   <block id="c64a522ee6418ae33077670975c2798b" category="admonition">在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` 命令结合使用，以保留源的访问时间。</block>
   <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` 命令结合使用，以保留源上的访问时间。</block>
   <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。</block>
-  <block id="0e97e9bc1c0f6d8ea9bc140cab258f9a" category="list-text">在验证操作期间，您可以将 ` -noatime` 标志与 `verify` 命令结合使用，以排除访问时间差异。</block>
   <block id="d04f98cbab23bb984f10968cafdb77bf" category="section-title">配置 Windows 客户端</block>
   <block id="8723065565846862b1fa4bd925384734" category="list-text">将目标存储箱和源存储箱添加到主机文件：</block>
   <block id="cf2408bbf2ce4b4de95513dd3053d13a" category="list-text">导航到以下位置： ` （ C ： \Windows\System32\drivers\etc\hosts ）`</block>
@@ -741,9 +730,6 @@
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>：比较批处理：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载旧版XCP二进制文件。</block>
   <block id="481da41cf08734ac99d07aca58644781" category="cell"><block ref="6d7d8e19dacf4142870d92b873503ded" prefix="" category="inline-code"></block></block>
-  <block id="2dc9d74fea656209a3e6734b2bd09c40" category="cell">如果文件路径中有冒号(：)、请改用三个冒号(：：：)。</block>
-  <block id="e9bef9a5a04a193f8f77a5867e82c24b" category="doc">XCP v1.0.1发行说明</block>
-  <block id="a76dc4faed369cb6713d049dbc0ca400" category="paragraph">。 <block ref="5a4a1c694a80c57bbface50f0a4d4a69" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="410bc026d79ee8d7b9f82dd6b03feb98" category="list-text">登录到文件分析图形用户界面。</block>
   <block id="fce3933747223b348680fa7fa109330b" category="paragraph">可以通过两种方式登录到文件分析图形用户界面：</block>
   <block id="f54b0f1d442f1ec5a7de065a3541d957" category="list-text">使用用户名"admin"和您在配置期间设置的密码。</block>
@@ -784,4 +770,122 @@
   <block id="dbef0b1dd5263aa13674ecebca1b7756" category="cell">实时源迁移</block>
   <block id="93571d5812c4c39edcca3e27487acbe9" category="cell">XCP不支持在迁移期间修改源卷上的数据。</block>
   <block id="61355ec3f68ee20926a222027dcb3d7b" category="list-text">XCP主机系统：XCP主机用户必须具有管理员权限(该用户必须属于目标SMB服务器上的"BUILTIN\Administrators "组)。</block>
+  <block id="7cde6d7e5e7b73d42bf2ff05514668fe" category="cell">成功安装后、无法访问此站点或用户登录失败。</block>
+  <block id="7e8faa040a3429cd75dbc9dfed43bac0" category="list-text">检查XCP服务是否正在运行：<block ref="47541872bcdb6b08aeadea6f58c6ebd3" prefix=" " category="inline-code"></block></block>
+  <block id="d311ee2390d292b3694c8f669889041c" category="list-text">启动XCP侦听操作并确认没有错误：</block>
+  <block id="a819ba1b3efc04fee9100a7ab0ee93ca" category="paragraph"><block ref="a73ccca27c22e20f2b42c66b62244db5" prefix="" category="inline-code"></block></block>
+  <block id="6f59af5df257d27f8f7f83e150cb44c7" category="list-text">如果看到以下错误、请使用yum安装CodeReady软件包、例如<block ref="195584d46184f28385e2ae5bd9f0af62" prefix=" " category="inline-code"></block>：</block>
+  <block id="b326b5062b2f0e69046810717534cb09" category="cell">true</block>
+  <block id="a660b358e105189a720dbb4a9176decf" category="paragraph">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。XCP 旨在利用所有可用系统资源来管理大容量数据集和高性能迁移，从而实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。</block>
+  <block id="f11ba2ba1e8e44e293e56351fbc05edf" category="doc">在同一XCP主机上运行多个XCP作业</block>
+  <block id="328be41686da6fdb0454cdc13b57cf2d" category="paragraph">从XCP 1.1.2开始、您可以使用"-minme"功能在一个XCP主机上运行多个XCP作业或命令、前提是该主机具有足够的资源来执行每个作业。当您运行支持"-minmem"功能的命令时、XCP会使用最小主机内存来完成作业、从而为在同一主机配置上运行其他作业创建容量。</block>
+  <block id="d9647e192eec469f5ef0ff6b04e9a7f0" category="section-title">最低系统要求</block>
+  <block id="9901879377c5f3682a62b2348ecc14ad" category="paragraph">对于每个XCP作业、您应最多允许64 GB主机内存和八个核心用于大中型迁移。</block>
+  <block id="b1db961ef892611c930b306acf2b45c9" category="admonition">SMB数据迁移不支持"-minme"功能。</block>
+  <block id="8db7df66ab1d7ab5f1dc947acdb5fae4" category="section-title">日志记录</block>
+  <block id="6c5503e1799fc9bf884095cb4a7486c7" category="paragraph">默认情况下、每个XCP作业都记录在一个单独的日志文件中、该日志文件对于作业ID是唯一的。如果在同一台主机上运行多个作业、则此日志记录机制可以正常运行。NetApp建议不要更改<block ref="1f0167cf593b01d4e8c31f9bea306a0d" prefix=" " category="inline-code"></block> 要使用单个的文件<block ref="4bfa73c989008743279ae857adc50faf" prefix=" " category="inline-code"></block> 用于记录在同一主机上并行运行的多个XCP作业的文件。</block>
+  <block id="26807eaed63a31814a5e1753d72676d8" category="section-title">支持的命令</block>
+  <block id="f0ca056f216466d7830147a4008903a4" category="paragraph">以下XCP命令支持"-minme"功能：</block>
+  <block id="644834e9d0415e057f1d7c2c00cdd281" category="list-text"><block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix="" category="inline-code"></block></block>
+  <block id="cf1b3b1776d0d05e295618646490b382" category="list-text"><block ref="12cba3ee81cf4a793796a51b6327c678" prefix="" category="inline-code"></block></block>
+  <block id="d64d8a3c311a3e34d98c5d12b0de2deb" category="list-text"><block ref="69f2afc2390cec954f7c208b07212d39" prefix="" category="inline-code"></block></block>
+  <block id="39c754f7316412b5101d1266f8f9b259" category="list-text"><block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix="" category="inline-code"></block></block>
+  <block id="0ac5b3cfaad7fc2ecd24fa0fc221ea9d" category="list-text"><block ref="a3e4a767ccc698fa80ecaf42af64deea" prefix="" category="inline-code"></block></block>
+  <block id="456a5abc7727a436e67e4a218e2a4508" category="list-text"><block ref="417e248f80c35ca0d471575a5fb951f5" prefix="" category="inline-code"></block></block>
+  <block id="7bfde840c21e45a59701f55f5c18ef2c" category="list-text"><block ref="4de53f769603f8e4542ee3267c08dd50" prefix="" category="inline-code"></block></block>
+  <block id="3649b15e31d22a1e2210f014d843b9fa" category="list-text"><block ref="099af53f601532dbd31e0ea99ffdeb64" prefix="" category="inline-code"></block></block>
+  <block id="777dd634078a1b960c79f15d2522db38" category="section-title">不支持的命令</block>
+  <block id="d2e4f5ed82446cf3023ccba7b5646092" category="paragraph">不支持"-minme"功能<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="32ae6defbd536645e75bc85121b5564b" category="section-title">命令示例</block>
+  <block id="64e1323e5982bf7736f58f196316da1f" category="paragraph">要使用"-minme"功能、必须在XCP命令中包含"-minme"选项、如以下示例所示：</block>
+  <block id="36126c9a86541e7281b955ee81970a5f" category="list-text"><block ref="31a74c4f1c865e5c03256362a477c425" prefix="" category="inline-code"></block></block>
+  <block id="9cd9bbf0e790392cca7a73545353ed80" category="list-text"><block ref="4a4341530f7d16d6f7a7c281a83f9473" prefix="" category="inline-code"></block></block>
+  <block id="daaf865ea062be33e32fee7ce6361bf2" category="list-text"><block ref="2227f4f3166de257df2d86054647a1df" prefix="" category="inline-code"></block></block>
+  <block id="4200a251b90a3e6f4a8f03a96790e241" category="paragraph">*HDFS路径示例*：</block>
+  <block id="6d2258e0ac0187b32c49ef3d86153890" category="list-text"><block ref="3d4bfec43ba02eadffa6b680f5d2ff90" prefix="" category="inline-code"></block></block>
+  <block id="108808871f93d8eb5fadba5e5396e0b1" category="list-text"><block ref="d0ff481491922a2d0b61842bfc7e1e56" prefix="" category="inline-code"></block></block>
+  <block id="5b89894d695356bcaecabb4c87252ae5" category="list-text"><block ref="354e4935785b48c4def1303908b72905" prefix="" category="inline-code"></block></block>
+  <block id="1e84e83ba1d6a6831654831e04a6e7aa" category="paragraph">*POSIX路径示例*：</block>
+  <block id="97fb7d435610adf703b3ea0785c309d6" category="list-text"><block ref="638d56e1e6406263b5111d968a0e1f1d" prefix="" category="inline-code"></block></block>
+  <block id="b7e41451ca91ae23c0a331e9b88f3663" category="list-text"><block ref="a0910009e4d60445309dd8426ef78ded" prefix="" category="inline-code"></block></block>
+  <block id="bdf61b3ecae5f29d6c6b402c1adf2536" category="section-title">XCP估计</block>
+  <block id="e151d1ab502d96991c424c6cbefae2f7" category="paragraph">XCP估计功能用于估计完成基线的时间<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 从源到目标的操作。它会计算完成基线的估计时间<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 操作。使用时<block ref="a02d29476c13ce0a516e16bcfe4535b6" prefix=" " category="inline-code"></block> 选项中、XCP会运行示例复制操作以查找估计时间。</block>
+  <block id="f943fe60d92b33d799a2c02de9061e3b" category="summary">通过S3连接器、XCP可以将数据从NFS或HDFS文件系统迁移到S3对象存储</block>
+  <block id="92095cc1ef432ed93af95b88d3e3b625" category="doc">配置S3连接器</block>
+  <block id="16933dfe56aff83cb6998c3667c2f0cf" category="paragraph">从XCP 1.1.2开始、Simple Storage Service (S3) Connector可以将数据从Hadoop分布式文件系统(HDFS)文件系统迁移到S3对象存储、从而扩大了XCP数据迁移的范围。</block>
+  <block id="677857bd3ebd1f41c85f70280b227d8f" category="paragraph-title">支持的迁移用例</block>
+  <block id="ed0f619faede22039440d1fe21bcb0e9" category="paragraph">S3连接器支持以下迁移用例：</block>
+  <block id="2268dc053f46fc24ae89f30faa812246" category="list-text">从HDFS或NFS迁移到NetApp StorageGRID</block>
+  <block id="f10c40e18ecc26639294205a739fbd18" category="list-text">从HDFS或NFS迁移到Amazon S3</block>
+  <block id="d3457be5101b05e590b80f8f7107b022" category="list-text">从HDFS或NFS迁移到NetApp ONTAP S3</block>
+  <block id="9caa7c5b602fa58bf008c08a7e479da6" category="admonition">目前、MapR仅适用于HDFS并受其支持。</block>
+  <block id="d006b10e4564e8049b786f2138530862" category="paragraph">支持<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block>，<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block>，<block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix=" " category="inline-code"></block>，<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> 和<block ref="099af53f601532dbd31e0ea99ffdeb64" prefix=" " category="inline-code"></block> 命令可用于S3连接器。</block>
+  <block id="c29d1e0e67cc2410608faeefbb62dcb8" category="paragraph-title">不支持的功能</block>
+  <block id="9627eb5a42d84d5c63b7319f5d296ebc" category="paragraph">支持<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令不适用于S3连接器。</block>
+  <block id="472fe12a7f2ae7888f36faddba8e5e65" category="paragraph">S3连接器的路径语法为<block ref="aa0fb791d7b6f79654dd107dbd476a65" prefix=" " category="inline-code"></block>。</block>
+  <block id="68549dc967c92035106a77e7439be9ba" category="list-text">您可以使用为XCP命令提供特定的S3配置文件<block ref="4000828b83c0a87531b7ca1caac052b3" prefix=" " category="inline-code"></block> 选项</block>
+  <block id="41088e7d7bed6fb65fd0ce680e35aff1" category="list-text">您可以使用<block ref="9dd62310fbf791aca68053dbd7c2e4d8" prefix=" " category="inline-code"></block> 用于修改端点值以与S3通信的选项</block>
+  <block id="d7442f0f9efd2ca279443c52c914b251" category="admonition">StorageGRID和ONTAP S3必须使用端点。</block>
+  <block id="0237d634875999d360d9efab9c63589c" category="section-title">设置S3连接器</block>
+  <block id="f30387763ef5dc8495245b22c3826788" category="list-text">要使用S3连接器运行XCP命令、请按照相应平台的联机文档在S3中创建一个分段：</block>
+  <block id="5fdb600d07b3f6deb635e013a137473b" category="inline-link-macro">ONTAP S3对象存储管理</block>
+  <block id="649ef27cf067f5fae3e9c0657c2a071f" category="list-text"><block ref="649ef27cf067f5fae3e9c0657c2a071f" category="inline-link-macro-rx"></block></block>
+  <block id="f16122d47aa9bddb63b76f4f73a13587" category="inline-link-macro">StorageGRID：使用租户帐户概述</block>
+  <block id="59a9d1ab7b45926d308d68d7e6f49a67" category="list-text"><block ref="59a9d1ab7b45926d308d68d7e6f49a67" category="inline-link-macro-rx"></block></block>
+  <block id="ea10e86fc2f564a6f297ea6c75c8f92e" category="admonition">在继续操作之前、您必须拥有<block ref="c005759b4dfbaa83c83b8fdc155c3493" prefix=" " category="inline-code"></block>，<block ref="a7656fafe94dae72b1e1487670148412" prefix=" " category="inline-code"></block>、证书颁发机构(CA)证书包、和<block ref="975877452f21015e24a0ec58b6b66541" prefix=" " category="inline-code"></block> 信息。在启动操作之前、XCP会使用这些参数识别并连接到S3存储分段。</block>
+  <block id="55de7793cb50b93dbda01a2a32ec9f46" category="list-text">安装Amazon Web Services (AWS) CLI软件包并运行AWS CLI命令为S3帐户配置密钥和安全套接字层(SSL)证书：</block>
+  <block id="bf3e5f3e0a2a1a0a56fe8915d5125419" category="inline-link-macro">安装或更新最新版本的AWS命令行界面</block>
+  <block id="47f387d5114be0a75243893de72ede38" category="list-text">请参见 <block ref="7d6aab052f74c1d885fa43336d7be563" category="inline-link-macro-rx"></block> 安装AWS软件包。</block>
+  <block id="38d05d307b3ed600922427e3a1dd49a9" category="inline-link-macro">AWS CLI命令参考</block>
+  <block id="b707c05877e41f501e5064a02f164115" category="list-text">请参见 <block ref="ad30b84b7cb0e002f342b12435baea56" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
+  <block id="7f690876f3db4f29ba95620b570b48c2" category="list-text">使用<block ref="329dfd38b6589b9bc6d49cf9e785f35b" prefix=" " category="inline-code"></block> 命令以配置凭据文件。默认情况下、文件的位置为<block ref="40f203cedcd08f7589920d1a469a96d9" prefix=" " category="inline-code"></block>。凭据文件应指定访问密钥和机密访问密钥。</block>
+  <block id="382e42ce21e494705ff831f135606bde" category="list-text">使用<block ref="42579c91711a0d7831c6aec42c478881" prefix=" " category="inline-code"></block> 命令以指定CA证书包、该证书包是带有的文件<block ref="bdf46f9562b038d0163af0feba0b1dfa" prefix=" " category="inline-code"></block> 验证SSL证书时使用的扩展。默认情况下、文件的位置为<block ref="5f5f86503ef335bfb468ac44a0e77d00" prefix=" " category="inline-code"></block>。</block>
+  <block id="228242e9d19fdb954d00a277118e2f18" category="list-text">完成所需的设置配置后、确认AWS命令行界面命令可以从Linux客户端访问S3存储分段、然后再运行XCP命令：<block ref="0b3502a40565c7026d8c433e11ba15b9" prefix=" " category="inline-code"></block></block>
+  <block id="6e457e419b169c5c14b03b5e07a2f21b" category="paragraph"><block ref="0d53497a4b61eeaa925b42c377a42eae" prefix="" category="inline-code"></block></block>
+  <block id="d406f518749cb0808f4c4f13d1b7ab92" category="cell">如果NFS服务器共享路径名称中包含一个或多个冒号、请使用双冒号(：：)而不是单个冒号(：)分隔NFS服务器IP和NFS服务器共享路径。</block>
+  <block id="ec95d5f1b4ea1a01d2a072ab802d2e2e" category="cell">之后、SnapLock卷不会保留WORM文件<block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix=" " category="inline-code"></block> 操作。</block>
+  <block id="b939754165d55d04968e3d8581c06ff3" category="paragraph">XCP会成功将WORM文件复制到卷、但SnapLock卷不会保留这些文件。</block>
+  <block id="1723c364ac2943db169228e83d339a34" category="list-text">执行<block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix=" " category="inline-code"></block> 从源卷到目标卷的操作：<block ref="958bd1007a36c3c49dc7ee93fd734a4c" prefix=" " category="inline-code"></block></block>
+  <block id="0ec0ae00838a2eee9dcb4e55279286f7" category="list-text">使用<block ref="80cd6575aba36d362f140cdde0c55e70" prefix=" " category="inline-code"></block> 命令将目标卷上的文件权限更改为*readonly*：<block ref="ed04d0d005c97df67ef52b0ad8aa0517" prefix=" " category="inline-code"></block></block>
+  <block id="83522b3c501a3f48b27f9b264cae4599" category="paragraph">完成上述步骤后、SnapLock卷将开始保留复制的文件。</block>
+  <block id="72400cb7d5b84ae782642ca107c294fc" category="inline-link-macro">设置保留时间</block>
+  <block id="d6ac9450dbf2c0861efd5a5ef5115f7e" category="admonition">SnapLock卷的保留时间受卷的默认保留策略控制。在开始迁移之前检查卷保留设置： <block ref="fd0c10595d24f7804e14135a6730866f" category="inline-link-macro-rx"></block></block>
+  <block id="d3153df9c554c9b6a863ef3e5a6b6e13" category="doc">准备XCP安装</block>
+  <block id="4d41b0dcb8b6747f8cec345d418abd0b" category="paragraph">在准备安装时、您需要下载XCP、获取许可证并准备系统。</block>
+  <block id="0a009b2626b03b4c70bb4dcb73832482" category="doc">用于迁移NFS数据的命令</block>
+  <block id="322df0ac50172a48935aaba57e5dee70" category="cell">请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> XCP文件分析所有受支持浏览器版本的列表。</block>
+  <block id="8ba09dc2aec500b8eabed3efd8eb8bc9" category="summary">迁移HDFS数据</block>
+  <block id="f30e2bc9de919d5c6249cea25c2f9a74" category="paragraph">使用规划迁移之后<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令、您可以迁移数据。</block>
+  <block id="ea6a8ab5a9e8b23dc8df0571125234f4" category="paragraph">。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 命令会扫描整个源Hadoop分布式文件系统(Hadoop Distributed File System、HDFS)数据并将其复制到NFS或简单存储服务(Simple Storage Service、S3)分段。。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 命令要求将源路径和目标路径作为变量。扫描和复制的文件、吞吐量、速度和已用时间详细信息将显示在复制操作结束时。</block>
+  <block id="beea424f6b4dbe034f0047f1f1a1cd57" category="paragraph">*NFS路径示例:*</block>
+  <block id="02880d02dff3a15e38a0afe75b110262" category="paragraph">*S3路径示例:*</block>
+  <block id="3f2c3abdeca240c2063183e75fa45805" category="paragraph">。<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> 命令通过指定目录索引名称或编号来重新启动先前中断的复制操作。上次复制操作的目录索引名称或编号存储在中<block ref="cbd55302f2990d9880a35e0bd8c4b3e9" prefix=" " category="inline-code"></block> 目录。</block>
+  <block id="8c81ddc94b60eaab22662db017644a72" category="admonition">默认情况下、XCP<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> 命令使用期间使用的副本索引中的S3端点和S3配置文件<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 命令：但是、如果是新的<block ref="35a45c3d02a8bdde44197b27cf839c10" prefix=" " category="inline-code"></block> 和<block ref="4000828b83c0a87531b7ca1caac052b3" prefix=" " category="inline-code"></block> 值随提供<block ref="69f2afc2390cec954f7c208b07212d39" prefix=" " category="inline-code"></block> 命令中、将使用选项的新值以及副本中使用的值<block ref="1dccadfed7bcbb036c56a4afb97e906f" prefix=" " category="inline-code"></block> 被覆盖。</block>
+  <block id="bea3d8136ac916a4d71a0db1cd54135f" category="paragraph">。<block ref="e8418d1d706cd73548f9f16f1d55ad6e" prefix=" " category="inline-code"></block> 命令会在执行复制操作后对源目录和目标目录进行逐字节完整数据比较、而不使用目录索引编号。命令读取两端的文件并比较数据。</block>
+  <block id="e3a7bb54039414508e91e2b8caab6243" category="paragraph">。<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 命令用于查询一个或多个存储服务器的RPC服务和NFS导出。命令将列出可用服务和导出，并列出每个导出的已用容量和可用容量，然后列出每个导出的根属性。</block>
+  <block id="0c8146ca9bdd9f9a3083cbeed24e27a5" category="paragraph">。<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令会以递归方式扫描源NFS3导出的整个路径、并在扫描结束时输出文件结构的统计信息。NetApp 建议在扫描操作期间将源 NFS 导出挂载置于只读模式。</block>
+  <block id="6a95fc6c0382de222dd433886d475460" category="list-text"><block ref="48ac1e589150949f3ebe6a2bb7730a73" prefix="" category="inline-code"></block></block>
+  <block id="af1d56f5c43bf1720e9a92f5de20bb23" category="doc">规划HDFS数据迁移</block>
+  <block id="7d79a1639a9506966de268ebe5ea7da7" category="paragraph">规划HDFS数据迁移。</block>
+  <block id="3943abc3700d0fc7d672d7c1e82fcb26" category="paragraph">。<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令以递归方式扫描整个源路径、并在扫描结束时输出文件结构的统计信息。</block>
+  <block id="dd0cd3eb63043850b57e374170b7dfe2" category="list-text"><block ref="1be5ff729f9dfef8516c12abbd49a5a9" prefix="" category="inline-code"></block></block>
+  <block id="fd72c03485ab8cb65dd065e28ac144b3" category="list-text"><block ref="e79e3cc99b073c66e94d8ad89bc3ba4e" prefix="" category="inline-code"></block></block>
+  <block id="74e963cc1be7bd9eb54760a83863926c" category="list-text"><block ref="31aabc9596cc7a7ef0c9a62732d77a5a" prefix="" category="inline-code"></block></block>
+  <block id="bb0399f427aed863042c042b142bd6cb" category="cell">NFS到S3迁移</block>
+  <block id="240cf8fae0436b28ece1e12030b38e4e" category="cell">XCP不支持从NFS迁移到S3。</block>
+  <block id="fe55abf5fae19db6a828fd5ca392b6b7" category="cell">同一主机上的多个XCP实例</block>
+  <block id="8b967b2a58b58d36b79d41009ec9f64b" category="cell">在同一主机上运行多个XCP实例时、可能会出现不可预测的结果。</block>
+  <block id="6e17cc1c2c681736d2ceb6e979223245" category="paragraph">以下功能不适用于Hadoop分布式文件系统(HDFS)连接器：</block>
+  <block id="f540f493fb0a9e9093687015a52af134" category="cell">支持<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令</block>
+  <block id="04047e38150b589ef73f2cf1a47dcbfa" category="cell">HDFS连接器不支持<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="2cfceda72756239fb550ad6bf9cb21a3" category="cell">符号链接(符号链接)和硬链接支持</block>
+  <block id="9913e624c49a17211b2bfade4f81e5a6" category="cell">HDFS文件系统不支持符号链接、硬链接或特殊文件。</block>
+  <block id="e094f0017c23fc66e41a73d4c778d988" category="cell">实时源HDFS迁移</block>
+  <block id="f3b812b32fdce09d7d06a9a0759b8546" category="cell">XCP不支持在迁移期间修改源HDFS文件系统上的数据</block>
+  <block id="e8a90b649b22fddc82d6ee4cc9429807" category="paragraph">以下功能不适用于Simple Storage Service (S3)连接器：</block>
+  <block id="84b02ee2d0524eb08de32d9354ade34b" category="list-text">*以S3存储分段作为源的迁移*：XCP不支持以S3存储分段作为源的迁移。</block>
+  <block id="a8a17edcb9880059a216d63c9e0c2a18" category="doc">XCP v1.1.2发行说明</block>
+  <block id="27ce933e59d1bd3bfff8d6118fb7a35e" category="paragraph">。 <block ref="b98ddb4c6025a76df69bcccfdb0bd760" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
+  <block id="b179bbcf6f57100cffb18d2558916e9d" category="cell">64位Intel或AMD服务器、至少8个核心和64 GB RAM</block>
+  <block id="11db15a14a5186a893fe15b0e03f3213" category="sidebar">在同一主机上运行多个XCP作业</block>
 </blocks>

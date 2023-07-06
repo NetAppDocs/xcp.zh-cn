@@ -60,9 +60,7 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 
 [NOTE]
 ====
-* 在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。
-* 在验证操作期间，您可以将 ` -noatime` 标志与 `verify` 命令结合使用，以排除访问时间差异。
-
+在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。
 
 ====
 * 示例： *

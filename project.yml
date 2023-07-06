@@ -14,9 +14,10 @@ sidebar:
   - title: 发行说明
     url: "/releasenotes.html"
   - title: 开始使用 XCP
-    url: "/index.html"
     type: solutions
     entries:
+    - title: 了解 XCP
+      url: "/index.html"
     - title: XCP NFS 附加功能
       url: "/xcp-nfs-add-ons.html"
     - title: 不支持的功能
@@ -26,8 +27,9 @@ sidebar:
     - title: XCP 使用的端口
       url: "/xcp-ports-used.html"
   - title: 安装 XCP
-    url: "/xcp-install-xcp.html"
     entries:
+    - title: 准备XCP安装
+      url: "/xcp-install-xcp.html"
     - title: 为 XCP NFS 准备 Linux
       url: "/xcp-prepare-linux-for-xcp-nfs.html"
     - title: 为 XCP SMB 准备 Windows
@@ -56,6 +58,8 @@ sidebar:
       url: "/xcp-configure-hdfs-connector-nfs.html"
     - title: 配置多节点横向扩展
       url: "/xcp-configure-multinode-scaleout-nfs.html"
+    - title: 配置S3连接器
+      url: "/xcp-configure-s3-connector-nfs.html"
   - title: 规划数据迁移
     url: "/xcp-plan-data-migration.html"
     entries:
@@ -63,6 +67,8 @@ sidebar:
       url: "/xcp-plan-nfs-data-migration.html"
     - title: 规划 SMB 数据迁移
       url: "/xcp-plan-smb-data-migration.html"
+    - title: 规划HDFS数据迁移
+      url: "/xcp-plan-hdfs-data-migration.html"
     - title: 使用文件分析进行规划
       url: "/xcp-using-file-analytics.html"
       entries:
@@ -79,9 +85,15 @@ sidebar:
   - title: 迁移数据
     entries:
     - title: 迁移 NFS 数据
-      url: "/xcp-migrate-nfs-data.html"
+      entries:
+      - title: 用于迁移NFS数据的命令
+        url: "/xcp-migrate-nfs-data.html"
     - title: 迁移 SMB 数据
       url: "/xcp-migrate-smb-data.html"
+    - title: 迁移HDFS数据
+      url: "/xcp-migrate-hdfs-data.html"
+    - title: 在同一主机上运行多个XCP作业
+      url: "/xcp-run-multiple-jobs-on-same-host.html"
     - title: 其他 NFS 功能
       url: "/xcp-migrate-nfs-additional-features.html"
   - title: 故障排除
