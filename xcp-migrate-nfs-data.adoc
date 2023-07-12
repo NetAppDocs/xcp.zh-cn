@@ -1,8 +1,6 @@
 ---
-sidebar: sidebar 
 permalink: xcp-migrate-nfs-data.html 
-keywords: netapp, xcp, migrate, data, nfs, smb, copy, resume, sync, verify 
-summary: 迁移 NFS 数据 
+redirect: xcp/xcp-migrate-data.html 
 ---
 = 用于迁移NFS数据的命令
 :hardbreaks:
@@ -13,73 +11,3 @@ summary: 迁移 NFS 数据
 :imagesdir: ./media/
 
 
-[role="lead"]
-使用 `show` 和 `scan` 命令规划迁移后，您可以迁移数据。
-
-
-
-== 复制
-
-`copy` 命令可扫描整个源目录结构并将其复制到目标 NFSv3 导出。`copy` 命令要求源路径和目标路径均为变量。扫描和复制的文件，吞吐量 / 速度以及经过的时间详细信息将在复制操作结束时显示
-
-* 示例： *
-
-[listing]
-----
-xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
-----
-* POSIX 路径示例： *
-
-[listing]
-----
-xcp copy -newid <id> file:///mnt/source file:///mnt/dest
-----
-有关详细信息，请参见 `XCP 帮助副本` 。
-
-
-
-== 恢复
-
-`reume` 命令可通过指定目录索引名称或编号来重新启动先前中断的复制操作。先前复制操作的目录索引名称或编号存储在 ` <catalog path> ： /catalog /index` 目录中。
-
-* 示例： *
-
-[listing]
-----
-xcp resume [options] -id <id used for copy>
-----
-有关详细信息，请参见 `XCP 帮助恢复` 。
-
-
-
-== 同步
-
-`sync` 命令可使用目录索引标记名称或先前复制操作的编号扫描对源 NFS 目录执行的更改和修改。源增量更改会复制并应用于目标目录。在同步操作 # 之后，旧目录索引编号将替换为新的目录索引编号（ .下划线 ） # 。
-
-* 示例： *
-
-[listing]
-----
-xcp sync [options] -id <id used for copy>
-----
-有关详细信息，请参见 `XCP 帮助同步` 。
-
-
-
-== 验证
-
-执行复制操作后， `verify` 命令会对源目录和目标目录进行完整的逐字节数据比较，而不会使用目录索引编号。命令将检查修改时间以及其他文件或目录属性，包括权限。该命令还会读取两端的文件并比较数据。
-
-* 示例： *
-
-[listing]
-----
-xcp verify src_server:/src_export dst_server:/dst_export
-----
-* POSIX 路径示例： *
-
-[listing]
-----
-xcp verify file:///mnt/source file:///mnt/dest
-----
-有关详细信息，请参见 `XCP 帮助验证` 。

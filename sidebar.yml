@@ -74,7 +74,7 @@ entries:
 - title: 迁移数据
   entries:
   - title: 迁移 NFS 数据
-    url: "/xcp-migrate-nfs-data.html"
+    url: "/xcp-migrate-data.html"
   - title: 迁移 SMB 数据
     url: "/xcp-migrate-smb-data.html"
   - title: 迁移HDFS数据

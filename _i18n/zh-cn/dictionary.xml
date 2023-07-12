@@ -408,7 +408,6 @@
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">NetApp 支持站点</block>
   <block id="110444d197d67f7d16c29fa0e2022b7f" category="paragraph">您可以从下载 XCP <block ref="ff34957a5613d93a82e79914bce07df2" category="inline-link-macro-rx"></block>。</block>
   <block id="5d813edbc38ed8b3a73ab3c485aa5daf" category="section-title">许可证 XCP</block>
-  <block id="a6ed02e973991972186d8dbd4bd0e16e" category="paragraph">NetApp 提供 90 天免费 XCP 许可证。您可以从获取许可证文件 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。许可门户提供了不同的许可选项。90 天后，您可以使用同一门户将许可证续订 90 天。</block>
   <block id="0f217d96dd705618a7386cd8e0f4a5e4" category="paragraph">XCP 许可证可以脱机或联机许可证的形式提供。如果要发送迁移统计信息，请使用联机许可证。联机许可证需要 Internet 连接。脱机许可证不需要 Internet 连接。</block>
   <block id="b4c8d461cf544f3b1324e87e550416e1" category="section-title">准备系统</block>
   <block id="e20233267adbb44f966c8c601a37ab48" category="inline-link-macro">Linux 系统上的 XCP NFS</block>
@@ -724,8 +723,6 @@
   <block id="f6e8987d5e2d203c406379ba9e8b8a47" category="admonition">迁移后、如果使用`Xcp_config_DIR`或`Xcp_log_DIR`环境变量覆盖默认配置位置或日志位置、则在使用旧迁移或作业ID时、`logdump`命令将失败。要避免这种情况、请使用相同的日志路径、直到迁移完成。</block>
   <block id="20f0f3784e710ced2f992c9e868a329f" category="cell">`XCP copy` with ACL migration Error message logged in xcp.log file：`pywintypes.error`：`(1314、GetNamedSecurityInfo、' A required privilege is not held by the client.')`</block>
   <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">用户面临与安全描述符相关的问题描述 、因为由于迁移用户拥有权限、XCP只能获取所有者、组和DACL、因此无法获取SACL。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
-  <block id="fdbdc0e84f617d7346b90d43e65e3e78" category="doc">XCP v1.9文档</block>
-  <block id="acca97deb653a678580117072b78b763" category="paragraph">欢迎使用 XCP 信息库。您可以在此处找到有关XCP v1.9软件的文档、其中包括如何安装、配置和使用XCP。</block>
   <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_&lt;version&gt;.tgz`中的自述文件。</block>
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>：比较批处理：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载旧版XCP二进制文件。</block>
@@ -888,4 +885,7 @@
   <block id="27ce933e59d1bd3bfff8d6118fb7a35e" category="paragraph">。 <block ref="b98ddb4c6025a76df69bcccfdb0bd760" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="b179bbcf6f57100cffb18d2558916e9d" category="cell">64位Intel或AMD服务器、至少8个核心和64 GB RAM</block>
   <block id="11db15a14a5186a893fe15b0e03f3213" category="sidebar">在同一主机上运行多个XCP作业</block>
+  <block id="bd843a39d27307ca3a4420e90c5e228f" category="doc">XCP v1.1.2文档</block>
+  <block id="84f3449f04bbc191eb611f160d99dcfc" category="paragraph">欢迎使用NetApp XCP信息库。您可以在此处找到有关XCP v1.1.2软件的文档、包括如何安装、配置和使用XCP。</block>
+  <block id="ac1b0e3122e91e04b7f9d9e2eea0accb" category="paragraph">NetApp提供一年免费XCP许可证。您可以从获取许可证文件 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。许可门户提供了不同的许可选项。一年后、您可以使用同一门户将许可证续订一年。</block>
 </blocks>
