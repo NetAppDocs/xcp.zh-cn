@@ -14,9 +14,9 @@ summary: 通过S3连接器、XCP可以将数据从NFS或HDFS文件系统迁移�
 .支持的迁移用例
 S3连接器支持以下迁移用例：
 
-* 从HDFS或NFS迁移到NetApp StorageGRID
-* 从HDFS或NFS迁移到Amazon S3
-* 从HDFS或NFS迁移到NetApp ONTAP S3
+* 从HDFS迁移到NetApp StorageGRID
+* 从HDFS迁移到Amazon S3
+* 从HDFS迁移到NetApp ONTAP S3
 
 
 
