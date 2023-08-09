@@ -20,6 +20,19 @@ summary: 对 XCP SMB 错误进行故障排除
 | 问题描述 | 解决方案 
 
 
+ a| 
+如果源、目标或两者都是不含目录的接合、并且在迁移中使用了联机许可证、则可能会发生回溯错误。如果发生这种情况、XCP命令的状态为 `PASSED` 但是、控制台输出结束时会返回以下错误：
+
+[listing]
+----
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "xcp\stats.py", line 214, in call_home
+  File "xcp\histograms.py", line 387, in calculate_averages
+ZeroDivisionError: division by zero
+----| 使用脱机许可证、而不是联机许可证。 
+
+
 | `XCP ：错误` ：此许可证已过期 | 从续订或获取新的 XCP 许可证 link:https://xcp.netapp.com/["XCP 站点"^]。 
 
 
@@ -44,5 +57,10 @@ summary: 对 XCP SMB 错误进行故障排除
 | `XCP 副本：错误` 无法获取回退安全主体（在主机文件中添加目标框条目后） xcp.log 文件中记录的错误消息： `pywintypes.error ：（ 87 ， "LookupAccountName" ， " 参数不正确。 " ）` | 回退用户 / 组选项的参数不正确。使用正确的语法重新运行命令以回退用户 / 组选项 
 
 
-| `XCP copy` with ACL migration Error message logged in xcp.log file：`pywintypes.error`：`(1314、GetNamedSecurityInfo、' A required privilege is not held by the client.')` | 用户面临与安全描述符相关的问题描述 、因为由于迁移用户拥有权限、XCP只能获取所有者、组和DACL、因此无法获取SACL。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
+| `xcp copy` ACL迁移
+
+xcp.log文件中记录的错误消息：
+`pywintypes.error`： `(1314, 'GetNamedSecurityInfo', 'A required privilege is not held by the client.')` | 与安全描述符相关的问题描述、因为迁移用户帐户仅具有XCP检索所有者、组和DACL所需的权限。无法检索SACL。
+将您的迁移用户帐户添加到Active Directory中的"管理审核和安全日志"策略。
+参考 link:https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn221953%28v%3Dws.11%29["管理审核和安全日志"^] 
 |===

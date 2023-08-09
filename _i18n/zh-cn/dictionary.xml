@@ -721,8 +721,6 @@
   <block id="78e3c3d20c30f31e40219bc4fc26d005" category="section-title">日志转储</block>
   <block id="f2223b790f3262b778f881ea47ce4191" category="paragraph">如果您遇到使用XCP命令或作业的问题描述 、则可以使用`logdump`命令将与问题描述 相关的日志文件转储到一个`.zip`文件中、该文件可发送给NetApp进行调试。`logdump`命令会根据迁移ID或作业ID筛选日志、并将这些日志转储到当前目录中的`.zip`文件中。`.zip`文件的名称与命令中使用的迁移或作业ID相同。</block>
   <block id="f6e8987d5e2d203c406379ba9e8b8a47" category="admonition">迁移后、如果使用`Xcp_config_DIR`或`Xcp_log_DIR`环境变量覆盖默认配置位置或日志位置、则在使用旧迁移或作业ID时、`logdump`命令将失败。要避免这种情况、请使用相同的日志路径、直到迁移完成。</block>
-  <block id="20f0f3784e710ced2f992c9e868a329f" category="cell">`XCP copy` with ACL migration Error message logged in xcp.log file：`pywintypes.error`：`(1314、GetNamedSecurityInfo、' A required privilege is not held by the client.')`</block>
-  <block id="ec548dc7e9c4428d0af475d94ed8628f" category="cell">用户面临与安全描述符相关的问题描述 、因为由于迁移用户拥有权限、XCP只能获取所有者、组和DACL、因此无法获取SACL。将迁移用户添加到 Active Directory 中的 " 管理审核和安全日志 " 策略中。参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
   <block id="8d199d68726e0baa3da715584c92e083" category="admonition">XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_&lt;version&gt;.tgz`中的自述文件。</block>
   <block id="259c9d5f301d6e350422d2ebfe2bcc87" category="cell">验证您的系统是否可以对安装了XCP文件分析且HTTPD正在运行的Linux计算机执行ping操作。如果服务未运行，请运行 `configure` 并选择修复选项。验证您使用的浏览器版本是否受支持。请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。</block>
   <block id="bfccbf3e891050373f71f1230130222b" category="cell"><block ref="ad3b549c4b03e0598dee96d17d3ccc66" prefix="" category="inline-code"></block>：比较批处理：索引文件不兼容。请仅使用当前版本的XCP生成的索引文件。或者、您也可以从xcp.netapp.com下载旧版XCP二进制文件。</block>
@@ -888,4 +886,12 @@
   <block id="9351e261865c10b81be01c7298324b0f" category="list-text">从HDFS迁移到NetApp StorageGRID</block>
   <block id="c19152294b5e6dfeaa6ca9c77e0f12e1" category="list-text">从HDFS迁移到Amazon S3</block>
   <block id="3df8a75d6363358c9c30a90e1f018d65" category="list-text">从HDFS迁移到NetApp ONTAP S3</block>
+  <block id="392f97fdb8ea70faba5877ca90ad7c42" category="paragraph">如果源、目标或两者都是不含目录的接合、并且在迁移中使用了联机许可证、则可能会发生回溯错误。如果发生这种情况、XCP命令的状态为<block ref="269f3d1562cbd15624e7d2c4b10122e3" prefix=" " category="inline-code"></block> 但是、控制台输出结束时会返回以下错误：</block>
+  <block id="c1397a1836478812e944515ecd5ff969" category="cell">使用脱机许可证、而不是联机许可证。</block>
+  <block id="747dd4d48798d325d388dd4ba57db561" category="cell"><block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix="" category="inline-code"></block> ACL迁移
+
+xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39bb13" prefix=" " category="inline-code"></block>：<block ref="da1b6bcd0d8118b98426d3a306332234" prefix=" " category="inline-code"></block></block>
+  <block id="5b68f649e30aa676e6765ad7d93ced85" category="cell">与安全描述符相关的问题描述、因为迁移用户帐户仅具有XCP检索所有者、组和DACL所需的权限。无法检索SACL。
+将您的迁移用户帐户添加到Active Directory中的"管理审核和安全日志"策略。
+参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
 </blocks>
