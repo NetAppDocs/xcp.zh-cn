@@ -1,10 +1,10 @@
 ---
+layout: landing-page 
 sidebar: sidebar 
 permalink: index.html 
-keywords: netapp, xcp, about, migration, file analytics, nfs, smb 
-summary: NetApp XCP 支持可扩展的高性能数据迁移 
+summary: NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。 
 ---
-= 了解 XCP
+= NetApp XCP文档
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -13,24 +13,3 @@ summary: NetApp XCP 支持可扩展的高性能数据迁移
 :imagesdir: ./media/
 
 
-[role="lead"]
-NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。XCP 旨在利用所有可用系统资源来管理大容量数据集和高性能迁移，从而实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。
-
-使用适用于 NFS 或 SMB 系统的 XCP 作为以下解决方案之一：
-
-* 迁移解决方案
-* 文件分析解决方案
-
-
-XCP 是一个可支持 NFS 和 SMB 协议的软件包，提供命令行软件。XCP 可用作 NFS 数据集的 Linux 二进制文件，也可用作 SMB 数据集的 Windows 可执行文件。
-
-XCP 文件分析是一款基于主机的软件，可检测文件共享，对文件系统运行扫描并提供用于文件分析的信息板。XCP 文件分析适用于 NetApp 和第三方系统，并在 Linux 或 Windows 主机上运行，以便为 NFS 和 SMB 导出的文件系统提供分析。文件分析 GUI 的二进制文件包含在支持 NFS 和 SMB 协议的单个软件包中。
-
-
-NOTE: XCP二进制文件具有代码签名。有关详细信息、请参见`NetApp_XCP_<version>.tgz`中的自述文件。
-
-XCP 命令行界面功能强大。有关详细信息，请从上下载 _XCP 参考 _ link:https://xcp.netapp.com/["XCP 站点"^]。
-
-* XCP 工作流 *
-
-image:xcp_image1.png["XCP 工作流图"]

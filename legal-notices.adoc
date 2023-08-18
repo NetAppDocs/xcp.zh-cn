@@ -1,0 +1,55 @@
+---
+permalink: legal-notices.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= 法律声明
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+法律声明提供对版权声明、商标、专利等的访问。
+
+
+
+== 版权
+
+link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
+
+
+
+== 商标
+
+NetApp 、 NetApp 徽标和 NetApp 商标页面上列出的标记是 NetApp 、 Inc. 的商标。其他公司和产品名称可能是其各自所有者的商标。
+
+link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
+
+
+
+== 专利
+
+有关 NetApp 拥有的专利的最新列表，请访问：
+
+link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
+
+
+
+== 隐私政策
+
+link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+== 开放源代码
+
+通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。
+
+* link:media/xcp_1.9.2_notice.pdf["NetApp XCP 1.9.2的通知"^]
+* link:media/xcp_1.9.1_notice.pdf["NetApp XCP 1.9.1的通知"^]
+* link:media/xcp_1.9_notice.pdf["NetApp XCP 1.9的通知"^]
+* link:media/xcp_1.8.1_notice.pdf["NetApp XCP 1.8.1的通知"^]
+* link:media/xcp_1.8_notice.pdf["NetApp XCP 1.8的通知"^]
+

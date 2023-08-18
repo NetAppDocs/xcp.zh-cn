@@ -9,15 +9,15 @@ settings:
   langs: zh-cn,us-en,ja-jp,ko-kr,zh-tw,de-de,es-es,fr-fr,it-it
 sidebar:
   entries:
-  - title: 主页
-    url: "/home.html"
+  - title: NetApp XCP文档
+    url: "/index.html"
   - title: 发行说明
     url: "/releasenotes.html"
   - title: 开始使用 XCP
     type: solutions
     entries:
     - title: 了解 XCP
-      url: "/index.html"
+      url: "/xcp-index.html"
     - title: XCP NFS 附加功能
       url: "/xcp-nfs-add-ons.html"
     - title: 不支持的功能
@@ -70,8 +70,9 @@ sidebar:
     - title: 规划HDFS数据迁移
       url: "/xcp-plan-hdfs-data-migration.html"
     - title: 使用文件分析进行规划
-      url: "/xcp-using-file-analytics.html"
       entries:
+      - title: 规划数据迁移
+        url: "/xcp-file-analytics-plan-data-migration.html"
       - title: 访问文件分析
         url: "/xcp-access-file-analytics.html"
       - title: 添加文件服务器
@@ -102,5 +103,5 @@ sidebar:
       url: "/xcp-troubleshoot-xcp-smb-errors.html"
     - title: 对 XCP 文件分析错误进行故障排除
       url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
-  - title: 获取更多信息
-    url: "/get-more-information.html"
+  - title: 法律声明
+    url: "/legal-notices.html"

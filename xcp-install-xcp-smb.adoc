@@ -11,9 +11,12 @@ summary: 安装 XCP SMB
 :icons: font
 :linkattrs: 
 :imagesdir: ./media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revdate: This section details the system requirements and the procedure for VC++ redistributable installation and the initial setup of XCP on a Windows client.
 
-
-本节详细介绍了系统要求，适用于 VC++ 可重新分发的操作步骤安装以及在 Windows 客户端上首次设置 XCP 的信息。
 
 
 NOTE: 没有升级选项；请重新安装 XCP 以替换任何现有版本。
