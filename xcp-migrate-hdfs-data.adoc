@@ -14,7 +14,7 @@ summary: 迁移HDFS数据
 
 
 [role="lead"]
-使用规划迁移之后 `scan` 命令、您可以迁移数据。
+使用规划迁移之后 `scan` 命令、则可以迁移HDFS数据。
 
 
 

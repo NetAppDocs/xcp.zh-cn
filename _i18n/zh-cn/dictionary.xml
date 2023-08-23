@@ -177,7 +177,6 @@
   <block id="a93da960db5c5b4f48c763a05f304371" category="list-text">将许可证复制到新创建的文件夹 `C ： \NetApp\XCP ：`</block>
   <block id="ea6bf0c8de468a8c8d6cf565a16762f0" category="list-text">激活 XCP ：</block>
   <block id="d9a94aeb05c2b97954eebdc3732fc715" category="summary">迁移 NFS 数据</block>
-  <block id="37704fe51312a12ba870e785cefa70f4" category="paragraph">使用 `show` 和 `scan` 命令规划迁移后，您可以迁移数据。</block>
   <block id="5fb63579fc981698f97d55bfecb213ea" category="section-title">复制</block>
   <block id="c26fe677a830587ef1c141567a86c86a" category="paragraph">* 示例： *</block>
   <block id="09a50a5f71f40a01932aba8c86a8c6b2" category="paragraph">有关详细信息，请参见 `XCP 帮助副本` 。</block>
@@ -825,7 +824,6 @@
   <block id="0a009b2626b03b4c70bb4dcb73832482" category="doc">用于迁移NFS数据的命令</block>
   <block id="322df0ac50172a48935aaba57e5dee70" category="cell">请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> XCP文件分析所有受支持浏览器版本的列表。</block>
   <block id="8ba09dc2aec500b8eabed3efd8eb8bc9" category="summary">迁移HDFS数据</block>
-  <block id="f30e2bc9de919d5c6249cea25c2f9a74" category="paragraph">使用规划迁移之后<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令、您可以迁移数据。</block>
   <block id="ea6a8ab5a9e8b23dc8df0571125234f4" category="paragraph">。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 命令会扫描整个源Hadoop分布式文件系统(Hadoop Distributed File System、HDFS)数据并将其复制到NFS或简单存储服务(Simple Storage Service、S3)分段。。<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 命令要求将源路径和目标路径作为变量。扫描和复制的文件、吞吐量、速度和已用时间详细信息将显示在复制操作结束时。</block>
   <block id="beea424f6b4dbe034f0047f1f1a1cd57" category="paragraph">*NFS路径示例:*</block>
   <block id="02880d02dff3a15e38a0afe75b110262" category="paragraph">*S3路径示例:*</block>
@@ -870,7 +868,6 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="5b68f649e30aa676e6765ad7d93ced85" category="cell">与安全描述符相关的问题描述、因为迁移用户帐户仅具有XCP检索所有者、组和DACL所需的权限。无法检索SACL。
 将您的迁移用户帐户添加到Active Directory中的"管理审核和安全日志"策略。
 参考 <block ref="47c554f6b2ce744e50a1b2318fbe4ec3" category="inline-link-macro-rx"></block></block>
-  <block id="b26aa33242c67db906e87e2438c94d27" category="paragraph">NetApp XCP旨在通过利用所有可用系统资源来管理大容量数据集和高性能数据迁移、实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。</block>
   <block id="60f3d88855f39291216e88879e7016bd" category="paragraph">本节详细介绍了在 Linux 客户端上首次设置 XCP 以及安装此 ini 文件配置的系统要求和过程。</block>
   <block id="8f9dd51720e75b125d13cc0941d2cb30" category="summary">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。</block>
   <block id="bb3aa4713d330863980f0c63bf214969" category="doc">NetApp XCP文档</block>
@@ -918,4 +915,8 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="e0805d6bd6649b148eb00741ca006a8d" category="sidebar">NetApp XCP (包括用于获取许可证的链接)</block>
   <block id="69325177d6c1169f9e91f28d3c39250a" category="sidebar">XCP的NetApp资源</block>
   <block id="05d2f8b110a50afd169a5d85f77bf23c" category="sidebar">NetApp社区(论坛)</block>
+  <block id="c33c58a3b01e45d3964a4e2414a84970" category="paragraph">使用规划迁移之后<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 和<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令中、您可以迁移SMB数据。</block>
+  <block id="d1bf561d563aa7c75c975ba869dd56ac" category="paragraph">使用规划迁移之后<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令、则可以迁移HDFS数据。</block>
+  <block id="715c4a9e063aa9667b43f7d5478b9037" category="paragraph">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。XCP旨在通过利用所有可用系统资源来管理海量数据集和高性能数据迁移、实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。</block>
+  <block id="e42bfcdf0ad235b13c49f73caf47eb14" category="paragraph">使用规划迁移之后<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 和<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令中、您可以迁移NFS数据。</block>
 </blocks>

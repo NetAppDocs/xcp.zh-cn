@@ -4,7 +4,7 @@ permalink: xcp-migrate-data.html
 keywords: netapp, xcp, migrate, data, nfs, smb, copy, resume, sync, verify 
 summary: 迁移数据 
 ---
-= 迁移数据
+= 迁移 NFS 数据
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,7 +14,7 @@ summary: 迁移数据
 
 
 [role="lead"]
-使用 `show` 和 `scan` 命令规划迁移后，您可以迁移数据。
+使用规划迁移之后 `show` 和 `scan` 命令中、您可以迁移NFS数据。
 
 
 
