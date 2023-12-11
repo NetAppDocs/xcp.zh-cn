@@ -41,7 +41,7 @@ xcp copy -newid <id> hdfs:///demo/user file:///mnt/dest
 xcp copy -newid <id> hdfs:///demo/user s3://my-bucket
 xcp copy -newid <id> -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
 ----
-有关详细信息，请参见 `XCP 帮助副本` 。
+运行 `xcp help copy` 有关详细信息：
 
 
 
@@ -59,7 +59,7 @@ xcp resume [options] -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> -
 
 NOTE: 默认情况下、XCP `resume` 命令使用期间使用的副本索引中的S3端点和S3配置文件 `copy` 命令：但是、如果是新的 `-s3.endpoint` 和 `-s3.profile` 值随提供 `resume` 命令中、将使用选项的新值以及副本中使用的值 `command` 被覆盖。
 
-有关详细信息，请参见 `XCP 帮助恢复` 。
+运行 `xcp help resume` 有关详细信息：
 
 
 
@@ -86,4 +86,4 @@ xcp verify hdfs:///user/demo1/data file:///user/demo1/dest
 xcp verify hdfs:///user/demo1/data s3://my-bucket
 xcp verify -s3.profile <s3 profile name> -s3.endpoint <endpoint-url> hdfs:///demo/user s3://my-bucket
 ----
-有关详细信息，请参见 `XCP 帮助验证` 。
+运行 `xcp help verify` 有关详细信息：

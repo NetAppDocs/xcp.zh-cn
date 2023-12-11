@@ -104,30 +104,19 @@
   <block id="6a6947b743abcf4f9aaa1664bb88feba" category="paragraph">安装或升级适用于 SMB 的文件分析。</block>
   <block id="4501bedf7a80968ef55dd21ff51af4a3" category="inline-link-macro">安装 XCP SMB</block>
   <block id="28f1937a3cc3eb0d6912c14361aae86a" category="paragraph">有关 SMB 的系统要求，请参见 <block ref="b1b298f808db7e093ee9abb7cc8bfdef" category="inline-link-macro-rx"></block>。</block>
-  <block id="17e2d63e3b45ecbfe13bcc32fec929d0" category="paragraph">* 开始之前 *</block>
   <block id="e5e58d5cdf81973c4955d5ea6aede873" category="list-text">要使用 XCP SMB 服务，必须在 Linux 计算机上为 NFS 配置 XCP 文件分析。</block>
   <block id="1a192e854cfe5d8168d0d05ae2e502e3" category="list-text">在 Windows 计算机上开始配置 XCP 文件分析之前，请确保 XCP 服务正在 Linux 计算机上运行。</block>
   <block id="b62051beb7fd4a143b6c815f0754ce91" category="section-title">全新安装适用于 SMB 的文件分析</block>
   <block id="8d61f5ee9cebc1323e4406cd9c74bee3" category="paragraph">要对 SMB 执行文件分析全新安装，请完成以下步骤。</block>
-  <block id="202b59069600c80dee2f3b31bf33ce1a" category="list-text">将 `Xcp.exe` 文件复制到 Windows `C ：` 驱动器，解压缩 tgz 后，此二进制文件可在 ` /XCP/windows` 中使用。</block>
   <block id="22e274a44bf3a069c4f201b0e827b460" category="inline-link-macro">XCP 站点</block>
   <block id="36cc7dd1df7adb145df0ee9cebe250c5" category="list-text">从下载 XCP 许可证文件 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
   <block id="6bbb03e83c8f1500cacb227482558dd0" category="list-text">创建文件夹 `C ： \\NetApp\XCP` 并将 XCP 许可证复制到此位置。</block>
   <block id="f9a7c45c2f9e869ce9359173c559dd03" category="list-text">在命令提示符处使用以下命令激活 XCP 许可证： `xcp.exe activate`</block>
-  <block id="771f1f61b29ddab00383860a9b8fe8df" category="list-text">将 `sserver.key` 和 `sserver.crt` 文件从 ` /opt/netapp/xFiles/XCP/` （在已配置 XCP 文件分析的 Linux 框中）复制到 `C ： \NetApp\XCP` 可选 - 如果您有 CA 证书，请将此证书放置在此位置，并使用相同的名称和扩展名。</block>
   <block id="ad50f79627822b073378935381e28b0a" category="list-text">在 Windows 命令行界面命令提示符中，运行 `XCP configure` 。</block>
   <block id="34a5eb12a40f3a927cd1680032a68a8c" category="list-text">出现提示时，提供配置 XCP 文件分析服务器的 Linux 计算机的 IP 地址。</block>
-  <block id="e43b30072e1c1e31e80bd2433db31830" category="list-text">出现提示时，请提供在 XCP Linux 文件分析配置期间输入的数据库的密码。</block>
-  <block id="cff644aa1716d68a9351188e54a1a712" category="list-text">转至 Linux 计算机并运行 ` 。 /configure.sh` 。</block>
-  <block id="d8da99a82dddfba37d491206159ee22d" category="list-text">在主菜单上选择 `option 4 （ Update XCP windows agent IP ）` ，并提供 Windows 计算机的 IP 地址。</block>
-  <block id="46be349b53621b4434308c0bbe45ebaf" category="list-text">转到 Windows 计算机并运行 `XCP Listen` ，此时已配置适用于 SMB 的 XCP 文件分析。保持窗口处于打开状态，以持续运行服务。</block>
-  <block id="7ff768d8b3e0e35c252ee2e9baf28bc8" category="list-text">在 Google Chrome 浏览器上启动文件分析并刷新页面： ` \https://&lt;ip address of Linux&gt;/XCP`</block>
-  <block id="d7c434c15db5d12a3bed35613610f824" category="list-text">返回托管 XCP 文件分析 GUI 的原始选项卡并刷新页面。此操作将在代理卡下显示 SMB 代理。</block>
   <block id="55b7006f6e8a19f0555a6b82ca85a801" category="section-title">升级 SMB 文件分析</block>
   <block id="1688d86172caf9b3ed1acabe15285a4f" category="paragraph">要升级适用于 SMB 的现有文件分析，请完成以下步骤。</block>
-  <block id="a2c5f205fc0a35a88463bae625aa351b" category="list-text">在运行文件分析之前，请确保运行文件分析的 Linux 服务器也已升级，并且服务正在运行。</block>
   <block id="a7a81082a60152f2eb36b8d78016b292" category="list-text">在 Windows 中，通过在命令行上输入 `CTRL-C` 来停止现有 XCP 服务。</block>
-  <block id="62001cf2823c6318575f560eaf3a11b2" category="list-text">将 `Xcp.exe` 替换为最新的二进制文件。</block>
   <block id="0d0094c10f5e227325ec13a4c60c79be" category="summary">对 XCP 文件分析错误进行故障排除</block>
   <block id="58e03a88cb823040213d29590e0a1342" category="doc">对 XCP 文件分析错误进行故障排除</block>
   <block id="2df6366012c9e039186e09dd0f83bf9c" category="paragraph">查看用于对问题描述进行故障排除的解决方案。</block>
@@ -179,16 +168,12 @@
   <block id="d9a94aeb05c2b97954eebdc3732fc715" category="summary">迁移 NFS 数据</block>
   <block id="5fb63579fc981698f97d55bfecb213ea" category="section-title">复制</block>
   <block id="c26fe677a830587ef1c141567a86c86a" category="paragraph">* 示例： *</block>
-  <block id="09a50a5f71f40a01932aba8c86a8c6b2" category="paragraph">有关详细信息，请参见 `XCP 帮助副本` 。</block>
   <block id="f1cefec9e2196c672a622347f1fbc325" category="section-title">恢复</block>
   <block id="8ca572f19659e7e1feff3c8dd1401ce1" category="paragraph">`reume` 命令可通过指定目录索引名称或编号来重新启动先前中断的复制操作。先前复制操作的目录索引名称或编号存储在 ` &lt;catalog path&gt; ： /catalog /index` 目录中。</block>
-  <block id="12c832a1abd774cf0f4601d95c913d20" category="paragraph">有关详细信息，请参见 `XCP 帮助恢复` 。</block>
   <block id="d8e87c0927539672f54462c837be0b7f" category="section-title">同步</block>
   <block id="1504bd4779c3c062c9078099fad0ac19" category="paragraph">`sync` 命令可使用目录索引标记名称或先前复制操作的编号扫描对源 NFS 目录执行的更改和修改。源增量更改会复制并应用于目标目录。在同步操作 # 之后，旧目录索引编号将替换为新的目录索引编号（ .下划线 ） # 。</block>
-  <block id="02ab7688ebf75947479b5e30267d1d55" category="paragraph">有关详细信息，请参见 `XCP 帮助同步` 。</block>
   <block id="5a750f86ef41f22f852c43351e3ff383" category="section-title">验证</block>
   <block id="990d138c681bf32e178b6390caea1423" category="paragraph">执行复制操作后， `verify` 命令会对源目录和目标目录进行完整的逐字节数据比较，而不会使用目录索引编号。命令将检查修改时间以及其他文件或目录属性，包括权限。该命令还会读取两端的文件并比较数据。</block>
-  <block id="8bcf9c6b645253521b5145414a80aecc" category="paragraph">有关详细信息，请参见 `XCP 帮助验证` 。</block>
   <block id="8c1d67b3b1e3cf97c5f054bf8d66089c" category="summary">规划 SMB 数据迁移</block>
   <block id="f4eb381e275885c806213db1203bf102" category="paragraph">规划 SMB 数据迁移。</block>
   <block id="f7d1ef377db88189a0084ee7d6f1b738" category="paragraph">`show` 命令可显示服务器上所有可用的 SMB 共享以及可用的权限和空间。示例</block>
@@ -200,22 +185,9 @@
   <block id="acb7eae841bcc60d63918737629eaab5" category="doc">安装 NFS 文件分析</block>
   <block id="65957491431a9d992b0f37939d999254" category="paragraph">安装或升级适用于 NFS 的文件分析。</block>
   <block id="c8d71099d454656d5157731fb1f4830e" category="inline-link-macro">安装 XCP NFS</block>
-  <block id="1075ac7ace86aea85d4fb5c46d76893a" category="paragraph">有关 NFS 的系统要求，请参见 <block ref="3cd449c1c5d47073a7e303a49efe123e" category="inline-link-macro-rx"></block>。`configure.sh` 脚本可安装并启用 Linux 服务器可用的 HTTPD 和 PostgreSQL 的默认配置。您可以根据需要更改或更新到最新版本，并遵循安全准则。</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">开始之前</block>
-  <block id="bffa4fb11a93d7fe3b05e9a0ae6ca562" category="list-text">您不能在同一主机上同时运行 XCP 应用程序和 XCP 服务。如果正在运行任何 XCP 操作，请在开始配置之前完成这些操作。</block>
   <block id="179301ccc5709fc7e02ecd874b26f686" category="list-text">您的 Linux 计算机必须连接到 Yum 存储库服务器或 Internet 。</block>
   <block id="1c7bd6403e16df46e3e2b614a9e9b462" category="inline-xref-macro">XCP 使用的端口</block>
-  <block id="0094a24d5be18635ed7692bb7af4b2cc" category="list-text">如果在 Linux 计算机上配置了防火墙，则必须更改防火墙设置以启用 XCP 使用的端口， XCP 服务以及 XCP 文件分析使用的服务。有关详细信息，请访问 <block ref="f0232e18255c6ead68096119d370fed7" category="inline-xref-macro-rx"></block>。</block>
-  <block id="0373d3a871a446e1453b9dac2f65fc16" category="list-text">转到 XCP 文件夹并运行 ` ./configure.sh` 脚本。此脚本需要三到十分钟来配置 Linux 计算机并完成以下任务：</block>
-  <block id="764d468e664b446f1d826729929ecfb9" category="list-text">下载 PostgreSQL 软件包</block>
-  <block id="95729f46d8929016635ddf649e35e2f2" category="list-text">安装 PostgreSQL 服务器</block>
-  <block id="f2a5f5cc88869d4a87e6ec728f7b0c03" category="list-text">安装 HTTPD</block>
-  <block id="94c38da4879043620e5524ff110c37f2" category="list-text">使用开放式 SSL 创建自签名证书（ `server.key 和 server.crt` ）</block>
-  <block id="25209e61095bba68fa40e4487aa75db5" category="list-text">创建 XCP 文件分析数据库</block>
-  <block id="fc7df983e4500ca08968614afbec45ab" category="list-text">从 XCP 配置菜单中选择 `option 1 Configure client system` 。</block>
-  <block id="651c2776198de248bf3626cd676b3f1c" category="list-text">对于新安装，请更新管理员和数据库用户的密码。对于升级，系统会提示您停止 XCP 服务。完成后，选择 `选项 0` 。</block>
-  <block id="4f6cea84c64bcd2cbef1950791410c78" category="list-text">启动 XCP 服务。使用以下命令检查 XCP 服务是否正在运行： service XCP status</block>
-  <block id="e58e3ebc6749ebd9f5c6ca3564e928e8" category="list-text">在浏览器中启动文件分析： * 。 https://&lt;ip address of Linux&gt;/XCP* 。</block>
   <block id="8ebcb6923388924859f2dac1791081e8" category="summary">对 XCP NFS 错误进行故障排除</block>
   <block id="938d4078879782553ee606a9107059ee" category="doc">对 XCP NFS 错误进行故障排除</block>
   <block id="ef8fd37900d2911bb2ff728bb4f9ec8b" category="cell">XCP 问题描述</block>
@@ -305,7 +277,6 @@
   <block id="e9f26e76bb6ef3ae1813e1df1d8cc8e2" category="paragraph">用户占用的空间图显示用户使用的空间。Username 列包含用户名（无法检索用户名时为 UID ）， Space Used 列指示每个用户名使用的空间。</block>
   <block id="41d6dafcb16f845ca70e42044e5de0dc" category="section-title">已访问 / 修改 / 创建的文件图形</block>
   <block id="ffe6eca8066769d129ed82d6dacd94c9" category="paragraph"><block ref="ffe6eca8066769d129ed82d6dacd94c9" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1ba708bb040c1401145fd6696909842d" category="paragraph">" 已访问 / 修改 / 创建的文件 " 图显示了超时更改的文件数。X 轴表示进行更改的时间段， y 轴表示更改的文件数。</block>
   <block id="58ef3ad87f99012fe52ae141775b7f98" category="admonition">要获取 SMB 扫描中的访问时间（ atime ）图，请选中在运行扫描之前保留 atime 复选框。</block>
   <block id="f3903eed8d82fea3de1576f67505c364" category="section-title">按扩展名分布的文件图形</block>
   <block id="b6bb426f627b924dfa93dab5250445ea" category="paragraph"><block ref="b6bb426f627b924dfa93dab5250445ea" category="inline-image-macro-rx" type="image"></block></block>
@@ -336,7 +307,6 @@
   <block id="23f08f66a8c926598f110a30ea423fdb" category="summary">文件分析提供扫描结果的图形视图</block>
   <block id="f0d39ea007ba94b40e0daf5ae44f9298" category="doc">访问文件分析</block>
   <block id="c2fe5fdcb3117ff21509e23d6dfca2de" category="paragraph">文件分析提供扫描结果的图形视图。</block>
-  <block id="e660dfc676d8a29f573aee58d2bc89f9" category="paragraph">XCP 文件分析 GUI 提供了一个信息板，其中包含用于可视化文件分析的图形。在 Linux 计算机上配置 XCP 时， XCP 文件分析图形用户界面将处于启用状态。</block>
   <block id="471ff51c89daf6e35e8e2b5111039744" category="inline-link-macro">NetApp IMT</block>
   <block id="ae12aa4d83d4e71d628b8ca5184b9d66" category="admonition">要检查访问文件分析所支持的浏览器，请参见 <block ref="dff6889ed90b9930dbb6c11bc90c8854" category="inline-link-macro-rx"></block>。</block>
   <block id="42f425824cc531c78175d67346f8f124" category="list-text">使用链接 ` \https://&lt;IP address of Linux machine&gt;/XCP` 访问文件分析图形用户界面。出现提示时，接受安全证书：</block>
@@ -366,8 +336,6 @@
   <block id="1645c787b92316670d1a71b780ece8d5" category="cell">XCP SMB 不支持 NFS 符号链接</block>
   <block id="0b3fd979e0d4902fd7e38deb4745c1a2" category="cell">用于扫描的 ACL 选项</block>
   <block id="d96217bc0f4d5233c2c5639e16dc5d01" category="cell">扫描选项不支持 ACL</block>
-  <block id="88f8d7ad6b44fe7948a187bb130df22d" category="cell">NTFS 备用数据流</block>
-  <block id="3f48c017cdd30142ab0d06198fb84098" category="cell">XCP 当前不支持备用数据流</block>
   <block id="f4915fbc2a7713a0eeea8adce10091de" category="cell">XCP 筛选器</block>
   <block id="ca2e34fd1c2de7fa4ca5bb236706760b" category="cell">XCP SMB 排除选项当前会根据目录在筛选器中的模式排除这些目录，并遍历这些目录的文件系统。</block>
   <block id="76e35710ec65c5c13523e53f9290946d" category="cell">活动源支持</block>
@@ -447,7 +415,6 @@
   <block id="181af529472b0626a27e692b85666546" category="summary">环境变量（仅限 NFS ）</block>
   <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">发行说明</block>
   <block id="d60c463bb4096f3ed4bd1618626dfe10" category="sidebar">故障排除</block>
-  <block id="b7b4f4d0374211895e3064e560d36b51" category="cell">RHEL8.请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 支持的操作系统</block>
   <block id="a313028d66f24e87591ecef5ff9f3484" category="summary">IMT 中列出了 XCP 支持的配置，例如主机， ONTAP 版本和支持的浏览器。</block>
   <block id="57b6232ac0f92803d0544e702c641050" category="summary">某些功能在 XCP NFS 或 XCP SMB 上不受支持。</block>
   <block id="8ecf08ca07c6d4a3f11a8ecd76bdfb54" category="summary">HDFS 连接器使 XCP 能够访问不同供应商提供的任何 HDFS 文件系统。</block>
@@ -565,9 +532,6 @@
   <block id="ea5a201cf8a5f489b67f974cdbe8ec60" category="cell">POSIX 连接器</block>
   <block id="b095640f647d7c14d7c809d0232cd3be" category="list-text">`sync` 命令不支持 POSIX 连接器</block>
   <block id="be449fd5b6a09000629daade7fdd5583" category="list-text">源处于活动状态时，不应使用 `copy` 命令</block>
-  <block id="90637cbab382a9675c5bad0c7aeef15f" category="cell">Hadoop 分布式文件系统（ HDFS ）连接器</block>
-  <block id="b03665438ed7a747020c197d671b61c3" category="list-text">`sync` 命令不支持 HDFS 连接器</block>
-  <block id="f5f0878108a9a99caae85df13ed2e0ac" category="list-text">HDFS 文件系统不支持符号链接（符号链接），硬链接或特殊文件</block>
   <block id="edc9f0a5a5d57797bf68e37364743831" category="cell">Linux</block>
   <block id="bd2cc77640d48204c25994ade9373d0d" category="cell">XCP 1.0.3 支持的早期版本 Linux 不再支持 XCP 。</block>
   <block id="84b5f1dcb24995657953339470fd8782" category="list-text">* 文件分析的非 root 用户 * ： XCP 不支持由非 root 用户或 sudo 用户执行的安装和配置。</block>
@@ -642,9 +606,6 @@
   <block id="5cee208e7218470f7403f97e33abc3ae" category="list-text">从文件共享列表中，选择要扫描的文件共享的名称。</block>
   <block id="615850afbe695865bc7ae374479ce461" category="list-text">选择 * 扫描 * 以启动扫描。</block>
   <block id="f95bfd775a7588394c547c77a2cb75fa" category="list-text">选择 * 更改审核和安全日志 * 。</block>
-  <block id="01f49d7de6d116ea373b4aef4a75b8bb" category="list-text">显示对话框时，选择 `确定` 。此时将打开一个新选项卡。如果浏览器被阻止，请在浏览器上启用弹出窗口。接受 URL 的隐私策略，此时将显示以下消息： `sMB agent is ready to use 。请刷新分析页面`</block>
-  <block id="d1b673b157daeb18c4d73618946f7ef4" category="list-text">选择隐私声明下方的高级。</block>
-  <block id="d6d3a57c5e8a09cb5cc8bf5e2c0810ce" category="list-text">选择 Proceed to ` &lt;IP address of Linux machine&gt;` 链接。</block>
   <block id="c64a522ee6418ae33077670975c2798b" category="admonition">在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` 命令结合使用，以保留源的访问时间。</block>
   <block id="9d83a2ce37bac2516a6b570ccc972b69" category="admonition">在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` 命令结合使用，以保留源上的访问时间。</block>
   <block id="7e4d5419d4fcf4ceade27ffac84d4e92" category="list-text">在验证操作期间，您可以将 ` -preserve-atime` 标志与 `verify` 命令结合使用，以保留源上的访问时间。</block>
@@ -705,11 +666,7 @@
   <block id="481da41cf08734ac99d07aca58644781" category="cell"><block ref="6d7d8e19dacf4142870d92b873503ded" prefix="" category="inline-code"></block></block>
   <block id="410bc026d79ee8d7b9f82dd6b03feb98" category="list-text">登录到文件分析图形用户界面。</block>
   <block id="fce3933747223b348680fa7fa109330b" category="paragraph">可以通过两种方式登录到文件分析图形用户界面：</block>
-  <block id="f54b0f1d442f1ec5a7de065a3541d957" category="list-text">使用用户名"admin"和您在配置期间设置的密码。</block>
-  <block id="9232193990a75b1e49392f2b2617103d" category="list-text">配置并启用企业级单点登录(SSO)功能。</block>
-  <block id="2e3c9f20aee1951e2d90c60c3895ab58" category="paragraph">您可以使用此登录功能在特定计算机上设置XCP文件分析、并在企业范围内共享Web UI URL、从而允许用户使用其SSO凭据登录到UI。</block>
   <block id="69bb9c4e14480c847abc95d5c42499ad" category="admonition">SSO登录是可选的、可以永久配置和启用。要设置基于安全断言标记语言(SAML)的SSO登录、请参见 <block ref="24bd22f7d0a05b19a03434bac975689d" category="inline-xref-macro-rx"></block>。</block>
-  <block id="5011fee80695c860b0a39f97d0dcb95c" category="list-text">登录后、您可以看到NFS代理；绿色的勾号显示Linux系统和XCP版本的最低系统配置。</block>
   <block id="bb589a1b8201c2239ba76232e361cafc" category="section-title">配置SSO凭据</block>
   <block id="fffd3dfdf9fa53044cdb134dcc69c528" category="paragraph">SSO登录功能在使用SAML的XCP文件分析中实施、并受Active Directory联合身份验证服务(Active Directory Federation Services、ADFS)身份提供程序支持。SAML会将身份验证任务卸载到企业的第三方身份提供程序(IdP)、该程序可利用任意数量的MFA方法(多因素身份验证)。</block>
   <block id="f2d88d647c936a165a3e77edcbea1d96" category="list-text">向企业身份提供程序注册XCP文件分析应用程序。</block>
@@ -718,11 +675,9 @@
   <block id="9563382993688c51fdc3a46e81eb172f" category="list-text">*服务提供商实体ID：*<block ref="e1fe6adfd56c8994795ceb238170e3b4" prefix=" " category="inline-code"></block></block>
   <block id="bf1e51171726684d1ee1b309557acd01" category="list-text">*服务提供商断言使用者服务(ACS) URL：*<block ref="21d0fedea22f326cba161956dc12f67c" prefix=" " category="inline-code"></block></block>
   <block id="f57c5b8986c37b4a0952ba786b74f802" category="paragraph">您也可以登录到文件分析UI来验证这些详细信息：</block>
-  <block id="80dae1bc5036b7e9bda13b9e72ac846e" category="list-text">使用安装期间设置的用户名"admin"和密码登录到用户界面。</block>
   <block id="ccd1f9a4a3996dec7dcc1222859ee8f1" category="list-text">选择页面右上角的*用户*图标、然后选择* SAML设置*。</block>
   <block id="363cae04551b1b1a61f8792a42d5332c" category="paragraph">在显示的下拉菜单中选中*服务提供商设置*。</block>
   <block id="957c109b84ab3a9745776f942062afea" category="inline-image-macro">SAML设置示例</block>
-  <block id="82d38923543ba21104350ca2e054aed6" category="paragraph"><block ref="82d38923543ba21104350ca2e054aed6" category="inline-image-macro-rx" type="image"></block></block>
   <block id="231aa7872617b02f47d61c8a448d71d3" category="paragraph">注册后、您将收到企业的IdP端点详细信息。您需要向文件分析UI提供此IdP端点元数据。</block>
   <block id="0fabd32fee9ac3582435784332323cf0" category="list-text">提供IdP详细信息：</block>
   <block id="13cdf4657d47700947243dc2788b7179" category="list-text">转至 * 信息板 * 。选择页面右上角的*用户*图标、然后选择* SAML设置*。</block>
@@ -750,14 +705,11 @@
   <block id="6f59af5df257d27f8f7f83e150cb44c7" category="list-text">如果看到以下错误、请使用yum安装CodeReady软件包、例如<block ref="195584d46184f28385e2ae5bd9f0af62" prefix=" " category="inline-code"></block>：</block>
   <block id="b326b5062b2f0e69046810717534cb09" category="cell">true</block>
   <block id="f11ba2ba1e8e44e293e56351fbc05edf" category="doc">在同一XCP主机上运行多个XCP作业</block>
-  <block id="328be41686da6fdb0454cdc13b57cf2d" category="paragraph">从XCP 1.1.2开始、您可以使用"-minme"功能在一个XCP主机上运行多个XCP作业或命令、前提是该主机具有足够的资源来执行每个作业。当您运行支持"-minmem"功能的命令时、XCP会使用最小主机内存来完成作业、从而为在同一主机配置上运行其他作业创建容量。</block>
   <block id="d9647e192eec469f5ef0ff6b04e9a7f0" category="section-title">最低系统要求</block>
   <block id="9901879377c5f3682a62b2348ecc14ad" category="paragraph">对于每个XCP作业、您应最多允许64 GB主机内存和八个核心用于大中型迁移。</block>
-  <block id="b1db961ef892611c930b306acf2b45c9" category="admonition">SMB数据迁移不支持"-minme"功能。</block>
   <block id="8db7df66ab1d7ab5f1dc947acdb5fae4" category="section-title">日志记录</block>
   <block id="6c5503e1799fc9bf884095cb4a7486c7" category="paragraph">默认情况下、每个XCP作业都记录在一个单独的日志文件中、该日志文件对于作业ID是唯一的。如果在同一台主机上运行多个作业、则此日志记录机制可以正常运行。NetApp建议不要更改<block ref="1f0167cf593b01d4e8c31f9bea306a0d" prefix=" " category="inline-code"></block> 要使用单个的文件<block ref="4bfa73c989008743279ae857adc50faf" prefix=" " category="inline-code"></block> 用于记录在同一主机上并行运行的多个XCP作业的文件。</block>
   <block id="26807eaed63a31814a5e1753d72676d8" category="section-title">支持的命令</block>
-  <block id="f0ca056f216466d7830147a4008903a4" category="paragraph">以下XCP命令支持"-minme"功能：</block>
   <block id="644834e9d0415e057f1d7c2c00cdd281" category="list-text"><block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix="" category="inline-code"></block></block>
   <block id="cf1b3b1776d0d05e295618646490b382" category="list-text"><block ref="12cba3ee81cf4a793796a51b6327c678" prefix="" category="inline-code"></block></block>
   <block id="d64d8a3c311a3e34d98c5d12b0de2deb" category="list-text"><block ref="69f2afc2390cec954f7c208b07212d39" prefix="" category="inline-code"></block></block>
@@ -767,19 +719,7 @@
   <block id="7bfde840c21e45a59701f55f5c18ef2c" category="list-text"><block ref="4de53f769603f8e4542ee3267c08dd50" prefix="" category="inline-code"></block></block>
   <block id="3649b15e31d22a1e2210f014d843b9fa" category="list-text"><block ref="099af53f601532dbd31e0ea99ffdeb64" prefix="" category="inline-code"></block></block>
   <block id="777dd634078a1b960c79f15d2522db38" category="section-title">不支持的命令</block>
-  <block id="d2e4f5ed82446cf3023ccba7b5646092" category="paragraph">不支持"-minme"功能<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="32ae6defbd536645e75bc85121b5564b" category="section-title">命令示例</block>
-  <block id="64e1323e5982bf7736f58f196316da1f" category="paragraph">要使用"-minme"功能、必须在XCP命令中包含"-minme"选项、如以下示例所示：</block>
-  <block id="36126c9a86541e7281b955ee81970a5f" category="list-text"><block ref="31a74c4f1c865e5c03256362a477c425" prefix="" category="inline-code"></block></block>
-  <block id="9cd9bbf0e790392cca7a73545353ed80" category="list-text"><block ref="4a4341530f7d16d6f7a7c281a83f9473" prefix="" category="inline-code"></block></block>
-  <block id="daaf865ea062be33e32fee7ce6361bf2" category="list-text"><block ref="2227f4f3166de257df2d86054647a1df" prefix="" category="inline-code"></block></block>
-  <block id="4200a251b90a3e6f4a8f03a96790e241" category="paragraph">*HDFS路径示例*：</block>
-  <block id="6d2258e0ac0187b32c49ef3d86153890" category="list-text"><block ref="3d4bfec43ba02eadffa6b680f5d2ff90" prefix="" category="inline-code"></block></block>
-  <block id="108808871f93d8eb5fadba5e5396e0b1" category="list-text"><block ref="d0ff481491922a2d0b61842bfc7e1e56" prefix="" category="inline-code"></block></block>
-  <block id="5b89894d695356bcaecabb4c87252ae5" category="list-text"><block ref="354e4935785b48c4def1303908b72905" prefix="" category="inline-code"></block></block>
-  <block id="1e84e83ba1d6a6831654831e04a6e7aa" category="paragraph">*POSIX路径示例*：</block>
-  <block id="97fb7d435610adf703b3ea0785c309d6" category="list-text"><block ref="638d56e1e6406263b5111d968a0e1f1d" prefix="" category="inline-code"></block></block>
-  <block id="b7e41451ca91ae23c0a331e9b88f3663" category="list-text"><block ref="a0910009e4d60445309dd8426ef78ded" prefix="" category="inline-code"></block></block>
   <block id="bdf61b3ecae5f29d6c6b402c1adf2536" category="section-title">XCP估计</block>
   <block id="e151d1ab502d96991c424c6cbefae2f7" category="paragraph">XCP估计功能用于估计完成基线的时间<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 从源到目标的操作。它会计算完成基线的估计时间<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 操作。使用时<block ref="a02d29476c13ce0a516e16bcfe4535b6" prefix=" " category="inline-code"></block> 选项中、XCP会运行示例复制操作以查找估计时间。</block>
   <block id="f943fe60d92b33d799a2c02de9061e3b" category="summary">通过S3连接器、XCP可以将数据从NFS或HDFS文件系统迁移到S3对象存储</block>
@@ -852,15 +792,12 @@
   <block id="f3b812b32fdce09d7d06a9a0759b8546" category="cell">XCP不支持在迁移期间修改源HDFS文件系统上的数据</block>
   <block id="e8a90b649b22fddc82d6ee4cc9429807" category="paragraph">以下功能不适用于Simple Storage Service (S3)连接器：</block>
   <block id="84b02ee2d0524eb08de32d9354ade34b" category="list-text">*以S3存储分段作为源的迁移*：XCP不支持以S3存储分段作为源的迁移。</block>
-  <block id="a8a17edcb9880059a216d63c9e0c2a18" category="doc">XCP v1.1.2发行说明</block>
-  <block id="27ce933e59d1bd3bfff8d6118fb7a35e" category="paragraph">。 <block ref="b98ddb4c6025a76df69bcccfdb0bd760" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="b179bbcf6f57100cffb18d2558916e9d" category="cell">64位Intel或AMD服务器、至少8个核心和64 GB RAM</block>
   <block id="11db15a14a5186a893fe15b0e03f3213" category="sidebar">在同一主机上运行多个XCP作业</block>
   <block id="ac1b0e3122e91e04b7f9d9e2eea0accb" category="paragraph">NetApp提供一年免费XCP许可证。您可以从获取许可证文件 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。许可门户提供了不同的许可选项。一年后、您可以使用同一门户将许可证续订一年。</block>
   <block id="9351e261865c10b81be01c7298324b0f" category="list-text">从HDFS迁移到NetApp StorageGRID</block>
   <block id="c19152294b5e6dfeaa6ca9c77e0f12e1" category="list-text">从HDFS迁移到Amazon S3</block>
   <block id="3df8a75d6363358c9c30a90e1f018d65" category="list-text">从HDFS迁移到NetApp ONTAP S3</block>
-  <block id="392f97fdb8ea70faba5877ca90ad7c42" category="paragraph">如果源、目标或两者都是不含目录的接合、并且在迁移中使用了联机许可证、则可能会发生回溯错误。如果发生这种情况、XCP命令的状态为<block ref="269f3d1562cbd15624e7d2c4b10122e3" prefix=" " category="inline-code"></block> 但是、控制台输出结束时会返回以下错误：</block>
   <block id="c1397a1836478812e944515ecd5ff969" category="cell">使用脱机许可证、而不是联机许可证。</block>
   <block id="747dd4d48798d325d388dd4ba57db561" category="cell"><block ref="e64df9c2f5a72d0adb1dbea21a609c16" prefix="" category="inline-code"></block> ACL迁移
 
@@ -900,7 +837,6 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="d010dc762575a62b4743cdf67aaca20a" category="list-text"><block ref="d010dc762575a62b4743cdf67aaca20a" category="inline-link-macro-rx"></block></block>
   <block id="bb56f67a148cc2f2b0fefdf3ad31d862" category="inline-link-macro">NetApp XCP 1.8的通知</block>
   <block id="947d36e55b7e5eaafa3b9365e2c2f048" category="list-text"><block ref="947d36e55b7e5eaafa3b9365e2c2f048" category="inline-link-macro-rx"></block></block>
-  <block id="8460555eb240926a8ff0bb9963c60097" category="sidebar">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。您可以在此处找到有关XCP 1.9.2软件的文档、包括如何安装、配置和使用XCP。有关早期版本的XCP的文档、请参见NetApp 支持站点。</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">入门</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">发行说明</block>
   <block id="93168a8084b3e838d2932c4734bd234e" category="sidebar">早期版本</block>
@@ -919,4 +855,100 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="d1bf561d563aa7c75c975ba869dd56ac" category="paragraph">使用规划迁移之后<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令、则可以迁移HDFS数据。</block>
   <block id="715c4a9e063aa9667b43f7d5478b9037" category="paragraph">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。XCP旨在通过利用所有可用系统资源来管理海量数据集和高性能数据迁移、实现扩展并提高性能。XCP 可通过生成客户报告的选项帮助您全面了解文件系统。借助匹配和格式设置功能，您可以自定义报告以满足任何报告需求。</block>
   <block id="e42bfcdf0ad235b13c49f73caf47eb14" category="paragraph">使用规划迁移之后<block ref="a7dd12b1dab17d25467b0b0a4c8d4a92" prefix=" " category="inline-code"></block> 和<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令中、您可以迁移NFS数据。</block>
+  <block id="e85e0a89230fd13a1a22301e7fdd0e5e" category="doc">XCP v1.4.3发行说明</block>
+  <block id="d90e2bf5c75719e1544961b0bc5ad41c" category="paragraph">。 <block ref="62a6eb00e9937cb1874623411cd165a0" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
+  <block id="9a001090e66aa3b6396f3d4ed7942a29" category="admonition">如果文件或目录名称包含非UTF-8字符、则这些字符将转换为UTF-8格式、并在运行时显示<block ref="23147b001892247a3eeb087f6bfd481f" prefix=" " category="inline-code"></block> 命令：根据从源编码转换为UTF-8的情况、字符可能无法按预期显示。</block>
+  <block id="779996940c0c39c72a1fd46bbcb0c25c" category="paragraph">要运行XCP 1.9.3及更高版本、您必须从获取新的XCP许可证 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。</block>
+  <block id="0c753cdaef3cedcd38fd31f543c8d76a" category="admonition">XCP 1.9.3及更高版本不支持与XCP 1.9.2及更早版本一起使用的许可证。同样、在XCP 1.9.2及更早版本中不支持与XCP 1.9.3及更高版本结合使用的许可证。</block>
+  <block id="d0804a022efac2458fd8afd7432ab730" category="cell">请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block> 支持的操作系统</block>
+  <block id="23d2267c3060f49c5c4656d223c16500" category="section-title">登录到文件分析GUI</block>
+  <block id="b12b7bf427a82f1b7594d8e9c0642749" category="paragraph">XCP文件分析GUI提供了一个信息板、其中包含用于可视化文件分析的图形。在 Linux 计算机上配置 XCP 时， XCP 文件分析图形用户界面将处于启用状态。</block>
+  <block id="7144e9d44908ac1a1e2d5d18a661e2bd" category="list-text">选择隐私声明下方的*高级*。</block>
+  <block id="8a8c4a7ad5df91ccdf4a658b580267a6" category="list-text">选择*继续<block ref="c40442705fd05f103d7897f22b0b9d54" prefix=" " category="inline-code"></block>*链接。</block>
+  <block id="523c68391d340c09a68fbb25bc7b6cad" category="open-title">使用用户凭据登录</block>
+  <block id="a6c68859111b43eac6f5a5ece12115ee" category="list-text">使用安装文件分析时获得的用户凭据登录到图形用户界面。</block>
+  <block id="147e6d0fad459c620088e2ffe927734f" category="list-text">(可选)将密码更改为您自己的密码。</block>
+  <block id="b2edd278ca1556cd65ff511dad1cff4b" category="paragraph">如果要将安装期间获得的密码更改为您自己的密码，请选择用户图标并选择*Change password*。</block>
+  <block id="f95855c75bd72ef06a584880630a948a" category="paragraph">新密码长度必须至少为八个字符、并且至少包含一个数字、一个大写字母、一个小写字母和一个特殊字符(！@#$%^和*-_)。</block>
+  <block id="59126595e3861c23ef1127db52d87bb2" category="admonition">更改密码后、系统会自动从GUI中注销、您必须使用创建的新密码重新登录。</block>
+  <block id="11c9f8e61e36eaed8d3e1c1c7e200621" category="open-title">配置和启用SSO功能</block>
+  <block id="bcac97375e974c11b495bce828d1a0ec" category="paragraph">您可以使用此登录功能在特定计算机上设置XCP文件分析、并在企业范围内共享Web UI URL、从而允许用户使用其单点登录(Single Sign On、SSO)凭据登录到UI。</block>
+  <block id="2e4e4809dbbc27f75d2e60a86e2f0d6b" category="list-text">登录后、您可以看到NFS代理；绿色勾号显示Linux系统和XCP版本的最低系统配置。</block>
+  <block id="82c1e69eb8d0968a34c018907e1f78e2" category="list-text">按照中所述的步骤登录到GUI <block ref="e05c6d6f0a0bb7cafe88d22482c70e47" category="inline-xref-macro-rx"></block>。</block>
+  <block id="8257e8343d5cd665a40e90c03e8338d5" category="paragraph"><block ref="8257e8343d5cd665a40e90c03e8338d5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="d8e4071f8ff887ffcc153fb5d0b96e4c" category="paragraph">如果在源或目标中使用接合路径、则XCP命令不会显示预期结果。</block>
+  <block id="0799972e59c5570f8064c5d7c435f712" category="paragraph">运行XCP命令时、请使用SMB共享路径、而不是接合路径。</block>
+  <block id="9afa0f0b30f216c0d2e442239c3fcb68" category="paragraph">如果源、目标或两者都是不含目录的接合、并且在迁移中使用了联机许可证、则可能会发生回溯错误。如果发生这种情况、XCP命令状态为<block ref="269f3d1562cbd15624e7d2c4b10122e3" prefix=" " category="inline-code"></block> 但是、控制台输出结束时会返回以下错误：</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">关于此任务</block>
+  <block id="cccedc8829a344b387fb08c393ffa970" category="list-text">复制<block ref="42dc92c99a13a4f3e1ce5f5dbffb3d77" prefix=" " category="inline-code"></block> 文件到Windows<block ref="d7aa32b0c582222819b91c8e0ccca765" prefix=" " category="inline-code"></block> 驱动器、此二进制文件可在内部使用<block ref="2e9d6141fdcc44d5e2fb72979401c9c5" prefix=" " category="inline-code"></block> 在您解压缩后<block ref="05d1190d81e37d06607cc19e21f63ea7" prefix=" " category="inline-code"></block> 文件</block>
+  <block id="ea2ba5409e2977c3e953a67de8026eb6" category="list-text">复制<block ref="320b90518080edc05c5733db7267371a" prefix=" " category="inline-code"></block> 和<block ref="ad85a49f9eda6dfb5f9078894092f6dc" prefix=" " category="inline-code"></block> 文件<block ref="0c8468e8bc6e9c8ce8e4de412fee0c10" prefix=" " category="inline-code"></block> (在已配置XCP文件分析的Linux框中)为<block ref="0d4f2ad60efd19069346676a3fdc788c" prefix=" " category="inline-code"></block>。</block>
+  <block id="6c7d8f4f4f290787ef78f7018dfd4e2d" category="paragraph">(可选)如果您有CA证书、请将该证书放入<block ref="0d4f2ad60efd19069346676a3fdc788c" prefix=" " category="inline-code"></block> 具有相同的名称和扩展名。</block>
+  <block id="1236e8b02abb31c50db0b5adfed580fa" category="list-text">转到Windows计算机并运行<block ref="824313c3e49c75ad7db49a6c3bb90627" prefix=" " category="inline-code"></block>，现在已配置SMB的XCP文件分析。保持窗口打开以持续运行服务。</block>
+  <block id="215b4f9995d464c6d896badee64ee9b9" category="list-text">在支持的浏览器上启动文件分析：<block ref="c1df14498e319bedff7cd295edf3fdbe" prefix=" " category="inline-code"></block></block>
+  <block id="bec265af43e5553bf128ad29d47f3ec2" category="paragraph">请参见 <block ref="b1b298f808db7e093ee9abb7cc8bfdef" category="inline-link-macro-rx"></block> 有关支持的浏览器的信息。</block>
+  <block id="366cf6c0c26349e7fd57569a205e0118" category="list-text">选择 ...<block ref="e0aa021e21dddbd6d8cecec71e9cf564" prefix=" " category="inline-code"></block> 显示对话框时。</block>
+  <block id="e1654a0ebd1b4059457621d4f6159b2c" category="admonition">此时将打开一个新选项卡。如果浏览器上的弹出窗口被阻止、请启用该弹出窗口。</block>
+  <block id="aa25bb4d2ad259acab66b7c3aec0ff22" category="list-text">接受URL的隐私策略。此时将显示以下消息：<block ref="52a5e45b970aa1f0355aee216766bb82" prefix=" " category="inline-code"></block></block>
+  <block id="c120eb6bd0ec2886798025c46f211510" category="list-text">通过返回到托管XCP文件分析GUI的原始选项卡并刷新页面、在"Agents"卡下显示SMB代理。</block>
+  <block id="722b6c185c309d307c4b435ca45ddb73" category="list-text">在运行文件分析之前、请确认运行文件分析的Linux服务器也已升级、并且该服务正在运行。</block>
+  <block id="47d43dfa43648919ae8e1597263e39b7" category="list-text">替换<block ref="42dc92c99a13a4f3e1ce5f5dbffb3d77" prefix=" " category="inline-code"></block> 使用最新的二进制文件。</block>
+  <block id="32b3893a51a3d83bcf15ac914ac45246" category="list-text">转到Windows计算机并运行<block ref="824313c3e49c75ad7db49a6c3bb90627" prefix=" " category="inline-code"></block> 为SMB配置XCP文件分析。保持窗口打开以持续运行服务。</block>
+  <block id="eab515ad69a9c68d3ff4998a7a38c168" category="list-text">显示对话框时选择*OK*。</block>
+  <block id="2af1ae573e96f9c96edbfe34f2ecd144" category="section-title">索引删除</block>
+  <block id="ed394357d76e4a47c544b6679113b6b6" category="paragraph">您可以使用<block ref="2af1ae573e96f9c96edbfe34f2ecd144" prefix=" " category="inline-code"></block> 用于删除目录索引的命令。</block>
+  <block id="269e3fa15ca9366f6cfcb1eac97c6cf0" category="paragraph">运行<block ref="1a1b0d47f4e6e0151b4df12640fe4bb0" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="ea7072dd30b8128f4d74568ed70d406c" category="paragraph">文件已访问/已修改/已创建图形显示随时间变化的文件计数。X轴表示所做更改的时间段、Y轴表示所更改的文件数。</block>
+  <block id="e66cb3e85cec55480dc46a379124f46a" category="section-title">访问/修改/创建的文件大小图形</block>
+  <block id="5eeb433a134b50fcf2d2d02005945304" category="paragraph"><block ref="5eeb433a134b50fcf2d2d02005945304" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="b483a26f1bc7e903df1139b2bea4faca" category="paragraph">访问/修改/创建的文件大小图形显示随时间变化的文件大小。X轴表示所做更改的时间段、Y轴表示所更改文件的大小。</block>
+  <block id="8105201d67059c07d533dcbbe25a3c67" category="section-title">按扩展名统计图的文件分布</block>
+  <block id="2506a5990488ccea13845b28b0df2496" category="paragraph">此外、对于SMB共享、您可以通过在运行扫描之前选中ADS复选框来获取每个文件扩展名的备用数据流(ADS)文件数。</block>
+  <block id="699e5e6ac0568498b21221ee949dd4a3" category="paragraph"><block ref="699e5e6ac0568498b21221ee949dd4a3" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="79f475897ad3ccfba85aa2fc2f2d9bad" category="section-title">文件大小分布(按扩展名统计图)</block>
+  <block id="4ab3fb97b389232d625b03e49824e147" category="paragraph"><block ref="4ab3fb97b389232d625b03e49824e147" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="a07e34309c0f4fe3914143661296e902" category="paragraph">"按扩展名分布的文件大小"图表示文件共享中不同文件扩展名的累计大小。表示扩展名的分区大小取决于每个扩展名的文件大小。</block>
+  <block id="c88f5d7f64740c2ea459ec0992a08786" category="paragraph">此外、对于SMB共享、您可以通过在运行扫描之前选中ADS复选框来获取不同类型的备用数据流(ADS)文件数量。</block>
+  <block id="fa089a630122acf5e9273fce49f4cf34" category="paragraph"><block ref="fa089a630122acf5e9273fce49f4cf34" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0c298119c26e2b6846ed04c0a3a19fc9" category="paragraph">运行<block ref="0b0f856b03e3ddcd7804298ac5bc4a97" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="1b8208be7fabaa97780c143eb5ae291e" category="paragraph">运行<block ref="dc7a0e5e50a6e16de630993f68e9061c" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="b802ccf3bd2b24d676e6542534797831" category="paragraph">运行<block ref="7aaf8f3c0f52b0fd5a97d37fbe81d5c5" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="661c53c14b5d725221aa32bea431d3e5" category="paragraph">运行<block ref="a11baf9e315624a8a210305ae8b743d0" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="364e9a46db7862ca5c256c97c53e1549" category="section-title">iSync</block>
+  <block id="9fec924044f566c44ac4b73a69159e55" category="paragraph">。<block ref="a3e4a767ccc698fa80ecaf42af64deea" prefix=" " category="inline-code"></block> 命令会比较源和目标、并同步目标上的差异、而不使用目录索引。</block>
+  <block id="bad38dd9274d1a634894e5113d9413a4" category="paragraph">您可以使用<block ref="a3e4a767ccc698fa80ecaf42af64deea" prefix=" " category="inline-code"></block> 使用<block ref="94e7e210543475d2dc1ee610e7b4af1d" prefix=" " category="inline-code"></block> 用于估计所需时间的选项<block ref="a3e4a767ccc698fa80ecaf42af64deea" prefix=" " category="inline-code"></block> 命令以同步增量更改。。<block ref="aac2d8e3007be7e24232c39330c3c010" prefix=" " category="inline-code"></block> 参数用于指定先前复制操作的目录名称。</block>
+  <block id="9cd17ce87f50eb274407888411403ff8" category="admonition">如果更改的数据集大小超过已用数据集大小的25%、则<block ref="7bd0b9105a99766e080dee8fec4aeb60" prefix=" " category="inline-code"></block> 命令可能不会显示预期结果。</block>
+  <block id="459c6a9653c4611cfe403e0bb61cbf46" category="paragraph">运行<block ref="c5cec64402f12bcecd0de64291764ac1" prefix=" " category="inline-code"></block> 有关详细信息：</block>
+  <block id="523bf576f67a5d084abd1f8132e9502a" category="paragraph">有关NFS的系统要求、请参见 <block ref="3cd449c1c5d47073a7e303a49efe123e" category="inline-link-macro-rx"></block>。</block>
+  <block id="05db61bcd816f14c22b7e7f5d67ba52b" category="paragraph">。<block ref="735003ab6f5797c8b8bdecbbbb9322a8" prefix=" " category="inline-code"></block> 此脚本会在Red Hat Enterprise Linux (RHEL)主机上安装XCP文件分析。在安装过程中、该脚本会在Linux主机上安装Postgrs数据库、Apache HTTPD服务器和其他所需的软件包。有关支持的特定RHEL版本的信息、请参见 <block ref="277e95e57632f1d20d4cd8ea672c1493" category="inline-link-macro-rx"></block>。您可以根据需要更改或更新到最新版本，并遵循安全准则。了解有关的更多信息<block ref="735003ab6f5797c8b8bdecbbbb9322a8" prefix=" " category="inline-code"></block> 脚本、运行<block ref="c9e6e0c436ae9fb0ae9b2dbd71031566" prefix=" " category="inline-code"></block> 在命令行上。</block>
+  <block id="24b433b7484fd8534f2758a3f1c07835" category="list-text">如果正在运行任何XCP操作、NetApp建议您在开始配置之前完成这些操作。</block>
+  <block id="9006d8368c0451141a424c581daa4673" category="list-text">如果在Linux计算机上配置了防火墙、则必须更改防火墙设置以启用XCP服务使用的端口5030。</block>
+  <block id="83665cc8f640f7d31e0111fa038e919b" category="open-title">安装文件分析</block>
+  <block id="d076d11b169432e433f473477c336200" category="list-text">导航到<block ref="430e727eb7fa4c8fdeb29b396f232465" prefix=" " category="inline-code"></block> 文件夹并运行<block ref="da2e8bb7b6693780728dfaf44a42c5eb" prefix=" " category="inline-code"></block> 脚本。</block>
+  <block id="0948892f1f3963716f1ea89c2c91ebf1" category="paragraph">如果安装成功、则会显示以下消息：</block>
+  <block id="e1b70521691b346e65e9958318dacf2e" category="admonition">您可以使用此用户名和密码登录到文件分析GUI。</block>
+  <block id="366c2d7ffe8ad266421fea465e76182f" category="open-title">升级文件分析</block>
+  <block id="2a98315fd4201cebbbb6d938823636fc" category="list-text">导航到<block ref="430e727eb7fa4c8fdeb29b396f232465" prefix=" " category="inline-code"></block> 文件夹并运行<block ref="b5e030b73727d125476b7c53beba4142" prefix=" " category="inline-code"></block>。</block>
+  <block id="7ef1f929ba40266342a7f855750e3c3c" category="list-text">在提示符处、输入<block ref="415290769594460e2e485922904f345d" prefix=" " category="inline-code"></block> 清理和重新配置系统。</block>
+  <block id="a708001a589c308bd39a2ac681f9dfa7" category="paragraph">批准脚本后、它会清理现有配置并重新配置系统。</block>
+  <block id="f5ed1028b425be910b1ffedab0b028b5" category="paragraph">如果成功、则会显示以下消息：</block>
+  <block id="dd30d0765f043033be3f305971f0b5e7" category="list-text">在支持的浏览器中启动文件分析：*\https://&lt;ip address of Linux&gt;/XCP*。</block>
+  <block id="be16d400539b1607e9a0d3a74fafc967" category="paragraph">请参见 <block ref="3cd449c1c5d47073a7e303a49efe123e" category="inline-link-macro-rx"></block> 有关支持的浏览器的信息。</block>
+  <block id="537eb93e68db7a00b7493adb72a38d6f" category="paragraph">从XCP 1.1.2开始、您可以在一台XCP主机上运行多个XCP作业或命令、但前提是该主机具有足够的资源来执行每个作业。当您运行支持多个作业的命令时、XCP会使用最小的主机内存来完成作业、从而为在同一主机配置上运行其他作业创建容量。</block>
+  <block id="62b99230c0b2c5c3583167ab9dfa78cc" category="admonition">SMB数据迁移不支持在同一主机上运行多个XCP作业。</block>
+  <block id="050938c7ac42f7b10bd832a5841f7a10" category="paragraph">以下XCP命令支持在同一主机上运行多个XCP作业：</block>
+  <block id="33a674543ba02ee23aee431f514ab6fe" category="paragraph">不支持在同一主机上运行多个XCP作业<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 命令：</block>
+  <block id="a06060a624eec2a259a8cf550b7f95f1" category="summary">SMB的NTFS备用数据流迁移</block>
+  <block id="3b84355abf1b4d56b9caf1c19b79b59b" category="paragraph">从XCP 1.4.3开始、XCP SMB支持使用迁移NTFS备用数据流(ADS)<block ref="c49e8400c997823541180a2559d2110e" prefix=" " category="inline-code"></block> 选项。</block>
+  <block id="bee250b62c0906f0bc060c3df37dc24b" category="section-title">支持的用例</block>
+  <block id="fa44916805192fd6a7bb83303abc9eb9" category="paragraph">您可以使用XCP SMB<block ref="12cba3ee81cf4a793796a51b6327c678" prefix=" " category="inline-code"></block> 和<block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix=" " category="inline-code"></block> 用于迁移包含ADS和XCP SMB的数据的命令<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令扫描SMB共享中的ADS。</block>
+  <block id="389cd41d4ef291a89b508abaaa3371dc" category="section-title">支持的XCP SMB命令</block>
+  <block id="2b58def6b3aee7ceb139f7ea48547941" category="paragraph">以下XCP SMB命令支持<block ref="c49e8400c997823541180a2559d2110e" prefix=" " category="inline-code"></block> 选项：</block>
+  <block id="a4f108c6758a9ce630e9738c6a3d639c" category="list-text"><block ref="63ad9d34f3503826e5f649ae6b7ac92c" prefix="" category="inline-code"></block></block>
+  <block id="d5b7e4797a358d7d8ed35976e484c442" category="paragraph">以下命令示例显示了如何使用<block ref="c49e8400c997823541180a2559d2110e" prefix=" " category="inline-code"></block> 选项：</block>
+  <block id="6d99815f2116be9f5277c78a2eb60336" category="list-text"><block ref="24dbbd8f44d282712df87ffdaa269aa8" prefix="" category="inline-code"></block></block>
+  <block id="4d1f659adec52a779af0bd4a40cf3803" category="list-text"><block ref="49ce806aa9683f16e550953d09c1bd68" prefix="" category="inline-code"></block></block>
+  <block id="14249cefbaa5a36b0b9cb5b2cfbbb57d" category="list-text"><block ref="c264f300fbf748e364ab837928b14ee8" prefix="" category="inline-code"></block></block>
+  <block id="b99588d251bf1019e0e822689ebaf7d2" category="list-text"><block ref="b9a9b1656ba3adc03b7fa7487e42a8f6" prefix="" category="inline-code"></block></block>
+  <block id="462f82c31411e99799f7e9026350b607" category="sidebar">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。您可以在此处找到有关XCP 1.9.3软件的文档、其中包括如何安装、配置和使用XCP。有关早期版本的XCP的文档、请参见NetApp 支持站点。</block>
+  <block id="01fe75bfb5351e8cb287658bc7ee5325" category="sidebar">NetApp XCP 1.9.2</block>
 </blocks>

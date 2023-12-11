@@ -34,7 +34,7 @@ xcp copy -newid <id> src_server:/src_export dst_server:/dst_export
 ----
 xcp copy -newid <id> file:///mnt/source file:///mnt/dest
 ----
-有关详细信息，请参见 `XCP 帮助副本` 。
+运行 `xcp help copy` 有关详细信息：
 
 
 
@@ -48,7 +48,7 @@ xcp copy -newid <id> file:///mnt/source file:///mnt/dest
 ----
 xcp resume [options] -id <id used for copy>
 ----
-有关详细信息，请参见 `XCP 帮助恢复` 。
+运行 `xcp help resume` 有关详细信息：
 
 
 
@@ -62,7 +62,7 @@ xcp resume [options] -id <id used for copy>
 ----
 xcp sync [options] -id <id used for copy>
 ----
-有关详细信息，请参见 `XCP 帮助同步` 。
+运行 `xcp help sync` 有关详细信息：
 
 
 
@@ -82,4 +82,30 @@ xcp verify src_server:/src_export dst_server:/dst_export
 ----
 xcp verify file:///mnt/source file:///mnt/dest
 ----
-有关详细信息，请参见 `XCP 帮助验证` 。
+运行 `xcp help verify` 有关详细信息：
+
+
+
+== iSync
+
+。 `isync` 命令会比较源和目标、并同步目标上的差异、而不使用目录索引。
+
+* 示例 *
+
+[listing]
+----
+xcp isync <source_ip_address>:/src <destination_ip_address>:/dest
+
+----
+您可以使用 `isync` 使用 `estimate` 用于估计所需时间的选项 `isync` 命令以同步增量更改。。 `-id` 参数用于指定先前复制操作的目录名称。
+
+
+NOTE: 如果更改的数据集大小超过已用数据集大小的25%、则 `isync estimate` 命令可能不会显示预期结果。
+
+* 示例 *
+
+[listing]
+----
+xcp isync estimate -id <name>
+----
+运行 `xcp help isync` 有关详细信息：

@@ -36,6 +36,9 @@ summary: 规划 NFS 数据迁移
 
 。 `scan` 命令会以递归方式扫描源NFS3导出的整个路径、并在扫描结束时输出文件结构的统计信息。NetApp 建议在扫描操作期间将源 NFS 导出挂载置于只读模式。
 
+
+NOTE: 如果文件或目录名称包含非UTF-8字符、则这些字符将转换为UTF-8格式、并在运行时显示 `xcp-scan` 命令：根据从源编码转换为UTF-8的情况、字符可能无法按预期显示。
+
 * 示例： *
 
 * `xcp scan NFS [server:/export path | file:// ]`

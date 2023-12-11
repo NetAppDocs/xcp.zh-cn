@@ -89,6 +89,9 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: 迁移 SMB 数据
       url: "/xcp-migrate-smb-data.html"
+      entries:
+      - title: SMB的NTFS备用数据流迁移
+        url: "/xcp-smb-ads.html"
     - title: 迁移HDFS数据
       url: "/xcp-migrate-hdfs-data.html"
     - title: 在同一主机上运行多个XCP作业

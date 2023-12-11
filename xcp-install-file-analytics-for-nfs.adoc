@@ -16,26 +16,63 @@ summary: 安装或升级适用于 NFS 的文件分析
 [role="lead"]
 安装或升级适用于 NFS 的文件分析。
 
-有关 NFS 的系统要求，请参见 link:xcp-install-xcp-nfs.html["安装 XCP NFS"]。`configure.sh` 脚本可安装并启用 Linux 服务器可用的 HTTPD 和 PostgreSQL 的默认配置。您可以根据需要更改或更新到最新版本，并遵循安全准则。
+.关于此任务
+有关NFS的系统要求、请参见 link:xcp-install-xcp-nfs.html["安装 XCP NFS"]。
+
+。 `configure.sh` 此脚本会在Red Hat Enterprise Linux (RHEL)主机上安装XCP文件分析。在安装过程中、该脚本会在Linux主机上安装Postgrs数据库、Apache HTTPD服务器和其他所需的软件包。有关支持的特定RHEL版本的信息、请参见 link:https://mysupport.netapp.com/matrix/["IMT"^]。您可以根据需要更改或更新到最新版本，并遵循安全准则。了解有关的更多信息 `configure.sh` 脚本、运行 `./configure.sh -h` 在命令行上。
 
 .开始之前
-* 您不能在同一主机上同时运行 XCP 应用程序和 XCP 服务。如果正在运行任何 XCP 操作，请在开始配置之前完成这些操作。
+* 如果正在运行任何XCP操作、NetApp建议您在开始配置之前完成这些操作。
 * 您的 Linux 计算机必须连接到 Yum 存储库服务器或 Internet 。
-* 如果在 Linux 计算机上配置了防火墙，则必须更改防火墙设置以启用 XCP 使用的端口， XCP 服务以及 XCP 文件分析使用的服务。有关详细信息，请访问 xref:xcp-ports-used.html[XCP 使用的端口]。
+* 如果在Linux计算机上配置了防火墙、则必须更改防火墙设置以启用XCP服务使用的端口5030。
 
 
 .步骤
-. 转到 XCP 文件夹并运行 ` ./configure.sh` 脚本。此脚本需要三到十分钟来配置 Linux 计算机并完成以下任务：
+. 安装或升级适用于 NFS 的文件分析。
 +
-.. 下载 PostgreSQL 软件包
-.. 安装 PostgreSQL 服务器
-.. 安装 HTTPD
-.. 使用开放式 SSL 创建自签名证书（ `server.key 和 server.crt` ）
-.. 创建 XCP 文件分析数据库
+[role="tabbed-block"]
+====
+.安装文件分析
+--
+.. 导航到 `xcp` 文件夹并运行 `./configure.sh` 脚本。
++
+如果安装成功、则会显示以下消息：
+
++
+[listing]
+----
+You can now access XCP file analytics using (<username>:<password>)
+https://<ip_address>/xcp
+----
++
+
+NOTE: 您可以使用此用户名和密码登录到文件分析GUI。
 
 
-. 从 XCP 配置菜单中选择 `option 1 Configure client system` 。
-. 对于新安装，请更新管理员和数据库用户的密码。对于升级，系统会提示您停止 XCP 服务。完成后，选择 `选项 0` 。
-. 启动 XCP 服务。使用以下命令检查 XCP 服务是否正在运行： service XCP status
-. 在浏览器中启动文件分析： * 。 https://<ip address of Linux>/XCP* 。
+
+--
+.升级文件分析
+--
+.. 导航到 `xcp` 文件夹并运行 `./configure.sh -f`。
+.. 在提示符处、输入 `y` 清理和重新配置系统。
++
+批准脚本后、它会清理现有配置并重新配置系统。
+
++
+如果成功、则会显示以下消息：
+
++
+[listing]
+----
+You can now access XCP file analytics using (<username>:<password>)
+https://<ip_address>/xcp
+----
+
+
+--
+====
+. 在支持的浏览器中启动文件分析：*\https://<ip address of Linux>/XCP*。
++
+请参见 link:xcp-install-xcp-nfs.html["安装 XCP NFS"] 有关支持的浏览器的信息。
+
 

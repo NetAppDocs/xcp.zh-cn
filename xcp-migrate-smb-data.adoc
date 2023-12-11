@@ -31,7 +31,7 @@ NOTE: 在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` �
 ----
 C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
 ----
-有关详细信息，请参见 `XCP 帮助副本` 。
+运行 `xcp help copy` 有关详细信息：
 
 
 
@@ -50,7 +50,7 @@ NOTE: 在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` �
 ----
 C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 ----
-有关详细信息，请参见 `XCP 帮助同步` 。
+运行 `xcp help sync` 有关详细信息：
 
 
 
@@ -69,4 +69,4 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 ----
 C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
 ----
-有关详细信息，请参见 `XCP 帮助验证` 。
+运行 `xcp help verify` 有关详细信息：

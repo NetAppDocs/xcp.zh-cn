@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-ads.html 
+keywords: netapp, xcp, smb, ads, alternate, data, streams, ntfs 
+summary: SMB的NTFS备用数据流迁移 
+---
+= SMB的NTFS备用数据流迁移
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+从XCP 1.4.3开始、XCP SMB支持使用迁移NTFS备用数据流(ADS) `-ads` 选项。
+
+
+
+== 支持的用例
+
+您可以使用XCP SMB `copy` 和 `sync` 用于迁移包含ADS和XCP SMB的数据的命令 `scan` 命令扫描SMB共享中的ADS。
+
+
+
+== 支持的XCP SMB命令
+
+以下XCP SMB命令支持 `-ads` 选项：
+
+* `scan`
+* `copy`
+* `verify`
+* `sync`
+
+
+
+
+== 命令示例
+
+以下命令示例显示了如何使用 `-ads` 选项：
+
+* `xcp scan -ads \\<SMB share>`
+* `xcp copy -ads \\<source SMB share>  \\<destination SB share>`
+* `xcp sync -ads \\<source SMB share>  \\<destination SB share>`
+* `xcp verify -ads \\<source SMB share>  \\<destination SB share>`
+
