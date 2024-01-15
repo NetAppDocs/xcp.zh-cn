@@ -390,8 +390,6 @@
   <block id="2e92962c0b6996add9517e4242ea9bdc" category="cell">5432</block>
   <block id="b5d1e5d54f5315ff2add6fab835e546d" category="cell">XCP （作为文件分析服务）</block>
   <block id="faad95253aee7437871781018bdf3309" category="cell">5030</block>
-  <block id="11047916a280f54b6bb638b4fa43d625" category="summary">对 XCP SMB 错误进行故障排除</block>
-  <block id="5bf172f77cc9d71e44a586eb796e8205" category="doc">对 XCP SMB 错误进行故障排除</block>
   <block id="430f0b9cbaeb94092aee4baf6da23965" category="cell">获取相应的 XCP 许可证文件。将 XCP 许可证复制到 XCP 主机上的 `c ： \NetApp\XCP` 文件夹。运行 `XCP activate` 命令以激活许可证</block>
   <block id="d41bf97a60e7be57b7f2c07b092ad5b0" category="cell">`XCP ：错误` ： XCP 未激活，请先运行 " 激活 "</block>
   <block id="93a8c927e888fa50601e3fe6d0cb5c14" category="cell">从下载 XCP 许可证 <block ref="f33ccbb3083b14f48de92a286ba83724" category="inline-link-macro-rx"></block>。复制 XCP Linux 客户端主机上 XCP 主机上的文件，该主机位于 XCP 主机上的 `c ： \NetApp\XCP` 。运行 `XCP activate` 命令以激活许可证。</block>
@@ -951,4 +949,6 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="b99588d251bf1019e0e822689ebaf7d2" category="list-text"><block ref="b9a9b1656ba3adc03b7fa7487e42a8f6" prefix="" category="inline-code"></block></block>
   <block id="462f82c31411e99799f7e9026350b607" category="sidebar">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。您可以在此处找到有关XCP 1.9.3软件的文档、其中包括如何安装、配置和使用XCP。有关早期版本的XCP的文档、请参见NetApp 支持站点。</block>
   <block id="01fe75bfb5351e8cb287658bc7ee5325" category="sidebar">NetApp XCP 1.9.2</block>
+  <block id="06c7c6fe1390b1e7519864e5fd3adc1b" category="summary">XCP SMB错误故障排除</block>
+  <block id="103bae74aac9cad62c4f7826cc30141d" category="doc">对XCP SMB错误进行故障排除</block>
 </blocks>

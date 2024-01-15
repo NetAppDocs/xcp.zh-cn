@@ -102,7 +102,7 @@ sidebar:
     entries:
     - title: 对 XCP NFS 错误进行故障排除
       url: "/xcp-troubleshoot-xcp-nfs.html"
-    - title: 对 XCP SMB 错误进行故障排除
+    - title: 对XCP SMB错误进行故障排除
       url: "/xcp-troubleshoot-xcp-smb-errors.html"
     - title: 对 XCP 文件分析错误进行故障排除
       url: "/xcp-troubleshoot-xcp-file-analytics-errors.html"
