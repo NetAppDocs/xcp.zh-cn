@@ -52,4 +52,7 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 * link:media/xcp_1.9_notice.pdf["NetApp XCP 1.9的通知"^]
 * link:media/xcp_1.8.1_notice.pdf["NetApp XCP 1.8.1的通知"^]
 * link:media/xcp_1.8_notice.pdf["NetApp XCP 1.8的通知"^]
+* link:media/xcp_1.7_notice.pdf["NetApp XCP 1.7通知"^]
+* link:media/xcp_1.6.2_notice.pdf["NetApp XCP 1.6.2的通知"^]
+* link:media/xcp_1.6.1_notice.pdf["NetApp XCP 1.6.1的通知"^]
 

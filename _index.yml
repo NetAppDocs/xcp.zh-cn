@@ -1,7 +1,7 @@
 ---
 indexpage:
   lead: NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。您可以在此处找到有关XCP
-    1.9.3软件的文档、其中包括如何安装、配置和使用XCP。有关早期版本的XCP的文档、请参见NetApp 支持站点。
+    1.6.2及更高版本软件的文档、包括如何安装、配置和使用XCP。NetApp 支持站点 上提供了1.6.2之前版本的XCP的文档。
   tiles:
   - title: 入门
     links:
@@ -9,23 +9,23 @@ indexpage:
       url: "/releasenotes.html"
     - title: 了解 XCP
       url: "/xcp-index.html"
-  - title: 早期版本
+  - title: 早期发行说明版本
     links:
     - title: NetApp XCP 1.9.2
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64804&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2885805
     - title: NetApp XCP 1.9.1
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64637&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2884968
     - title: NetApp XCP 1.9
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64493&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2883342
     - title: NetApp XCP 1.8.1
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64287&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2881500
     - title: NetApp XCP 1.8
-      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=64074&language=en-US
+      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2880112
     - title: NetApp XCP 1.7及更早版本
       url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
   - title: 更多资源
     links:
-    - title: XCP文档(包括参考资料)
+    - title: XCP 1.6.1或更早版本的文档
       url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=63064
     - title: NetApp TechCommTV (NetApp XCP视频)
       url: link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
