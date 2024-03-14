@@ -596,7 +596,6 @@
   <block id="23c9666a12a742df28045c71457392a3" category="list-text">安装完成后，重新启动 Windows 客户端。</block>
   <block id="5dfa463a08f83c24c2d431cffb177fa8" category="list-text">在 Windows 客户端上下载许可证和 XCP SMB 二进制文件 `NetApp_XCP_&lt;version&gt;.tgz` 。</block>
   <block id="bdacdc2ce48f16d27d87fef257b0c28f" category="list-text">提取 `NetApp_XCP_&lt;version&gt;.tgz` 文件。</block>
-  <block id="5721c375e95676c97876a49105a2b54c" category="list-text">将 `Xcp.exe` 文件复制到 Windows C ：驱动器，解压缩 `tgz` 文件后，此二进制文件位于 `NetApp_XCP_1.8\NetApp_XCP_1.8\XCP\windows` 中。</block>
   <block id="17b92bb56c632debb93b565e92dbd987" category="list-text">验证 `C ： \NetApp\XCP` 路径是否可从先前版本的 XCP 在系统上使用。如果 `C ： \NetApp\XCP` 可用，请使用 `xcp.exe activate` 命令激活 XCP ，然后继续执行数据迁移。</block>
   <block id="c9dd31b110e2c919cd80441873e975fc" category="paragraph">如果 `C ： \NetApp\XCP` 不可用，则在首次运行 `xcp.exe activate` 命令时，系统会创建 XCP 主机配置目录并将其记录在 `C ： \NetApp\XCP` 中。`xcp.exe activate` 命令失败，并创建一条错误消息，要求提供新许可证。</block>
   <block id="fca650b5fb2499a28c4614bbf33b9323" category="list-text">选择添加的文件服务器卡上的箭头以查看文件服务器上的文件共享。</block>
@@ -957,4 +956,5 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="fa9d00e8e16d36faed7e27ef33cc9bb1" category="sidebar">NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。您可以在此处找到有关XCP 1.6.2及更高版本软件的文档、包括如何安装、配置和使用XCP。NetApp 支持站点 上提供了1.6.2之前版本的XCP的文档。</block>
   <block id="0b5f5476de5c5e40cc0b9b6eac7b5003" category="sidebar">早期发行说明版本</block>
   <block id="a0bdfc7755831681bc292330bc4e3777" category="sidebar">XCP 1.6.1或更早版本的文档</block>
+  <block id="50093a13cb17d2efa1a538b0678cc15e" category="list-text">复制<block ref="42dc92c99a13a4f3e1ce5f5dbffb3d77" prefix=" " category="inline-code"></block> 文件到Windows C：驱动器、此二进制文件可在中使用<block ref="b83dd8b00a764f84f57961a6d4eb38c7" prefix=" " category="inline-code"></block> 提取后<block ref="05d1190d81e37d06607cc19e21f63ea7" prefix=" " category="inline-code"></block> 文件</block>
 </blocks>
