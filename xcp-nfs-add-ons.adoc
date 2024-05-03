@@ -28,7 +28,7 @@ XCP NFS 附加功能支持使用 POSIX 和 HDFS 连接器，增强安全性，�
 
 == POSIX 连接器
 
-XCP 1.8 支持使用 POSIX 连接器为数据迁移提供源，目标和目录路径。POSIX 连接器（ file ： // ）使 XCP 能够访问任何 Linux 挂载的文件系统，例如 NFSv4 ， XFS 和 Veritas 。对于非 root 用户，系统管理员可以挂载文件系统，以使任何非 root 用户能够使用带有 file ： // 前缀的 POSIX 连接器访问文件系统。
+XCP支持使用POSIX连接器为数据迁移提供源、目标和目录路径。POSIX连接器(file：//)使XCP能够访问任何Linux装载的文件系统、例如NFSv4、XFS和Veritas。对于非root用户、系统管理员可以使用带有file：//前缀的POSIX连接器挂载文件系统、以使任何非root用户都能够访问文件系统。
 
 如果您没有足够的权限挂载文件，或者数据中心提供的支持仅限于 NFSv4 ，则可以使用 POSIX 连接器。在这种情况下，任何 root 用户都可以挂载源和目标，然后使用 POSIX 连接器访问路径。使用 POSIX 连接器时，只能运行 `XCP copy` 操作。
 
