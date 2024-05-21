@@ -1,0 +1,453 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-sync.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= 同步
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+查看XCP的说明、参数和示例 `sync` 命令、包括何时 `sync` 命令与结合使用 `dry run` 选项
+
+
+
+== 同步
+
+XCP NFS `sync` 命令会使用目录索引标记名称或上次复制操作的编号来扫描对源NFS目录所做的更改和修改。对源的增量更改将复制并应用于目标目录。同步操作完成后、旧目录索引编号将替换为新目录索引编号。
+
+
+NOTE: 在同步操作期间、修改后的文件和目录会再次复制到目标NFSv3导出。
+
+.语法
+[source, cli]
+----
+xcp sync -id <catalog_name>
+----
+
+IMPORTANT: 。 `-id <catalog_name>` 参数是必需的 `sync` 命令：
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id autoname_copy_2020-03-04_01.10.22.338436
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id autoname_copy_2020-03-04_01.10.22.338436
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 26.4 KiB in (27.6 KiB/s), 22.7 KiB out (23.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+下表列出了 `sync` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<sync_id,sync -id   | 指定上一个副本索引的目录名称。这是的必需参数 `sync` 命令： 
+
+
+| <<sync_nonames,sync -nonames>> | 从文件列表和报告中排除用户和组名称。 
+
+
+| <<sync_bs,sync -BS [k]  | 指定读/写块大小(默认值：64K)。 
+
+
+| <<sync_dircount,sync -dircount ()；n[k]  | 指定读取目录时的请求大小。 
+
+
+| <<sync_parallel,sync -并行()；n  | 指定并发批处理进程的最大数量(默认值：7)。 
+
+
+| <<sync_preserve_atime,sync -保留-环境>> | 将源上的所有文件还原到上次访问的日期。 
+|===
+
+
+=== sync -nonames
+
+使用 `-nonames` 参数 `sync` 用于从文件列表或报告中排除用户和组名称的命令。
+
+.语法
+[source, cli]
+----
+xcp sync -id <catalog_name> -nonames
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -nonames
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -nonames
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 26.4 KiB in (22.2 KiB/s), 22.3 KiB out (18.8 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== Sync -BS <n[k]>
+
+使用 `-bs <n[k]>` 参数 `sync` 命令以指定读/写块大小。默认块大小为64k。
+
+.语法
+[source, cli]
+----
+xcp sync -id <catalog_name> -bs <n[k]>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -bs 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -bs 32k
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (20.4 KiB/s), 21.0 KiB out (16.9 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== sync -dircount <n[k]>
+
+使用 `-dircount <n[k]>` 参数 `sync` 命令以指定读取目录时的请求大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp sync -id <catalog_name> -dircount <n[k]>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -dircount 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -dircount 32k
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (27.8 KiB/s), 21.0 KiB out (23.0 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== sync -par并 联
+
+使用 `-parallel` 参数 `sync` 命令以指定并发批处理进程的最大数量。默认值为7。
+
+.语法
+[source, cli]
+----
+xcp sync -id <catalog_name> -parallel <n>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync -id ID001 -parallel 4
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync -id ID001 -parallel 4
+0 scanned, 0 copied, 0 modification, 0 new item, 0 delete item, 0 error
+Speed : 25.3 KiB in (20.6 KiB/s), 21.0 KiB out (17.1 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== -re듦-地
+
+使用 `-preserve-atime` 参数 `sync` 命令将源上的所有文件还原到上次访问的日期。
+
+。 `-preserve-atime` 选项会将访问时间重置为执行XCP读取操作之前设置的原始值。
+
+.语法
+[source, cli]
+----
+xcp sync -preserve-atime -id <catalog_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client-1 linux]# ./xcp sync -preserve-atime -id XCP_copy_2022-06-30_14.22.53.742272
+
+xcp: Job ID: Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.27.28.660165_sync
+xcp: Index: {source: 101.10.10.10:/source_vol, target: 10.201.201.20:/dest_vol}
+xcp: diff 'XCP_copy_2022-06-30_14.22.53.742272': 55 reviewed, 55 checked at source, 1 modification,
+54 reindexed, 23.3 KiB in (15.7 KiB/s), 25.1 KiB out (16.9 KiB/s), 1s.
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': Starting search pass for 1 modified directory...
+xcp: find changes: 55 reviewed, 55 checked at source, 1 modification, 55 re-reviewed, 54 reindexed,
+28.0 KiB in (18.4 KiB/s), 25.3 KiB out (16.6 KiB/s), 1s.
+xcp: sync phase 2: Rereading the 1 modified directory...
+xcp: sync phase 2: 55 reviewed, 55 checked at source, 1 modification, 55 re-reviewed, 1 new dir, 54
+reindexed, 29.2 KiB in (19.0 KiB/s), 25.6 KiB out (16.7 KiB/s), 1s.
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': Deep scanning the 1 modified directory...
+xcp: sync 'XCP_copy_2022-06-30_14.22.53.742272': 58 scanned, 55 copied, 56 indexed, 55 reviewed, 55
+checked at source, 1 modification, 55 re-reviewed, 1 new dir, 54 reindexed, 1.28 MiB in (739
+KiB/s), 1.27 MiB out (732 KiB/s), 1s.
+Xcp command : xcp sync -preserve-atime -id XCP_copy_2022-06-30_14.22.53.742272
+Stats : 58 scanned, 55 copied, 56 indexed, 55 reviewed, 55 checked at source, 1 modification,
+55 re-reviewed, 1 new dir, 54 reindexed
+Speed : 1.29 MiB in (718 KiB/s), 1.35 MiB out (755 KiB/s)
+Total Time : 1s.
+Migration ID: XCP_copy_2022-06-30_14.22.53.742272
+Job ID : Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.27.28.660165_sync
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-
+30_14.27.28.660165_sync.log
+STATUS : PASSED
+----
+====
+
+
+== 同步演练
+
+。 `sync` 命令 `dry-run` option将使用复制操作的先前目录索引编号查找对源NFS目录所做的更改或修改。此命令还会检测自上次复制操作以来新增、移动、删除或重命名的文件和目录。命令可报告源更改、但不会将其应用于目标。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name>
+----
+
+IMPORTANT: 。 `-id <catalog_name>` 参数是必需的 `sync dry-run` 命令选项。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001
+0 matched, 0 error
+Speed : 15.2 KiB in (46.5 KiB/s), 5.48 KiB out (16.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+下表列出了 `sync dry-run` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<sync_dry_run_id,sync演练-id   | 指定上一个副本索引的目录名称。这是的必需参数 `sync` 命令： 
+
+
+| <<sync_dry_run_stats,同步演练-stats.>> | 对修改后的目录执行深度扫描、并报告所有内容
+新增。 
+
+
+| <<sync_dry_run_l,sync演习-l>> | 打印有关已更改的文件和目录的详细信息。 
+
+
+| <<sync_dry_run_nonames,sync dry-run -nonames>> | 从文件列表和报告中排除用户和组名称。 
+
+
+| <<sync_dry_run_dircount,sync演习-dircount ()；n[k]  | 指定读取目录时的请求大小。 
+
+
+| <<sync_dry_run_parallel,同步试运行-并行()；n  | 指定并发批处理进程的最大数量(默认值：7)。 
+|===
+
+
+=== sync dry-run -id <catalog_name>
+
+使用 `-id <catalog_name>` 带的参数 `sync dry-run` 指定上一个副本索引的目录名称。
+
+
+IMPORTANT: 。 `-id <catalog_name>` 参数是必需的 `sync dry-run` 命令选项。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001
+0 matched, 0 error
+Speed : 15.2 KiB in (21.7 KiB/s), 5.48 KiB out (7.81 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== 同步演练-stats.
+
+使用 `-stats` 带的参数 `sync dry-run` 对修改后的目录执行深度扫描并报告所有新增内容。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -stats
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -stats
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+4,895 reviewed, 43,163 checked at source, 12.8 MiB in (2.54 MiB/s), 5.49 MiB out (1.09 MiB/s),
+5s
+4,895 reviewed, 101,396 checked at source, 19.2 MiB in (1.29 MiB/s), 12.8 MiB out (1.47 MiB/s),
+10s
+Xcp command : xcp sync dry-run -id ID001 -stats
+0 matched, 0 error
+Speed : 22.9 MiB in (1.74 MiB/s), 17.0 MiB out (1.29 MiB/s)
+Total Time : 13s.
+STATUS : PASSED
+----
+====
+
+
+=== sync演习-l
+
+使用 `-l` 带的参数 `sync dry-run` 可打印有关已更改的文件和目录的详细信息。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -l
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -l
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -l
+0 matched, 0 error
+Speed : 15.2 KiB in (13.6 KiB/s), 5.48 KiB out (4.88 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+=== sync dry-run -nonames
+
+使用 `-nonames` 带的参数 `sync dry-run` 从文件列表或报告中排除用户和组名称。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -nonames
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -nonames
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -nonames
+0 matched, 0 error
+Speed : 15.2 KiB in (15.8 KiB/s), 5.48 KiB out (5.70 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== sync dry-run -dircount <n[k]>
+
+使用 `-dircount <n[k]>` 带的参数 `sync dry-run` 指定读取目录时的请求大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -dircount <n[k]>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -dircount 32k
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -dircount 32k
+0 matched, 0 error
+Speed : 15.2 KiB in (32.5 KiB/s), 5.48 KiB out (11.7 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+=== sync演习-并行
+
+使用 `-parallel` 带的参数 `sync dry-run` 指定并发批处理的最大数量。默认值为7。
+
+.语法
+[source, cli]
+----
+xcp sync dry-run -id <catalog_name> -parallel <n>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp sync dry-run -id ID001 -parallel 4
+
+xcp: Index: {source: <IP address or hostname of NFS server>:/source_vol, target: <IP address of
+destination NFS server>:/dest_vol}
+Xcp command : xcp sync dry-run -id ID001 -parallel 4
+0 matched, 0 error
+Speed : 15.2 KiB in (25.4 KiB/s), 5.48 KiB out (9.13 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====

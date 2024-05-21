@@ -29,7 +29,7 @@ NOTE: 在复制操作期间，您可以将 ` -preserve-atime` 标志与 `copy` �
 
 [listing]
 ----
-C:\xcp>xcp copy \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp copy \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 运行 `xcp help copy` 有关详细信息：
 
@@ -48,7 +48,7 @@ NOTE: 在同步操作期间，您可以将 ` -preserve-atime` 标志与 `sync` �
 
 [listing]
 ----
-C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp sync \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 运行 `xcp help sync` 有关详细信息：
 
@@ -67,6 +67,6 @@ C:\xcp>xcp sync \\<source SMB share> \\<destination SMB share>
 
 [listing]
 ----
-C:\xcp>xcp verify \\<source SMB share> \\<destination SMB share>
+C:\xcp>xcp verify \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
 ----
 运行 `xcp help verify` 有关详细信息：

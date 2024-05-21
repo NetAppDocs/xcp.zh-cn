@@ -1,0 +1,1193 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-scan.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= 扫描
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS `scan` 命令会以递归方式扫描源NFS3导出的整个路径、并返回文件结构统计信息。
+
+NetApp建议您在扫描操作期间将源NFS导出挂载置于只读模式。
+
+.语法
+[source, cli]
+----
+xcp scan <source_nfs_export_path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan <IP address of NFS server>:/
+
+source_vol
+source_vol
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan <IP address of NFS server>:/source vol
+----
+====
+下表列出了 `scan` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<scan_l,扫描-l>> | 以长列表输出格式列出文件。 
+
+
+| <<scan_q,扫描-q>> | 显示扫描的文件数。 
+
+
+| <<nfs_scan_stats_csv_html,扫描-stats.>> | 以树统计信息报告格式列出文件。 
+
+
+| <<nfs_scan_stats_csv_html,扫描.csv>> | 以树统计CSV报告格式列出文件。 
+
+
+| <<nfs_scan_stats_csv_html,扫描-html>> | 以树统计HTML报告格式列出文件。 
+
+
+| <<扫描-nonames>> | 从文件列表和报告中排除用户和组名称。 
+
+
+| <<nfs_scan_newid,扫描-newid ()；名称和gt；  | 指定新索引的目录名称。 
+
+
+| <<nfs_scan_id,扫描-id   | 指定上一个副本或扫描索引的目录名称。 
+
+
+| <<nfs_scan_match,扫描-匹配过滤器  | 仅处理与筛选器匹配的文件和目录。 
+
+
+| <<nfs_scan_fmt,scan -fmgt string_Expression >  | 仅处理与格式匹配的文件和目录。 
+
+
+| <<nfs_scan_du,扫描-du>> | 汇总了每个目录(包括子目录)的空间使用量。 
+
+
+| <<nfs_scan_md5,扫描-md5   | 在文件上生成校验和、并在编制索引时保存校验和(默认值：false)。 
+
+
+| <<nfs_scan_depth,扫描深度()；n  | 限制搜索深度。 
+
+
+| <<nfs_scan_dircount,扫描-dircount ()；n[k]  | 指定读取目录时的请求大小。 
+
+
+| <<nfs_scan_edupe,扫描重复数据删除>> | 在报告中包括重复数据删除估计值。 
+
+
+| <<nfs_scan_bs,扫描-BS [k]  | 为使用读取数据的扫描指定读/写块大小 `-md5` 或 `-edupe` (默认值：64K)。 
+
+
+| <<nfs_scan_parallel,扫描-并行()；n  | 指定并发批处理进程的最大数量(默认值：7)。 
+
+
+| <<nfs_scan_noid,扫描-noId >> | 禁止创建默认索引(默认值：false)。 
+
+
+| <<nfs_scan_subdir,扫描-subdir-names">> | 检索目录中顶级子目录的名称。 
+
+
+| <<扫描-保留-环境>> | 将源上的所有文件还原到上次访问的日期。 
+
+
+| <<扫描-s3.insecure>> | 提供使用HTTP而非HTTPS进行S3存储分段通信的选项。 
+
+
+| <<nfs_scan_endpoint,扫描-s3.endpoint   | 使用为S3存储分段通信指定的URL覆盖默认Amazon Web Services (AWS)端点URL。 
+
+
+| <<nfs_scan_s3_profile,扫描-s3.profile ()；proscy_name  | 从AWS凭据文件中指定用于S3存储分段通信的配置文件。 
+
+
+| <<扫描-s3.noverify>> | 覆盖S3存储分段通信的SSL证书的默认验证。 
+|===
+
+
+== 扫描-l
+
+使用 `-l` 参数 `scan` 命令以长列表输出格式列出文件。
+
+.语法
+[source, cli]
+----
+xcp scan -l <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -l <IP address or hostname of NFSserver>:/source_vol
+
+drwxr-xr-x --- root root 4KiB 4KiB 6s source_vol
+drwxr-xr-x --- root root 4KiB 4KiB 42s source_vol/USER.1
+drwxr-xr-x --- root root 4KiB 4KiB 42s source_vol/USER.2
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.1/FILE_1
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.1/FILE_2
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.1/FILE_3
+rw-r--r-- --- root root 1KiB 4KiB 42ssource_vol/USER.1/FILE_4
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.1/FILE_5
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.2/FILE_1
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.2/FILE_5
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.2/FILE_2
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.2/FILE_3
+rw-r--r-- --- root root 1KiB 4KiB 42s source_vol/USER.2/FILE_4
+Xcp command : xcp scan -l <IP address or hostname of NFS server>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 3.73 KiB in (4.89 KiB/s), 756 out (989/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-q
+
+使用 `-q` 参数 `scan` 命令以显示扫描的文件数。
+
+.语法
+[source, cli]
+----
+xcp scan -q <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -q <IP address or hostname of NFSserver>:/source_vol
+
+Xcp command : xcp scan -q <IP address or hostname of NFS server>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 3.73 KiB in (3.96 KiB/s), 756 out(801/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== scan -stats, scan -csv和scan -html
+
+使用 `-stats`， `-csv`，和 `-html` 参数 `scan` 命令以树统计信息报告格式列出文件。
+
+
+NOTE: XCP报告(.csv、.html)保存在中指定的目录位置 `xcp.ini` 文件这些文件存储在中 `<catalog path>/catalog/indexes/1/reports` 文件夹。您可以在附录中查看示例报告。
+
+.语法
+[source, cli]
+----
+xcp scan -stats <ip_address>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp scan -stats <ip_address>:/fg1
+
+Job ID: Job_2023-11-23_23.23.33.930501_scan
+== Maximum Values ==
+Size Used Depth File Path Namelen Dirsize
+50.4 MiB 50.6 MiB 1 24 20 33
+== Average Values ==
+Size Depth Namelen Dirsize
+15.3 MiB 0 6 33
+== Top Space Users ==
+root
+107 MiB
+== Top File Owners ==
+root
+34
+== Top File Extensions ==
+.sh .out .py .sh1 other
+8 2 2 1 20
+16.0 KiB 3.09 MiB 448 1.48 KiB 502 MiB
+== Number of files ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+20 1 2 10
+== Space used ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+76 KiB 12 KiB 5.16 MiB 102 MiB
+== Directory entries ==
+empty 1-10 10-100 100-1K 1K-10K >10K
+
+== Depth ==
+0-5 6-10 11-15 16-20 21-100 >100
+34
+== Accessed ==
+>1 year9-12 months 6-9 months 3-6 months 1-3 months 1-31 days 1-24 hrs <1 hour <15 mins
+future
+33
+505 MiB
+== Modified ==
+>1 year9-12 months 6-9 months 3-6 months 1-3 months 1-31 days 1-24 hrs <1 hour <15 mins
+future
+16
+17
+400 MiB 105
+MiB
+== Changed ==
+>1 year9-12 months 6-9 months 3-6 months 1-3 months 1-31 days 1-24 hrs <1 hour <15 mins
+future
+16
+17
+400 MiB 105
+MiB
+== Path ==
+0-1024 >1024
+33
+Total count: 34
+Directories: 1
+Regular files: 33
+Symbolic links: None
+Special files: None
+Hard links: None
+Multilink files: None
+Space Saved by Hard links (KB): 0
+Sparse data: N/A
+Dedupe estimate: N/A
+Total space for regular files: size: 505 MiB, used: 107 MiB
+Total space for symlinks: size: 0, used: 0
+Total space for directories: size: 8 KiB, used: 8 KiB
+Total space used: 107 MiB
+Xcp command : xcp scan -stats <ip_address>:/fg1
+Stats : 34 scanned
+Speed : 6.35 KiB in (7.23 KiB/s), 444 out (506/s)
+Total Time : 0s.
+Job ID : Job_2023-11-23_23.23.33.930501_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/
+Job_2023-11-23_23.23.33.930501_scan.log
+
+STATUS : PASSED
+[root@client 1 linux]#
+
+
+----
+====
+.语法
+[source, cli]
+----
+xcp scan -csv <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -csv <IP address or hostname of NFS server>:/source_vol
+
+scan <IP address or hostname of NFS server>:/source_vol
+options,"{'-csv': True}"
+summary,"13 scanned, 3.73 KiB in (11.3 KiB/s), 756 out (2.23 KiB/s), 0s."
+Maximum Values,Size,Used,Depth,Namelen,Dirsize
+Maximum Values,1024,4096,2,10,5
+Average Values,Namelen,Size,Depth,Dirsize
+Average Values,6,1024,1,4
+Top Space Users,root
+Top Space Users,53248
+Top File Owners,root
+Top File Owners,13
+Top File Extensions,other
+Top File Extensions,10
+Number of files,empty,<8KiB,8-64KiB,64KiB-1MiB,1-10MiB,10-100MiB,>100MiB
+Number of files,0,10,0,0,0,0,0
+Space used,empty,<8KiB,8-64KiB,64KiB-1MiB,1-10MiB,10-100MiB,>100MiB
+Space used,0,40960,0,0,0,0,0
+Directory entries,empty,1-10,10-100,100-1K,1K-10K,>10K
+Directory entries,0,3,0,0,0,0
+Depth,0-5,6-10,11-15,16-20,21-100,>100
+Depth,13,0,0,0,0,0
+Accessed,>1 year,>1 month,1-31 days,1-24 hrs,<1 hour,<15 mins,future
+Accessed,0,0,0,0,0,10,0
+Modified,>1 year,>1 month,1-31 days,1-24 hrs,<1 hour,<15 mins,future
+Modified,0,0,0,0,0,10,0
+Changed,>1 year,>1 month,1-31 days,1-24 hrs,<1 hour,<15 mins,future
+Changed,0,0,0,0,0,10,0
+
+Total count,13
+Directories,3
+Regular files,10
+Symbolic links,0
+Special files,0
+Hard links,0,
+multilink files,0,
+Space Saved by Hard links (KB),0
+Sparse data,N/A
+Dedupe estimate,N/A
+Total space for regular files,size,10240,used,40960
+Total space for symlinks,size,0,used,0
+Total space for directories,size,12288,used,12288
+Total space used,53248
+Xcp command : xcp scan -csv <IP address or hostname of NFS server>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 3.73 KiB in (11.2 KiB/s), 756 out (2.22 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+.语法
+[source, cli]
+----
+xcp scan -html <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -html <IP address or hostname of NFS server>:/source_vol
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN""http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+[redacted HTML contents]
+</body></html>
+Xcp command : xcp scan -html <IP address or hostname of NFSserver>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 3.73 KiB in (4.31 KiB/s), 756 out(873/s)
+Total Time : 0s.
+STATUS : PASSED
+[root@localhost source_vol]#
+----
+====
+
+
+== 扫描-nonames
+
+使用 `-nonames` 参数 `scan` 用于从文件列表或报告中排除用户和组名称的命令。
+
+
+NOTE: 与结合使用时 `scan` 命令、 `-nonames` 参数仅使用返回的适用场景文件列表 `-l` 选项
+
+.语法
+[source, cli]
+----
+xcp scan -nonames <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -nonames <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan -nonames <IP address or hostname of NFSserver>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 3.73 KiB in (4.66 KiB/s), 756 out(944/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-newid <name>
+
+使用 `-newid <name>` 参数 `scan` 命令、用于在运行扫描时指定新索引的目录名称。
+
+.语法
+[source, cli]
+----
+xcp scan -newid <name> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -newid ID001 <IP address or hostname of NFS server>:/source_vol
+
+Xcp command : xcp scan -newid ID001 <IP address or hostname of NFS server>:/source_vol
+13 scanned, 0 matched, 0 error
+Speed : 13.8 KiB in (17.7 KiB/s), 53.1 KiB out (68.0 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-id <catalog_name>
+
+使用 `-id` 参数 `scan` 命令以指定先前副本或扫描索引的目录名称。
+
+.语法
+[source, cli]
+----
+xcp scan -id <catalog_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -id 3
+
+xcp: Index: {source: 10.10.1.10:/vol/ex_s01/etc/keymgr, target: None}
+keymgr/root/cacert.pem
+keymgr/cert/secureadmin.pem
+keymgr/key/secureadmin.pem
+keymgr/csr/secureadmin.pem
+keymgr/root
+keymgr/csr
+keymgr/key
+keymgr/cert
+keymgr
+9 reviewed, 11.4 KiB in (11.7 KiB/s), 1.33 KiB out (1.37 KiB/s), 0s.
+----
+====
+
+
+== 扫描-匹配<filter>
+
+使用 `-match <filter>` 参数 `scan` 命令以指定仅处理与筛选器匹配的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp scan -match <filter> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -match bin <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Filtered: 0 did not match
+Xcp command : xcp scan -match bin <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 18 matched, 0 error
+Speed : 4.59 KiB in (6.94 KiB/s), 756 out (1.12KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-f以及<string_expression>
+
+使用 `-fmt` 参数 `scan` 命令以指定仅返回与指定格式匹配的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp scan -fmt <string_expression> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -fmt "'{}, {}, {}, {}, {}'.format(name, x, ctime, atime, mtime)"
+<IP address or hostname of NFS server>:/source_vol
+
+source_vol, <IP address or hostname of NFS server>:/source_vol, 1583294484.46, 1583294492.63,
+1583294484.46
+ILE_1, <IP address or hostname of NFS server>:/source_vol/USER.1/FILE_1, 1583293637.88,
+1583293637.83, 1583293637.83
+FILE_2, <IP address or hostname of NFS server>:/source_vol/USER.1/FILE_2, 1583293637.88,
+1583293637.83, 1583293637.84
+FILE_3, <IP address or hostname of NFS server>:/source_vol/USER.1/FILE_3, 1583293637.88,
+1583293637.84, 1583293637.84
+FILE_4, <IP address or hostname of NFS server>:/source_vol/USER.1/FILE_4, 1583293637.88,
+1583293637.84, 1583293637.84
+FILE_5, <IP address or hostname of NFS server>:/source_vol/USER.1/FILE_5, 1583293637.88,
+1583293637.84, 1583293637.84
+file1.txt, <IP address or hostname of NFS server>:/source_vol/USER.1/file1.txt, 1583294284.78,
+1583294284.78, 1583294284.78
+file2.txt, <IP address or hostname of NFS server>:/source_vol/USER.1/file2.txt, 1583294284.78,
+1583294284.78, 1583294284.78
+logfile.txt, <IP address or hostname of NFS server>:/source_vol/USER.1/logfile.txt,
+1583294295.79, 1583294295.79, 1583294295.79
+log1.txt, <IP address or hostname of NFS server>:/source_vol/USER.1/log1.txt, 1583294295.8,
+1583294295.8, 1583294295.8
+r1.txt, <IP address or hostname of NFS server>:/source_vol/r1.txt, 1583294484.46, 1583294484.45,
+1583294484.45
+USER.1, <IP address or hostname of NFS server>:/source_vol/USER.1, 1583294295.8, 1583294492.63,
+1583294295.8
+USER.2, <IP address or hostname of NFS server>:/source_vol/USER.2, 1583293637.95, 1583294492.63,
+1583293637.95
+FILE_1, <IP address or hostname of NFS server>:/source_vol/USER.2/FILE_1, 1583293637.95,
+1583293637.94, 1583293637.94
+FILE_5, <IP address or hostname of NFS server>:/source_vol/USER.2/FILE_5, 1583293637.96,
+1583293637.94, 1583293637.94
+FILE_2, <IP address or hostname of NFS server>:/source_vol/USER.2/FILE_2, 1583293637.96,
+1583293637.95, 1583293637.95
+FILE_3, <IP address or hostname of NFS server>:/source_vol/USER.2/FILE_3, 1583293637.96,
+1583293637.95, 1583293637.95
+FILE_4, <IP address or hostname of NFS server>:/source_vol/USER.2/FILE_4, 1583293637.96,
+1583293637.95, 1583293637.96
+Xcp command : xcp scan -fmt '{}, {}, {}, {}, {}'.format(name, x, ctime, atime, mtime) <IP address
+or hostname of NFS server>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (4.14 KiB/s), 756 out (683/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-du
+
+使用 `-du` 参数 `scan` 命令总结每个目录(包括子目录)的空间使用量。
+
+.语法
+[source, cli]
+----
+xcp scan -du <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -du <IP address or hostname of NFSserver>:/source_vol
+
+24KiB source_vol/USER.1
+24KiB source_vol/USER.2
+52KiB source_vol
+Xcp command : xcp scan -du <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (12.9 KiB/s), 756 out (2.07KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-MD5 <string_expression>
+
+使用 `-md5` 参数 `scan` 命令为文件列表生成校验和并在编制索引时保存校验和。默认值设置为false。
+
+
+NOTE: 校验和不用于文件验证；它们仅用于扫描操作期间的文件列表。
+
+.语法
+[source, cli]
+----
+xcp scan -md5 <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -md5 <IP address or hostname of NFSserver>:/source_vol
+
+source_vol
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.1/FILE_1
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.1/FILE_2
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.1/FILE_3
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.1/FILE_4
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.1/FILE_5
+d41d8cd98f00b204e9800998ecf8427e source_vol/USER.1/file1.txt
+d41d8cd98f00b204e9800998ecf8427e source_vol/USER.1/file2.txt
+d41d8cd98f00b204e9800998ecf8427esource_vol/USER.1/logfile.txt
+d41d8cd98f00b204e9800998ecf8427e source_vol/USER.1/log1.txt
+e894f2344aaa92289fb57bc8f597ffa9 source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.2/FILE_1
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.2/FILE_5
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.2/FILE_2
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.2/FILE_3
+d47b127bc2de2d687ddc82dac354c415 source_vol/USER.2/FILE_4
+Xcp command : xcp scan -md5 <IP address or hostname of NFS server>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 16.0 KiB in (34.5 KiB/s), 2.29 KiB out (4.92 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描深度<n>
+
+使用 `-depth <n>` 参数 `scan` 命令以限制扫描的搜索深度。。 `-depth <n>` 参数用于指定XCP可扫描文件的子目录深度。例如、如果指定数字2、则XCP将仅扫描前两个子目录级别。
+
+.语法
+[source, cli]
+----
+xcp scan -depth <n> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -depth 2 <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan -depth 2 <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (6.94 KiB/s), 756 out (1.12KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-dircount <n[k]>
+
+使用 `-dircount <n[k]>` 参数 `scan` 命令指定在扫描中读取目录时的请求大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp scan -dircount <n[k]> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -dircount 64k <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+----
+====
+
+
+== 扫描重复数据删除
+
+使用 `-edupe` 参数 `scan` 命令以在报告中包含重复数据删除估计值。
+
+
+NOTE: Simple Storage Service (S3)不支持稀疏文件。因此、请将S3存储分段指定为的目标 `scan -edupe` 对于稀疏数据、返回值"None"。
+
+.语法
+[source, cli]
+----
+xcp scan -edupe <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp scan -edupe <IP address or hostname of NFSserver>:/source_vol
+
+== Maximum Values ==
+Size Used Depth Namelen Dirsize
+1 KiB 4 KiB 2 11 9
+== Average Values ==
+Namelen Size Depth Dirsize
+6 682 1 5
+== Top Space Users ==
+root
+52 KiB
+== Top File Owners ==
+root
+18
+== Top File Extensions ==
+.txt other
+5 10
+== Number of files ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+    4 11
+== Space used ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+40 KiB
+== Directory entries ==
+empty 1-10 10-100 100-1K 1K-10K >10K
+3
+== Depth ==
+0-5 6-10 11-15 16-20 21-100 >100
+18
+== Accessed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour
+4
+<15 mins
+11
+future
+== Modified ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+15
+== Changed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+                                     15
+Total count: 18
+Directories: 3
+Regular files: 15
+Symbolic links: None
+Special files: None
+Hard links: None,
+multilink files: None,
+Space Saved by Hard links (KB): 0
+Sparse data: None
+Dedupe estimate: N/A
+Total space for regular files: size: 10.0 KiB, used: 40 KiB
+Total space for symlinks: size: 0, used: 0
+Total space for directories: size: 12 KiB, used: 12 KiB
+Total space used: 52 KiB
+Xcp command : xcp scan -edupe <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 16.0 KiB in (52.7 KiB/s), 2.29 KiB out (7.52 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-BS <n[k]>
+
+使用 `-bs <n[k]>` 参数 `scan` 命令以指定读/写块大小。此适用场景会扫描使用读取数据的 `-md5` 或 `-edupe` parameters默认块大小为64k。
+
+.语法
+[source, cli]
+----
+xcp scan -bs <n[k]> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -bs 32 <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan -bs 32 <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (19.0 KiB/s), 756 out (3.06KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-并行<n>
+
+使用 `-parallel` 参数 `scan` 命令以指定并发批处理进程的最大数量。默认值为7。
+
+.语法
+[source, cli]
+----
+xcp scan -parallel <n> <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -parallel 5 <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan -parallel 5 <IP address or hostname of NFS server>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (7.36 KiB/s), 756 out (1.19 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-noId
+
+使用 `-noId` 参数 `scan` 命令以禁止创建默认索引。默认值为 false 。
+
+.语法
+[source, cli]
+----
+xcp scan -noId <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -noId <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+source_vol/USER.1/FILE_1
+source_vol/USER.1/FILE_2
+source_vol/USER.1/FILE_3
+source_vol/USER.1/FILE_4
+source_vol/USER.1/FILE_5
+source_vol/USER.1/file1.txt
+source_vol/USER.1/file2.txt
+source_vol/USER.1/logfile.txt
+source_vol/USER.1/log1.txt
+source_vol/r1.txt
+source_vol/USER.1
+source_vol/USER.2
+source_vol/USER.2/FILE_1
+source_vol/USER.2/FILE_5
+source_vol/USER.2/FILE_2
+source_vol/USER.2/FILE_3
+source_vol/USER.2/FILE_4
+Xcp command : xcp scan -noId <IP address or hostname of NFSserver>:/source_vol
+18 scanned, 0 matched, 0 error
+Speed : 4.59 KiB in (5.84 KiB/s), 756 out(963/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-subdir-names"
+
+使用 `-subdir-names` 参数 `scan` 命令以检索目录中顶级子目录的名称。
+
+.语法
+[source, cli]
+----
+xcp scan -subdir-names <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp scan -subdir-names <IP address or hostname of NFS server>:/source_vol
+
+source_vol
+Xcp command : xcp scan -subdir-names <IP address or hostname of NFS server>:/source_vol
+7 scanned, 0 matched, 0 error
+Speed : 1.30 KiB in (1.21 KiB/s), 444 out(414/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== 扫描-保留-环境
+
+使用 `-preserve-atime` 参数 `scan` 命令将源上的所有文件还原到上次访问的日期。
+
+扫描NFS共享时、如果存储系统配置为修改读取时的访问时间、则会修改文件的访问时间。XCP不会直接更改访问时间。XCP逐个读取文件、这会触发访问时间更新。。 `-preserve-atime` 选项会将访问时间重置为执行XCP读取操作之前设置的原始值。
+
+.语法
+[source, cli]
+----
+xcp scan -preserve-atime <ip_address_or_hostname>:/source_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client 1 linux]# ./xcp scan -preserve-atime 101.10.10.10:/source_vol
+
+xcp: Job ID: Job_2022-06-30_14.14.15.334173_scan
+source_vol/USER2/DIR1_4/FILE_DIR1_4_1024_1
+source_vol/USER2/DIR1_4/FILE_DIR1_4_13926_4
+source_vol/USER2/DIR1_4/FILE_DIR1_4_65536_2
+source_vol/USER2/DIR1_4/FILE_DIR1_4_7475_3
+source_vol/USER2/DIR1_4/FILE_DIR1_4_20377_5
+source_vol/USER2/DIR1_4/FILE_DIR1_4_26828_6
+source_vol/USER2/DIR1_4/FILE_DIR1_4_33279_7
+source_vol/USER2/DIR1_4/FILE_DIR1_4_39730_8
+source_vol/USER1
+source_vol/USER2
+source_vol/USER1/FILE_USER1_1024_1
+source_vol/USER1/FILE_USER1_65536_2
+source_vol/USER1/FILE_USER1_7475_3
+source_vol/USER1/FILE_USER1_13926_4
+source_vol/USER1/FILE_USER1_20377_5
+source_vol/USER1/FILE_USER1_26828_6
+source_vol/USER1/FILE_USER1_33279_7
+source_vol/USER1/FILE_USER1_39730_8
+source_vol/USER1/DIR1_2
+source_vol/USER1/DIR1_3
+source_vol/USER2/FILE_USER2_1024_1
+source_vol/USER2/FILE_USER2_65536_2
+source_vol/USER2/FILE_USER2_7475_3
+source_vol/USER2/FILE_USER2_13926_4
+source_vol/USER2/FILE_USER2_20377_5
+source_vol/USER2/FILE_USER2_26828_6
+source_vol/USER2/FILE_USER2_33279_7
+source_vol/USER2/FILE_USER2_39730_8
+source_vol/USER2/DIR1_3
+source_vol/USER2/DIR1_4
+source_vol/USER1/DIR1_2/FILE_DIR1_2_1024_1
+source_vol/USER1/DIR1_2/FILE_DIR1_2_7475_3
+source_vol/USER1/DIR1_2/FILE_DIR1_2_33279_7
+source_vol/USER1/DIR1_2/FILE_DIR1_2_26828_6
+source_vol/USER1/DIR1_2/FILE_DIR1_2_65536_2
+source_vol/USER1/DIR1_2/FILE_DIR1_2_39730_8
+source_vol/USER1/DIR1_2/FILE_DIR1_2_13926_4
+source_vol/USER1/DIR1_2/FILE_DIR1_2_20377_5
+source_vol/USER1/DIR1_3/FILE_DIR1_3_1024_1
+source_vol/USER1/DIR1_3/FILE_DIR1_3_7475_3
+source_vol/USER1/DIR1_3/FILE_DIR1_3_65536_2
+source_vol/USER1/DIR1_3/FILE_DIR1_3_13926_4
+source_vol/USER1/DIR1_3/FILE_DIR1_3_20377_5
+source_vol/USER1/DIR1_3/FILE_DIR1_3_26828_6
+source_vol/USER1/DIR1_3/FILE_DIR1_3_33279_7
+source_vol/USER1/DIR1_3/FILE_DIR1_3_39730_8
+source_vol/USER2/DIR1_3/FILE_DIR1_3_1024_1
+source_vol/USER2/DIR1_3/FILE_DIR1_3_65536_2
+source_vol/USER2/DIR1_3/FILE_DIR1_3_7475_3
+source_vol/USER2/DIR1_3/FILE_DIR1_3_13926_4
+source_vol/USER2/DIR1_3/FILE_DIR1_3_20377_5
+source_vol/USER2/DIR1_3/FILE_DIR1_3_26828_6
+source_vol/USER2/DIR1_3/FILE_DIR1_3_33279_7
+source_vol/USER2/DIR1_3/FILE_DIR1_3_39730_8
+source_vol
+Xcp command : xcp scan -preserve-atime 101.10.10.10:/source_vol
+Stats : 55 scanned
+Speed : 14.1 KiB in (21.2 KiB/s), 2.33 KiB out (3.51 KiB/s)
+Total Time : 0s.
+Job ID : Job_2022-06-30_14.14.15.334173_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2022-06-30_14.14.15.334173_scan.log
+STATUS : PASSED
+----
+====
+
+
+== 扫描-s3.insecure
+
+使用 `-s3.insecure` 参数 `scan` 用于使用HTTP而非HTTPS进行S3存储分段通信的命令。
+
+.语法
+[source, cli]
+----
+xcp scan -s3.insecure s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp scan -s3.insecure s3://bucket1
+
+Job ID: Job_2023-06-08_08.16.31.345201_scan
+file5g_1
+USER1/FILE_USER1_1024_1
+USER1/FILE_USER1_1024_2
+USER1/FILE_USER1_1024_3
+USER1/FILE_USER1_1024_4
+USER1/FILE_USER1_1024_5
+Xcp command : xcp scan -s3.insecure s3:// -bucket1
+Stats : 8 scanned, 6 s3.objects
+Speed : 0 in (0/s), 0 out (0/s)
+Total Time : 2s.
+Job ID : Job_2023-06-08_08.16.31.345201_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-06-08_08.16.31.345201_scan.log
+STATUS : PASSED
+----
+====
+
+
+== 扫描-s3.Endpoint <s3_endpoint_url>
+
+使用 `-s3.endpoint <s3_endpoint_url>` 参数 `scan` 命令以使用指定的URL覆盖默认AWS端点URL以进行S3存储分段通信。
+
+.语法
+[source, cli]
+----
+xcp scan -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp scan -s3.endpoint https://<endpoint_url>: s3://xcp-testing
+
+Job ID: Job_2023-06-13_11.23.06.029137_scan
+aws_files/USER1/FILE_USER1_1024_1
+aws_files/USER1/FILE_USER1_1024_2
+aws_files/USER1/FILE_USER1_1024_3
+aws_files/USER1/FILE_USER1_1024_4
+aws_files/USER1/FILE_USER1_1024_5
+Xcp command : xcp scan -s3.endpoint https://<endpoint_url>: s3://xcp-testing
+Stats : 8 scanned, 5 s3.objects
+Speed : 0 in (0/s), 0 out (0/s)
+Total Time : 0s.
+Job ID : Job_2023-06-13_11.23.06.029137_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-06-13_11.23.06.029137_scan.log
+STATUS : PASSED
+----
+====
+
+
+== 扫描-s3.profile <name>
+
+使用 `s3.profile` 参数 `scan` 命令以从AWS凭据文件指定用于S3存储分段通信的配置文件。
+
+.语法
+[source, cli]
+----
+xcp scan -s3.profile <name> -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp scan -s3.profile sg -s3.endpoint https://<endpoint_url>:
+s3://bucket1
+
+Job ID: Job_2023-06-08_08.47.11.963479_scan
+1 scanned, 0 in (0/s), 0 out (0/s), 5s
+USER1/FILE_USER1_1024_1
+USER1/FILE_USER1_1024_2
+USER1/FILE_USER1_1024_3
+USER1/FILE_USER1_1024_4
+USER1/FILE_USER1_1024_5
+Xcp command : xcp scan -s3.profile sg -s3.endpoint https://<endpoint_url>: s3://bucket1
+Stats : 7 scanned, 5 s3.objects
+Speed : 0 in (0/s), 0 out (0/s)
+Total Time : 6s.
+Job ID : Job_2023-06-08_08.47.11.963479_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-06-08_08.47.11.963479_scan.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== 扫描-s3.noverify
+
+使用 `-s3.noverify` 参数 `scan` 用于覆盖S3存储分段通信的SSL认证默认验证的命令。
+
+.语法
+[source, cli]
+----
+xcp scan -s3.noverify s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp scan -s3.noverify s3:// bucket1
+
+Job ID: Job_2023-06-13_11.00.59.742237_scan
+aws_files/USER1/FILE_USER1_1024_1
+aws_files/USER1/FILE_USER1_1024_2
+aws_files/USER1/FILE_USER1_1024_3
+aws_files/USER1/FILE_USER1_1024_4
+aws_files/USER1/FILE_USER1_1024_5
+Xcp command : xcp scan -s3.noverify s3://bucket1
+Stats : 8 scanned, 5 s3.objects
+Speed : 0 in (0/s), 0 out (0/s)
+Total Time : 2s.
+Job ID : Job_2023-06-13_11.00.59.742237_scan
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-06-13_11.00.59.742237_scan.log
+STATUS : PASSED
+----
+====

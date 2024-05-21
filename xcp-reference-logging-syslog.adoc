@@ -1,0 +1,145 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-syslog.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: XCP日志记录 
+---
+= 启用系统日志客户端
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP支持系统日志客户端向NFS和SMB的远程系统日志接收器发送XCP事件日志消息。它支持使用默认端口514的UDP协议。
+
+
+
+== 为NFS和SMB配置系统日志客户端
+
+要启用系统日志客户端、需要配置 `syslog` 选项 `xcpLogConfig.json` NFS和SMB的配置文件。
+
+以下为NFS和SMB的系统日志客户端配置示例：
+
+[listing]
+----
+{
+"syslog":{
+"isEnabled":true,
+"level":"INFO",
+"serverIp":"10.101.101.d",
+"port":514
+},
+"sanitize":false
+}
+----
+
+
+== 系统日志选项
+
+下表显示了syslog子选项及其问题描述：
+
+[cols="1,1,1,3"]
+|===
+| 子选项 | JSON 数据类型 | 默认值 | Description 
+
+
+| `isEnabled` | 布尔值 | false | 此布尔选项可在XCP中启用系统日志客户端。将其设置为
+false将忽略系统日志配置。 
+
+
+| `level` | string | 信息 | 事件消息严重性筛选级别。事件消息支持五个严重性级别、按严重性的降级顺序排列：严重、错误、警告、信息和调试 
+
+
+| `serverIp` | string | 无 | 此选项可列出远程系统日志服务器的IP地址或主机名。 
+
+
+| `port` | 国际 | 514. | 此选项是远程系统日志接收器端口。您可以使用此选项将系统日志接收器配置为在其他端口上接受系统日志数据报。 默认UDP端口为514。 
+|===
+
+IMPORTANT: 。 `sanitize` 不应在"syslog"配置中指定选项。此选项具有全局范围、适用于JSON配置中的日志记录、事件日志和系统日志。将此值设置为"true "将隐藏发布到系统日志服务器的系统日志消息中的敏感信息。
+
+
+
+== 系统日志消息格式
+
+对于NFS和SMB、通过UDP发送到远程系统日志服务器的每个系统日志消息都会按照RFC 5424格式进行格式化。
+
+下表显示了根据RFC 5424对XCP的系统日志消息支持的严重性级别：
+
+|===
+| 严重性值 | 严重性级别 
+
+
+| 3. | 错误：错误情况 
+
+
+| 4. | 警告：警告条件 
+
+
+| 6. | Informational：信息性消息 
+
+
+| 7. | debug：调试级别的消息 
+|===
+在NFS和SMB的系统日志标头中、version的值为1、而XCP的所有消息的工具值均设置为1 (用户级消息)：
+`<PRI> = syslog facility * 8 + severity value`
+
+.具有NFS系统日志标头的XCP应用程序系统日志消息格式：
+下表显示了NFS系统日志消息格式的模板和示例以及系统日志标头：
+
+|===
+| 模板 | 示例 
+
+
+ a| 
+`<PRI><version> <Time stamp> <hostname> xcp_nfs - - - <XCP message>`
+ a| 
+`<14>1 2020-07-08T06:30:34.341Z netapp xcp_nfs - - - INFO {"Event ID": 14,
+"Event Category": "XCP job status", "Event Type": "XCP scan completion",
+"Event Source": "netapp", "Description": "XCP scan is completed by scanning 8
+items"}`
+
+|===
+.对于NFS、XCP应用程序消息不带系统日志标头
+下表显示了NFS不带系统日志标头的系统日志消息格式的模板和示例：
+
+|===
+| 模板 | 示例 
+
+
+ a| 
+`<message severity level i.e CRITICAL, ERROR, WARNING, INFO, DEBUG> <XCP event log message>`
+ a| 
+`INFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "netapp", "Description": "XCP scan is completed by scanning 8 items"}`
+
+|===
+.适用于SMB的XCP应用程序系统日志消息格式以及系统日志标头
+下表显示了一个模板和一个包含SMB系统日志标头的系统日志消息格式示例：
+
+|===
+| 模板 | 示例 
+
+
+ a| 
+`<PRI><version> <Time stamp> <hostname> xcp_smb - - - <XCP message`
+ a| 
+`<14>1 2020-07-10T10:37:18.452Z bansala01 xcp_smb - - - INFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "NETAPP-01", "Description": "XCP scan is completed by scanning 17 items"}`
+
+|===
+.SMB的XCP应用程序消息、不带系统日志标头
+下表显示了SMB不带系统日志标头的系统日志消息格式的模板和示例：
+
+|===
+| 模板 | 示例 
+
+
+ a| 
+`<message severity level i.e CRITICAL, ERROR, WARNING, INFO, DEBUG> <XCP event log message>`
+ a| 
+`NFO {"Event ID": 14, "Event Category": "XCP job status", "Event Type": "XCP scan completion", "Event Source": "NETAPP-01", "Description": "XCP scan is completed by scanning 17items"}`
+
+|===

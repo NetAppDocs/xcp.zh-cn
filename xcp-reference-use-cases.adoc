@@ -1,0 +1,21 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-use-cases.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: XCP用例 
+---
+= XCP NFS和SMB的用例
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+了解XCP与NetApp XCP不同的数据迁移用例。
+
+link:https://docs.netapp.com/us-en/netapp-solutions/xcp/xcp-bp-data-migration-from-7-mode-to-ontap.html["将数据从 7- 模式迁移到 ONTAP"^]
+
+link:https://docs.netapp.com/us-en/netapp-solutions/xcp/xcp-bp-cifs-data-migration-with-acls-from-a-source-storage-box-to-ontap.html["使用 ACL 将 CIFS 数据从源存储箱迁移到 ONTAP"^]

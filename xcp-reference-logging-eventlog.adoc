@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-logging-eventlog.html 
+keywords: netapp, xcp, reference, event, logging 
+summary: XCP日志记录 
+---
+= 设置eventlog选项
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP支持事件消息、您可以使用启用此功能 `eventlog` 选项 `xcpLogConfig.json` JSON配置文件。
+
+对于NFS、所有事件消息都会写入 `xcp_event.log` 文件 `/opt/NetApp/xFiles/xcp/` 或使用以下环境变量配置的自定义位置：
+
+`XCP_CONFIG_DIR`
+
+
+NOTE: 设置两个位置后、 `XCP_LOG_DIR` 已使用。
+
+对于SMB、所有事件消息都会写入文件 `xcp_event.log` 位于默认位置 `C:\NetApp\XCP\`。
+
+
+
+== 用于NFS和SMB事件消息传送的JSON配置
+
+在以下示例中、JSON配置文件可为NFS和SMB启用事件消息传送。
+
+.启用了eventlog选项的JSON配置文件示例
+[listing]
+----
+{
+"eventlog": {
+"isEnabled": true,
+"level": "INFO"
+},
+"sanitize": false
+}
+----
+.启用了事件日志和其他选项的JSON配置文件示例
+[listing]
+----
+{
+"logConfig": {
+"level": "INFO",
+"maxBytes": 52428800,
+"name": "xcp.log"
+},
+"eventlog": {
+"isEnabled": true,
+"level": "INFO"
+},
+"syslog": {
+"isEnabled": true,
+"level": "info",
+"serverIp": "10.101.101.10",
+"port": 514
+},
+"sanitize": false
+}
+----
+下表显示了eventlog子选项及其问题描述：
+
+[cols="1,1,1,3"]
+|===
+| 子选项 | JSON 数据类型 | 默认值 | Description 
+
+
+| `isEnabled` | 布尔值 | false | 此布尔选项用于启用事件消息传送。如果设置为false、则不会生成任何事件消息、也不会将事件日志发布到事件日志文件中。 
+
+
+| `level` | string | 信息 | 事件消息严重性筛选级别。事件消息支持五个严重性级别、按严重性的降级顺序排列：严重、错误、警告、信息和调试 
+|===
+.NFS事件日志消息的模板
+下表显示了NFS事件日志消息的模板和示例：
+
+|===
+| 模板 | 示例 
+
+
+ a| 
+`<Time stamp> - <Severity level> {"Event ID": <ID>, "Event
+Category":<category of xcp event log>, "Event Type": <type of event
+log>, "ExecutionId": < unique ID for each xcp command execution >,
+"Event Source": <host name>, "Description": <XCP event log message>}`
+ a| 
+`2020-07-14 07:07:07,286 - ERROR {"Event ID": 51, "Event Category":
+"Application failure", "Event Type": "No space left on destination
+error", " ExecutionId ": 408252316712, "Event Source": "NETAPP-01",
+"Description": "Target volume is left with no free space while executing
+: copy {}. Please increase the size of target volume
+10.101.101.101:/cat_vol"}`
+
+|===
+.EventLog消息选项
+以下选项可用于事件日志消息：
+
+* `Event ID`：每个事件日志消息的唯一标识符。
+* `Event Category`：说明事件类型和事件日志消息的类别。
+* `Event Type`：这是描述事件消息的短字符串。多个事件类型可以属于一个类别。
+* `Description`：“问题描述”字段包含由XCP生成的事件日志消息。
+* `ExecutionId`：执行的每个XCP命令的唯一标识符。
+

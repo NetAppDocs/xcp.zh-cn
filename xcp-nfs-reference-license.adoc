@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-license.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= license
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NFS `license` 命令可显示XCP许可证信息。
+
+运行此命令之前、请确认许可证文件已下载并复制到 `/opt/NetApp/xFiles/xcp/` XCP Linux客户端主机上的目录。
+
+.语法
+[source, cli]
+----
+xcp license
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost /]# ./xcp license
+
+Licensed to "XXX, NetApp Inc, XXX@netapp.com" until Sun Mar 31 00:00:00 2029 License type: SANDBOX
+License status: ACTIVE
+Customer name: N/A
+Project number: N/A
+Offline Host: Yes
+Send statistics: No
+Host activation date: N/A
+License management URL: https://xcp.netapp.com
+----
+====
+
+
+== 许可证更新
+
+使用 `update` 参数 `license` 命令以从XCP服务器检索最新许可证。
+
+.语法
+[source, cli]
+----
+xcp license update
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost /]# ./xcp license update
+
+XCP <version>; (c) yyyy NetApp, Inc.; Licensed to XXX [NetApp Inc] until Sun Mar 31 00:00:00 yyyy
+----
+====

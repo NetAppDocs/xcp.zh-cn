@@ -1,0 +1,833 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-verify.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: 'XCP SMB"verify"命令参考' 
+---
+= 验证
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+。 `verify` 命令读取并比较源共享和目标共享、并提供有关不同之处的信息。您可以使用 `verify` 命令、而不管用于执行复制或同步操作的工具如何。
+
+.语法
+[source, cli]
+----
+xcp verify \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify  \\<IP address of SMB source server>\source_share  \\<IP address of SMB destination server>\dest_share
+xcp verify  \\<IP address of SMB source server>\source_share  \\ <IP address of SMB destination server>\dest_share
+
+xcp verify  \\<IP address of SMB source server>\source_share  \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+xcp verify  \\<IP address of SMB source server>\source_share  \\<IP address of SMB destination server>\dest_share
+Total Time : 3s
+STATUS : PASSED
+----
+====
+下表列出了 `verify` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<smb_verify_help,验证-h、--help>> | 显示此帮助消息并退出。 
+
+
+| <<验证-v>> | 增加调试详细信息。 
+
+
+| <<smb_verify_parallel,验证-并行()；n  | 并发进程数(默认值：<cpu-count>)。 
+
+
+| <<smb_verify_match,验证-匹配过滤器  | 仅处理与筛选器匹配的文件和目录(请参见 `xcp help - match` 有关详细信息、请参见)。 
+
+
+| <<smb_verify_exclude,验证-排除()；过滤器()；  | 仅在筛选器中排除文件和目录。 
+
+
+| <<验证-保留-数据>> | 还原源上上次访问的日期。 
+
+
+| <<验证-nobdata>> | 请勿检查数据。 
+
+
+| <<验证-地 点>> | 验证文件访问时间。 
+
+
+| <<验证-noctime>> | 请勿检查文件创建时间。 
+
+
+| <<验证-nomtime>> | 请勿检查文件修改时间。 
+
+
+| <<验证-noatts>> | 不检查属性。 
+
+
+| <<验证-no所有权>> | 请勿检查所有权。 
+
+
+| <<验证-ADS>> | 扫描源SMB共享和目标SMB共享中备用数据流的更改和修改。如果存在更改、则会将更改应用于的目标
+确保目标与源完全相同。 
+
+
+| <<验证-noacls>> | 请勿检查ACL。 
+
+
+| <<verify_smb_atime,验证-atiewindow ()；浮点()；  | 可接受的访问时间差(以秒为单位)。 
+
+
+| <<verify_smb_ctime,验证-ctimewindow ()；浮点型()；  | 可接受的创建时间差(以秒为单位)。 
+
+
+| <<verify_smb_mtime,验证-mtmewindow ()；浮点型()；  | 可接受的修改时间差(以秒为单位)、 
+
+
+| <<验证-stats.>> | 并行扫描源树和目标树并比较树统计信息。 
+
+
+| <<验证-l>> | 增加输出详细信息。 
+
+
+| <<验证-ll>> | 增加输出详细信息(git差异格式)。 
+
+
+| <<verify_smb_acl,ver验-fallback-user   | 目标计算机上用于接收本地(非域)源计算机用户权限的Active Directory用户或本地(非域)用户(例如：domain\administrator)。 
+
+
+| <<verify_smb_acl,ver验-fallback-group   | 目标计算机上用于接收本地(非域)源计算机组(例如：domain\administrators)权限的Active Directory组或本地(非域)组。 
+
+
+| <<smb_verify_root,验证-root>> | 同步根目录的ACL。 
+
+
+| <<verify_smb_onlyacl,验证-onlyacl>> | 仅复制安全信息。 
+|===
+
+
+== 验证-h、--help
+
+使用 `-h` 和 `–-help` 参数 `verify` 命令以显示有关的详细信息 `verify` 命令
+
+.语法
+[source, cli]
+----
+xcp verify –help
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\Netapp\xcp>xcp verify –help
+usage: xcp verify [-h] [-v] [-parallel <n>] [-match <filter>] [-exclude <filter>][-preserve-atime]
+[-loglevel <name>] [-fallback-user FALLBACK_USER]
+[-fallback-group FALLBACK_GROUP] [-noacls] [-nodata] [-stats] [-l] [-root] [-noownership] [-onlyacl] [-noctime] [-nomtime] [-noattrs] [-atime]
+[-atimewindow <float>] [-ctimewindow <float>] [-mtimewindow <float>] [-ads] source target
+
+Note: ONTAP does not let a SMB client modify COMPRESSED or ENCRYPTED attributes. XCP sync will ignore these file attributes.
+
+positional arguments:
+   source
+   target
+
+optional arguments:
+-h, --help	           show this help message and exit
+-v	                    increase debug verbosity
+-parallel <n>	        number of concurrent processes (default: <cpu-count>)
+-match <filter>        only process files and directories that match the filter (see `xcp help -match` for details)
+-exclude <filter>      Exclude files and directories that match the filter (see `xcp help -exclude` for details)
+-preserve-atime	     restore last accessed date on source
+--help-diag           Show all options including diag.The diag options should be used only on recommendation by NetApp support.
+-loglevel <name>	     option to set log level filter (default:INFO)
+-fallback-user FALLBACK_USER
+                       a user on the target machine to translate the permissions of local (non-domain) source machine users (eg. domain\administrator)
+-fallback-group FALLBACK_GROUP
+                       a group on the target machine to translate the permissions of local (non- domain) source machine groups (eg. domain\administrators)
+-nodata	              do not check data
+-stats	              scan source and target trees in parallel and compare tree statistics
+-l	                    detailed file listing output
+-root	                 verify acl for root directory
+-noacls	              do not check acls
+-noownership	        do not check ownership
+-onlyacl	              verify only acls
+-noctime	              do not check file creation time
+-nomtime	              do not check file modification time
+-noattrs	              do not check attributes
+-atime	              verify acess time as well
+-atimewindow <float>   acceptable access time difference in seconds
+-ctimewindow <float>   acceptable creation time difference in seconds
+-mtimewindow <float>   acceptable modification time difference in seconds
+-ads	                 verify ntfs alternate data stream
+----
+====
+
+
+== 验证-v
+
+使用 `-v` 参数 `verify` 命令以提供详细的调试信息。
+
+.语法
+[source, cli]
+----
+xcp verify -v \\<IP address of SMB source server>\source_share address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp> xcp verify -v \\<IP address of SMB source server>\source_share address of SMB destination server>\dest_share
+xcp verify -v  \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -v \\< IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-par并 口<n>
+
+使用 `-parallel <n>` 参数 `verify` 命令以设置更多或更少的XCP并发进程数。。 `verify -parallel <n>` 命令用于验证并发进程的数量(默认值：<cpu-count>)。
+
+
+NOTE: n的最大值为61。
+
+.语法
+[source, cli]
+----
+xcp verify -v -parallel <n> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -v -parallel 8 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -v -parallel 8 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -v -parallel 8 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 4s
+STATUS : PASSED
+----
+====
+
+
+== 验证-match <filter>
+
+使用 `-match <filter>` 参数 `verify` 命令以扫描源树和目标树、并仅比较与筛选器参数匹配的文件或目录。如果存在任何差异、该命令会对目标应用所需的操作、以使其保持同步。
+
+.语法
+[source, cli]
+----
+xcp verify -v -match <filter> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -v -match "'Microsoft' in name" \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -v -match "'Microsoft' in name" \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -v -match 'Microsoft' in name \\<IP address of SMB source server> \source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 0 compared, 0 same, 0 different, 0 missing, 0 errors
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== 验证-排除<filter>
+
+使用 `-exclude <filter>` 参数 `verify` 命令以仅排除筛选器中的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp verify -exclude <filter> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\netapp\xcp>xcp verify -exclude "path('*Exceptions*')" \\<IP address of SMB sourceserver>\source_share \\<IP address of SMB destination server>\dest_share
+
+210 scanned, 99 excluded, 6 compared, 5 same, 1 different, 0 missing, 0 errors, 5s
+210 scanned, 107 excluded, 13 compared, 12 same, 1 different, 0 missing, 0 errors, 10s
+210 scanned, 107 excluded, 13 compared, 12 same, 1 different, 0 missing, 0 errors, 15s
+210 scanned, 107 excluded, 13 compared, 12 same, 1 different, 0 missing, 0 errors, 20s
+335 scanned, 253 excluded, 13 compared, 12 same, 1 different, 0 missing, 0 errors, 25s
+445 scanned, 427 excluded, 15 compared, 14 same, 1 different, 0 missing, 0 errors, 30s
+445 scanned, 427 excluded, 15 compared, 14 same, 1 different, 0 missing, 0 errors, 35s
+445 scanned, 427 excluded, 15 compared, 14 same, 1 different, 0 missing, 0 errors, 40s
+445 scanned, 427 excluded, 15 compared, 14 same, 1 different, 0 missing, 0 errors, 45s
+445 scanned, 427 excluded, 16 compared, 15 same, 1 different, 0 missing, 0 errors, 50s
+xcp verify -exclude path('*Exceptions*') \\<IP address of SMB sourceserver>\source_share \\<IP address of SMB destination server>\dest_share
+445 scanned, 427 excluded, 17 compared, 17 same, 0 different, 0 missing, 0 errors
+Total Time : 1m11s
+STATUS : PASSED
+----
+====
+
+
+== 验证-保留-数据
+
+使用 `-preserve-atime` 参数 `verify` 命令进行重置 `atime` 到XCP读取文件之前的原始值。
+
+.语法
+[source, cli]
+----
+xcp verify -preserve-atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -preserve-atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -preserve-atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+374 scanned, 179 compared, 179 same, 0 different, 0 missing, 0 errors, 5s
+xcp verify -preserve-atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 8s
+STATUS : PASSED
+----
+====
+
+
+== 验证-nobdata
+
+使用 `-nodata` 参数 `verify` 命令不比较数据。
+
+.语法
+[source, cli]
+----
+xcp verify -nodata \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -nodata \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -nodata \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -nodata \\<IP address of SMB source server> \source_share \\<IP address of SMB destination server>\dest_share : PASSED
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-地 点
+
+使用 `-atime` 参数 `verify` 命令、用于比较源与目标之间的文件访问时间戳。
+
+.语法
+[source, cli]
+----
+xcp verify -ll -atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\Netapp\xcp> xcp verify -ll -atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+WARNING: your license will expire in less than one week! You can renew your license at https://xcp.netapp.com
+dir1: Changed (atime)
+  atime
+     - 2023-04-14 10:28:47 (1681482527.564423)
+     + 2023-04-14 10:24:40 (1681482280.366317)
+dir2: Changed (atime)
+  atime
+     - 2023-04-14 10:28:47 (1681482527.564424)
+     + 2023-04-14 10:24:40 (1681482280.366318)
+<root>: Changed (atime)
+  atime
+     - 2023-04-14 10:28:47 (1681482527.054403)
+     + 2023-04-14 10:28:35 (1681482515.538801)
+xcp verify -ll -atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+14 scanned, 13 compared, 10 same, 3 different, 0 missing, 0 errors
+Total Time : 1s
+STATUS : FAILED
+----
+====
+
+
+== 验证-noctime
+
+使用 `-noctime` 参数 `verify` 命令、用于不比较源与目标之间的文件创建时间戳。
+
+.语法
+[source, cli]
+----
+xcp verify -noctime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -noctime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -noctime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -noctime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share : PASSED
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-nomtime
+
+使用 `-nomtime` 参数 `verify` 用于不比较源与目标之间的文件修改时间戳的命令。
+
+.语法
+[source, cli]
+----
+xcp verify -nomtime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -nomtime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -nomtime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -nomtime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share : PASSED
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-noatts
+
+使用 `-noattrs` 参数 `verify` 命令不检查属性。
+
+.语法
+[source, cli]
+----
+xcp verify -noattrs \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -noattrs \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -noattrs \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -noattrs \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share : PASSED
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-no所有权
+
+使用 `-noownership` 参数 `verify` 命令不检查所有权。
+
+.语法
+[source, cli]
+----
+xcp verify -noownership \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -noownership \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -noownership	\\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -noownership \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share : PASSED
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-ADS
+
+使用 `-ads` 参数 `verify` 此命令用于读取源和目标上是否存在任何备用数据流、并显示任何差异。
+
+.语法
+[source, cli]
+----
+xcp verify -ads \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -ads \\<source_IP_address>\source_share\src \\<dest_IP_address>\dest_share
+
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	10s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	1m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	1m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	2m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	2m5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	2m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	3m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	3m5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	3m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	4m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	5m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	5m5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	5m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	6m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	6m5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	6m10s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	7m0s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	7m5s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	7m55s
+7	scanned,	5	compared,	5	same,	0	different,	0	missing,	0	errors,	8m0s
+
+xcp verify -ads \\source_Ip_address>\source_share\src \\<dest_IP_address>\dest_share
+7 scanned, 6 compared, 6 same, 0 different, 0 missing, 0 errors
+Total Time : 8m4s
+STATUS : PASSED
+----
+====
+
+
+== 验证-noacls
+
+使用 `-noacls` 参数 `verify` 命令不检查ACL。
+
+.语法
+[source, cli]
+----
+xcp verify -noacls -noownership \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -noacls -noownership \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -noacls -noownership	\\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -noacls -noownership \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+318 scanned, 317 compared, 317 same, 0 different, 0 missing, 0 errors
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+=== 验证-noacls -no所有权
+
+使用 `-noownership` 带的参数 `verify -noacls`  不检查从源到目标的ACL或所有权。
+
+.语法
+[source, cli]
+----
+xcp verify -noacls -noownership <source> <target>
+----
+
+
+== 验证-地 点对点<float>
+
+使用 `-atimewindow <float>` 参数 `verify` 命令以指定的可接受差值(以秒为单位) `atime` 从源到目标的文件。如果中存在差异、则XCP不会将文件报告为不同 `atime` 小于<value>。。 `verify - atimewindow` 命令只能与结合使用 `-atime` 标志。
+
+.语法
+[source, cli]
+----
+xcp verify -atimewindow <float> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\Netapp\xcp> xcp verify -atimewindow 600 -atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -atimewindow 600 -atime \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+14 scanned, 13 compared, 13 same, 0 different, 0 missing, 0 errors
+----
+====
+
+
+== 验证-ctimewindow <float>
+
+使用 `-ctimewindow <float>` 参数 `verify` 命令以指定的可接受差值(以秒为单位) `ctime` 从源到目标的文件。当中存在差异时、XCP不会将文件报告为不同 `ctime` 小于<value>。
+
+.语法
+[source, cli]
+----
+xcp verify -ctimewindow <float> \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -ctimewindow 600 \\<IP address of SMB sourceserver>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -ctimewindow 600 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -ctimewindow 600 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-mtiewindow <float>
+
+使用 `-mtimewindow <float>` 参数 `verify` 命令以指定的可接受差值(以秒为单位) `mtime` 从源到目标的文件。当中存在差异时、XCP不会将文件报告为不同 `mtime` 小于<value>。
+
+.语法
+[source, cli]
+----
+xcp verify -mtimewindow <float> \\<IP address of SMB sourceserver>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -mtimewindow 600 \\<IP address of SMB sourceserver>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -mtimewindow 600 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -mtimewindow 600 \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-stats.
+
+使用 `-stats` 参数 `verify` 命令扫描源和目标、并打印显示两个共享之间相似或不同之处的树统计信息报告。
+
+.语法
+[source, cli]
+----
+xcp verify -stats \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -stats \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -stats \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+
+       == Number of files ==
+	            empty    <8KiB    8-64KiB    64KiB-1MiB   1-10MiB   10-100MiB   >100MiB
+                               81        170            62         2
+on-target                    same       same          same      same
+on-source                    same       same          same      same
+
+       == Directory entries ==
+	            empty	  1-10     10-100	     100-1K	   1K-10K	     >10K
+        		                       1             1
+on-target                                same          same
+on-source			             same	      same
+
+       == Depth ==
+                  0-5	  6-10	    11-15	      16-20	   21-100	     >100
+	              317
+on-target           same
+on-source	      same
+
+       == Modified ==
+              >1 year	>1 month  1-31 days    1-24 hrs   <1 hour   <15 mins     future    invalid
+                  315                                    2
+on-target        same                                 same
+on-source        same                                 same
+
+Total count: 317 / same / same
+Directories: 2 / same / same
+Regular files: 315 / same / same
+Symbolic links:
+Junctions:
+Special files:
+xcp verify -stats \\<IP address or hostname of SMB server>\source_share \\<IP address of SMB destination server>\dest_share
+635 scanned, 0 errors Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== 验证-l
+
+使用 `-l` 参数 `verify` 命令列出源和目标上的文件和目录之间的差异。
+
+.语法
+[source, cli]
+----
+xcp verify -l \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+在以下示例中、复制期间未传输所有权信息、您可以在命令输出中看到这些差异。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -l \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -l \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -l \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== 验证-ll
+
+使用 `-ll` 参数 `verify` 命令、列出文件或目录与源和目标之间的详细差异。格式类似于git比较。红色值是来自源的旧值、绿色值是来自目标的新值。
+
+.语法
+[source, cli]
+----
+xcp verify -ll \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp verify -ll \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+xcp verify -ll \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -ll \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+374 scanned, 373 compared, 373 same, 0 different, 0 missing, 0 errors
+Total Time : 3s
+STATUS : PASSED
+----
+====
+
+
+== verify-fallback-user <fallback_user>-fallback-group <fallback_group>
+
+使用 `-fallback-user` 和 `-fallback-group` 参数 `verify` 命令列出源和目标上的文件和目录之间的ACL和所有权差异。
+
+
+NOTE: 如果您使用 `fallback-user` 和 `fallback-group` 对于复制或同步操作、NetApp建议您也使用 `fallback-user` 和 `fallback-group` 参数与验证操作。
+
+.语法
+[source, cli]
+----
+xcp verify -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+
+
+=== 验证-no所有权-reallback-user <fallback_user>-reallback-group <fallback_group>
+
+使用 `-noownership,` `-fallback-user`，和 `-fallback-group` 参数 `verify` 命令列出ACL差异并跳过源和目标上的文件和目录之间的所有权验证。
+
+.语法
+[source, cli]
+----
+xcp verify -noownership -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+
+
+=== 验证-noacls-reallback-user <fallback_user>-reallback-group <fallback_group>
+
+使用 `-noacls`， `-fallback-user`，和 `-fallback-group` 参数 `verify` 命令以跳过ACL验证并验证源和目标上的文件和目录之间的所有权。
+
+.语法
+[source, cli]
+----
+xcp verify -noacls -fallback-user <fallback_user> -fallback-group <fallback_group> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+
+
+== 验证-root
+
+使用 `-root` 参数 `verify` 命令以同步根目录的ACL。
+
+.语法
+[source, cli]
+----
+xcp verify -root -fallback-user <fallback_user> -fallback- group <fallback_group> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\NetApp\XCP>xcp verify -root -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+
+xcp verify -l -root -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+7 scanned, 6 compared, 6 same, 0 different, 0 missing, 0 errors
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+=== 验证-onlyacl -reallback-user <fallback_user>-reallback- group <fallback_group>
+
+使用 `-onlyacl`， `-fallback-user` 和 `-fallback-group` 参数 `verify` 命令仅比较源和目标之间的安全信息。
+
+.语法
+[source, cli]
+----
+xcp verify -onlyacl -preserve-atime -fallback-user <fallback_user> -fallback- group <fallback_group> \\<IP address of SMB source server>\source_share \\<IP address of SMB destination server>\dest_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\Users\ctladmin\Desktop>xcp verify -onlyacl -preserve-atime -fallback-user "DOMAIN\User" -fallback- group "DOMAIN\Group" -ll \\<source_IP_address>\source_share \\<IP address of SMB destination server>\dest_share
+
+4,722	scanned,	0 compared, 0 same, 0 different, 0 missing, 0 errors, 5s
+7,142	scanned,	120 compared, 120 same, 0 different, 0 missing, 0 errors, 10s
+7,142	scanned,	856 compared, 856 same, 0 different, 0 missing, 0 errors, 15s
+7,142	scanned,	1,374 compared, 1,374 same, 0 different, 0 missing, 0 errors,	20s
+7,142	scanned,	2,168 compared, 2,168 same, 0 different, 0 missing, 0 errors,	25s
+7,142	scanned,	2,910 compared, 2,910 same, 0 different, 0 missing, 0 errors,	30s
+7,142	scanned,	3,629 compared, 3,629 same, 0 different, 0 missing, 0 errors,	35s
+7,142	scanned,	4,190 compared, 4,190 same, 0 different, 0 missing, 0 errors,	40s
+7,142	scanned,	4,842 compared, 4,842 same, 0 different, 0 missing, 0 errors,	45s
+7,142	scanned,	5,622 compared, 5,622 same, 0 different, 0 missing, 0 errors,	50s
+7,142	scanned,	6,402 compared, 6,402 same, 0 different, 0 missing, 0 errors,	55s
+7,142	scanned,	7,019 compared, 7,019 same, 0 different, 0 missing, 0 errors,	1m0s
+
+xcp verify -onlyacl -preserve-atime -fallback-user "DOMAIN\User" -fallback-group "DOMAIN\Group" -ll \\<source_IP_address>\source_share \\<IP address of SMB destination server>\dest_share
+7,142 scanned, 7,141 compared, 7,141 same, 0 different, 0 missing, 0 errors
+Total Time : 1m2s
+STATUS : PASSED
+----
+====

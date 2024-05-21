@@ -1,0 +1,17 @@
+---
+sidebar: sidebar 
+permalink: xcp-reference-overview.html 
+keywords: netapp, xcp, reference, smb, nfs, logging, use case, commands 
+summary: XCP SMB命令参考 
+---
+= XCP命令参考概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP命令参考提供了适用于XCP NFS和SMB的命令示例。每个命令都有其他参数、您可以根据需要单独使用、也可以组合使用。XCP支持根据严重性级别轮换日志文件和筛选日志。

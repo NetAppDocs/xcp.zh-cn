@@ -1,0 +1,1107 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-scan.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: 'XCP SMB"scAN"命令参考' 
+---
+= 扫描
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMB `scan` 命令以递归方式扫描整个SMB共享、并在结尾列出所有文件 `scan` 命令：
+
+.语法
+[source, cli]
+----
+xcp scan \\<SMB share path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp scan \\<IP address or hostname of SMB server>\volxcp
+c:\netapp\xcp\xcp scan \\<IP address of SMB destination server>\source_share
+volxcp\3333.txt
+volxcp\SMB.txt
+volxcp\SMB1.txt
+volxcp\com.txt
+volxcp\commands.txt
+volxcp\console.txt
+volxcp\linux.txt
+volxcp\net use.txt
+volxcp\newcom.txt
+volxcp\notepad.txt
+c:\netapp\xcp\xcp scan \\<IP address of SMB destination server>\source_share
+60,345 scanned, 0 matched, 0 errors
+Total Time : 8s
+STATUS : PASSED
+C:\Users\Administrator\Desktop\xcp>Parameters
+----
+====
+下表列出了 `scan` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<smb_scan_help,scan -h、--help>> | 显示有关如何使用scan命令的详细信息。 
+
+
+| <<扫描-v>> | 增加调试详细信息。 
+
+
+| <<smb_scan_parallel,扫描-并行()；n  | 指定并发进程的数量(默认值：<cpu-count>)。 
+
+
+| <<smb_scan_match_filter,扫描-匹配过滤器  | 仅处理与筛选器匹配的文件和目录。 
+
+
+| <<smb_scan_exclude_filter,扫描-排除()；过滤器()；  | 仅在筛选器中排除文件和目录。 
+
+
+| <<扫描-保留-环境>> | 还原源上上次访问的日期。 
+
+
+| <<smb_scan_depth,扫描深度()；n  | 将搜索深度限制为n个级别。 
+
+
+| <<扫描-stats.>> | 以树统计信息报告格式列出文件。 
+
+
+| <<扫描-html>> | 以树统计HTML报告格式列出文件。 
+
+
+| <<扫描.csv>> | 以树统计CSV报告格式列出文件。 
+
+
+| <<扫描-l>> | 以长列表输出格式列出文件。 
+
+
+| <<扫描所有权>> | 检索源上文件和目录的所有权信息
+系统。 
+
+
+| <<扫描-du>> | 汇总每个目录(包括子目录)的空间使用量。 
+
+
+| <<smb_scan_fmt,扫描-fmgt ()；表达式()；  | 根据Python表达式设置文件列表的格式(请参见 `xcp help -fmt` 有关详细信息、请参见)。 
+
+
+| <<扫描-ADS>> | 以递归方式扫描整个SMB共享、并列出所有文件和任何关联的备用数据流。 
+|===
+
+
+== scan -h、--help
+
+使用 `-h` 和 `–-help` 参数 `scan` 命令以显示有关如何使用scan命令的详细信息。
+
+.语法
+[source, cli]
+----
+xcp scan --help
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\netapp\xcp>xcp scan --help
+
+usage: xcp scan [-h] [-v] [-parallel <n>] [-match <filter>] [-exclude <filter>] [-preserve-atime] [-depth
+<n>] [-loglevel <name>] [-stats] [-l] [-ownership] [-du]
+                [-fmt <expression>] [-html] [-csv] [-edupe] [-bs <n>] [-ads]
+                source
+positional arguments:
+   source
+optional arguments:
+   -h, --help           show this help message and exit
+   -v                   increase debug verbosity
+   -parallel <n>        number of concurrent processes (default: <cpu-count>)
+   -match <filter>      only process files and directories that match the filter (see `xcp help -match` for     details)
+   -exclude <filter>    Exclude files and directories that match the filter (see `xcp help -exclude` for details)
+   -preserve-atime      restore last accessed date on source
+   -depth <n>           limit the search depth
+   -loglevel <name>     option to set log level filter (default:INFO)
+   -stats               print tree statistics report
+   -l                   detailed file listing output
+   -ownership           retrieve ownership information
+   -du                  summarize space usage of each directory including subdirectories
+   -fmt <expression>    format file listing according to the python expression (see `xcp help -fmt` for details)
+   -html                Save HTML statistics report
+   -csv                 Save CSV statistics report
+   -edupe               Include dedupe and sparse data estimate in reports (see documentation for details)
+   -bs <n>              read/write block size for scans which read data with -edupe (default: 64k)
+   -ads                 scan NTFS alternate data stream
+----
+====
+
+
+== 扫描-v
+
+使用 `-v` 参数 `scan` 命令提供详细的日志记录信息、以便在报告错误或警告时进行故障排除或调试。
+
+.语法
+[source, cli]
+----
+xcp scan -v \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -v \\<IP address or hostname of SMB server>\source_share
+xcp scan -v \\<IP address or hostname of SMB server>\source_share
+---Truncated output----
+source_share\ASUP.pm
+source_share\ASUP_REST.pm
+source_share\Allflavors_v2.pm
+source_share\Armadillo.pm
+source_share\AsupExtractor.pm
+source_share\BTS_Config.pm
+source_share\Backup.pm
+source_share\Aggregate.pm
+source_share\Burt.pm
+source_share\CConfig.pm
+source_share\CIFS.pm
+source_share\CR.pm
+source_share\CRC.pm
+source_share\CSHM.pm
+source_share\CSM.pm
+source_share\agnostic\SFXOD.pm
+source_share\agnostic\Snapmirror.pm
+source_share\agnostic\VolEfficiency.pm
+source_share\agnostic\flatfile.txt
+source_share\agnostic
+source_share
+xcp scan \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-并行<n>
+
+使用 `-parallel <n>` 参数 `scan` 命令以设置更多或更少的XCP并发进程数。
+
+
+NOTE: n的最大值为61。
+
+.语法
+[source, cli]
+----
+xcp scan -parallel <n> \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -parallel 8 \\<IP address or hostname of SMB server>\cifs_share
+xcp scan -parallel 8 \\<IP address or hostname of SMB server>\cifs_share
+
+cifs_share\ASUP.pm
+cifs_share\ASUP_REST.pm
+cifs_share\Allflavors_v2.pm
+cifs_share\Armadillo.pm
+cifs_share\AsupExtractor.pm
+cifs_share\BTS_Config.pm
+cifs_share\Backup.pm
+cifs_share\Aggregate.pm
+cifs_share\agnostic\CifsAccess.pm
+cifs_share\agnostic\DU_Cmode.pm
+cifs_share\agnostic\Flexclone.pm
+cifs_share\agnostic\HyA_Clone_Utils.pm
+cifs_share\agnostic\Fileclone.pm
+cifs_share\agnostic\Jobs.pm
+cifs_share\agnostic\License.pm
+cifs_share\agnostic\Panamax_Clone_Utils.pm
+cifs_share\agnostic\LunCmds.pm
+cifs_share\agnostic\ProtocolAccess.pm
+cifs_share\agnostic\Qtree.pm
+cifs_share\agnostic\Quota.pm
+cifs_share\agnostic\RbacCmdFetcher.pm
+cifs_share\agnostic\RbacCmdFetcher_ReadMe
+cifs_share\agnostic\SFXOD.pm
+cifs_share\agnostic\Snapmirror.pm
+cifs_share\agnostic\VolEfficiency.pm
+cifs_share\agnostic\flatfile.txt
+cifs_share\agnostic
+cifs_share
+xcp scan -parallel 8 \\<IP address or hostname of SMB server>\cifs_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-匹配<filter>
+
+使用 `-match <filter>` 参数 `scan` 命令以仅处理与筛选器匹配的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp scan -match <filter> \\<IP address or hostname of SMB server>\source_share
+----
+在以下示例中、 `scan -match` 扫描在一个月到一年之间发生更改的所有文件、并在控制台中针对找到的每个文件打印一行。系统将为每个文件返回其上次修改时间的ISO格式、可供用户读取的文件大小、文件类型及其相对路径。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -match "1*month < modified < 1*year" -fmt "'{:>15} {:>7}{}
+{}'.format(iso(mtime), humanize_size(size), type, relpath)" \\<IP address or hostname of SMB server>\source_share
+xcp scan -match "1*month < modified < 1*year" -fmt "'{:>15} {:>7} {} {}'.format(iso(mtime), humanize_size(size), type, relpath)" \\<IP address or hostname of SMB server>\source_share
+
+xcp scan -match 1*month < modified < 1*year -fmt '{:>15} {:>7} {} {}'.format(iso(mtime), humanize_size(size), type, relpath) \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+在以下示例中、 `scan -match` 列出了3个月以上未修改且大小大于4 MB的文件。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -match "modified > 3*month and size > 4194304" -fmt "'{},{},
+{}'.format(iso(mtime), humanize_size(size), relpath)" \\<IP address or hostname of SMB
+server>\source_share
+xcp scan -match "modified > 3*month and size > 4194304" -fmt "'{}, {}, {}'.format(iso(mtime), humanize_size(size), relpath)" \\<IP address or hostname of SMB server>\source_share
+
+xcp scan -match modified > 3*month and size > 4194304 -fmt '{}, {}, {}'.format(iso(mtime), humanize_size(size), relpath) \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+以下两个示例中的第一个仅与目录匹配、格式设置会在变量"mty"、"relative path"和"depth"之间添加一个逗号。
+
+第二个示例将同一输出重定向到"name.csv "。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -match "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath, depth]))" \\<IP address or hostname of SMB server>\source_share
+xcp scan -match "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath, depth]))" \\<IP address or hostname of SMB server>\source_share
+
+2013-03-07_15:41:40.376072,source_share\agnostic,1
+2020-03-05_04:15:07.769268,source_share,0
+
+xcp scan -match type is directory -fmt ','.join(map(str, [iso(mtime), relpath, depth])) \\<IP address or hostname of SMB server>\source_share
+317 scanned, 2 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -match "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath, depth]))" \\<IP address or hostname of SMB server>\source_share > name.csv
+xcp scan -match "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath, depth]))" \\<IP address or hostname of SMB server>\source_share > name.csv
+----
+====
+以下示例将打印完整路径和原始路径 `mtime` 非目录的所有文件的值。。 `mtime` 值将填充为70个字符、以便于读取控制台报告。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -match "type is not directory" -fmt "'{}{:>70}'.format(abspath, mtime)" \\<IP address or hostname of SMB server>\source_share
+xcp scan -match "type is not directory" -fmt "'{} {:>70}'.format(abspath, mtime)" \\<IP address or hostname of SMB server>\source_share
+
+--truncated output--
+\\<IP address or hostname of SMB server>\source_share\ASUP.pm
+1362688899.238098
+\\<IP address or hostname of SMB server>\source_share\ASUP_REST.pm
+1362688899.264073
+\\<IP address or hostname of SMB server>\source_share\Allflavors_v2.pm
+1362688899.394938
+\\<IP address or hostname of SMB server>\source_share\Armadillo.pm
+1362688899.402936
+\\<IP address or hostname of SMB server>\source_share\AsupExtractor.pm
+1362688899.410922
+\\<IP address or hostname of SMB server>\source_share\BTS_Config.pm
+1362688899.443902
+\\<IP address or hostname of SMB server>\source_share\Backup.pm
+1362688899.444905
+\\<IP address or hostname of SMB server>\source_share\Aggregate.pm
+1362688899.322019
+\\<IP address or hostname of SMB server>\source_share\Burt.pm
+1362688899.446889
+\\<IP address or hostname of SMB server>\source_share\CConfig.pm
+1362688899.4479
+\\<IP address or hostname of SMB server>\source_share\CIFS.pm
+1362688899.562795
+\\<IP address or hostname of SMB server>\source_share\agnostic\ProtocolAccess.pm
+1362688900.358093
+\\<IP address or hostname of SMB server>\source_share\agnostic\Qtree.pm
+1362688900.359095
+\\<IP address or hostname of SMB server>\source_share\agnostic\Quota.pm
+1362688900.360094
+\\<IP address or hostname of SMB server>\source_share\agnostic\RbacCmdFetcher.pm
+1362688900.3611
+\\<IP address or hostname of SMB server>\source_share\agnostic\RbacCmdFetcher_ReadMe
+1362688900.362094
+\\<IP address or hostname of SMB server>\source_share\agnostic\SFXOD.pm
+1362688900.363094
+\\<IP address or hostname of SMB server>\source_share\agnostic\Snapmirror.pm
+1362688900.364092
+\\<IP address or hostname of SMB server>\source_share\agnostic\VolEfficiency.pm
+1362688900.375077
+\\<IP address or hostname of SMB server>\source_share\agnostic\flatfile.txt
+1362688900.376076
+
+xcp scan -match type is not directory -fmt '{} {:>70}'.format(abspath, mtime) \\<IP address or hostname of SMB server>\source_share
+317 scanned, 315 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-排除<filter>
+
+使用 `-exclude <filter>` 使用 `scan` 用于根据筛选器中的模式排除目录和文件的命令。
+
+.语法
+[source, cli]
+----
+xcp scan -exclude <filter> \\<IP address or hostname of SMB server>\source_share
+----
+在以下示例中、 `scan -exclude` 排除在一个月到一年之间更改的任何文件、并为未排除的每个文件在控制台中打印一行。为每个文件打印的详细信息包括其上次修改时间的ISO格式、文件的可读大小、文件类型及其相对路径。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -exclude "1*month < modified < 1*year" -fmt "'{:>15} {:>7}{}
+{}'.format(iso(mtime), humanize_size(size), type, relpath)" \\<IP address or hostname ofSMB server>\localtest\arch\win32\agnostic
+xcp scan -exclude "1*month < modified < 1*year" -fmt "'{:>15} {:>7} {}{}'.format(iso(mtime), humanize_size(size), type, relpath)" \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic
+2013-03-07_15:39:22.852698 46 regular agnostic\P4ENV
+2013-03-07_15:40:27.093887 8.40KiB regular agnostic\Client_outage.thpl
+2013-03-07_15:40:38.381870 23.0KiB regular agnostic\IPv6_RA_Configuration_Of_LLA_In_SK_BSD.thpl
+2013-03-07_15:40:38.382876 12.0KiB regular agnostic\IPv6_RA_Default_Route_changes.thpl
+2013-03-07_15:40:38.383870 25.8KiB regular agnostic\IPv6_RA_Port_Role_Change.thpl
+2013-03-07_15:40:38.385863 28.6KiB regular
+agnostic\IPv6_RA_processing_And_Default_Route_Installation.thpl
+2013-03-07_15:40:38.386865 21.8KiB regular agnostic\IPv6_RA_processing_large_No_Prefix.thpl
+2013-03-07_15:40:40.323163          225 regular agnostic\Makefile
+2013-03-07_15:40:40.324160          165 regular agnostic\Makefile.template
+----truncated output ----
+2013-03-07_15:45:36.668516            0 directory agnostic\tools\limits_finder\vendor\symfony\src
+2013-03-07_15:45:36.668514            0 directory agnostic\tools\limits_finder\vendor\symfony
+2013-03-07_15:45:40.782881            0 directory agnostic\tools\limits_finder\vendor
+2013-03-07_15:45:40.992685            0 directory agnostic\tools\limits_finder
+2013-03-07_15:45:53.242817            0 directory agnostic\tools
+2013-03-07_15:46:11.334815            0 directory agnostic
+
+xcp scan -exclude 1*month < modified < 1*year -fmt '{:>15} {:>7} {} {}'.format(iso(mtime), humanize_size(size), type, relpath) \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic
+140,856 scanned, 1 excluded, 0 errors
+Total Time : 46s
+STATUS : PASSED
+----
+====
+在以下示例中、 `scan -exclude` 列出三个月以上未修改且大小大于5.5 KB的未排除文件。为每个文件打印的详细信息包括其上次修改时间的ISO格式、文件的可读大小、文件类型及其相对路径。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -exclude "modified > 3*month and size > 5650" -fmt "'{}, {}, {}'.format(iso(mtime), humanize_size(size), relpath)" \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic\snapmirror
+xcp scan -exclude "modified > 3*month and size > 5650" -fmt "'{}, {}, {}'.format(iso(mtime), humanize_size(size) relpath)" \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic\snapmirror
+
+2013-03-07_15:44:53.713279, 4.31KiB, snapmirror\rsm_abort.thpl
+2013-03-07_15:44:53.714269, 3.80KiB, snapmirror\rsm_break.thpl
+2013-03-07_15:44:53.715270, 3.99KiB, snapmirror\rsm_init.thpl
+2013-03-07_15:44:53.716268, 2.41KiB, snapmirror\rsm_quiesce.thpl
+2013-03-07_15:44:53.717263, 2.70KiB, snapmirror\rsm_release.thpl
+2013-03-07_15:44:53.718260, 4.06KiB, snapmirror\rsm_resume.thpl
+2013-03-07_15:44:53.720256, 4.77KiB, snapmirror\rsm_resync.thpl
+2013-03-07_15:44:53.721258, 3.83KiB, snapmirror\rsm_update.thpl
+2013-03-07_15:44:53.724256, 4.74KiB, snapmirror\sm_quiesce.thpl
+2013-03-07_15:44:53.725254, 4.03KiB, snapmirror\sm_resync.thpl
+2013-03-07_15:44:53.727249, 4.30KiB, snapmirror\sm_store_complete.thpl
+2013-03-07_15:44:53.729250, 0, snapmirror
+
+xcp scan -exclude modified > 3*month and size > 5650 -fmt '{}, {}, {}'.format(iso(mtime), humanize_size(size), relpath) \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic\snapmirror
+18 scanned, 6 excluded, 0 errors Total Time : 0s
+STATUS : PASSED
+----
+====
+以下示例不包括目录。它列出了未排除的文件、其格式设置会在变量之间添加逗号 `mtime`， `relpath`，和 `depth`。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -exclude "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath, depth]))" \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic\snapmirror
+xcp scan -exclude "type is directory" -fmt "','.join(map(str, [iso(mtime), relpath,depth]))"
+\\<IP address or hostname of SMBserver>\localtest\arch\win32\agnostic\snapmirror
+2013-03-07_15:44:53.712271,snapmirror\SMutils.pm,1
+2013-03-07_15:44:53.713279,snapmirror\rsm_abort.pm,1
+2013-03-07_15:44:53.714269,snapmirror\rsm_break.pm,1
+2013-03-07_15:44:53.715270,snapmirror\rsm_init.thpl,1
+2013-03-07_15:44:53.716268,snapmirror\rsm_quiesce.thpl,1
+2013-03-07_15:44:53.717263,snapmirror\rsm_release.thpl,1
+2013-03-07_15:44:53.718260,snapmirror\rsm_resume.thpl,1
+2013-03-07_15:44:53.720256,snapmirror\rsm_resync.thpl,1
+2013-03-07_15:44:53.721258,snapmirror\rsm_update.thpl,1
+2013-03-07_15:44:53.722261,snapmirror\sm_init.thpl,1
+2013-03-07_15:44:53.723257,snapmirror\sm_init_complete.thpl,1
+2013-03-07_15:44:53.724256,snapmirror\sm_quiesce.thpl,1
+2013-03-07_15:44:53.725254,snapmirror\sm_resync.thpl,1
+2013-03-07_15:44:53.726250,snapmirror\sm_retrieve_complete.thpl,1
+2013-03-07_15:44:53.727249,snapmirror\sm_store_complete.thpl,1
+2013-03-07_15:44:53.728256,snapmirror\sm_update.thpl,1
+2013-03-07_15:44:53.729260,snapmirror\sm_update_start.thpl,1
+
+xcp scan -exclude type is directory -fmt ','.join(map(str, [iso(mtime), relpath, depth])) \\<IP address or hostname of SMB server>\localtest\arch\win32\agnostic\snapmirror
+18 scanned, 1 excluded, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+以下示例将打印完整的文件路径和RAW `mtimevalue` 所有非目录文件的数量。。 `mtimevalue` 用70个字符填充、以便于读取控制台报告。
+
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -exclude "type is not directory" -fmt "'{} {:>70}'.format(abspath, mtime)" \\<IP address or hostname of SMBserver>\source_share
+
+xcp scan -exclude type is not directory -fmt '{} {:>70}'.format(abspath, mtime) \\<IP address or hostname of SMB server>\source_share
+18 scanned, 17 excluded, 0errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-保留-环境
+
+使用 `-preserve-atime` 参数 `scan` 命令以还原源上所有文件的上次访问日期并重置 `atime` 到XCP读取文件之前的原始值。
+
+扫描SMB共享时、如果存储系统配置为修改、则会修改文件的访问时间 `atime` 读取时)、因为XCP正在逐个读取文件。XCP从不更改 `atime`，它只会读取文件，从而触发更新 `atime`。
+
+.语法
+[source, cli]
+----
+xcp scan -preserve-atime \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -preserve-atime \\<IP address or hostname of SMB server>\source_share
+xcp scan -preserve-atime \\<IP address or hostname of SMB server>\source_share
+
+source_share\ASUP.pm
+source_share\ASUP_REST.pm
+source_share\Allflavors_v2.pm
+source_share\Armadillo.pm
+source_share\AsupExtractor.pm
+source_share\BTS_Config.pm
+source_share\Backup.pm
+source_share\Aggregate.pm
+source_share\Burt.pm
+source_share\CConfig.pm
+source_share\agnostic\ProtocolAccess.pm
+source_share\agnostic\Qtree.pm
+source_share\agnostic\Quota.pm
+source_share\agnostic\RbacCmdFetcher.pm
+source_share\agnostic\RbacCmdFetcher_ReadMe
+source_share\agnostic\SFXOD.pm
+source_share\agnostic\Snapmirror.pm
+source_share\agnostic\VolEfficiency.pm
+source_share\agnostic\flatfile.txt
+source_share\agnostic
+source_share
+
+xcp scan -preserve-atime \\<IP address or hostname of SMBserver>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== 扫描深度<n>
+
+使用 `-depth <n>` 参数 `scan` 命令以限制SMB共享内目录的搜索深度。
+
+
+NOTE: 。 `–depth` option用于指定XCP将文件扫描到子目录的深度。
+
+.语法
+[source, cli]
+----
+xcp scan -depth <2> \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -depth 2 \\<IP address or hostname of SMB server>\source_share
+xcp scan -depth 2 \\<IP address or hostname of SMB server>\source_share
+
+source_share\ASUP.pm
+source_share\ASUP_REST.pm
+source_share\Allflavors_v2.pm
+source_share\Armadillo.pm
+source_share\AsupExtractor.pm
+source_share\BTS_Config.pm
+source_share\Backup.pm
+source_share\Aggregate.pm
+source_share\Burt.pm
+source_share\CConfig.pm
+source_share\CIFS.pm
+source_share\CR.pm
+source_share\CRC.pm
+source_share\CSHM.pm
+source_share\agnostic\Fileclone.pm
+source_share\agnostic\Jobs.pm
+source_share\agnostic\License.pm
+source_share\agnostic\Panamax_Clone_Utils.pm
+source_share\agnostic\LunCmds.pm
+source_share\agnostic\ProtocolAccess.pm
+source_share\agnostic\Qtree.pm
+source_share\agnostic\Quota.pm
+source_share\agnostic\RbacCmdFetcher.pm
+source_share\agnostic\RbacCmdFetcher_ReadMe
+source_share\agnostic\SFXOD.pm
+source_share\agnostic\Snapmirror.pm
+source_share\agnostic\VolEfficiency.pm
+source_share\agnostic\flatfile.txt
+source_share\agnostic
+source_share
+
+xcp scan -depth 2 \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-stats.
+
+使用 `-stats` 参数 `scan` 命令以树统计信息报告格式列出文件。
+
+.语法
+[source, cli]
+----
+xcp scan -stats \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\netapp\xcp>xcp scan -stats \\<IP address or hostname of SMB server>\cifs_share
+
+== Maximum Values ==
+        Size      Depth      Namelen     Dirsize
+     88.2MiB          3          108          20
+
+== Average Values ==
+        Size      Depth      Namelen    Dirsize
+     4.74MiB          2          21            9
+
+== Top File Extensions ==
+no extension      .PDF       .exe       .html      .whl     .py      other
+   22               2          2           2         2        1        9
+  20.0KiB        1.54MiB    88.4MiB     124KiB    1.47MiB  1.62KiB   98.3MiB
+
+== Number of files ==
+  empty    <8KiB    8-64KiB    64KiB-1MiB    1-10MiB    10-100MiB    >100MiB
+      2       24          2             7          2            3
+
+== Space used ==
+  empty    <8KiB    8-64KiB    64KiB-1MiB    1-10MiB    10-100MiB     >100MiB
+      0  24.0KiB     124KiB       2.87MiB    2.91MiB       184MiB           0
+
+== Directory entries ==
+  empty     1-10     10-100        100-1K     1K-10K         >10K
+               4          1
+== Depth ==
+    0-5     6-10      11-15         16-20     21-100         >100
+     45
+
+== Modified ==
+>1 year  9-12 months  6-9 months  3-6 months  1-3 months  1-31 days  1-24 hrs  <1
+hour     <15 mins       future      <1970       invalid
+                                                                   44         1
+                                                               190MiB
+
+== Created ==
+>1 year  9-12 months  6-9 months  3-6 months  1-3 months  1-31 days  1-24 hrs  <1
+hour     <15 mins       future      <1970       invalid
+                                                                   45
+                                                               190MiB
+Total count: 45
+Directories: 5
+Regular files: 40
+Symbolic links:
+Junctions:
+Special files:
+Total space for regular files: 190MiB
+Total space for directories: 0
+Total space used: 190MiB
+Dedupe estimate: N/A
+Sparse data: N/A
+xcp scan -stats \\<IP address or hostname of SMB server>\cifs_share
+45 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-html
+
+使用 `-html` 参数 `scan` 用于在HTML统计信息报告中列出文件的命令。
+
+
+NOTE: XCP报告(.csv、.html)与XCP二进制文件保存在同一位置。文件名的格式为<xcp_process_id><time_stamp>．html。当XCP无法将安全标识符(SID)映射到所有者名称时、它会使用SID中最后一个"–"后的最后几位数字来表示所有者。例如、当XCP无法将SID S-1-5-21-1896871423-3211229150-3383017265-4854184映射到其所有者时、它使用4854184表示所有者。
+
+.语法
+[source, cli]
+----
+xcp scan -stats -html -preserve-atime -ownership \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+Z:\scripts\xcp\windows>xcp scan -stats -html -preserve-atime -ownership \\<IP address or hostname of SMB server>\source_share
+1,972 scanned, 0 matched, 0 errors, 7s
+4,768 scanned, 0 matched, 0 errors,12s
+7,963 scanned, 0 matched, 0 errors,17s
+10,532 scanned, 0 matched, 0 errors,22s
+12,866 scanned, 0 matched, 0 errors,27s
+15,770 scanned, 0 matched, 0 errors,32s
+17,676 scanned, 0 matched, 0 errors,37s
+
+== Maximum Values ==
+     Size      Depth     Namelen     Dirsize
+   535KiB         16          33          45
+
+== Average Values ==
+     Size      Depth     Namelen     Dirsize
+  10.3KiB          7          11           6
+
+== Top File SIDs ==
+S-1-5-21-1896871423-3211229150-3383017265-4854184 S-1-5-32-544 S-1-5-21-1896871423-3211229150-3383017265-3403389
+     9318       8470           1
+
+== Top Space SIDs ==
+S-1-5-21-1896871423-3211229150-3383017265-4854184 S-1-5-32-544 S-1-5-21-1896871423-3211229150-3383017265-3403389
+  76.8MiB    69.8MiB           0
+
+== Top File Extensions ==
+       py	      .rst	     .html  no	extension	    .txt	    .png	    other
+     5418	      3738	      1974	         1197    	630      	336	      1344
+
+== Number of files ==
+    empty	     <8KiB	   8-64KiB	   64KiB-1MiB   1-10MiB	 10-100MiB	 >100MiB
+      168	     11466	      2709	          294
+
+== Space used ==
+    empty     <8KiB      8-64KiB     64KiB-1MiB   1-10MiB  10-100MiB   >100MiB
+        0     24.4MiB    55.3MiB        66.9MiB
+
+== Directory entries ==
+    empty      1-10       10-100         100-1K    1K-10K       >10K
+       42      2690          420
+
+== Depth ==
+      0-5	     6-10	       11-15	          16-20	   21-100	      >100
+     3832	    12527	        1424	              6
+
+== Modified ==
+  >1 year	  >1 month	  1-31 days	     1-24 hrs	  <1 hour	   <15 mins	  future	  invalid
+  	11718       2961                                 3110
+== Created ==
+  >1 year  	>1 month    1-31 days	     1-24 hrs   <1 hour    <15 mins	  future	  invalid
+                                              1    	17788
+== Accessed ==
+  >1 year 	>1 month	  1-31 days	     1-24 hrs	  <1 hour	   <15 mins	  future	  invalid
+			                                              14624	       3165
+
+Total count: 17789
+Directories: 3152
+Regular files: 14637
+Symbolic links:
+Junctions:
+Special files:
+Total space for regular files:147MiB
+Total space for directories: 0
+Total space used: 147MiB
+Dedupe estimate: N/A
+Sparse data: N/A
+xcp scan -stats -html -preserve-atime -ownership \\<IP address or hostname ofSMB
+server>\source_share
+17,789 scanned, 0 matched, 0errors
+Total Time : 39s
+STATUS : PASSED
+----
+====
+
+
+== 扫描.csv
+
+使用 `-csv` 参数 `scan` 用于在CSV树统计信息报告中列出文件的命令。
+
+.语法
+[source, cli]
+----
+xcp scan -stats -csv -preserve-atime -ownership \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+Z:\scripts\xcp\windows>xcp scan -stats -csv -preserve-atime -ownership \\<IP address or hostname of SMB server>\source_share
+
+1,761 scanned, 0 matched, 0 errors, 6s
+4,949 scanned, 0 matched, 0 errors,11s
+7,500 scanned, 0 matched, 0 errors,16s
+10,175 scanned, 0 matched, 0 errors,21s
+12,371 scanned, 0 matched, 0 errors,26s
+15,330 scanned, 0 matched, 0 errors,31s
+17,501 scanned, 0 matched, 0 errors,36s
+
+== Maximum Values ==
+    Size      Depth	     Namelen     Dirsize
+  535KiB	       16	          33	        45
+
+== Average Values ==
+    Size	    Depth	     Namelen	   Dirsize
+ 10.3KiB	        7	          11	         6
+
+== Top File SIDs ==
+S-1-5-21-1896871423-3211229150-3383017265-4854184 S-1-5-32-544 S-1-5-21-1896871423-3211229150- 3383017265-3403389
+    9318	     8470	           1
+
+== Top Space SIDs ==
+S-1-5-21-1896871423-3211229150-3383017265-4854184 S-1-5-32-544 S-1-5-21-1896871423-3211229150- 3383017265-3403389
+ 76.8MiB	  69.8MiB	           0
+
+== Top File Extensions ==
+	  .py	    .rst	   .html	no extension      .txt       .png	    other
+	 5418	    3738	    1974          1197       630        336	     1344
+
+==	Number of files ==
+    empty      <8KiB	     8-64KiB    64KiB-1MiB	  1-10MiB	10-100MiB  	>100MiB
+	  168	   11466	        2709           294
+
+== Space used ==
+   empty	   <8KiB	    8-64KiB    64KiB-1MiB	 1-10MiB	10-100MiB	  >100MiB
+      0	     24.4MiB        55.3MiB	      66.9MiB	       0          0         0
+
+== Directory entries ==
+	empty	     1-10	  10-100        100-1K    1K-10K       >10K
+	   42	     2690	     420
+
+==	Depth ==
+	  0-5	     6-10	   11-15	       16-20	  21-100       >100
+	 3832	    12527	    1424             6
+
+==	Modified ==
+ >1 year	 >1 month   1-31 days	 1-24 hrs  	<1 hour  	<15 mins	future	invalid
+	 11718	     2961		             3110
+
+== Created ==
+ >1 year	 >1 month   1-31 days	 1-24 hrs  	<1 hour	  <15 mins	future	invalid
+                                        17789
+
+== Accessed ==
+ >1 year	 >1 month   1-31 days	 1-24 hrs	  <1 hour	  <15 mins	future	invalid
+		                                15754	     2035
+
+Total count: 17789
+Directories: 3152
+Regular files: 14637 Symbolic links:
+Junctions:
+Special files:
+Total space for regular files: 147MiB Total space for directories: 0 Total space used: 147MiB
+Dedupe estimate: N/A Sparse data: N/A
+xcp scan -stats -csv -preserve-atime -ownership \\<IP address or hostname of SMB server>\source_share
+17,789 scanned, 0 matched, 0 errors Total Time : 40s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-l
+
+使用 `-l` 参数 `scan` 命令以长列表输出格式列出文件。
+
+.语法
+[source, cli]
+----
+xcp scan -l \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -l \\<IP address or hostname of SMB server>\source_share xcp scan -l \\<IP address or hostname of SMB server>\source_share
+
+f   195KiB   7y0d source_share\ASUP.pm
+f  34.7KiB   7y0d source_share\ASUP_REST.pm
+f  4.11KiB	 7y0d source_share\Allflavors_v2.pm
+f  38.1KiB	 7y0d source_share\Armadillo.pm
+f  3.83KiB	 7y0d source_share\AsupExtractor.pm
+f  70.1KiB	 7y0d source_share\BTS_Config.pm
+f  2.65KiB	 7y0d source_share\Backup.pm
+f  60.3KiB	 7y0d source_share\Aggregate.pm
+f  36.9KiB	 7y0d source_share\Burt.pm
+f  8.98KiB	 7y0d source_share\CConfig.pm
+f  19.3KiB 	 7y0d source_share\CIFS.pm
+f  20.7KiB	 7y0d source_share\CR.pm
+f  2.28KiB   7y0d source_share\CRC.pm
+f  18.7KiB   7y0d source_share\CSHM.pm
+f  43.0KiB   7y0d source_share\CSM.pm
+f  19.7KiB	 7y0d source_share\ChangeModel.pm
+f  33.3KiB	 7y0d source_share\Checker.pm
+f  3.47KiB	 7y0d source_share\Class.pm
+f  37.8KiB	 7y0d source_share\Client.pm
+f   188KiB   7y0d source_share\agnostic\Flexclone.pm
+f  15.9KiB   7y0d source_share\agnostic\HyA_Clone_Utils.pm
+f  13.4KiB   7y0d source_share\agnostic\Fileclone.pm
+f  41.8KiB   7y0d source_share\agnostic\Jobs.pm
+f  24.0KiB   7y0d source_share\agnostic\License.pm
+f  34.8KiB   7y0d source_share\agnostic\Panamax_Clone_Utils.pm
+f  30.2KiB   7y0d source_share\agnostic\LunCmds.pm
+f  40.9KiB   7y0d source_share\agnostic\ProtocolAccess.pm
+f  15.7KiB   7y0d source_share\agnostic\Qtree.pm
+f  29.3KiB   7y0d source_share\agnostic\Quota.pm
+f  13.7KiB   7y0d source_share\agnostic\RbacCmdFetcher.pm
+f  5.55KiB   7y0d source_share\agnostic\RbacCmdFetcher_ReadMe
+f  3.92KiB   7y0d source_share\agnostic\SFXOD.pm
+f  35.8KiB   7y0d source_share\agnostic\Snapmirror.pm
+f  40.4KiB   7y0d source_share\agnostic\VolEfficiency.pm
+f  6.22KiB   7y0d source_share\agnostic\flatfile.txt
+d	     0   7y0d source_share\agnostic
+d	     0 19h17m source_share
+
+xcp scan -l \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描所有权
+
+使用 `-ownership` 参数 `scan` 命令以检索文件的所有权信息。
+
+
+NOTE: 您只能使用 `-ownership` 使用 `-l`， `-match`， `-fmt`或 `-stats` parameters
+
+.语法
+[source, cli]
+----
+xcp scan -l -ownership \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -l -ownership \\<IP address or hostname of SMB server>\source_share xcp scan -l -ownership \\<IP address or hostname of SMB server>\source_share
+
+f	BUILTIN\Administrators	195KiB	7y0d	source_share\ASUP.pm
+f	BUILTIN\Administrators	34.7KiB	7y0d	source_share\ASUP_REST.pm
+f	BUILTIN\Administrators	4.11KiB	7y0d	source_share\Allflavors_v2.pm
+f	BUILTIN\Administrators	38.1KiB	7y0d	source_share\Armadillo.pm
+f	BUILTIN\Administrators	3.83KiB	7y0d	source_share\AsupExtractor.pm
+f	BUILTIN\Administrators	70.1KiB	7y0d	source_share\BTS_Config.pm
+f	BUILTIN\Administrators	2.65KiB	7y0d	source_share\Backup.pm
+f	BUILTIN\Administrators	60.3KiB	7y0d	source_share\Aggregate.pm
+f	BUILTIN\Administrators	36.9KiB	7y0d	source_share\Burt.pm
+f	BUILTIN\Administrators	8.98KiB	7y0d	source_share\CConfig.pm
+f	BUILTIN\Administrators	19.3KiB	7y0d	source_share\CIFS.pm
+f	BUILTIN\Administrators	20.7KiB	7y0d	source_share\CR.pm
+f	BUILTIN\Administrators	2.28KiB	7y0d	source_share\CRC.pm
+f	BUILTIN\Administrators	18.7KiB	7y0d	source_share\CSHM.pm
+f	BUILTIN\Administrators	43.0KiB	7y0d	source_share\CSM.pm
+f	BUILTIN\Administrators	19.7KiB	7y0d	source_share\ChangeModel.pm
+f	BUILTIN\Administrators	33.3KiB	7y0d	source_share\Checker.pm
+f	BUILTIN\Administrators	3.47KiB	7y0d	source_share\Class.pm
+f	BUILTIN\Administrators	37.8KiB	7y0d	source_share\Client.pm
+f	BUILTIN\Administrators	2.44KiB	7y0d	source_share\ClientInfo.pm
+f	BUILTIN\Administrators	37.2KiB	7y0d	source_share\ClientMgr.pm
+f	BUILTIN\Administrators	17.1KiB	7y0d	source_share\ClientRPC.pm
+f	BUILTIN\Administrators	9.21KiB	7y0d	source_share\ClusterAgent.pm
+f   BUILTIN\Administrators  15.7KiB 7y0d source_share\agnostic\Qtree.pm
+f   BUILTIN\Administrators  29.3KiB 7y0d source_share\agnostic\Quota.pm
+f   BUILTIN\Administrators  13.7KiB 7y0d source_share\agnostic\RbacCmdFetcher.pm
+f   BUILTIN\Administrators  5.55KiB 7y0d source_share\agnostic\RbacCmdFetcher_ReadMe
+f   BUILTIN\Administrators  3.92KiB 7y0d source_share\agnostic\SFXOD.pm
+f   BUILTIN\Administrators  35.8KiB 7y0d source_share\agnostic\Snapmirror.pm
+f   BUILTIN\Administrators  40.4KiB 7y0d source_share\agnostic\VolEfficiency.pm
+f   BUILTIN\Administrators  6.22KiB 7y0d source_share\agnostic\flatfile.txt
+d   BUILTIN\Administrators  7y0d source_share\agnostic
+d   BUILTIN\Administrators
+
+xcp scan -l -ownership \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors Total Time : 1s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-du
+
+使用 `-du` 参数 `scan` 命令总结每个目录(包括子目录)的空间使用量。
+
+.语法
+[source, cli]
+----
+xcp scan -du \\<IP address or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -du \\<IP address or hostname of SMB server>\source_share xcp scan -du \\<IP address or hostname of SMB server>\source_share
+
+  569KiB source_share\agnostic
+  19.8MiB source_share
+
+xcp scan -du \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-f以及<expression>
+
+使用 `-fmt <expression>` 参数 `scan` 用于根据定义的表达式设置文件列表格式的命令。
+
+.语法
+[source, cli]
+----
+xcp scan -fmt "', '.join(map(str, [relpath, name, size, depth]))" \\<IPaddress or hostname of SMB server>\source_share
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+c:\netapp\xcp>xcp scan -fmt "', '.join(map(str, [relpath, name, size, depth]))"	\\<IP address or hostname of SMB server>\source_share
+xcp scan -fmt "', '.join(map(str, [relpath, name, size, depth]))"	\\<IP address or hostname of SMB server>\source_share
+
+source_share\ASUP.pm, ASUP.pm, 199239, 1
+source_share\ASUP_REST.pm, ASUP_REST.pm, 35506, 1
+source_share\Allflavors_v2.pm, Allflavors_v2.pm, 4204, 1
+source_share\Armadillo.pm, Armadillo.pm, 39024, 1
+source_share\AsupExtractor.pm, AsupExtractor.pm, 3924, 1
+source_share\BTS_Config.pm, BTS_Config.pm, 71777, 1
+source_share\Backup.pm, Backup.pm, 2714, 1
+source_share\Aggregate.pm, Aggregate.pm, 61699, 1
+source_share\Burt.pm, Burt.pm, 37780, 1
+source_share\CConfig.pm, CConfig.pm, 9195, 1
+source_share\CIFS.pm, CIFS.pm, 19779, 1
+source_share\CR.pm, CR.pm, 21215, 1
+source_share\CRC.pm, CRC.pm, 2337, 1
+source_share\agnostic\LunCmds.pm, LunCmds.pm, 30962, 2
+source_share\agnostic\ProtocolAccess.pm, ProtocolAccess.pm, 41868, 2
+source_share\agnostic\Qtree.pm, Qtree.pm, 16057,2
+source_share\agnostic\Quota.pm, Quota.pm, 30018,2
+source_share\agnostic\RbacCmdFetcher.pm, RbacCmdFetcher.pm, 14067, 2
+source_share\agnostic\RbacCmdFetcher_ReadMe, RbacCmdFetcher_ReadMe, 5685, 2
+source_share\agnostic\SFXOD.pm, SFXOD.pm, 4019, 2
+source_share\agnostic\Snapmirror.pm, Snapmirror.pm, 36624, 2
+source_share\agnostic\VolEfficiency.pm, VolEfficiency.pm, 41344, 2
+source_share\agnostic\flatfile.txt, flatfile.txt, 6366, 2
+source_share\agnostic, agnostic, 0, 1
+source_share, , 0, 0
+xcp scan -fmt ', '.join(map(str, [relpath, name, size, depth])) \\<IP address or hostname of SMB server>\source_share
+317 scanned, 0 matched, 0 errors
+Total Time : 0s
+STATUS : PASSED
+----
+====
+
+
+== 扫描-ADS
+
+使用 `-ads` 带有的标志参数 `scan` 使用命令以递归方式扫描整个SMB共享、并列出所有文件和任何关联的备用数据流。
+
+.语法
+[source, cli]
+----
+xcp scan -ads \\<source_ip_address>\source_share\src
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\netapp\xcp>xcp scan -ads \\<source_ip_address>\source_share\src
+
+src\file1.txt:ads1
+src\file1.txt:ads_file1.txt_1697037934.4154522.txt
+src\file1.txt
+src\file2.txt:ads1
+src\file2.txt:ads_file2.txt_1697037934.5873265.txt
+src\file2.txt
+src\test1.txt:ads_test1.txt_1697037934.7435765.txt
+src\test1.txt
+src\dir1\dfile1.txt:ads1
+src\dir1\dfile1.txt:ads_dfile1.txt_1697037934.1185782.txt
+src\dir1\dfile1.txt:ads_xcp.exe
+src\dir1\dfile1.txt:ads_tar
+src\dir1\dfile1.txt:java_exe
+src\dir1\dfile1.txt:cmdzip
+src\dir1\dfile1.txt:ads1_2GB
+src\dir1\dfile1.txt
+src\dir1:ads1
+src\dir1:ads_dir1_1697038504.087317.txt
+src\dir1
+src:ads_src_1697038504.7123322.txt
+src
+
+xcp scan -ads \\<source_ip_address>\source_share\src
+6 scanned, 0 matched, 0 errors, 15 ads scanned
+Total Time : 2s
+STATUS : PASSED
+----
+====

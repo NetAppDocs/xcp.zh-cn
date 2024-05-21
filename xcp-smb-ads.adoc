@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: xcp-smb-ads.html 
 keywords: netapp, xcp, smb, ads, alternate, data, streams, ntfs 
-summary: SMB的NTFS备用数据流迁移 
+summary: SMB的NTFS备用数据atreams迁移 
 ---
 = SMB的NTFS备用数据流迁移
 :hardbreaks:
@@ -14,13 +14,13 @@ summary: SMB的NTFS备用数据流迁移
 
 
 [role="lead"]
-从XCP 1.4.3开始、XCP SMB支持使用迁移NTFS备用数据流(ADS) `-ads` 选项。
+从XCP 1.4.3开始、XCP SMB支持使用迁移NTFS备用数据流 `-ads` 选项。
 
 
 
 == 支持的用例
 
-您可以使用XCP SMB `copy` 和 `sync` 用于迁移包含ADS和XCP SMB的数据的命令 `scan` 命令扫描SMB共享中的ADS。
+您可以使用XCP SMB `copy` 和 `sync` 用于迁移包含备用数据流和XCP SMB的数据的命令 `scan` 命令扫描SMB共享以查找备用数据流。
 
 
 

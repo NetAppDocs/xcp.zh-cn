@@ -47,8 +47,8 @@ link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.co
 
 通知文件提供有关 NetApp 软件中使用的第三方版权和许可证的信息。
 
+* link:media/xcp_1.9.4_notice.pdf["NetApp XCP 1.9.4的通知"^]
 * link:media/xcp_1.9.3_notice.pdf["NetApp XCP 1.9.3的通知"^]
 * link:media/xcp_1.9.2_notice.pdf["NetApp XCP 1.9.2的通知"^]
 * link:media/xcp_1.9.1_notice.pdf["NetApp XCP 1.9.1的通知"^]
-* link:media/xcp_1.9_notice.pdf["NetApp XCP 1.9的通知"^]
 

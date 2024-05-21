@@ -10,10 +10,12 @@ indexpage:
       url: "/xcp-index.html"
     - title: 安装 XCP
       url: "/xcp-install-xcp.html"
-    - title: XCP参考
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
   - title: 早期版本
     links:
+    - title: NetApp XCP 1.9.3发行说明
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886695
+    - title: 参考NetApp XCP 1.9.3
+      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872
     - title: NetApp XCP 1.9.2发行说明
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2885805
     - title: 参考NetApp XCP 1.9.2
@@ -21,10 +23,6 @@ indexpage:
     - title: NetApp XCP 1.9.1发行说明
       url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2884968
     - title: 参考NetApp XCP 1.9.1
-      url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
-    - title: NetApp XCP 1.9发行说明
-      url: https://library.netapp.com/ecm/ecm_get_file/ECMLP2883342
-    - title: NetApp XCP 1.9参考
       url: https://library.netapp.com/ecm/ecm_download_file/ECMLP2883343
   - title: 更多资源
     links:
@@ -36,3 +34,9 @@ indexpage:
       url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
     - title: NetApp社区(论坛)
       url: link:https://community.netapp.com
+  - title: XCP参考
+    links:
+    - title: NFS命令参考
+      url: "/xcp-nfs-reference-help.html"
+    - title: SMB命令参考
+      url: "/xcp-smb-reference-help.html"

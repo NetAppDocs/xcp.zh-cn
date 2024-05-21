@@ -1,0 +1,619 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-copy.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= 复制
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS `copy` 命令会扫描整个源目录结构并将其复制到目标NFSv3导出。
+
+。 `copy` 命令要求将源路径和目标路径作为变量。扫描和复制的文件、吞吐量、速度和已用时间详细信息将显示在复制操作结束时。
+
+[NOTE]
+====
+* 运行时日志文件位于中 `/opt/NetApp/xFiles/xcp/xcp.log` 此路径是可配置的。运行每个命令后、目录中会提供其他日志记录。
+* 如果源系统为7-模式系统、则可以使用Snapshot副本作为源。例如： `<ip_address>:/vol/ex_s01/.snapshot/<snapshot_name>`
+
+
+====
+.语法
+[source, cli]
+----
+xcp copy <source_nfs_export_path> <destination_nfs_export_path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@localhost linux]# ./xcp copy <IP address of NFS server>:/source_vol < IP address of
+destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.46.33.153705
+Xcp command : xcp copy <IP address of NFS server>:/source_vol <IP address of destination NFS
+server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (51.2 KiB/s), 81.2 KiB out (107KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+下表列出了 `copy` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<copy -nonames>> | 从文件列表和报告中排除用户和组名称。 
+
+
+| <<copy_match,复制-匹配()；过滤器()；  | 仅处理与筛选器匹配的文件和目录。 
+
+
+| <<copy_md5,copy -md5   | 在文件上生成校验和、并在编制索引时保存校验和(默认值：false)。 
+
+
+| <<copy_dircount,copy -dircount ()；n[k]  | 指定读取目录时的请求大小。 
+
+
+| <<copy_edupe,copy -edupe>> | 在报告中包括重复数据删除估计值。 
+
+
+| <<copy_bs,copy -BS [k]  | 指定读/写块大小(默认值：64K)。 
+
+
+| <<copy_parallel,复制-并行()；n  | 指定并发批处理进程的最大数量(默认值：7)。 
+
+
+| <<copy_preserve_atime,copy -놣 듦-地>> | 将源上的所有文件还原到上次访问的日期。 
+
+
+| <<copy_s3_insecure,复制-s3.insecure>> | 提供使用HTTP而非HTTPS进行S3存储分段通信的选项。 
+
+
+| <<copy_s3_endpoint,copy -s3.endpoint s3_endpoint_url> | 使用为S3存储分段通信指定的URL覆盖默认Amazon Web Services (AWS)端点URL。 
+
+
+| <<copy_s3_profile,复制-s3.profile PROFILE名称> | 从AWS凭据文件中指定用于S3存储分段通信的配置文件。 
+
+
+| <<copy_s3_noverify,复制-s3.noverify>> | 覆盖S3存储分段通信的SSL证书的默认验证。 
+|===
+
+
+== copy -nonames
+
+使用 `-nonames` 参数 `copy` 用于从文件列表或报告中排除用户和组名称的命令。
+
+.语法
+[source, cli]
+----
+xcp copy -nonames <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -nonames <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.48.48.147261
+Xcp command : xcp copy -nonames <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (53.5 KiB/s), 81.3 KiB out (112 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy -match <filter>
+
+使用 `-match <filter>` 参数 `copy` 命令以指定仅处理与筛选器匹配的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp copy -match <filter> <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -match bin <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+04_00.00.07.125990
+Xcp command : xcp copy -match bin <IP address or hostname of NFS server>:/source_vol <IP address
+of destination NFS server>:/dest_vol
+18 scanned, 18 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (52.6 KiB/s), 81.7 KiB out (110 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy -MD5 <string_expression>
+
+使用 `-md5` 参数 `copy` 命令为文件列表生成校验和并在编制索引时保存校验和。默认值设置为false。
+
+.语法
+[source, cli]
+----
+xcp copy -md5 <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -md5 <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.47.41.137615
+Xcp command : xcp copy -md5 <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (52.1 KiB/s), 81.3 KiB out (109 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy -dircount <n[k]>
+
+使用 `-dircount <n[k]>` 参数 `copy` 命令以指定读取目录时的请求大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp copy -dircount <n[k]> <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -dircount 32k <IP address or hostname of NFS server>:/source_vol
+<IP address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.58.01.094460
+Xcp command : xcp copy -dircount 32k <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server >:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (56.7 KiB/s), 81.6 KiB out (119 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy -edupe
+
+使用 `-edupe` 参数 `copy` 命令以在报告中包含重复数据删除估计值。
+
+
+NOTE: Simple Storage Service (S3)不支持稀疏文件。因此、请将S3存储分段指定为的目标 `copy -edupe` 对于稀疏数据、返回值"None"。
+
+.语法
+[source, cli]
+----
+xcp copy -edupe <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -edupe <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.48.10.436325
+== Maximum Values ==
+Size Used Depth Namelen Dirsize
+1 KiB 4 KiB 2 11 9
+== Average Values ==
+Namelen Size Depth Dirsize
+6 682 1 5
+== Top Space Users ==
+root
+52 KiB
+== Top File Owners ==
+root
+18
+== Top File Extensions ==
+.txt other
+5 10
+== Number of files ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+4 11
+== Space used ==
+empty <8KiB 8-64KiB 64KiB-1MiB 1-10MiB 10-100MiB >100MiB
+40 KiB
+== Directory entries ==
+empty 1-10
+3
+10-100 100-1K 1K-10K >10K
+== Depth ==
+0-5 6-10 11-15 16-20 21-100 >100
+18
+== Accessed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+4 11
+== Modified ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+10 5
+== Changed ==
+>1 year >1 month 1-31 days 1-24 hrs <1 hour <15 mins future
+10 5
+Total count: 18
+Directories: 3
+Regular files: 15
+Symbolic links: None
+Special files: None
+Hard links: None,
+multilink files: None,
+Space Saved by Hard links (KB): 0
+Sparse data: None
+Dedupe estimate: N/A
+Total space for regular files: size: 10.0 KiB, used: 40 KiB
+Total space for symlinks: size: 0, used: 0
+Total space for directories: size: 12 KiB, used: 12 KiB
+Total space used: 52 KiB
+Xcp command : xcp copy -edupe <IP address or hostname of NFS server>:/source_vol <destination NFS
+export path>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 38.9 KiB in (36.7 KiB/s), 81.3 KiB out (76.7 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== copy -BS <n[k]>
+
+使用 `-bs <n[k]>` 参数 `copy` 命令以指定读/写块大小。默认块大小为64k。
+
+.语法
+[source, cli]
+----
+xcp copy -bs <n[k]> <ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -bs 32k <IP address or hostname of NFS server>:/source_vol <IP
+address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.57.04.742145
+Xcp command : xcp copy -bs 32k <IP address or hostname of NFS server>:/source_vol <IP address of
+destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (115 KiB/s), 81.6 KiB out (241 KiB/s)
+Total Time : 0s.
+STATUS : PASSED
+----
+====
+
+
+== copy -par行并行<n>
+
+使用 `-parallel <n>` 参数 `copy` 命令以指定并发批处理进程的最大数量。默认值为7。
+
+.语法
+[source, cli]
+----
+xcp copy -parallel <n> <ip_address_or_hostname>:/source_vol destination_ip_address_or_hostname:/<dest_vol>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp copy -parallel 4 <IP address or hostname of NFS server>:/source_vol
+<IP address of destination NFS server>:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: autoname_copy_2020-03-
+03_23.59.41.477783
+Xcp command : xcp copy -parallel 4 <IP address or hostname of NFS server>:/source_vol <IP address
+of destination NFS server>:/dest_vol
+18 scanned, 0 matched, 17 copied, 0 error
+Speed : 39.1 KiB in (35.6 KiB/s), 81.6 KiB out (74.4 KiB/s)
+Total Time : 1s.
+STATUS : PASSED
+----
+====
+
+
+== copy -놣 듦-地
+
+使用 `-preserve-atime` 参数 `copy` 命令将源上的所有文件还原到上次访问的日期。
+
+。 `-preserve-atime` 选项会将访问时间重置为执行XCP读取操作之前设置的原始值。
+
+.语法
+[source, cli]
+----
+xcp copy -preserve-atime <source_ip_address_or_hostname>:/source_vol <destination_ip_address_or_hostname>:/dest_vol
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -preserve-atime 101.10.10.10:/source_vol 10.102.102.10:/dest_vol
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2022-06-
+30_14.22.53.742272
+xcp: Job ID: Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.22.53.742272_copy
+Xcp command : xcp copy -preserve-atime 101.10.10.10:/source_vol 10.102.102.10:/dest_vol
+Stats : 55 scanned, 54 copied, 55 indexed
+Speed : 1.26 MiB in (852 KiB/s), 1.32 MiB out (896 KiB/s)
+Total Time : 1s.
+Migration ID: XCP_copy_2022-06-30_14.22.53.742272
+Job ID : Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-30_14.22.53.742272_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2022-06-30_14.22.53.742272_2022-06-
+30_14.22.53.742272_copy.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== 复制-s3.insecure
+
+使用 `-s3.insecure` 参数 `copy` 用于使用HTTP而非HTTPS进行S3存储分段通信的命令。
+
+.语法
+[source, cli]
+----
+xcp copy -s3.insecure s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -s3.insecure hdfs:///user/test s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+08_09.01.47.581599
+Job ID: Job_XCP_copy_2023-06-08_09.01.47.581599_copy
+Xcp command : xcp copy -s3.insecure hdfs:///user/test s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.86 KiB/s), 83.3 KiB out (22.9 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-08_09.01.47.581599
+Job ID : Job_XCP_copy_2023-06-08_09.01.47.581599_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-08_09.01.47.581599_copy.log
+STATUS : PASSED
+
+[root@client1 linux]# ./xcp copy -s3.insecure hdfs:///user/demo s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+08_09.15.58.807485
+Job ID: Job_XCP_copy_2023-06-08_09.15.58.807485_copy
+Xcp command : xcp copy -s3.insecure hdfs:///user/demo s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 10.4 KiB in (3.60 KiB/s), 85.3 KiB out (29.6 KiB/s)
+Total Time : 2s.
+Migration ID: XCP_copy_2023-06-08_09.15.58.807485
+Job ID : Job_XCP_copy_2023-06-08_09.15.58.807485_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-08_09.15.58.807485_copy.log
+STATUS : PASSED
+----
+====
+
+
+== copy -s3.Endpoint <s3_endpoint_url>
+
+使用 `-s3.endpoint <s3_endpoint_url>` 参数 `copy` 命令以使用指定的URL覆盖默认AWS端点URL以进行S3存储分段通信。
+
+.语法
+[source, cli]
+----
+xcp copy -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/test
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.20.32.571348
+Job ID: Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url> hdfs:///user/test s3://xcp-testing
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.77 KiB/s), 83.6 KiB out (21.8 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-13_11.20.32.571348
+Job ID : Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.20.32.571348_copy.log
+STATUS : PASSED
+[root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.40.26.913130
+Job ID: Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+15,009 scanned, 1,462 copied, 9 indexed, 1.46 MiB s3.data.uploaded, 1,491
+s3.copied.single.key.file, 1,491 s3.copied.file, 4.58 MiB in (933 KiB/s), 1.72 MiB out (350
+KiB/s), 5s
+15,009 scanned, 4,283 copied, 9 indexed, 4.20 MiB s3.data.uploaded, 4,302
+s3.copied.single.key.file, 4,302 s3.copied.file, 7.70 MiB in (629 KiB/s), 4.85 MiB out (632
+KiB/s), 10s
+15,009 scanned, 7,323 copied, 9 indexed, 7.17 MiB s3.data.uploaded, 7,343
+s3.copied.single.key.file, 7,343 s3.copied.file, 11.0 MiB in (672 KiB/s), 8.24 MiB out (681
+KiB/s), 15s
+15,009 scanned, 10,427 copied, 9 indexed, 10.2 MiB s3.data.uploaded, 10,439
+s3.copied.single.key.file, 10,439 s3.copied.file, 14.5 MiB in (690 KiB/s), 11.7 MiB out (695
+KiB/s), 20s
+15,009 scanned, 13,445 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,454
+s3.copied.single.key.file, 13,454 s3.copied.file, 17.8 MiB in (676 KiB/s), 15.0 MiB out (682
+KiB/s), 25s
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://xcp-testing
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (712 KiB/s), 17.1 MiB out (635 KiB/s)
+Total Time : 27s.
+Migration ID: XCP_copy_2023-06-13_11.40.26.913130
+Job ID : Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.40.26.913130_copy.log
+STATUS : PASSED
+----
+====
+
+
+== 复制-s3.profile <name>
+
+使用 `s3.profile` 参数 `copy` 命令以从AWS凭据文件指定用于S3存储分段通信的配置文件。
+
+.语法
+[source, cli]
+----
+xcp copy -s3.profile <name> -s3.endpoint https://<endpoint_url>: s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/test
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.20.32.571348
+Job ID: Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url> hdfs:///user/test s3://xcp-testing
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (1.77 KiB/s), 83.6 KiB out (21.8 KiB/s)
+Total Time : 3s.
+Migration ID: XCP_copy_2023-06-13_11.20.32.571348
+Job ID : Job_XCP_copy_2023-06-13_11.20.32.571348_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.20.32.571348_copy.log
+STATUS : PASSED
+[root@client1 linux]# ./xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo
+s3://xcp-testing
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.40.26.913130
+Job ID: Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+15,009 scanned, 1,462 copied, 9 indexed, 1.46 MiB s3.data.uploaded, 1,491
+s3.copied.single.key.file, 1,491 s3.copied.file, 4.58 MiB in (933 KiB/s), 1.72 MiB out (350
+KiB/s), 5s
+15,009 scanned, 4,283 copied, 9 indexed, 4.20 MiB s3.data.uploaded, 4,302
+s3.copied.single.key.file, 4,302 s3.copied.file, 7.70 MiB in (629 KiB/s), 4.85 MiB out (632
+KiB/s), 10s
+15,009 scanned, 7,323 copied, 9 indexed, 7.17 MiB s3.data.uploaded, 7,343
+s3.copied.single.key.file, 7,343 s3.copied.file, 11.0 MiB in (672 KiB/s), 8.24 MiB out (681
+KiB/s), 15s
+15,009 scanned, 10,427 copied, 9 indexed, 10.2 MiB s3.data.uploaded, 10,439
+s3.copied.single.key.file, 10,439 s3.copied.file, 14.5 MiB in (690 KiB/s), 11.7 MiB out (695
+KiB/s), 20s
+15,009 scanned, 13,445 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,454
+s3.copied.single.key.file, 13,454 s3.copied.file, 17.8 MiB in (676 KiB/s), 15.0 MiB out (682
+KiB/s), 25s
+Xcp command : xcp copy -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://xcp-testing
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (712 KiB/s), 17.1 MiB out (635 KiB/s)
+Total Time : 27s.
+Migration ID: XCP_copy_2023-06-13_11.40.26.913130
+Job ID : Job_XCP_copy_2023-06-13_11.40.26.913130_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.40.26.913130_copy.log
+STATUS : PASSED
+----
+====
+
+
+== 复制-s3.noverify
+
+使用 `-s3.noverify` 参数 `copy` 用于覆盖S3存储分段通信的SSL认证默认验证的命令。
+
+.语法
+[source, cli]
+----
+xcp copy -s3.noverify s3://<bucket_name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp copy -s3.noverify hdfs://user/test s3:// bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_10.57.41.994969
+Job ID: Job_XCP_copy_2023-06-13_10.57.41.994969_copy
+Xcp command : xcp copy -s3.noverify hdfs://user/test s3://bucket1
+Stats : 8 scanned, 5 copied, 8 indexed, 5 KiB s3.data.uploaded, 5
+s3.copied.single.key.file, 5 s3.copied.file
+Speed : 6.78 KiB in (2.36 KiB/s), 83.3 KiB out (29.0 KiB/s)
+Total Time : 2s.
+Migration ID: XCP_copy_2023-06-13_10.57.41.994969
+Job ID : Job_XCP_copy_2023-06-13_10.57.41.994969_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_10.57.41.994969_copy.log
+STATUS : PASSED
+./xcp copy -s3.profile sg -s3.noverify -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://bucket1
+
+xcp: WARNING: No index name has been specified, creating one with name: XCP_copy_2023-06-
+13_11.26.56.143287
+Job ID: Job_XCP_copy_2023-06-13_11.26.56.143287_copy
+1 scanned, 9.95 KiB in (1.99 KiB/s), 12.9 KiB out (2.58 KiB/s), 5s
+15,009 scanned, 1,555 copied, 9 indexed, 1.54 MiB s3.data.uploaded, 1,572
+s3.copied.single.key.file, 1,572 s3.copied.file, 4.68 MiB in (951 KiB/s), 1.81 MiB out (365
+KiB/s), 10s
+15,009 scanned, 4,546 copied, 9 indexed, 4.46 MiB s3.data.uploaded, 4,572
+s3.copied.single.key.file, 4,572 s3.copied.file, 7.95 MiB in (660 KiB/s), 5.15 MiB out (674
+KiB/s), 15s
+15,009 scanned, 7,702 copied, 9 indexed, 7.53 MiB s3.data.uploaded, 7,710
+s3.copied.single.key.file, 7,710 s3.copied.file, 11.5 MiB in (710 KiB/s), 8.65 MiB out (707
+KiB/s), 20s
+15,009 scanned, 10,653 copied, 9 indexed, 10.4 MiB s3.data.uploaded, 10,669
+s3.copied.single.key.file, 10,669 s3.copied.file, 14.7 MiB in (661 KiB/s), 11.9 MiB out (670
+KiB/s), 25s
+15,009 scanned, 13,422 copied, 9 indexed, 13.1 MiB s3.data.uploaded, 13,428
+s3.copied.single.key.file, 13,428 s3.copied.file, 17.8 MiB in (627 KiB/s), 15.0 MiB out (627
+KiB/s), 30s
+Xcp command : xcp copy -s3.profile sg -s3.noverify -s3.endpoint https://<endpoint_url>: hdfs:///user/demo s3://bucket1
+Stats : 15,009 scanned, 15,005 copied, 15,009 indexed, 14.7 MiB s3.data.uploaded, 15,005
+s3.copied.single.key.file, 15,005 s3.copied.file
+Speed : 19.2 MiB in (609 KiB/s), 17.1 MiB out (543 KiB/s)
+Total Time : 32s.
+Migration ID: XCP_copy_2023-06-13_11.26.56.143287
+Job ID : Job_XCP_copy_2023-06-13_11.26.56.143287_copy
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_XCP_copy_2023-06-13_11.26.56.143287_copy.log
+STATUS : PASSED
+----
+====

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: xcp-smb-reference-activate.html 
+keywords: netapp, xcp, reference, smb, command, commands 
+summary: 'XCP SMB"激活"命令参考' 
+---
+= 激活
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMB `activate` 命令可激活XCP许可证。运行此命令之前、请确认许可证文件已下载并复制到XCP主机或客户端计算机的C：\NetApp\XCP目录中。许可证可以在任意数量的主机上激活。
+
+.语法
+[source, cli]
+----
+xcp activate
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+C:\Users\Administrator\Desktop\xcp>xcp activate
+XCP activated
+----
+====

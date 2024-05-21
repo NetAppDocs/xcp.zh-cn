@@ -1,0 +1,376 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-estimate.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= 估计数
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+XCP NFS `estimate` 命令用于估计完成从源到目标的基线复制所需的时间。它会使用所有当前可用的系统资源(例如CPU、RAM、网络和其他参数)来计算完成基线复制的估计时间。您可以使用 `-target` 用于启动样本复制操作并获取估计时间的选项。
+
+.语法
+[source, cli]
+----
+xcp estimate -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client-01 linux]# ./xcp estimate -t 100 -id estimate01 -target 10.101.10.10:/temp8
+
+xcp: WARNING: your license will expire in less than 10 days! You can renew your license at https://xcp.netapp.com
+Job ID: Job_2023-04-12_08.09.16.126908_estimate
+Starting live test for 1m40s to estimate time to copy '10.101.10.10:/temp4' to
+'10.101.10.10:/temp8'...
+estimate regular file copy task completed before the 1m40s duration
+0 in (0/s), 0 out (0/s), 5s
+0 in (0/s), 0 out (0/s), 10s
+Estimated time to copy '10.101.12.11:/temp4' to '10.101.12.10:/temp8' based on a 1m40s live test:
+5.3s
+Xcp command : xcp estimate -t 100 -id estimate01 -target 10.101.12.10:/temp8
+Estimated Time : 5.3s
+Job ID : Job_2023-04-12_08.09.16.126908_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-12_08.09.16.126908_estimate.log
+STATUS : PASSED
+[root@client-01linux]#
+----
+====
+下表列出了 `estimate` 参数及其问题描述。
+
+[cols="2*"]
+|===
+| 参数 | Description 
+
+
+| <<nfs_estimate_id,估计-id    | 指定上一个副本或扫描索引的目录名称。 
+
+
+| <<nfs_estimate_gbit,估计值-Gbit    | 使用千兆位带宽来估计最佳情形时间(默认值：1)。 
+
+
+| <<nfs_estimate_target,估计-目标()；路径()；   | 指定用于实时测试副本的目标。 
+
+
+| <<nfs_estimate_t,估计值-t ()；n/s/m/h]  | 指定实时测试副本的持续时间(默认值：5米)。 
+
+
+| <<nfs_estimate_bs,估计值-BS [k]  | 指定读/写块大小(默认值：64K)。 
+
+
+| <<nfs_estimate_dircount,估计值-dircount ()；n[k]   | 指定读取目录的请求大小(默认值：64K)。 
+
+
+| <<nfs_estimate_preserveatime,估计值-保留时间 >> | 保留文件或目录的访问时间(默认值：false)。 
+
+
+| <<nfs_estimate_loglevel,估计-日志级别()；名称和gt；  | 设置日志级别；可用级别为info、debug (默认值：info) 
+|===
+
+
+== Estimate -id <name>
+
+使用 `-id <name>` 参数 `estimate` 命令以排除与筛选器匹配的文件和目录。
+
+.语法
+[source, cli]
+----
+xcp estimate -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp estimate -id csdata01
+
+xcp: WARNING: your license will expire in less than 11 days! You can renew your license at
+https://xcp.netapp.com
+xcp: WARNING: XCP catalog volume is low on disk space: 99.99% used, 62.0 MiB free space.
+Job ID: Job_2023-04-20_12.59.31.260914_estimate
+== Best-case estimate to copy ‘data-set:/user1given 1 gigabit of bandwidth ==
+112 TiB of data at max 128 MiB/s: at least 10d13h
+Xcp command : xcp estimate -id csdata01
+Estimated Time : 10d13h
+Job ID : Job_2023-04-20_12.59.31.260914_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-20_12.59.31.260914_estimate.log
+STATUS : PASSED
+xcp: WARNING: XCP catalog volume is low on disk space: 99.99% used, 62.0 MiB free space.
+[root@client1 linux]#
+----
+====
+
+
+== 估计-Gbit <n>
+
+使用 `-gbit <n>` 参数 `estimate` 用于估计最佳情形时间的命令(默认值：1)。此选项不能与结合使用 `-target` 选项
+
+.语法
+[source, cli]
+----
+xcp estimate -gbit <n> -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client-01 linux]# ./xcp estimate -gbit 10 -id estimate01
+
+xcp: WARNING: your license will expire in less than 10 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-12_08.12.28.453735_estimate
+== Best-case estimate to copy '10.101.12.11:/temp4' given 10 gigabits of bandwidth ==
+0 of data at max 1.25 GiB/s: at least 0.0s
+Xcp command : xcp estimate -gbit 10 -id estimate01
+Estimated Time : 0.0s
+Job ID : Job_2023-04-12_08.12.28.453735_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-12_08.12.28.453735_estimate.log
+STATUS : PASSED
+[root@client-01linux]#
+----
+====
+
+
+== 估计-目标<path>
+
+使用 `-target <path>` 参数 `estimate` 用于指定用于实时测试副本的目标的命令。
+
+.语法
+[source, cli]
+----
+xcp estimate -t 100 -id <name> -target <path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client-01 linux]# ./xcp estimate -t 100 -id estimate01 -target 10.101.12.11:/temp8
+
+xcp: WARNING: your license will expire in less than 10 days! You can renew your license at https://xcp.netapp.com
+Job ID: Job_2023-04-12_08.09.16.126908_estimate
+Starting live test for 1m40s to estimate time to copy '10.101.12.11:/temp4' to '10.101.12.11:/temp8'...
+estimate regular file copy task completed before the 1m40s duration
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-12_08.09.16.126908_estimate.log
+STATUS : PASSED
+[root@client-01linux]#
+----
+====
+
+
+== 估计-t <n[s|m|h]>
+
+使用 `-t <n[s|m|h]>` 参数 `estimate` 命令以指定实时测试副本的持续时间。默认值为5米。
+
+.语法
+[source, cli]
+----
+xcp estimate -t <n[s|m|h]> -id <name> -target <path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client-01 linux]# ./xcp estimate -t 100 -id estimate01 -target 10.101.12.12:/temp8
+
+xcp: WARNING: your license will expire in less than 10 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-12_08.09.16.126908_estimate
+Starting live test for 1m40s to estimate time to copy '10.101.12.11:/temp4' to
+'10.101.12.12:/temp8'...
+estimate regular file copy task completed before the 1m40s duration
+0 in (0/s), 0 out (0/s), 5s
+0 in (0/s), 0 out (0/s), 10s
+Estimated time to copy '10.101.12.11:/temp4' to '10.101.12.12:/temp8' based on a 1m40s live
+test: 5.3s
+
+Xcp command : xcp estimate -t 100 -id estimate01 -target 10.101.12.11:/temp8
+Estimated Time : 5.3s
+Job ID : Job_2023-04-12_08.09.16.126908_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-12_08.09.16.126908_estimate.log
+STATUS : PASSED
+[root@client-01linux]#
+----
+====
+
+
+== 估计值-BS <n[k]>
+
+使用 `-bs <n[k]>` 参数 `estimate` 命令以指定读/写块大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp estimate -id <name> -bs <n[k]>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp estimate -id estimate01 -bs 128k
+
+xcp: WARNING: your license will expire in less than 7 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-24_08.44.12.564441_estimate
+63.2 KiB in (12.5 KiB/s), 2.38 KiB out (484/s), 5s
+== Best-case estimate to copy 'xxx' given 1 gigabit of bandwidth ==
+112 TiB of data at max 128 MiB/s: at least 10d13h
+Xcp command : xcp estimate -id estimate01 -bs 128k
+Estimated Time : 10d13h
+Job ID : Job_2023-04-24_08.44.12.564441_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-24_08.44.12.564441_estimate.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== Estimate -dircount <n[k]>
+
+使用 `-dircount <n[k]>` 参数 `estimate` 命令以指定读取目录所需的大小。默认值为64k。
+
+.语法
+[source, cli]
+----
+xcp estimate -id <name> -dircount <n[k]> -t <n> -target <path>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp estimate -id csdata01 -dircount 128k -t 300 -target <path>
+
+xcp: WARNING: your license will expire in less than 11 days! You can renew your license at
+https://xcp.netapp.com
+xcp: WARNING: XCP catalog volume is low on disk space: 99.99% used, 61.6 MiB free space.
+Job ID: Job_2023-04-20_13.03.46.820673_estimate
+Starting live test for 5m0s to estimate time to copy ‘data-set:/user1 to `<path>`...
+1,909 scanned, 126 copied, 2 giants, 580 MiB in (115 MiB/s), 451 MiB out (89.5 MiB/s), 5s
+1,909 scanned, 134 copied, 2 giants, 1.23 GiB in (136 MiB/s), 1015 MiB out (112 MiB/s), 10s
+1,909 scanned, 143 copied, 2 giants, 1.88 GiB in (131 MiB/s), 1.54 GiB out (113 MiB/s), 15s
+.
+.
+.
+7,136 scanned, 2,140 copied, 4 linked, 8 giants, 33.6 GiB in (110 MiB/s), 32.4 GiB out (110
+MiB/s), 4m57s
+Sample test copy completed for, 300.03s
+0 in (-7215675436.180/s), 0 out (-6951487617.036/s), 5m2s
+2,186 scanned, 610 KiB in (121 KiB/s), 76.9 KiB out (15.3 KiB/s), 5m7s
+Estimated time to copy ‘data-set:/user1to '10.01.12.11:/mapr11' based on a 5m0s live test:
+7d6h
+Xcp command : xcp estimate -id csdata01 -dircount 128k -t 300 -target 10.101.12.11:/mapr11
+Estimated Time : 7d6h
+Job ID : Job_2023-04-20_13.03.46.820673_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-20_13.03.46.820673_estimate.log
+STATUS : PASSED
+xcp: WARNING: XCP catalog volume is low on disk space: 99.99% used, 61.6 MiB free space.
+[root@client1 linux]#
+----
+====
+
+
+== 估计-并行<n>
+
+使用 `-parallel <n>` 参数 `estimate` 命令以指定并发批处理进程的最大数量。默认值为7。
+
+.语法
+[source, cli]
+----
+xcp estimate -loglevel <name> -parallel <n> -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp estimate -loglevel DEBUG -parallel 8 -id estimate1
+
+xcp: WARNING: your license will expire in less than 11 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-20_11.36.45.535209_estimate
+== Best-case estimate to copy '10.10.101.10:/users009/xxx/mnt' given 1 gigabit of bandwidth ==
+6.75 GiB of data at max 128 MiB/s: at least 54.0s
+Xcp command : xcp estimate -loglevel DEBUG -parallel 8 -id estimate1
+Estimated Time : 54.0s
+Job ID : Job_2023-04-20_11.36.45.535209_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-20_11.36.45.535209_estimate.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== 估计值-保留时间
+
+使用 `-preserve-atime` 参数 `estimate` 命令以保留文件或目录的访问时间。默认值为 false 。
+
+.语法
+[source, cli]
+----
+xcp estimate -loglevel <name> -preserve-atime -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+root@client1 linux]# ./xcp estimate -loglevel DEBUG -preserve-atime -id estimate1
+
+xcp: WARNING: your license will expire in less than 11 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-20_11.19.04.050516_estimate
+== Best-case estimate to copy '10.10.101.10:/users009/xxx/mnt' given 1 gigabit of bandwidth
+==
+6.75 GiB of data at max 128 MiB/s: at least 54.0s
+Xcp command : xcp estimate -loglevel DEBUG -preserve-atime -id estimate1
+Estimated Time : 54.0s
+Job ID : Job_2023-04-20_11.19.04.050516_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-20_11.19.04.050516_estimate.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====
+
+
+== 估计值-日志级别<name>
+
+使用 `-loglevel <name>` 参数 `estimate` 用于设置日志级别的命令；可用级别为info和debug。默认级别为info。
+
+.语法
+[source, cli]
+----
+xcp estimate -loglevel <name> -id <name>
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@client1 linux]# ./xcp estimate -loglevel DEBUG -parallel 8 -id estimate1
+
+xcp: WARNING: your license will expire in less than 11 days! You can renew your license at
+https://xcp.netapp.com
+Job ID: Job_2023-04-20_11.36.45.535209_estimate
+== Best-case estimate to copy '10.10.101.10:/users009/xxx/mnt' given 1 gigabit of bandwidth ==
+6.75 GiB of data at max 128 MiB/s: at least 54.0s
+Xcp command : xcp estimate -loglevel DEBUG -parallel 8 -id estimate1
+Estimated Time : 54.0s
+Job ID : Job_2023-04-20_11.36.45.535209_estimate
+Log Path : /opt/NetApp/xFiles/xcp/xcplogs/Job_2023-04-20_11.36.45.535209_estimate.log
+STATUS : PASSED
+[root@client1 linux]#
+----
+====

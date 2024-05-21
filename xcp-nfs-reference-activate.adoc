@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: xcp-nfs-reference-activate.html 
+keywords: netapp, xcp, reference, nfs, command, commands 
+summary: XCP NFS命令参考 
+---
+= 激活
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NFS `activate` 命令可激活XCP许可证。
+
+
+NOTE: 运行此命令之前、请确认许可证文件已下载并复制到 `opt/NetApp/xFiles/xcp/` XCP Linux客户端主机上的目录。
+
+.语法
+[source, cli]
+----
+xcp activate
+----
+.显示示例
+[%collapsible]
+====
+[listing]
+----
+[root@localhost linux]# ./xcp activate
+
+XCP activated
+----
+====
