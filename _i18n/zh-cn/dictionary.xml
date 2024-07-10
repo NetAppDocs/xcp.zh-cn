@@ -350,8 +350,6 @@
   <block id="95b2f11d1aece0b4ddfc5cba00384742" category="summary">安装 XCP</block>
   <block id="5157096b4994925e784b5ccc913a425c" category="section-title">安装和配置工作流</block>
   <block id="dda26d898eec39eecd399e188771288e" category="paragraph">本文档介绍了在 NFS 和 SMB 系统上安装和设置 XCP 的简单工作流。</block>
-  <block id="341d84aa26cb4521474864e04ea2a63b" category="inline-image-macro">错误：缺少图形映像</block>
-  <block id="e0cc20d4c07649f34c6795a45c8f54ec" category="paragraph"><block ref="e0cc20d4c07649f34c6795a45c8f54ec" category="inline-image-macro-rx" type="image"></block></block>
   <block id="af4c2fb6e7c29314dbe63e8b1d277ff8" category="section-title">下载 XCP</block>
   <block id="83008f4493bba0b08400133371c2e80c" category="paragraph">从 NetApp 支持站点下载 XCP ，并从 XCP 站点获取许可证。</block>
   <block id="8c41baf1ca98e1184f48c4721d44d431" category="inline-link-macro">NetApp 支持站点</block>
@@ -2214,4 +2212,8 @@ false将忽略系统日志配置。</block>
   <block id="7abd8bc01e56757cc6d2d51936b79c34" category="sidebar">XCP事件日志</block>
   <block id="64b873b5723d0186c94db0f344f92d2b" category="sidebar">NFS事件日志</block>
   <block id="4749766868b7c96046bdc8c12e4653fb" category="sidebar">SMB事件日志</block>
+  <block id="10f9a2d4423674460e3651820224566e" category="inline-image-macro">XCP安装和配置工作流</block>
+  <block id="d00c1e93acb215a134bcc17a6aafed7e" category="paragraph"><block ref="d00c1e93acb215a134bcc17a6aafed7e" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="e53491994f0709110c81f65b9c6dcbf5" category="cell">第三方到NetApp NTFS访问控制列表(ACL)</block>
+  <block id="0ce0e45a25c05fb4a79ccca92ab31b0a" category="cell">XCP SMB不支持将第三方ACL从非NetApp系统迁移到NetApp系统。</block>
 </blocks>

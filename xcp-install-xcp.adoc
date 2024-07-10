@@ -22,7 +22,7 @@ summary: 安装 XCP
 
 本文档介绍了在 NFS 和 SMB 系统上安装和设置 XCP 的简单工作流。
 
-image:xcp_image16.PNG["错误：缺少图形映像"]
+image:xcp_image16.PNG["XCP安装和配置工作流"]
 
 
 

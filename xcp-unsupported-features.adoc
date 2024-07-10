@@ -49,6 +49,9 @@ XCP SMB 不支持以下功能：
 | 功能名称 | Description 
 
 
+| 第三方到NetApp NTFS访问控制列表(ACL) | XCP SMB不支持将第三方ACL从非NetApp系统迁移到NetApp系统。 
+
+
 | NFS 符号链接（ symlink ） | XCP SMB 不支持 NFS 符号链接 
 
 
