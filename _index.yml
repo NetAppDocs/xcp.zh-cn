@@ -1,5 +1,7 @@
 ---
 indexpage:
+  title: XCP文档
+  summary: NetApp XCP是一款基于客户端的软件、可实现可扩展的高性能数据迁移、以实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。
   lead: NetApp XCP是一款基于客户端的软件工具、支持通过可扩展的高性能数据迁移、实现任意到NetApp以及从NetApp到NetApp的数据迁移和文件分析。NetApp提供了最新版本的XCP工具以及三个最新版本的文档。
   tiles:
   - title: 入门

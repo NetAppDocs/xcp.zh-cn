@@ -14,7 +14,6 @@ sidebar:
   - title: 发行说明
     url: "/releasenotes.html"
   - title: 开始使用 XCP
-    type: solutions
     entries:
     - title: 了解 XCP
       url: "/xcp-index.html"
@@ -61,8 +60,9 @@ sidebar:
     - title: 配置S3连接器
       url: "/xcp-configure-s3-connector-nfs.html"
   - title: 规划数据迁移
-    url: "/xcp-plan-data-migration.html"
     entries:
+    - title: 概述
+      url: "/xcp-plan-data-migration.html"
     - title: 规划 NFS 数据迁移
       url: "/xcp-plan-nfs-data-migration.html"
     - title: 规划 SMB 数据迁移
@@ -89,6 +89,7 @@ sidebar:
       url: "/xcp-migrate-data.html"
     - title: 迁移 SMB 数据
       url: "/xcp-migrate-smb-data.html"
+    - title: SMB的NTFS备用数据流迁移
       entries:
       - title: SMB的NTFS备用数据流迁移
         url: "/xcp-smb-ads.html"

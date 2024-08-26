@@ -554,7 +554,6 @@
   <block id="ba6807036282ea03969e0ea735a1e2a5" category="cell">检查您是否有权在目标卷上写入数据。</block>
   <block id="e4add07a604bb98ac4aacc4b8c857f6f" category="cell">`XCP ：错误：批处理 2 ：子进程失败（退出代码 -6 ）： recv &lt;type 'Exceptions.EOFError"&gt; ：`</block>
   <block id="08f481ccf8f3283bb87e9a548c2fbb41" category="cell">增加系统内存并重新运行测试。</block>
-  <block id="27844988f363a5f923e9334ae145a1fd" category="doc">配置此 INI 文件</block>
   <block id="29c2f1feeb1231581bf05d60a3d62a9a" category="paragraph">为 XCP 配置 ini 文件的步骤。</block>
   <block id="586dba64773da8695bdac99be604919f" category="section-title">为 root 用户配置此 ini 文件</block>
   <block id="21ee12acf8b4df5f11e93b279367513a" category="paragraph">您可以使用以下操作步骤为 XCP NFS root 用户配置 文件。</block>
@@ -877,14 +876,10 @@ xcp.log文件中记录的错误消息：<block ref="e2ac862df70b5c80b24bb2eb2b39
   <block id="269e3fa15ca9366f6cfcb1eac97c6cf0" category="paragraph">运行<block ref="1a1b0d47f4e6e0151b4df12640fe4bb0" prefix=" " category="inline-code"></block> 有关详细信息：</block>
   <block id="ea7072dd30b8128f4d74568ed70d406c" category="paragraph">文件已访问/已修改/已创建图形显示随时间变化的文件计数。X轴表示所做更改的时间段、Y轴表示所更改的文件数。</block>
   <block id="e66cb3e85cec55480dc46a379124f46a" category="section-title">访问/修改/创建的文件大小图形</block>
-  <block id="5eeb433a134b50fcf2d2d02005945304" category="paragraph"><block ref="5eeb433a134b50fcf2d2d02005945304" category="inline-image-macro-rx" type="image"></block></block>
   <block id="b483a26f1bc7e903df1139b2bea4faca" category="paragraph">访问/修改/创建的文件大小图形显示随时间变化的文件大小。X轴表示所做更改的时间段、Y轴表示所更改文件的大小。</block>
   <block id="8105201d67059c07d533dcbbe25a3c67" category="section-title">按扩展名统计图的文件分布</block>
-  <block id="699e5e6ac0568498b21221ee949dd4a3" category="paragraph"><block ref="699e5e6ac0568498b21221ee949dd4a3" category="inline-image-macro-rx" type="image"></block></block>
   <block id="79f475897ad3ccfba85aa2fc2f2d9bad" category="section-title">文件大小分布(按扩展名统计图)</block>
-  <block id="4ab3fb97b389232d625b03e49824e147" category="paragraph"><block ref="4ab3fb97b389232d625b03e49824e147" category="inline-image-macro-rx" type="image"></block></block>
   <block id="a07e34309c0f4fe3914143661296e902" category="paragraph">"按扩展名分布的文件大小"图表示文件共享中不同文件扩展名的累计大小。表示扩展名的分区大小取决于每个扩展名的文件大小。</block>
-  <block id="fa089a630122acf5e9273fce49f4cf34" category="paragraph"><block ref="fa089a630122acf5e9273fce49f4cf34" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0c298119c26e2b6846ed04c0a3a19fc9" category="paragraph">运行<block ref="0b0f856b03e3ddcd7804298ac5bc4a97" prefix=" " category="inline-code"></block> 有关详细信息：</block>
   <block id="1b8208be7fabaa97780c143eb5ae291e" category="paragraph">运行<block ref="dc7a0e5e50a6e16de630993f68e9061c" prefix=" " category="inline-code"></block> 有关详细信息：</block>
   <block id="b802ccf3bd2b24d676e6542534797831" category="paragraph">运行<block ref="7aaf8f3c0f52b0fd5a97d37fbe81d5c5" prefix=" " category="inline-code"></block> 有关详细信息：</block>
@@ -2216,4 +2211,15 @@ false将忽略系统日志配置。</block>
   <block id="d00c1e93acb215a134bcc17a6aafed7e" category="paragraph"><block ref="d00c1e93acb215a134bcc17a6aafed7e" category="inline-image-macro-rx" type="image"></block></block>
   <block id="e53491994f0709110c81f65b9c6dcbf5" category="cell">第三方到NetApp NTFS访问控制列表(ACL)</block>
   <block id="0ce0e45a25c05fb4a79ccca92ab31b0a" category="cell">XCP SMB不支持将第三方ACL从非NetApp系统迁移到NetApp系统。</block>
+  <block id="1300bd8e2d36b2d26dd0d4054937f9b7" category="admonition">XCP SMB中不需要XCP INI文件。</block>
+  <block id="cfd8dd3ece7e01985a0c3284a9784c66" category="inline-image-macro">显示随时间变化的文件大小的图形</block>
+  <block id="6892c40e78a41a89c3e977071754228f" category="paragraph"><block ref="6892c40e78a41a89c3e977071754228f" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="23cc9fe9e052a539bfb7f4050d5cbc0c" category="inline-image-macro">显示如何获取XCP SMB中每个文件扩展名的备用数据流文件数量的图形</block>
+  <block id="38a84eabbe5af8a7b5f98fac70ba57da" category="paragraph"><block ref="38a84eabbe5af8a7b5f98fac70ba57da" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="0ddb9db6b0a28f38a95e40d7cf8eb8cb" category="inline-image-macro">显示文件共享中不同文件扩展名的累积大小的图形。</block>
+  <block id="3364e1b19026788a2e58a0d78550ffc5" category="paragraph"><block ref="3364e1b19026788a2e58a0d78550ffc5" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="4a19e5a58f92d23fde8fba05519926e6" category="inline-image-macro">显示如何获取XCP SMB不同类型的备用数据流文件数量的图形</block>
+  <block id="92420eba0222a4b23e712f8973ef3bc8" category="paragraph"><block ref="92420eba0222a4b23e712f8973ef3bc8" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="19699e63b68566e37c15a09d5b8fa402" category="sidebar">XCP文档</block>
+  <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">概述</block>
 </blocks>

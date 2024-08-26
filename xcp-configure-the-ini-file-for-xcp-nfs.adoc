@@ -4,7 +4,7 @@ permalink: xcp-configure-the-ini-file-for-xcp-nfs.html
 keywords: netapp, xcp, configure, configuring, how, performing, tuning, nfs, 
 summary: 配置 ini 文件 XCP 的步骤 
 ---
-= 配置此 INI 文件
+= 配置 XCP NFS 的 ini 文件
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -15,6 +15,9 @@ summary: 配置 ini 文件 XCP 的步骤
 
 [role="lead"]
 为 XCP 配置 ini 文件的步骤。
+
+
+NOTE: XCP SMB中不需要XCP INI文件。
 
 
 
