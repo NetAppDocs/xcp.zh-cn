@@ -199,9 +199,13 @@ STATUS : PASSED
 
 使用 `-stats`， `-csv`，和 `-html` 参数 `scan` 命令以树统计信息报告格式列出文件。
 
+[NOTE]
+====
+* 可 `-stats`选项将用户可读的报告打印到控制台。其他报告格式选项包括 `-html`或 `-csv`。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。
+* XCP报告(.csv、.html)保存在文件中指定的目录位置 `xcp.ini`。文件存储在文件夹中 `<catalog path>/catalog/indexes/1/reports`。您可以在中查看示例报告link:https://library.netapp.com/ecm/ecm_download_file/ECMLP2886872["参考NetApp XCP 1.9.3"^]。
 
-NOTE: XCP报告(.csv、.html)保存在中指定的目录位置 `xcp.ini` 文件这些文件存储在中 `<catalog path>/catalog/indexes/1/reports` 文件夹。您可以在附录中查看示例报告。
 
+====
 .语法
 [source, cli]
 ----

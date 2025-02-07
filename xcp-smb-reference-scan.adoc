@@ -614,6 +614,9 @@ STATUS : PASSED
 
 使用 `-stats` 参数 `scan` 命令以树统计信息报告格式列出文件。
 
+
+NOTE: stats.选项会将用户可读的报告打印到控制台。其他报告格式选项包括-html或-csv。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。
+
 .语法
 [source, cli]
 ----
