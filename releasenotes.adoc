@@ -4,11 +4,11 @@ sidebar: sidebar
 keywords: release, notes, new, features, fixed, issues, known, xcp 
 summary: 介绍新增功能，升级说明，已修复的问题，已知限制和已知问题。 
 ---
-= XCP v1..4发行说明
+= XCP v1.9.4P1 发行说明
 :allow-uri-read: 
 
 
 [role="lead"]
-。 link:https://library.netapp.com/ecm/ecm_download_file/ECMLP3317866["XCP v1..4发行说明"^] 描述新功能，升级说明，已修复的问题，已知限制和已知问题。
+这link:https://library.netapp.com/ecm/ecm_download_file/ECMLP3317866["XCP v1.9.4P1 发行说明"^]描述新功能、升级说明、已修复的问题、已知限制和已知问题。
 
-您需要登录到 NetApp 支持站点才能访问发行说明。
+您需要登录 NetApp 支持站点才能访问发行说明。

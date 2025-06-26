@@ -139,7 +139,6 @@
   <block id="0e4a94fc1ebb00022d0693e301596d2d" category="cell">XCP 服务可能已关闭。运行配置脚本并选择 * 修复 * 选项。此操作将重新启动已停止的所有服务。</block>
   <block id="e2d6471d3d51e8bf2d4aa734bd07e4ed" category="cell">与分配的物理存储相比，给定文件服务器上导出的文件系统的总空间可能会显示更多空间。</block>
   <block id="a3100bf3334206028c894a5568ddcf09" category="summary">介绍新增功能，升级说明，已修复的问题，已知限制和已知问题。</block>
-  <block id="dbd469acdcbd52648cb242bcfda6add3" category="paragraph">您需要登录到 NetApp 支持站点才能访问发行说明。</block>
   <block id="899cb0fc6e09b056f086b2106c805708" category="summary">安装 XCP SMB</block>
   <block id="8f753e7a8965c7ae386ee6fa22a4b1bf" category="admonition">没有升级选项；请重新安装 XCP 以替换任何现有版本。</block>
   <block id="b9982e4a219c9f069ec01b724fff8274" category="paragraph">* 系统要求 *</block>
@@ -2133,8 +2132,6 @@ false将忽略系统日志配置。</block>
   <block id="7cb35b7703703d652804134b52bf829b" category="paragraph">使用<block ref="66cd389c6c12385d9542ca86e992449e" prefix=" " category="inline-code"></block> 参数<block ref="2af1ae573e96f9c96edbfe34f2ecd144" prefix=" " category="inline-code"></block> 命令以仅处理与筛选器匹配的文件和目录。</block>
   <block id="1fc46f8d24487350c659281460a310d9" category="section-title">indexdelete -loglevel &lt;name&gt;</block>
   <block id="1360d8395bfcf9ad24917527cdbfea22" category="paragraph">使用<block ref="8b89acaeef479a34b0cfc743614719b4" prefix=" " category="inline-code"></block> 参数<block ref="2af1ae573e96f9c96edbfe34f2ecd144" prefix=" " category="inline-code"></block> 用于设置日志级别的命令；可用级别为info和debug。默认级别为info。</block>
-  <block id="6f9bf328f7fea62d92188f9c4c08614b" category="doc">XCP v1..4发行说明</block>
-  <block id="3b61885b697e1edb6c215f90afdd792e" category="paragraph">。 <block ref="98899b177c8da430fcd78f8fb0f1ab8b" category="inline-link-macro-rx"></block> 描述新功能，升级说明，已修复的问题，已知限制和已知问题。</block>
   <block id="e384977f6d5fbe4be72e70d0abfbedaf" category="summary">XCP SMB"scAN"命令参考</block>
   <block id="061db87d2d617de9abf8d907bfd9535f" category="paragraph">SMB<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令以递归方式扫描整个SMB共享、并在结尾列出所有文件<block ref="53aefec08170b2ebed981a0a86d0dbe0" prefix=" " category="inline-code"></block> 命令：</block>
   <block id="cd8d8f76da0c72bf17f57779b195f34c" category="inline-xref">scan -h、--help</block>
@@ -2225,4 +2222,7 @@ false将忽略系统日志配置。</block>
   <block id="12ce88dea76a012f44f4f35bbc418dbd" category="list-text">可<block ref="1051648d0a5a726e0234c2579abcd347" prefix=" " category="inline-code"></block>选项将用户可读的报告打印到控制台。其他报告格式选项包括<block ref="a04601c5ed04826cdcefa49dea445044" prefix=" " category="inline-code"></block>或<block ref="e36751ffcb15beae9c1bdef00c6041fd" prefix=" " category="inline-code"></block>。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。</block>
   <block id="94e333b8fe7eeb24ad8148da30611a12" category="list-text">XCP报告(.csv、.html)保存在文件中指定的目录位置<block ref="d509f49d5d9a07934f91eefcf45a7334" prefix=" " category="inline-code"></block>。文件存储在文件夹中<block ref="4ab06dfafbc06c813ac00690ec02817f" prefix=" " category="inline-code"></block>。您可以在中查看示例报告<block ref="4e380b3bd4c911d8ac7f28200efc937b" category="inline-link-macro-rx"></block>。</block>
   <block id="1ce3aa5c05c910125de58745a6c5c442" category="admonition">stats.选项会将用户可读的报告打印到控制台。其他报告格式选项包括-html或-csv。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。</block>
+  <block id="5cb2823040d5c096016e66f50cb537d9" category="doc">XCP v1.9.4P1 发行说明</block>
+  <block id="1ffdd60f2e1036fd9fdd193a4b1f40c8" category="paragraph">这<block ref="c72f9149922a980ca48dffb603f15c20" category="inline-link-macro-rx"></block>描述新功能、升级说明、已修复的问题、已知限制和已知问题。</block>
+  <block id="7db7336d37e2a7cbb5ab4d9e623c5961" category="paragraph">您需要登录 NetApp 支持站点才能访问发行说明。</block>
 </blocks>
