@@ -2222,7 +2222,7 @@ false将忽略系统日志配置。</block>
   <block id="12ce88dea76a012f44f4f35bbc418dbd" category="list-text">可<block ref="1051648d0a5a726e0234c2579abcd347" prefix=" " category="inline-code"></block>选项将用户可读的报告打印到控制台。其他报告格式选项包括<block ref="a04601c5ed04826cdcefa49dea445044" prefix=" " category="inline-code"></block>或<block ref="e36751ffcb15beae9c1bdef00c6041fd" prefix=" " category="inline-code"></block>。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。</block>
   <block id="94e333b8fe7eeb24ad8148da30611a12" category="list-text">XCP报告(.csv、.html)保存在文件中指定的目录位置<block ref="d509f49d5d9a07934f91eefcf45a7334" prefix=" " category="inline-code"></block>。文件存储在文件夹中<block ref="4ab06dfafbc06c813ac00690ec02817f" prefix=" " category="inline-code"></block>。您可以在中查看示例报告<block ref="4e380b3bd4c911d8ac7f28200efc937b" category="inline-link-macro-rx"></block>。</block>
   <block id="1ce3aa5c05c910125de58745a6c5c442" category="admonition">stats.选项会将用户可读的报告打印到控制台。其他报告格式选项包括-html或-csv。逗号分隔值(CSV)格式具有确切的值。CSV和HTML报告会自动保存在目录中(如果存在目录)。</block>
-  <block id="5cb2823040d5c096016e66f50cb537d9" category="doc">XCP v1.9.4P1 发行说明</block>
-  <block id="1ffdd60f2e1036fd9fdd193a4b1f40c8" category="paragraph">这<block ref="c72f9149922a980ca48dffb603f15c20" category="inline-link-macro-rx"></block>描述新功能、升级说明、已修复的问题、已知限制和已知问题。</block>
   <block id="7db7336d37e2a7cbb5ab4d9e623c5961" category="paragraph">您需要登录 NetApp 支持站点才能访问发行说明。</block>
+  <block id="6f9bf328f7fea62d92188f9c4c08614b" category="doc">XCP v1.9.4 发行说明</block>
+  <block id="3b61885b697e1edb6c215f90afdd792e" category="paragraph">这<block ref="98899b177c8da430fcd78f8fb0f1ab8b" category="inline-link-macro-rx"></block>描述新功能、升级说明、已修复的问题、已知限制和已知问题。</block>
 </blocks>
