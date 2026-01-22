@@ -29,13 +29,13 @@ indexpage:
   - title: 更多资源
     links:
     - title: NetApp TechCommTV (NetApp XCP视频)
-      url: link:https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
+      url: https://www.youtube.com/user/NetAppTechCommTV/search?query=xcp
     - title: NetApp XCP (包括用于获取许可证的链接)
       url: https://xcp.netapp.com/
     - title: XCP的NetApp资源
       url: https://www.netapp.com/search/#q=xcp&sort=relevancy&f:@language=English
     - title: NetApp社区(论坛)
-      url: link:https://community.netapp.com
+      url: https://community.netapp.com
   - title: XCP参考
     links:
     - title: NFS命令参考
